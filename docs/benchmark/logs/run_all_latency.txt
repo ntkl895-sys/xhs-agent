@@ -1,0 +1,20 @@
+==================================================================
+  度量专项 · 本地性能（核心只读接口，localhost 单机）
+==================================================================
+[解析] openapi.json 路径数：44
+[采样] 纳入 13 个接口；剔除 0 个：
+  /health                                n=20  p50=1.91ms  p95=21.53ms  max=26.89ms
+  /api/v1/hotspots                       n=20  p50=6.92ms  p95=30.84ms  max=31.06ms
+  /api/v1/hotspots/sources               n=20  p50=5.54ms  p95=25.4ms  max=29.55ms
+  /api/v1/topics                         n=20  p50=7.57ms  p95=31.09ms  max=32.51ms
+  /api/v1/notes                          n=20  p50=6.97ms  p95=31.09ms  max=31.7ms
+  /api/v1/accounts                       n=20  p50=6.54ms  p95=28.18ms  max=31.18ms
+  /api/v1/personas                       n=20  p50=6.81ms  p95=23.5ms  max=31.23ms
+  /api/v1/dashboard/summary              n=20  p50=10.81ms  p95=22.77ms  max=46.82ms
+  /api/v1/dashboard/trend                n=20  p50=6.87ms  p95=30.66ms  max=31.02ms
+  /api/v1/dashboard/ranking              n=20  p50=6.63ms  p95=31.22ms  max=31.39ms
+  /api/v1/reports/weekly                 n=20  p50=5.43ms  p95=25.28ms  max=30.26ms
+  /api/v1/knowledge                      n=20  p50=6.35ms  p95=29.33ms  max=31.85ms
+  /api/v1/metrics                        n=20  p50=9.15ms  p95=31.21ms  max=31.79ms
+------------------------------------------------------------------
+结果：docs\benchmark\results\api_latency.json

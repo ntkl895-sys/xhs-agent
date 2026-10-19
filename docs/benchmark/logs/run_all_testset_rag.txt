@@ -1,0 +1,7 @@
+==================================================================
+  测试集评测 D · RAG 检索黄金集（临时库 + pgvector）
+==================================================================
+[夹具] rag_golden v1.0：片段 30 / 查询 40（sha256 校验通过）
+[就绪] {"provider": "local", "model": "BAAI/bge-large-zh-v1.5", "dim": 1024, "db_dim": 1024, "dim_consistent": true, "device": "cpu", "batch_size": 16, "top_k": 5, "local_deps_installed": false, "openai_model": "", "has_api_key": false, "cache_size": 0}
+[如实 N/A] 本地 bge 依赖/模型未就绪：{"provider": "local", "reason": "本地向量化依赖未安装（langchain-huggingface / sentence-transformers）", "hint": "本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。"}；安装后重跑本脚本即产出全部质量指标
+结果：docs\benchmark\results\testsets\rag_golden.json

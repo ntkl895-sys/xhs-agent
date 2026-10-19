@@ -1,0 +1,19 @@
+[PASS] 模型 metadata 恰好 10 张表且表名齐全
+[PASS] metadata 中不存在框架检查点表（业务 10 表与框架表隔离）
+[PASS] knowledge_snippets.embedding 为 Vector(1024)
+[PASS] 基线迁移文件存在：backend\migrations\versions\0001_baseline.py
+[PASS] versions/ 下发现迁移文件（2 个）
+[INFO] 合并 2 个迁移：0001_baseline.py, 0002_topic_agent_fields.py
+[PASS] 合并后的迁移建表集合 == metadata 表集合
+[PASS] 业务 Alembic 迁移不包含框架检查点表
+[PASS] 每张表的列名集合 == metadata 列集合
+[PASS] 迁移索引集合 == metadata 索引集合（18 个）
+[PASS] 唯一约束名一致（3 个）
+[PASS] 迁移中向量列维度为 1024
+[PASS] 全仓不存在 create_all 建表调用（建表只走 Alembic）
+[PASS] alembic.ini 的 sqlalchemy.url 留空
+[PASS] env.py 从 settings.DATABASE_URL 注入连接串
+[PASS] env.py 导入 app.models（保证 target_metadata 发现全部表）
+
+通过 15 项，失败 0 项。
+全部 PASS ✔（离线自检，未连接数据库）

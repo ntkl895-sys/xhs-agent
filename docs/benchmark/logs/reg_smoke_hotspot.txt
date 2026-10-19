@@ -1,0 +1,66 @@
+==================================================================
+ 第 9 步 · 热搜服务化在线冒烟
+==================================================================
+ 后端   ：http://localhost:8000
+ DailyHot：http://127.0.0.1:6688
+------------------------------------------------------------------
+
+--- A. 采集（POST /refresh） ---
+[PASS] refresh 返回 200 + JSON
+[PASS] 整次状态 success
+[PASS] 采集源数正确
+[PASS] fetched = new + updated（条条有归属）
+[PASS] 首次新增 > 0（库中今日原本为空）
+[PASS] 返回 run_id
+[PASS] 落库净增 == new（无重复插入）
+[PASS] content_hash 全局无重复
+[INFO] 今日 hotspots 行数：40
+
+--- B. 二次刷新幂等（只更新不新增） ---
+[PASS] 二次 refresh 返回 200
+[PASS] 二次刷新 new=0
+[PASS] 二次刷新 updated > 0
+[PASS] 二次刷新后总行数不变（幂等）
+
+--- C. 列表分页 / 过滤 / 排序 ---
+[PASS] GET /hotspots 200
+[PASS] 响应含 {items,total,page,page_size}
+[PASS] 分页生效
+[PASS] source 过滤生效
+[PASS] sort=fetched_at&order=asc 升序
+[PASS] sort=hot_score&order=desc 降序
+
+--- D. /sources 与 /runs ---
+[PASS] GET /sources 返回非空数组
+[PASS] 每源含 source/name/enabled
+[PASS] /sources 不含小红书
+[PASS] GET /runs 返回非空数组
+[PASS] run_type=hotspot_fetch
+[PASS] agent_runs 已写入 hotspot_fetch 记录
+
+--- E. 并发互斥（两次同时 refresh，应有一次 409） ---
+[PASS] 并发请求状态 ∈ {200,409}
+[PASS] 并发互斥锁生效：至少一个 409 fetch_in_progress
+
+--- F. 坏源容错（partial，好源数据照常入库） ---
+[PASS] 含坏源时整次 status=partial
+[PASS] failed 源计数 >= 1
+[PASS] 好源 zhihu 仍 success（未被拖垮）
+
+--- G. 热点状态标记（PATCH /hotspots/{id}，第 11 步新增） ---
+[PASS] PATCH new→ignored 生效
+[PASS] PATCH ignored→adopted 生效（互逆）
+[PASS] PATCH adopted→new 可逆回位
+[PASS] PATCH 只改 status，未动其它字段
+[PASS] 非法状态 → 422（Pydantic 校验）
+[PASS] 不存在热点 → 404
+[PASS] PATCH 不物理删除 / 不新增热点行
+
+--- H. 定时到点执行（进程内 BackgroundScheduler） ---
+[PASS] 调度器到点触发了作业
+[PASS] agent_runs 出现 trigger=scheduled 记录
+
+------------------------------------------------------------------
+通过 38 项，失败 0 项。
+全部 PASS ✔（真实网络 + 真实库）
+[INFO] 公开热点数据已保留作第 11 步演示；如需清理见 README 第九节。

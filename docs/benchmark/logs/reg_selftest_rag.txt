@@ -1,0 +1,213 @@
+2026-10-17 09:38:49,797 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:38:50,004 [INFO] xhs-agent.insights.graph: 提炼上下文就绪：published=4（门槛 3，充足），数据缺口=2
+2026-10-17 09:38:50,031 [INFO] xhs-agent.insights.graph: 规律落库：generated=2 persisted=2 reused=0 skipped=0
+2026-10-17 09:38:50,047 [INFO] xhs-agent.insights.service: 规律提炼完成：run=a4be658b-2080-4247-ba6d-34d2ac17e5bf status=success sample=4/3 generated=2 persisted=2 reused=0 skipped=0
+2026-10-17 09:38:50,048 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 201 Created"
+2026-10-17 09:38:50,141 [INFO] xhs-agent.insights.graph: 提炼上下文就绪：published=4（门槛 3，充足），数据缺口=2
+2026-10-17 09:38:50,153 [INFO] xhs-agent.insights.graph: 规律落库：generated=2 persisted=0 reused=2 skipped=0
+2026-10-17 09:38:50,174 [INFO] xhs-agent.insights.service: 规律提炼完成：run=fc723711-3d23-4b06-a2a0-7c17df6e07f0 status=success sample=4/3 generated=2 persisted=0 reused=2 skipped=0
+2026-10-17 09:38:50,175 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 201 Created"
+2026-10-17 09:38:50,238 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/search "HTTP/1.1 200 OK"
+2026-10-17 09:38:50,241 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/search "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,244 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/search "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,248 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/search "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,252 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/search "HTTP/1.1 400 Bad Request"
+2026-10-17 09:38:50,287 [INFO] xhs-agent.insights.graph: 提炼上下文就绪：published=4（门槛 99，不足），数据缺口=3
+2026-10-17 09:38:50,307 [INFO] xhs-agent.insights.service: 规律提炼完成：run=11dd459b-afce-4b10-b045-635dd24e1bc3 status=partial sample=4/99 generated=0 persisted=0 reused=0 skipped=0
+2026-10-17 09:38:50,308 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 201 Created"
+2026-10-17 09:38:50,324 [WARNING] xhs-agent.services.rag: selftest-降级：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装（自检注入）。）
+2026-10-17 09:38:50,583 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?limit=50 "HTTP/1.1 200 OK"
+2026-10-17 09:38:50,594 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?chunk_type=hit_pattern&limit=50 "HTTP/1.1 200 OK"
+2026-10-17 09:38:50,597 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?limit=101 "HTTP/1.1 422 Unprocessable Content"
+==============================================================================
+第 18 步 · RAG 知识库（embedding / 规律提炼 / 检索 / 反哺）离线自检
+（不联网、不下载 bge 模型、不需要 API Key）
+==============================================================================
+[PASS] build_insights_graph 返回已编译的 LangGraph 图
+[PASS] 图含 load_context / generate_patterns / validate_patterns / embed_and_persist / give_up / insufficient_sample 六节点
+[PASS] load_context 后为条件边（样本充足 → 生成 / 不足 → 特定收尾）
+[PASS] generate_patterns → validate_patterns 为直连边
+[PASS] validate_patterns → generate_patterns 为条件边（回炉回路）
+[PASS] validate 通过 → embed_and_persist / 超限 → give_up 均为条件边
+[PASS] embed_and_persist / give_up / insufficient_sample → END
+[PASS] 回路上界绑定 AGENT_JSON_MAX_ATTEMPTS（有界回路，不无限重试）
+[PASS] 图用 new_state_graph 装配且状态为 InsightsState（复用 harness 基座）
+[PASS] 提炼经 app.agent.runner.run_agent 运行（第六个业务图，禁止裸 HTTP 自编排）
+[PASS] 图状态不含任何向量字段（向量绝不入状态）
+[PASS] embed_texts 返回与输入等长的 1024 维向量列表
+[PASS] 按 EMBEDDING_BATCH_SIZE=2 切分：6 条文本恰 3 批（每批 2 条）
+[PASS] 同文本二次调用全量命中 sha256 缓存（底层零新增调用；向量逐位一致）
+[PASS] 就绪快照的 cache_size = 6（进程内缓存计数）
+[PASS] 部分命中缓存：仅未命中 1 条触发底层调用（条数=1）
+[PASS] 空列表 → 空结果（零调用）
+[PASS] 非 1024 维向量 → EmbeddingDimensionError（不静默截断 / 补零）
+[PASS] 底层返回条数少于请求 → EmbeddingError（不猜、不补）
+[PASS] validate_dim_settings：1024=1024 通过（配置与列维度一致）
+[PASS] EMBEDDING_DIM 与列维度不一致 → 清晰中文错误（本步不做维度迁移）
+[PASS] 就绪快照：provider=local / dim=db_dim=1024 / dim_consistent
+[PASS] 就绪快照恰 12 个键、api key 仅以布尔呈现（无明文）
+[PASS] POST /extract 成功路径 → 201
+[PASS] 响应业务计数：status=success / generated=2 / persisted=2 / reused=0 / skipped=0 / snippet_ids 2 条
+[PASS] parse_attempts=1 且假模型恰 1 次调用（首轮即拿到合法 JSON）
+[PASS] 响应携带 INSIGHTS_PROMPT_VERSION（进 llm 审计口径）
+[PASS] 响应文本不含 llm_raw / embedding / 密钥字样
+[PASS] 提炼提示词明文含「禁止行业平均 / 外部数字」硬约束（规律只来自本账号数据）
+[PASS] 提示词携带样本内笔记 id（模型只能引用真实来源）
+[PASS] 知识块已落库且 embedding 非空（2 条）
+[PASS] chunk_type 恰为 hit_pattern / review_insight，status=active
+[PASS] meta 含来源 / 证据 / 样本量 / 数据区间 / 置信度 / 指纹 / 提示词版本
+[PASS] title = 规律文本前 50 字
+[PASS] knowledge_snippets 恰新增 2 条
+[PASS] agent_runs：run_type=insights / status=success（RunType 新增成员，无 DDL）
+[PASS] agent_runs.outputs 回填业务明细（裸 SQL 补齐，harness 不改）
+[PASS] llm_raw 已脱敏（假密钥串 → [REDACTED]；绝不原样落库）
+[PASS] llm_raw 截断到 LLM_RAW_MAX_LEN 上限内
+[PASS] token 用量按 token 记录（17+29=46，不内置价格换算）
+[PASS] 提炼**只写 knowledge_snippets**：其余八张业务表计数不变
+[PASS] 幂等：同规律再提炼 → reused=2 / persisted=0 / 零新增 id
+[PASS] 幂等落库绝不重复插入（总数不变）；查重先于嵌入（底层仅首批 1 次调用）
+[PASS] 第二次运行的 agent_runs.outputs 如实记录 reused=2 / persisted=0
+[PASS] 前置：组 2 写入的两条知识块可按内容定位
+[PASS] top-k：用规律自身向量检索，该条排第一（余弦距离 0）
+[PASS] top-1 相似度 ≈ 1.0（4 位小数口径）
+[PASS] 结果按相似度降序（余弦距离升序）
+[PASS] 检索命中字段恰 8 键：**不含 embedding 原始向量**
+[PASS] chunk_types 过滤：仅返回 review_insight（且含目标块）
+[PASS] PATCH 语义（crud）：归档状态切换成功
+[PASS] 默认检索**不含 archived**（归档块不召回）
+[PASS] include_archived=True 时召回归档块
+[PASS] 归档恢复（active）—— 知识块只增 / 归档，无物理删除
+[PASS] POST /search：200 + top-1 为目标块 + similarity 字段返回
+[PASS] POST /search 回显 query 且响应不含 embedding 向量
+[PASS] POST /search 参数校验：query 空串 → 422
+[PASS] POST /search 参数校验：k=0 → 422
+[PASS] POST /search 参数校验：k=99（>20）→ 422
+[PASS] 本机未装向量化依赖：POST /search → 400（如实告知 + 安装指引）
+[PASS] 样本不足 → 201 + insufficient_sample=True + status=partial（不是错误）
+[PASS] 零产出：generated/persisted=0、snippet_ids 空、parse_attempts=0
+[PASS] **零模型调用、零写入**（不硬造规律）；knowledge_snippets 总数不变
+[PASS] data_gaps 含「样本不足：至少发布 N 篇并回填数据后再提炼（当前仅 X 篇）」
+[PASS] 样本量口径：sample_size=全量已发布数（含本夹具 3 篇）/ min_required=门槛
+[PASS] agent_runs 补记 status=partial（service 层按 output 修正，harness 不改）
+[PASS] 样本不足的运行无 llm_raw（零模型调用）
+[PASS] safe_rag_block 命中：块正文含规律文本与「爆款规律」类型标注
+[PASS] 块渲染进提示词时带「本账号历史经验（仅供参考，非行业标准）」标题
+[PASS] enabled=False / 查询空文本 → 空串且**零检索**（开关默认 True，可一键回退）
+[PASS] embedder 抛错 → 只 WARNING 降级返回空串（主流程不阻断、不报错给用户）
+[PASS] 选题图提示词：无 RAG 不含标题 / 有 RAG 含「本账号历史经验」标题
+[PASS] 选题图提示词替换等价：去掉 RAG 段后与传入前**逐字一致**（不影响既有逻辑）
+[PASS] 创作图提示词替换等价：去掉 RAG 段后与传入前**逐字一致**（不影响既有逻辑）
+[PASS] 选题图 RAG 接入点恰 1 处（load_context 内 safe_rag_block）+ 开关恰 1 处
+[PASS] 创作图 RAG 接入点恰 1 处（load_context 内 safe_rag_block）+ 开关恰 1 处
+[PASS] 选题图仍为原五节点拓扑（RAG 未改节点 / 条件边 / 状态机）
+[PASS] 创作图仍为原五节点拓扑（RAG 未改节点 / 条件边 / 状态机）
+[PASS] /api/v1/knowledge 恰为 GET（列表）
+[PASS] /api/v1/knowledge/extract 恰为 POST（静态路径先于 /{id} 注册）
+[PASS] /api/v1/knowledge/search 恰为 POST（静态路径先于 /{id} 注册）
+[PASS] /api/v1/knowledge/{snippet_id} 恰为 GET + PATCH（归档 / 恢复）
+[PASS] knowledge 路由不存在 PUT / DELETE（知识块只增 / 归档）
+[PASS] SnippetOut 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] SnippetListOut 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] ExtractResultOut 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] SnippetSearchRequest 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] SearchHit 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] SnippetSearchOut 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] SnippetUpdateRequest 无敏感字段（embedding / llm_raw / key / 凭据）
+[PASS] SnippetOut 恰 8 字段（白名单式输出，绝无向量）
+[PASS] main.py include_router ≥ 12 且 knowledge 在册（第 12 只，不回退）
+[PASS] 全局 lifespan 仍唯一（本步无定时器，未新增生命周期）
+[PASS] knowledge 路由层零 SQLAlchemy 表达式（第 8 步分层纪律）
+[PASS] INSIGHTS_SCHEDULER_ENABLED 字段默认 False（首版以手动触发为主，仅配置预留）
+[PASS] GET /api/v1/knowledge：200 + 本轮写入的知识块全部在列表内
+[PASS] 列表按 created_at 倒序（id 兜底稳定顺序）
+[PASS] 列表项不含 embedding 向量 / 响应不含 llm_raw
+[PASS] chunk_type 过滤生效（仅 hit_pattern）
+[PASS] GET /knowledge 参数校验：limit=101（>100）→ 4222026-10-17 09:38:50,601 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?limit=0 "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,604 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?offset=-1 "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,607 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?chunk_type=not_a_type "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,610 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge?status=not_a_status "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,619 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge/7d288572-cb2c-4c35-8423-d832765c97fe "HTTP/1.1 200 OK"
+2026-10-17 09:38:50,626 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/knowledge/5e500df7-ca4d-448b-abd6-a58542442763 "HTTP/1.1 404 Not Found"
+2026-10-17 09:38:50,642 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/7d288572-cb2c-4c35-8423-d832765c97fe "HTTP/1.1 200 OK"
+2026-10-17 09:38:50,655 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/7d288572-cb2c-4c35-8423-d832765c97fe "HTTP/1.1 200 OK"
+2026-10-17 09:38:50,658 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/7d288572-cb2c-4c35-8423-d832765c97fe "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:38:50,665 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/ff0dfb33-289f-4d30-a080-bccdde9295df "HTTP/1.1 404 Not Found"
+2026-10-17 09:38:50,699 [INFO] xhs-agent.insights.graph: 提炼上下文就绪：published=4（门槛 3，充足），数据缺口=2
+2026-10-17 09:38:50,701 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:38:50,701 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:38:50,704 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:38:50,704 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:38:50,706 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:38:50,707 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:38:50,735 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=insights thread=f3770c57-a5c0-4566-91fc-b4d776d76246）：规律提炼失败：连续 3 轮输出均不满足结构要求（模型输出无法解析为 JSON）。可稍后重试；若反复出现，请确认所配模型稳定支持 JSON 输出后重试。
+2026-10-17 09:38:50,740 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 400 Bad Request"
+2026-10-17 09:38:50,777 [INFO] xhs-agent.insights.graph: 提炼上下文就绪：published=4（门槛 3，充足），数据缺口=2
+2026-10-17 09:38:50,817 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=insights thread=d5a102db-b670-4b62-b137-da2b437a55c1）：规律提炼失败：连续 3 轮输出均不满足结构要求（共 1 条规律全部不合格（缺少规律文本 / 适用场景 / 有效来源 note_id / 指标证据），没有可写入的规律）。可稍后重试；若反复出现，请确认所配模型稳定支持 JSON 输出后重试。
+2026-10-17 09:38:50,823 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 400 Bad Request"
+2026-10-17 09:38:50,833 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 400 Bad Request"
+2026-10-17 09:38:50,843 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/extract "HTTP/1.1 400 Bad Request"
+
+[PASS] GET /knowledge 参数校验：limit=0 → 422
+[PASS] GET /knowledge 参数校验：offset=-1 → 422
+[PASS] GET /knowledge 参数校验：chunk_type 非法 → 422
+[PASS] GET /knowledge 参数校验：status 非法 → 422
+[PASS] GET /{id}：200 + 详情不含 embedding
+[PASS] GET /{id} 不存在 → 404
+[PASS] PATCH {status: archived} → 200（归档）
+[PASS] PATCH {status: active} → 200（恢复）
+[PASS] PATCH 仅允许 active / archived（draft → 422）
+[PASS] PATCH 不存在 id → 404
+[PASS] 全坏 JSON → 400（可重试的错误体）
+[PASS] 全坏 JSON：假模型调用恰 3×3=9 次（JSON 尝试 × 图回路双上界）
+[PASS] 失败响应无 Traceback / 无密钥字样
+[PASS] 超限失败的 run 记 failed（agent_runs 如实留痕）
+[PASS] 结构全坏 → 3 轮回炉后 400（有限回路，不无限重试）
+[PASS] 结构全坏：假模型调用恰 3 次（每轮 1 次、回炉 3 轮）
+[PASS] 结构全坏同样留痕 1 条 failed run
+[PASS] LLM 未配置 → 400（统一错误体含 reason；先于图运行的闸门）
+[PASS] LLM 未配置：**零请求零 run**（未消耗任何 token）
+[PASS] 本机未装向量化依赖：POST /extract → 400（安装指引；**先于 LLM 闸门**）
+[PASS] embedding 未就绪：**零请求零 run**（不浪费 token）
+[PASS] migrations/versions 仍恰 2 支迁移（本步零迁移）
+[PASS] 迁移文件名仍为 0001 / 0002（未新增 0003）
+[PASS] public 业务表仍恰 10 张（RunType 只加枚举成员，无 DDL）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] app/agent/embedding/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/embedding/base.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/embedding/local.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/embedding/openai_compat.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/embedding/service.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/insights/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/insights/state.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/insights/contracts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/insights/prompts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/insights/graph.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/insights/service.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/services/rag.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/crud/knowledge.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/schemas/knowledge.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/api/routes/knowledge.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/topics/graph.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/topics/state.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/topics/prompts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/content/graph.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/content/state.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/content/prompts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/models/enums.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/core/config.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/main.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] frontend/src/app/knowledge/page.tsx 不含违禁字样
+[PASS] frontend/src/app/api/v1/knowledge/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/knowledge/extract/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/knowledge/search/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/knowledge/[id]/route.ts 不含违禁字样
+[PASS] frontend/src/lib/types.ts 不含违禁字样
+[PASS] frontend/src/components/site-header.tsx 不含违禁字样
+[PASS] 全前端平台域名仍恰 1 处（第 14 步发布外链；本步未新增）
+[PASS] 前端扫描覆盖全部 ts / tsx（非抽样）
+[PASS] 提炼提示词明文：禁止外部数字 / 禁止编造数据 / 只用个人经验表述
+[PASS] 测试数据物理清理并双口径复查残留为 0
+
+通过 161 项，失败 0 项，跳过 0 项。
+全部 PASS ✔（第 18 步 RAG 知识库自检，依赖本地 docker PostgreSQL）

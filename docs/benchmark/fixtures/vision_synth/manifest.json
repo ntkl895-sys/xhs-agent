@@ -1,0 +1,183 @@
+{
+  "purpose": "合成截图夹具：数值已知、程序生成；仅验证端到端管线与计分，不代表真实截图准确率",
+  "generated_at": "2026-10-17T09:11:15+08:00",
+  "renderer": "scripts/benchmark/render_fixture.cjs（playwright-core + 本机 Chrome，2x）",
+  "six_metrics": [
+    "views",
+    "likes",
+    "collects",
+    "comments",
+    "shares",
+    "new_followers"
+  ],
+  "fixtures": [
+    {
+      "name": "synth_01.png",
+      "path": "fixtures/vision_synth/synth_01.png",
+      "bytes": 67945,
+      "layout": "standard",
+      "expected": {
+        "views": "12.8万",
+        "likes": "3286",
+        "collects": "1215",
+        "comments": "187",
+        "shares": "96",
+        "new_followers": "342"
+      }
+    },
+    {
+      "name": "synth_02.png",
+      "path": "fixtures/vision_synth/synth_02.png",
+      "bytes": 63040,
+      "layout": "standard",
+      "expected": {
+        "views": "8664",
+        "likes": "512",
+        "collects": "233",
+        "comments": "41",
+        "shares": "17",
+        "new_followers": "60"
+      }
+    },
+    {
+      "name": "synth_03.png",
+      "path": "fixtures/vision_synth/synth_03.png",
+      "bytes": 69114,
+      "layout": "standard",
+      "expected": {
+        "views": "45.2万",
+        "likes": "1.28万",
+        "collects": "4560",
+        "comments": "803",
+        "shares": "291",
+        "new_followers": "1500"
+      }
+    },
+    {
+      "name": "synth_04.png",
+      "path": "fixtures/vision_synth/synth_04.png",
+      "bytes": 59950,
+      "layout": "standard",
+      "expected": {
+        "views": "1,234",
+        "likes": "56",
+        "collects": "7",
+        "comments": "0",
+        "shares": "12",
+        "new_followers": "3"
+      }
+    },
+    {
+      "name": "synth_05.png",
+      "path": "fixtures/vision_synth/synth_05.png",
+      "bytes": 60401,
+      "layout": "compact",
+      "expected": {
+        "views": "128,456",
+        "likes": "12,345",
+        "collects": "3,210",
+        "comments": "456",
+        "shares": "123",
+        "new_followers": "789"
+      }
+    },
+    {
+      "name": "synth_06.png",
+      "path": "fixtures/vision_synth/synth_06.png",
+      "bytes": 60627,
+      "layout": "compact",
+      "expected": {
+        "views": "9.9万",
+        "likes": "1.5万",
+        "collects": "8,888",
+        "comments": "1,024",
+        "shares": "512",
+        "new_followers": "2,048"
+      }
+    },
+    {
+      "name": "synth_07.png",
+      "path": "fixtures/vision_synth/synth_07.png",
+      "bytes": 51509,
+      "layout": "compact",
+      "expected": {
+        "views": "999",
+        "likes": "99",
+        "collects": "9",
+        "comments": "0",
+        "shares": "0",
+        "new_followers": "1"
+      }
+    },
+    {
+      "name": "synth_08.png",
+      "path": "fixtures/vision_synth/synth_08.png",
+      "bytes": 55591,
+      "layout": "compact",
+      "expected": {
+        "views": "100万",
+        "likes": "10万",
+        "collects": "5万",
+        "comments": "1万",
+        "shares": "5000",
+        "new_followers": "2万"
+      }
+    },
+    {
+      "name": "synth_09.png",
+      "path": "fixtures/vision_synth/synth_09.png",
+      "bytes": 69792,
+      "layout": "large",
+      "expected": {
+        "views": "0.5万",
+        "likes": "0.8万",
+        "collects": "0.3万",
+        "comments": "0.1万",
+        "shares": "0.05万",
+        "new_followers": "0.2万"
+      }
+    },
+    {
+      "name": "synth_10.png",
+      "path": "fixtures/vision_synth/synth_10.png",
+      "bytes": 74577,
+      "layout": "large",
+      "expected": {
+        "views": "1234567",
+        "likes": "234567",
+        "collects": "34567",
+        "comments": "4567",
+        "shares": "567",
+        "new_followers": "67"
+      }
+    },
+    {
+      "name": "synth_11.png",
+      "path": "fixtures/vision_synth/synth_11.png",
+      "bytes": 72586,
+      "layout": "large",
+      "expected": {
+        "views": "12.8万",
+        "likes": "3286",
+        "collects": "1215",
+        "comments": "187",
+        "shares": "96",
+        "new_followers": "342"
+      }
+    },
+    {
+      "name": "synth_12.png",
+      "path": "fixtures/vision_synth/synth_12.png",
+      "bytes": 72887,
+      "layout": "large",
+      "expected": {
+        "views": "86.5万",
+        "likes": "5.6万",
+        "collects": "2.4万",
+        "comments": "1.1万",
+        "shares": "0.9万",
+        "new_followers": "3.3万"
+      }
+    }
+  ]
+}

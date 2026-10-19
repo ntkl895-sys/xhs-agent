@@ -1,0 +1,4 @@
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, baseline: 核心 10 张表 + pgvector 扩展
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, topic agent fields: topics.content_outline / topics.tags / agent_runs.llm_raw

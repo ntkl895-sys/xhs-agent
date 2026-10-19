@@ -1,0 +1,101 @@
+2026-10-17 09:34:17,270 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,339 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,345 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:17,348 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:17,351 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:17,354 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:17,365 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/covers?note_id=c11921b1-0563-446e-9d5c-1dc6e2275aa6 "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,379 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/6974cac5-edbb-4e28-93e3-fab19eb1a8bf "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,390 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/covers?note_id=c11921b1-0563-446e-9d5c-1dc6e2275aa6 "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,403 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/c7ccec50-24c6-441d-8a93-70361d53a083 "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,415 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/covers?note_id=c11921b1-0563-446e-9d5c-1dc6e2275aa6 "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,434 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/6974cac5-edbb-4e28-93e3-fab19eb1a8bf "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,452 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/c7ccec50-24c6-441d-8a93-70361d53a083 "HTTP/1.1 200 OK"
+2026-10-17 09:34:17,459 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/covers "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:17,462 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/covers?note_id=not-a-uuid "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:17,470 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/covers?note_id=a7c142a8-1110-4667-b9b3-429fce125a61 "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:17,477 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:17,484 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/c9ed5760-07c9-444b-9ef6-795ecb091eee "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:17,492 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/c7ccec50-24c6-441d-8a93-70361d53a083 "HTTP/1.1 422 Unprocessable Content"
+[PASS] Cover 模型表名为 covers
+[PASS] covers 列集合逐字段对齐（13 列）
+[PASS] 非空列齐全（note_id / template_key / color_scheme / width / height / is_selected / version）
+[PASS] 可空列齐全（title_text / subtitle_text / config_json / image_path）
+[PASS] note_id 外键 -> notes.id 且 ON DELETE CASCADE
+[PASS] 后端规格常量为 1242×1656（与前端 constants.ts 对齐）
+[PASS] server_default width = 1242
+[PASS] server_default height = 1656
+[PASS] server_default is_selected = false
+[PASS] server_default version = 1
+[PASS] 存在 note_id 索引（ix_covers_note_id）
+[PASS] POST /api/v1/covers 新建候选 A 返回 200
+[PASS] 响应 CoverOut 字段与表逐列对齐（13 字段）
+[PASS] 响应含 id 与 created_at
+[PASS] 落库 note_id 正确
+[PASS] 落库 template_key 正确
+[PASS] 落库 color_scheme 正确
+[PASS] 落库 title_text 逐字一致
+[PASS] 落库 subtitle_text 逐字一致
+[PASS] 落库 config_json 含 tags / bullets / author / page_no 等编辑字段
+[PASS] image_path 留 NULL（不落服务器磁盘）
+[PASS] 落库 width = 1242
+[PASS] 落库 height = 1656
+[PASS] 落库 is_selected = false
+[PASS] 落库 version = 1
+[PASS] 落库 created_at 非空
+[PASS] POST 新建候选 B 返回 200
+[PASS] 候选 B 默认列同样正确（1242×1656 / 未选中）
+[PASS] title_text 超 100 字 → 422（与 varchar(100) 对齐）
+[PASS] template_key 为空白 → 422
+[PASS] 缺 template_key → 422
+[PASS] color_scheme 超 32 字 → 422（与 varchar(32) 对齐）
+[PASS] GET /api/v1/covers?note_id 返回 200
+[PASS] 响应结构 = {note_id, selected_id, items}
+[PASS] 候选数量为 2
+[PASS] 回显 note_id 正确
+[PASS] 初始无选中（selected_id = null）
+[PASS] list_by_note 按 created_at 正序（A 在前、B 在后）
+[PASS] 列表项宽高均为 1242×1656
+[PASS] PATCH 候选 B is_selected=true 返回 200
+[PASS] 响应中 B 为选中态
+[PASS] 同 note 恰一个 is_selected=true，且为 B（A 被置 false）
+[PASS] GET selected_id 指向 B
+[PASS] 改选 A 返回 200 且 A 为选中态
+[PASS] 改选 A 后仍恰一个 true，且为 A（B 被置 false）
+[PASS] GET selected_id 指向 A
+[PASS] 数据库层面同 note 仅 1 行 is_selected=true
+[PASS] 夹具笔记初始状态为 draft
+[PASS] PATCH 普通字段返回 200
+[PASS] PATCH title_text 已落库
+[PASS] PATCH config_json 已落库
+[PASS] 选中封面 + 更新字段均不改动 notes.status（仍 draft）
+[PASS] PATCH is_selected=false 取消选中返回 200
+[PASS] 取消后同 note 0 个选中（允许的中间态，非约束破坏）
+[PASS] GET 缺 note_id → 400
+[PASS] 缺 note_id 错误码 = bad_request
+[PASS] GET 非法 note_id → 422
+[PASS] GET 笔记不存在 → 404
+[PASS] 笔记不存在错误码 = not_found
+[PASS] POST 笔记不存在 → 404
+[PASS] PATCH 候选不存在 → 404
+[PASS] PATCH 非空列显式 null → 422
+[PASS] 统一错误体结构 {status, code, message, details}
+[PASS] GET/POST /api/v1/covers 已注册
+[PASS] /api/v1/covers/{cover_id} 仅 PATCH
+[PASS] covers 路由中不存在 PUT / DELETE（本步不提供）
+[PASS] main.py 注册含七只 router（含新增 covers_router，总数 ≥ 7）
+[PASS] main.py 仍只有唯一 lifespan（本步未新增）
+[PASS] CoverOut 不含 token / cookie / secret / password / llm_raw 等敏感字段
+[PASS] CoverListOut 结构 = {note_id, selected_id, items}
+[PASS] migrations/versions 仍恰 2 支迁移（本步零迁移）
+[PASS] 迁移文件名仍为 0001 / 0002（未新增）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] app\schemas\cover.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] app\crud\cover.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] app\api\routes\covers.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] app\main.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] 测试数据物理清理并双口径复查残留为 0
+
+通过 79 项，失败 0 项。
+全部 PASS ✔（第 13 步封面模块后端自检，依赖本地 docker PostgreSQL）

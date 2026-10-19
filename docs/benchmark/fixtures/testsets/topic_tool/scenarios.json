@@ -1,0 +1,341 @@
+{
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "tt_01",
+      "persona": {
+        "name": "成分党小鹿",
+        "positioning": "只讲成分与实测的护肤博主，反对玄学种草",
+        "target_audience": "25-35 岁成分党女性",
+        "tone": "冷静、给数据",
+        "content_pillars": [
+          "成分科普",
+          "产品实测"
+        ],
+        "taboo": [
+          "不碰医美项目",
+          "不评价医生资质"
+        ],
+        "signature_style": "先给结论，再给证据链"
+      },
+      "hotspot": {
+        "title": "AI 护肤成分测评爆火（要求：沿用账号已验证的爆款结构）",
+        "source": "zhihu",
+        "hot_score": 12800
+      },
+      "existing_topics": [],
+      "expected_tools": [
+        "search_knowledge"
+      ],
+      "intent": "明确要求沿用账号已沉淀的爆款结构 → 需要检索知识块（hit_pattern/topic_template）"
+    },
+    {
+      "id": "tt_02",
+      "persona": {
+        "name": "远程办公老张",
+        "positioning": "远程团队管理实战派",
+        "target_audience": "中小团队负责人",
+        "tone": "口语化、讲案例",
+        "content_pillars": [
+          "远程管理",
+          "效率工具"
+        ],
+        "taboo": [
+          "不推荐具体付费课程"
+        ],
+        "signature_style": "开头先抛一个反常识结论"
+      },
+      "hotspot": {
+        "title": "远程办公效率工具讨论升温（要求：看看同类热点还有哪些角度）",
+        "source": "zhihu",
+        "hot_score": 9600
+      },
+      "existing_topics": [],
+      "expected_tools": [
+        "search_hotspots"
+      ],
+      "intent": "明确要求横向看同类热点 → 需要热点检索"
+    },
+    {
+      "id": "tt_03",
+      "persona": {
+        "name": "辅食妈妈阿禾",
+        "positioning": "循证育儿的第一胎妈妈",
+        "target_audience": "0-2 岁宝宝家长",
+        "tone": "温和、克制",
+        "content_pillars": [
+          "辅食",
+          "睡眠"
+        ],
+        "taboo": [
+          "不提偏方",
+          "不比较孩子发育"
+        ],
+        "signature_style": "每篇结尾给一句「别焦虑」"
+      },
+      "hotspot": {
+        "title": "宝宝辅食添加时间表（要求：必须结合人设禁忌与口头禅）",
+        "source": "zhihu",
+        "hot_score": 15200
+      },
+      "existing_topics": [],
+      "expected_tools": [
+        "get_persona"
+      ],
+      "intent": "禁忌与口头禅不在提示词缺省快照里 → 需要读取完整人设"
+    },
+    {
+      "id": "tt_04",
+      "persona": {
+        "name": "收纳师小满",
+        "positioning": "小户型收纳改造",
+        "target_audience": "租房青年",
+        "tone": "轻快",
+        "content_pillars": [
+          "收纳",
+          "改造"
+        ],
+        "taboo": [
+          "不推荐打孔"
+        ],
+        "signature_style": "用「三步法」组织正文"
+      },
+      "hotspot": {
+        "title": "小户型收纳改造（要求：别和最近发过的选题撞车）",
+        "source": "zhihu",
+        "hot_score": 7300
+      },
+      "existing_topics": [
+        "租房党衣柜收纳三步法",
+        "小户型厨房台面改造清单"
+      ],
+      "expected_tools": [
+        "list_topics"
+      ],
+      "intent": "明确要求避免重复且账号有相近历史选题 → 需要查历史选题"
+    },
+    {
+      "id": "tt_05",
+      "persona": {
+        "name": "居家教练阿凯",
+        "positioning": "零器械居家训练",
+        "target_audience": "久坐上班族",
+        "tone": "命令式、短句",
+        "content_pillars": [
+          "徒手训练",
+          "拉伸"
+        ],
+        "taboo": [
+          "不做医疗建议"
+        ],
+        "signature_style": "每段以动作口令开头"
+      },
+      "hotspot": {
+        "title": "居家健身 10 分钟计划（要求：直接给选题，不需要额外资料）",
+        "source": "zhihu",
+        "hot_score": 6100
+      },
+      "existing_topics": [],
+      "expected_tools": [],
+      "intent": "明确说不需要额外资料 → 正确行为是一个工具都不调（测过度调用）"
+    },
+    {
+      "id": "tt_06",
+      "persona": {
+        "name": "周末出走派",
+        "positioning": "48 小时微度假",
+        "target_audience": "一线城市白领",
+        "tone": "松弛、有画面感",
+        "content_pillars": [
+          "周边游",
+          "住宿"
+        ],
+        "taboo": [
+          "不写未去过的店"
+        ],
+        "signature_style": "标题带具体小时数"
+      },
+      "hotspot": {
+        "title": "周末微度假目的地（要求：参考账号沉淀的选题模板，并看同类热点）",
+        "source": "zhihu",
+        "hot_score": 8800
+      },
+      "existing_topics": [],
+      "expected_tools": [
+        "search_knowledge",
+        "search_hotspots"
+      ],
+      "intent": "同时要求参考沉淀模板与同类热点 → 两个工具都要"
+    },
+    {
+      "id": "tt_07",
+      "persona": {
+        "name": "数码阿哲",
+        "positioning": "只讲实测的数码博主",
+        "target_audience": "换机刚需人群",
+        "tone": "直接、少形容词",
+        "content_pillars": [
+          "手机摄影",
+          "配件"
+        ],
+        "taboo": [
+          "不接恰饭机",
+          "不预测发布会"
+        ],
+        "signature_style": "先说不推荐谁买"
+      },
+      "hotspot": {
+        "title": "AI 手机摄影技巧（要求：符合人设禁忌与口头禅，并参考历史规律）",
+        "source": "zhihu",
+        "hot_score": 11400
+      },
+      "existing_topics": [],
+      "expected_tools": [
+        "get_persona",
+        "search_knowledge"
+      ],
+      "intent": "既要人设禁忌/口头禅，又要历史规律 → 人设 + 知识检索"
+    },
+    {
+      "id": "tt_08",
+      "persona": {
+        "name": "一人食小馆",
+        "positioning": "15 分钟一人食",
+        "target_audience": "独居上班族",
+        "tone": "轻松、步骤短",
+        "content_pillars": [
+          "快手菜",
+          "备菜"
+        ],
+        "taboo": [
+          "不写需要烤箱的菜"
+        ],
+        "signature_style": "标题写清分钟数"
+      },
+      "hotspot": {
+        "title": "一人食快手菜（要求：直接出选题，不要查资料）",
+        "source": "zhihu",
+        "hot_score": 5400
+      },
+      "existing_topics": [],
+      "expected_tools": [],
+      "intent": "明确不需要资料 → 期望零工具调用"
+    },
+    {
+      "id": "tt_09",
+      "persona": {
+        "name": "在职考证人",
+        "positioning": "边上班边考证的时间管理",
+        "target_audience": "在职备考人",
+        "tone": "务实、不鸡血",
+        "content_pillars": [
+          "时间管理",
+          "备考方法"
+        ],
+        "taboo": [
+          "不卖课"
+        ],
+        "signature_style": "用时间表截图说话"
+      },
+      "hotspot": {
+        "title": "在职考证时间管理（要求：避免与已发选题重复，并参考爆款规律）",
+        "source": "zhihu",
+        "hot_score": 6900
+      },
+      "existing_topics": [
+        "在职备考每天 2 小时时间表",
+        "通勤时间怎么用来背书"
+      ],
+      "expected_tools": [
+        "list_topics",
+        "search_knowledge"
+      ],
+      "intent": "要求避免重复 + 参考规律 → 历史选题 + 知识检索"
+    },
+    {
+      "id": "tt_10",
+      "persona": {
+        "name": "猫奴实验室",
+        "positioning": "猫咪用品实测",
+        "target_audience": "养猫新手",
+        "tone": "幽默",
+        "content_pillars": [
+          "用品测评",
+          "行为解读"
+        ],
+        "taboo": [
+          "不推荐处方粮"
+        ],
+        "signature_style": "用「踩坑指数」打分"
+      },
+      "hotspot": {
+        "title": "宠物智能用品测评（要求：看看同类热点）",
+        "source": "zhihu",
+        "hot_score": 8300
+      },
+      "existing_topics": [],
+      "expected_tools": [
+        "search_hotspots"
+      ],
+      "intent": "要求看同类热点 → 热点检索"
+    },
+    {
+      "id": "tt_11",
+      "persona": {
+        "name": "通勤穿搭笔记",
+        "positioning": "预算内的通勤穿搭",
+        "target_audience": "职场女性",
+        "tone": "干净利落",
+        "content_pillars": [
+          "通勤",
+          "基础款"
+        ],
+        "taboo": [
+          "不推奢侈品"
+        ],
+        "signature_style": "每套给价格区间"
+      },
+      "hotspot": {
+        "title": "秋季通勤穿搭（要求：直接出，不要查资料）",
+        "source": "zhihu",
+        "hot_score": 7700
+      },
+      "existing_topics": [],
+      "expected_tools": [],
+      "intent": "明确不需要资料 → 期望零工具调用"
+    },
+    {
+      "id": "tt_12",
+      "persona": {
+        "name": "理财第一步",
+        "positioning": "新手理财避坑",
+        "target_audience": "刚工作的年轻人",
+        "tone": "谨慎、讲风险",
+        "content_pillars": [
+          "记账",
+          "储蓄"
+        ],
+        "taboo": [
+          "不荐股",
+          "不承诺收益"
+        ],
+        "signature_style": "先讲风险再讲方法"
+      },
+      "hotspot": {
+        "title": "新手理财第一步（要求：参考历史模板 + 避免重复 + 看同类热点）",
+        "source": "zhihu",
+        "hot_score": 10100
+      },
+      "existing_topics": [
+        "新手记账第一个月怎么做",
+        "工资到账先分三笔"
+      ],
+      "expected_tools": [
+        "search_knowledge",
+        "list_topics",
+        "search_hotspots"
+      ],
+      "intent": "三个要求同时出现 → 三个工具都要，测多工具编排"
+    }
+  ]
+}

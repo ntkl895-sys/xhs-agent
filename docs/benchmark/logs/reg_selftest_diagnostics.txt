@@ -1,0 +1,189 @@
+2026-10-17 09:34:38,208 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:34:38,436 [INFO] xhs-agent.diagnosis.graph: 诊断上下文就绪：note=4befac6b-e43f-430e-89f8-ef14526306e9 快照=2 类型=review(auto) 缺口=0
+2026-10-17 09:34:38,469 [INFO] xhs-agent.diagnosis.service: 单篇诊断完成：run=e3f4c258-81d8-46ea-b703-b276da1811bb note=4befac6b-e43f-430e-89f8-ef14526306e9 类型=review(auto) 评分=82.5 缺口=1 parse_attempts=1
+2026-10-17 09:34:38,475 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 201 Created"
+2026-10-17 09:34:38,540 [INFO] xhs-agent.diagnosis.graph: 诊断上下文就绪：note=4befac6b-e43f-430e-89f8-ef14526306e9 快照=2 类型=anomaly(manual) 缺口=0
+2026-10-17 09:34:38,570 [INFO] xhs-agent.diagnosis.service: 单篇诊断完成：run=2ce7b0cc-f399-4e1c-b34c-ed862dd534db note=4befac6b-e43f-430e-89f8-ef14526306e9 类型=anomaly(manual) 评分=70.0 缺口=0 parse_attempts=1
+2026-10-17 09:34:38,576 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 201 Created"
+2026-10-17 09:34:38,597 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/diagnostics?note_id=4befac6b-e43f-430e-89f8-ef14526306e9 "HTTP/1.1 200 OK"
+2026-10-17 09:34:38,605 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/diagnostics/764c7ebb-5a1d-47c8-bd80-7c3dd5119d0d "HTTP/1.1 200 OK"
+2026-10-17 09:34:38,640 [INFO] xhs-agent.diagnosis.graph: 诊断上下文就绪：note=4a5c946a-917d-4b3d-a38b-7cc0f49fe737 快照=0 类型=cold_start(auto) 缺口=2
+2026-10-17 09:34:38,674 [INFO] xhs-agent.diagnosis.service: 单篇诊断完成：run=649f217d-feed-4100-a0c9-3397ef81607b note=4a5c946a-917d-4b3d-a38b-7cc0f49fe737 类型=cold_start(auto) 评分=None 缺口=2 parse_attempts=1
+2026-10-17 09:34:38,680 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 201 Created"
+2026-10-17 09:34:38,725 [INFO] xhs-agent.diagnosis.graph: 诊断上下文就绪：note=4befac6b-e43f-430e-89f8-ef14526306e9 快照=2 类型=review(auto) 缺口=0
+2026-10-17 09:34:38,727 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:38,728 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:38,730 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:38,730 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:38,733 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:38,734 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:38,767 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=diagnosis thread=2568d5fc-eb84-4334-8aca-b27d97afa2bb）：诊断失败：连续 3 轮输出均不满足结构要求（模型输出无法解析为 JSON）。可稍后重试；若反复出现，请确认所配模型稳定支持 JSON 输出后重试。
+2026-10-17 09:34:38,774 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:38,792 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:38,807 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:38,814 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/diagnostics/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:38,817 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/diagnostics "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:38,824 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/diagnostics?note_id=722786ee-8030-4beb-b562-a6c60f3be924 "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:38,832 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/diagnostics/6098fae0-af6b-42e7-b32b-2b6c272a3486 "HTTP/1.1 404 Not Found"
+==============================================================================
+第 16 步 · 单篇诊断 Agent 离线自检（不联网、不需要 API Key）
+==============================================================================
+[PASS] build_diagnosis_graph 返回已编译的 LangGraph 图
+[PASS] 图含 load_context / generate_diagnosis / validate_diagnosis / persist / give_up 五节点
+[PASS] load_context → generate_diagnosis 为直连边
+[PASS] generate_diagnosis → validate_diagnosis 为直连边
+[PASS] validate_diagnosis → generate_diagnosis 为条件边（回炉回路）
+[PASS] validate 通过 → persist 为条件边
+[PASS] validate 超限 → give_up 为条件边
+[PASS] persist / give_up → END
+[PASS] 回路上界绑定 AGENT_JSON_MAX_ATTEMPTS（有界回路，不无限重试）
+[PASS] metric_latest 取每个指标的**最后一个非空值**（后一条为空时向前取）
+[PASS] metric_latest 全程缺失的指标恒为 None（不臆造）
+[PASS] latest_snapshot_id = 时间线中**最新一条**快照 id（→ based_on_metric_id）
+[PASS] 无快照时 metric_latest 全部 None 且 id 为 None
+[PASS] 比率基于**同一条快照**配对（最新的分子缺失时回退更早的完整快照，防跨快照错配）
+[PASS] engagement_rate = 四互动之和 / **同快照** views
+[PASS] views=0 时全部比率为 None（防除零，不臆造）
+[PASS] 六条比率口径正确且精确到 4 位小数
+[PASS] 总增量 = 首期（第一个非空值）→ 最新（最后一个非空值）
+[PASS] 增长率 = 总增量 / 首期值（4 位小数）
+[PASS] 覆盖时长 = published_at → 最新 captured_at（小时整数）
+[PASS] 相邻快照逐段记录增量（from / to / deltas）
+[PASS] 首期为 0 时增长率为 None（不产生除零）
+[PASS] 无 published_at 时覆盖时长按**最早快照**估算
+[PASS] 某一端缺失的指标总增量为 None
+[PASS] 用户显式指定类型优先（source=manual，不走自动判定）
+[PASS] 无任何快照 → cold_start（自动判定）
+[PASS] 最新 views 缺失 → cold_start（无法建立漏斗口径）
+[PASS] views 降幅 40% ≥ 阈值（30%）→ anomaly，且 reason 指向依据
+[PASS] likes 降幅 ≥ 阈值同样判 anomaly
+[PASS] 降幅低于阈值 → review（常规复盘）
+[PASS] 异常阈值可由配置调整（DIAG_ANOMALY_DROP_RATIO 生效）
+[PASS] 无快照 → data_gaps 声明「无运营数据快照」
+[PASS] 缺封面 / 发布时间 / 正文均逐项声明
+[PASS] 仅 1 条快照 → 声明无法计算环比与趋势
+[PASS] 缺失指标逐项声明
+[PASS] 无法计算的比率逐项声明（同快照内分子缺失）
+[PASS] 合法载荷无硬伤（score / 四数组归一正确）
+[PASS] 合法载荷不产生宽容修正 warning
+[PASS] score 越界（>100）→ 硬伤（回炉重写）
+[PASS] suggestions 为空 → 硬伤（必须给出可执行建议）
+[PASS] 冷启动**强制 score=None**（模型给分也不采纳、不判硬伤）
+[PASS] 超条数 / 超长被**本地截断**并记录 warning（不进回炉）
+[PASS] merge_data_gaps 去重 + 保序 + 限长
+[PASS] POST /api/v1/diagnostics/generate 成功 → 201
+[PASS] 响应 note_id 正确
+[PASS] 自动判定为 review（有数据、无显著负增长）
+[PASS] score 逐列落库并返回（0~100）
+[PASS] strengths 数组原样返回
+[PASS] suggestions 数组原样返回（可执行建议）
+[PASS] based_on_metric_id = 服务端算出的最新快照 id
+[PASS] llm_meta 恰为白名单五项（不多不少）
+[PASS] llm_meta.prompt_version 取配置值
+[PASS] llm_meta.json_parse_attempts = 1（一次命中）
+[PASS] llm_meta.diagnosis_type_source = auto（自动判定）
+[PASS] 模型补充的 data_gaps 与本地缺口合并保留
+[PASS] 已选封面 → data_gaps **不含**封面缺口（事实不误报）
+[PASS] benchmark 恰为固定七键（结构稳定）
+[PASS] benchmark.basis = self_only（仅基于该笔记自身）
+[PASS] benchmark.external_benchmark = null（**绝不杜撰**行业均值 / 爆款阈值）
+[PASS] benchmark.benchmark_note 为固定基准缺失声明（指向第 18 步 RAG）
+[PASS] benchmark.latest_metrics = 本地算好的最新六指标
+[PASS] benchmark.rates = 本地算好的六条互动率（4 位小数）
+[PASS] benchmark.thresholds 记录本地判定阈值（可追溯）
+[PASS] benchmark.trends 含覆盖时长（published_at → 最新快照）
+[PASS] 响应**不含** llm_raw（它只进 agent_runs）
+[PASS] 响应不含原始堆栈
+[PASS] 响应不含密钥前缀 / base64
+[PASS] diagnostics 新增一条（id 可回查）
+[PASS] 落库行 note_id / based_on_metric_id 正确
+[PASS] 落库行 diagnosis_type / score 正确
+[PASS] 落库行 strengths / suggestions 为 JSONB 字符串数组
+[PASS] 落库行 llm_meta 亦为白名单五项
+[PASS] 落库行 llm_model = 配置模型名（不含 key）
+[PASS] 本次诊断恰新增 1 行 diagnostics
+[PASS] 本次诊断恰新增 1 条 agent_runs
+[PASS] run_type=diagnosis 且 status=success
+[PASS] agent_runs.note_id 由 service 按 run_id 回填（harness 不转发 note_id）
+[PASS] agent_runs.outputs 回填 {diagnostic_id, diagnosis_type, score, persisted:true}
+[PASS] agent_runs.llm_raw 已回填模型原始输出
+[PASS] llm_raw 已脱敏（无密钥前缀 / 无图片数据）
+[PASS] agent_runs.json_parse_attempts = 1
+[PASS] agent_runs 记录真实 token 用量（只记 token、不记价格）
+[PASS] 假模型恰调用 1 次（一次命中，无回炉）
+[PASS] 提示词携带**本地算好的事实**（最新指标 / 互动率 JSON），模型不做算术
+[PASS] 提示词携带数据缺口声明
+[PASS] 诊断**不改** note_metrics（行数不变）
+[PASS] 诊断**不改** notes（标题 / 正文 / 状态不变）
+[PASS] 诊断**不改** topics（状态不变）
+[PASS] 手动指定 diagnosis_type=anomaly → 201 且落库类型一致
+[PASS] 手动指定时 llm_meta.diagnosis_type_source = manual
+[PASS] 诊断历史累计 2 条（只增不改）
+[PASS] 运行产生新的检查点线程（compile_graph 绑定检查点生效）
+[PASS] GET /api/v1/diagnostics?note_id= 返回该笔记的诊断历史（2 条）
+[PASS] 诊断历史按 created_at 倒序
+[PASS] GET /api/v1/diagnostics/{id} 返回单条详情
+[PASS] 列表 / 详情响应均不含 llm_raw
+[PASS] 无快照的笔记也能诊断成功（数据不足不是错误）→ 201
+[PASS] 冷启动**强制 score=null**（模型给了 77 也不采纳，不硬打分）
+[PASS] 自动判定为 cold_start
+[PASS] 无快照 → based_on_metric_id = null
+[PASS] data_gaps 含「无运营数据快照」声明
+[PASS] suggestions 以「尽快回填数据」为先（可操作）
+[PASS] suggestions 含内容侧可检查项（明确是内容侧初步检查）
+[PASS] 冷启动同样不引入外部基准（external_benchmark = null）
+[PASS] latest_metrics 全为 null（不臆造任何数字）
+[PASS] 提示词把数据缺口与诊断类型如实喂给模型
+[PASS] 冷启动笔记仍无快照（诊断不写 note_metrics）
+[PASS] 结构校验连续超限 → 400（可重试）
+[PASS] 错误消息为友好中文指引（含轮数说明）
+[PASS] 失败响应不含原始堆栈
+[PASS] 模型调用次数 = 图回炉 3 轮 × 单轮 3 次 = 9（回路上界）
+[PASS] 失败运行落 agent_runs=status:failed（审计不丢）
+[PASS] error_message 为可读摘要且无密钥前缀
+[PASS] LLM 未配置（AGENT_LLM_ENABLED=false）→ 400
+[PASS] 未配置错误信息指向开关 / key（可操作指引）
+[PASS] 未配置时**不创建** agent_runs（零请求）
+[PASS] note 不存在 → 404
+[PASS] note 不存在时**不创建** agent_runs（前置校验先于跑图）
+[PASS] diagnosis_type 非法 → 422（schema 拦截）
+[PASS] GET /diagnostics 缺 note_id → 400
+[PASS] GET /diagnostics 的 note 不存在 → 404
+[PASS] GET /diagnostics/{id} 不存在 → 404
+[PASS] /api/v1/diagnostics 恰为 GET（诊断历史）
+[PASS] /api/v1/diagnostics/generate 恰为 POST（静态路径先于动态段注册）
+[PASS] /api/v1/diagnostics/{id} 恰为 GET（详情）
+[PASS] 诊断路由不存在 PUT / PATCH / DELETE（只增不改）
+[PASS] DiagnosticOut **不含** llm_raw
+[PASS] DiagnosticOut 无任何敏感字段
+[PASS] DiagnosticGenerateRequest 属性恰为 note_id + diagnosis_type
+[PASS] DiagnosticMeta 白名单恰为五项
+[PASS] main.py include_router ≥ 9 且 diagnostics_router 在册（第 9 只，不回退）
+[PASS] 全局 lifespan 仍唯一（第 16 步未新增）
+[PASS] migrations/versions 仍恰 2 支迁移（本步零迁移）
+[PASS] 迁移文件名仍为 0001 / 0002（未新增 0003）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] app/agent/diagnosis/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/diagnosis/contracts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/diagnosis/state.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/diagnosis/prompts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/diagnosis/graph.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/diagnosis/service.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/schemas/diagnostic.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/crud/diagnostic.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/api/routes/diagnostics.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/main.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/core/config.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] frontend/src/app/diagnostics/page.tsx 不含违禁字样
+[PASS] frontend/src/app/api/v1/diagnostics/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/diagnostics/generate/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/diagnostics/[id]/route.ts 不含违禁字样
+[PASS] frontend/src/lib/types.ts 不含违禁字样
+[PASS] frontend/src/components/site-header.tsx 不含违禁字样
+[PASS] frontend/src/app/notes/page.tsx 不含违禁字样
+[PASS] 全前端平台域名仍恰 1 处（第 14 步发布外链；本步未新增，该文件由 selftest_studio 背书）
+[PASS] 测试数据物理清理并双口径复查残留为 0
+
+通过 156 项，失败 0 项。
+全部 PASS ✔（第 16 步单篇诊断自检，依赖本地 docker PostgreSQL）

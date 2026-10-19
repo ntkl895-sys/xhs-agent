@@ -1,0 +1,210 @@
+/* =========================================================================
+ * 第 13 步：封面画布样式
+ *
+ * 自 D:\项目1\cover_spike\styles.css 第 4 节（封面画布）+ 第 4b 节（模板微调）
+ * **逐字迁移**，并补充工作室的「舞台 / 缩略图」容器类。
+ *
+ * 说明：spike 在 file:// 协议下必须把样式内联进 index.html（外部样式表的
+ * cssRules 不可读会让 html-to-image 挂起）；本工程是 http 环境，
+ * 由 /covers 页面直接 import 本文件，不存在该限制。
+ * 注意保留 `.tpl-bg_image .cv-muted` 这行：它是 spike 原样迁移的**无效选择器**
+ * （.cv-muted 是变量名、没有对应元素），不影响渲染，为保持等价而保留。
+ * ========================================================================= */
+
+/* ---------- 封面画布（导出目标：始终 1242×1656） ---------- */
+.cover {
+  position: relative;
+  width: 1242px;
+  height: 1656px;
+  overflow: hidden;
+  background: var(--cv-bg, #ffffff);
+  color: var(--cv-fg, #ffffff);
+  font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC",
+    "Noto Sans CJK SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--cv-bg, #ffffff);
+}
+.cover-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cover-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.05) 35%,
+    rgba(0, 0, 0, 0.55) 78%,
+    rgba(0, 0, 0, 0.78) 100%
+  );
+}
+
+/* 安全区：导出目标内框，所有文字与关键元素都在其中 */
+.safe-area {
+  position: absolute;
+  top: var(--cv-safe, 96px);
+  right: var(--cv-safe, 96px);
+  bottom: var(--cv-safe-bottom, 144px);
+  left: var(--cv-safe, 96px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.cv-head {
+  flex: 0 0 auto;
+}
+.cv-body {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+.cv-foot {
+  flex: 0 0 auto;
+}
+
+.cv-title {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  overflow: hidden;
+  color: var(--cv-fg);
+}
+.cv-title mark.cv-hl {
+  background: var(--cv-accent);
+  color: var(--cv-hl-fg, #1f2328);
+  padding: 0.04em 0.16em;
+  border-radius: 0.12em;
+}
+.cv-subtitle {
+  margin: 24px 0 0;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--cv-muted);
+  word-break: break-word;
+  overflow: hidden;
+}
+.cv-eyebrow {
+  margin: 0 0 24px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--cv-accent);
+}
+
+/* 清单体 */
+.cv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.cv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 26px 0;
+  border-bottom: 2px dashed var(--cv-divider);
+}
+.cv-list li:last-child {
+  border-bottom: none;
+}
+.cv-num {
+  flex: 0 0 auto;
+  font-size: 46px;
+  font-weight: 800;
+  color: var(--cv-accent);
+  min-width: 78px;
+}
+.cv-text {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* 标签与署名 */
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.cv-tag {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 999px;
+  background: var(--cv-tag-bg);
+  color: var(--cv-tag-fg);
+  font-size: 34px;
+  font-weight: 700;
+  border: 2px solid var(--cv-tag-border);
+}
+.cv-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--cv-muted);
+}
+.cv-page {
+  padding: 6px 20px;
+  border-radius: 999px;
+  background: var(--cv-tag-bg);
+  color: var(--cv-tag-fg);
+  font-weight: 800;
+}
+
+/* ---------- 4b. 各模板的差异化微调 ---------- */
+/* 背景图风：内容整体压到下半部，配合遮罩保证白字可读 */
+.tpl-bg_image .safe-area {
+  justify-content: flex-end;
+}
+.tpl-bg_image .cv-title {
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+.tpl-bg_image .cv-muted,
+.tpl-bg_image .cv-subtitle {
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* 清单体：要点区撑开，标题不必占满全屏 */
+.tpl-list_clean .cv-body {
+  padding: 8px 0;
+}
+
+/* ---------- 工作室辅助容器（第 13 步新增） ---------- */
+/* 预览舞台外框：棋盘底纹；内部外层做 transform: scale()，不影响导出像素 */
+.cover-stage-wrap {
+  background: repeating-conic-gradient(#e9edf2 0% 25%, #f7f9fb 0% 50%) 50% / 20px 20px;
+  border: 1px dashed var(--border, #e2e6ed);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 8px;
+}
+/* 候选缩略图：小尺寸实时渲染（按 config_json），不存图片。
+   用 inset box-shadow 画边框（不占内容尺寸，缩放后的画面不被裁边） */
+.cover-thumb {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--border, #e2e6ed);
+}
+.cover-thumb-selected {
+  box-shadow: inset 0 0 0 2px var(--primary, #ff6b4a);
+}

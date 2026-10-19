@@ -1,0 +1,40 @@
+[PASS] OpenAPI 含全部 8 个业务端点
+[PASS] 健康检查 /health 与 /health/ready 仍在（且不带 v1 前缀）
+[PASS] 健康检查未被错误地加上 v1 前缀
+[PASS] AccountCreate.name 必填（null 被拒）
+[PASS] AccountCreate.name 全空白被拒
+[PASS] AccountCreate.name 超 100 字被拒
+[PASS] AccountCreate.name 100 字通过
+[PASS] AccountCreate.name 自动 strip 首尾空白
+[PASS] AccountCreate.xhs_red_id 空串归一为 None
+[PASS] AccountCreate.xhs_red_id 超 64 字被拒
+[PASS] AccountUpdate 全字段可选（空 body 不产生任何字段）
+[PASS] AccountUpdate.status 接受 archived
+[PASS] AccountUpdate.status 拒绝非法枚举值
+[PASS] PersonaCreate.name 必填
+[PASS] PersonaCreate.content_pillars 自动 strip + 去重
+[PASS] PersonaCreate.content_pillars 超 10 项被拒
+[PASS] PersonaCreate.content_pillars 单元素超 50 字被拒
+[PASS] PersonaCreate.taboo 含空白元素被拒
+[PASS] PersonaCreate.tone 超 200 字被拒
+[PASS] PersonaCreate.is_default 默认 False
+[PASS] PersonaCreate.account_id 默认 None（公共）
+[PASS] PersonaUpdate.status 接受 archived
+[PASS] AccountOut 字段集合正确
+[PASS] PersonaOut 带 account_name（服务层 LEFT JOIN 得到，非数据库列）
+[PASS] PersonaOut 字段集合正确
+[PASS] Page 分页容器含 items/total/page/page_size
+[PASS] AccountOut 开启 from_attributes
+[PASS] PersonaOut 开启 from_attributes
+[PASS] 时间字段序列化为带时区的 ISO 8601
+[PASS] 分页依赖 page ≥ 1
+[PASS] 分页依赖 page_size ≤ 100
+[PASS] 路由模块 accounts/personas 存在
+[PASS] 路由层不直接写 SQLAlchemy 表达式
+[PASS] 路由层通过 crud_* 单例完成数据访问
+[PASS] 统一错误体结构为 {status, code, message, details}
+[PASS] 错误工厂状态码映射正确（404/409/422）
+[PASS] HTTP 状态码 -> 错误码兜底映射正确
+
+通过 37 项，失败 0 项。
+全部 PASS ✔（离线自检，未启动服务、未连接数据库）

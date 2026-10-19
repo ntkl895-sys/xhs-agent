@@ -1,0 +1,123 @@
+2026-10-17 09:39:00,120 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 21:47:40（该时刻前不发起任何请求）
+2026-10-17 09:39:00,120 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 21:47:40（该时刻前不发起任何请求）
+2026-10-17 09:39:00,122 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 11:34:20（该时刻前不发起任何请求）
+2026-10-17 09:39:00,122 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 11:34:20（该时刻前不发起任何请求）
+2026-10-17 09:39:00,122 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 01:21:00（该时刻前不发起任何请求）
+2026-10-17 09:39:00,123 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 15:07:40（该时刻前不发起任何请求）
+2026-10-17 09:39:00,123 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 15:07:40（该时刻前不发起任何请求）
+2026-10-17 09:39:00,562 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 04:54:20（该时刻前不发起任何请求）
+2026-10-17 09:39:00,562 [WARNING] xhs-agent.search.github: GitHub 搜索触发限速：本地退避至 04:54:20（该时刻前不发起任何请求）
+==============================================================
+ 第 23 步 · 关键词搜索（GitHub）离线自检（MockTransport + FakeCache；零网络）
+==============================================================
+
+--- 1. 配置与静态合规 ---
+[PASS] 热搜启用源含 github（A 块回归）
+[PASS] github 源中文名 = GitHub
+[PASS] resolve_enabled_sources 含 github
+[PASS] GITHUB_API_BASE 默认官方地址
+[PASS] 缓存 TTL 默认 1800s（30 分钟）
+[PASS] limit 上限 30（任务书 n<=30）
+[PASS] GITHUB_TOKEN 为字符串（留空即匿名）
+[PASS] 注册表恰含 github
+[PASS] get_provider('github') 可用
+[PASS] 未注册源返回 None（路由转 400）
+[PASS] SearchResponseOut 字段集
+[PASS] SearchItemOut 字段集
+[PASS] 响应模型无凭据类字段
+[PASS] 搜索后端文件无内容平台域名
+[PASS] 搜索后端文件无写操作（纯只读）
+
+--- 2. provider 基础（解析 / 请求头 / 参数透传） ---
+[PASS] 200 正常解析（3 条）
+[PASS] title = full_name
+[PASS] url = html_url
+[PASS] source 标注 = github
+[PASS] score = stargazers_count
+[PASS] snippet = description
+[PASS] meta 齐备（language / owner / updated_at / forks_count）
+[PASS] User-Agent 存在且为项目标识
+[PASS] Accept = application/vnd.github+json
+[PASS] 匿名请求无 Authorization
+[PASS] q 参数透传
+[PASS] sort=stars / order=desc 透传
+[PASS] per_page = limit
+[PASS] 带 token 时 Authorization: Bearer <token>
+[PASS] sort=updated 透传
+[PASS] limit 超上限本地截断为 30
+[PASS] 缺 full_name / html_url 的脏数据被丢弃
+
+--- 3. 限速退避（按 X-RateLimit-Reset，假时钟） ---
+[PASS] 429: reset_at = X-RateLimit-Reset
+[PASS] 429 不重试（恰 1 次触网）
+[PASS] Reset 前二次请求快速失败（不再触网）
+[PASS] Reset 前 calls 不变
+[PASS] 时钟越过 Reset → 自动恢复并触网
+[PASS] 403-Remaining=0 → 限速
+[PASS] 403 非限速 → SearchUpstreamError（不重试）
+[PASS] 403 非限速恰 1 次触网
+[PASS] 200 但 Remaining=0：本次照常返回
+[PASS] Remaining=0 已记退避（二次快速失败）
+[PASS] 退避期内不再触网
+[PASS] 缺 Reset 头 → 60s 兜底退避
+
+--- 4. 重试语义（5xx / 网络重试；4xx / 非法响应不重试） ---
+[PASS] 5xx 重试后成功（calls=3）
+[PASS] 5xx 重试耗尽 → SearchUpstreamError
+[PASS] 5xx 重试次数 = max_attempts（3）
+[PASS] 网络异常重试耗尽 → SearchUpstreamError
+[PASS] 网络异常同样重试 3 次
+[PASS] 404 不重试（calls=1）
+[PASS] 非 JSON 不重试（calls=1）
+[PASS] 缺 items 不重试（calls=1）
+
+--- 5. 缓存（FakeCache + 键归一化） ---
+[PASS] 首次 miss：回源且 cached=False
+[PASS] 首次恰 1 次触网
+[PASS] 二次 hit：cached=True（大小写/空白归一化同键）
+[PASS] 命中后不再触网
+[PASS] force_refresh 跳过缓存（再次触网）
+[PASS] normalize_query 折叠空白 + 小写
+[PASS] 缓存键归一化一致且结构正确
+[PASS] service 直调未注册源 → ValueError（防直调误用）
+
+--- 6. 路由（TestClient + mock；含 503 限速 / 502 上游） ---
+[PASS] q 缺失 → 422
+[PASS] q 空串 → 422
+[PASS] q 纯空白 → 422
+[PASS] q 超长（101 字）→ 422
+[PASS] source 未注册 → 400
+[PASS] 400 的 details 含可用来源
+[PASS] 400 的 message 点明被拒来源
+[PASS] limit=0 → 422
+[PASS] limit=31 → 422
+[PASS] sort 非法 → 422
+[PASS] 边界 limit=30 + sort=updated → 200
+[PASS] 正常 200（count=2、cached=False）
+[PASS] 响应 item 字段集
+[PASS] 二次查询 cached=True
+[PASS] POST → 405（纯只读）
+[PASS] openapi：/api/v1/search 仅 GET
+[PASS] 429 → 503 search_rate_limited
+[PASS] 503 details 含 retry_after_seconds
+[PASS] 退避期内再次请求仍 503 且不再触网
+[PASS] 5xx 重试耗尽 → 502 search_upstream_error
+[PASS] 错误响应文本无 token 泄漏
+[PASS] 错误响应文本无 Authorization 字样
+[PASS] provider 错误消息无 token 泄漏
+
+--- 7. 前端静态检查（外链 / 无凭据字段 / 无平台域名） ---
+[PASS] 热点页含「关键词搜索」Tab（不新增顶级导航）
+[PASS] 外链 rel=noopener noreferrer + 新标签
+[PASS] 外链仅 github.com 域白名单
+[PASS] BFF 走 proxyToBackend（60s 超时）
+[PASS] loading 与空态文案齐备
+[PASS] 限速 503 人话提示存在
+[PASS] types.ts 含 SearchItem 接口
+[PASS] types.ts 含 SearchResponse 接口
+[PASS] 搜索类型字段齐全
+[PASS] types.ts 搜索类型无凭据字段
+[PASS] 前端搜索相关文件无内容平台域名
+
+通过 94 项，失败 0 项。
+全部 PASS ✔（离线自检：零网络、零真实 Redis、零 DB 写入）

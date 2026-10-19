@@ -1,0 +1,212 @@
+2026-10-17 09:39:15,066 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:39:15,202 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,252 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 1，失败 0，跳过 0，落库 3
+2026-10-17 09:39:15,299 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,333 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 1，失败 0，跳过 0，落库 1
+2026-10-17 09:39:15,367 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,369 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:39:15,398 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 1，失败 0，跳过 0，落库 1
+2026-10-17 09:39:15,436 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,476 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 1，失败 0，跳过 0，落库 2
+2026-10-17 09:39:15,512 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,548 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=topic_generation thread=33d5b0cc-e28d-414b-b729-62caa34c8bc9）：重试 3 轮后仍无合格选题，该热点放弃
+2026-10-17 09:39:15,553 [INFO] xhs-agent.topics.service: 热点 2d1c01c9-e0f2-45ee-950a-1cefc2f378cd 生成失败（不可重试）：重试 3 轮后仍无合格选题，该热点放弃
+2026-10-17 09:39:15,553 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 0，失败 1，跳过 0，落库 0
+2026-10-17 09:39:15,588 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,620 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 1，失败 0，跳过 0，落库 2
+2026-10-17 09:39:15,626 [INFO] xhs-agent.topics.service: 热点 4674eecd-9872-4c24-aa3f-69e67d4909d1 已被人设 b8f5b295-2afe-4092-9176-ab4ef40c2f82 覆盖，跳过（force=False）
+2026-10-17 09:39:15,626 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 0，失败 0，跳过 1，落库 0
+2026-10-17 09:39:15,657 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,687 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 1，失败 0，跳过 0，落库 1
+2026-10-17 09:39:15,725 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,763 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=topic_generation thread=8b7ea5e0-8b1a-4007-bdff-9ae7ae1de12c）：重试 3 轮后仍无合格选题，该热点放弃
+2026-10-17 09:39:15,768 [INFO] xhs-agent.topics.service: 热点 ce33b8f4-7584-41ab-8cd1-fe5110cb7368 生成失败（不可重试）：重试 3 轮后仍无合格选题，该热点放弃
+2026-10-17 09:39:15,768 [INFO] xhs-agent.topics.service: 选题生成完成：请求 1，成功 0，失败 1，跳过 0，落库 0
+2026-10-17 09:39:15,806 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:15,859 [WARNING] xhs-agent.services.rag: 选题图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:39:17,193 [INFO] langgraph.pregel._retry: Retrying task generate_topics after 1.33 seconds (attempt 1) after AgentRetryableError 模拟 429 持续失败（可重试耗尽）
+Traceback (most recent call last):
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\项目1\xhs-agent\backend\app\agent\topics\graph.py", line 282, in generate_topics_node
+    result = invoke_json(model, messages, want_json=True)
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 293, in invoke_json
+    raise classify_exception(exc) from exc
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 278, in invoke_json
+    response = model.invoke(conversation)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 488, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1684, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 2022, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "D:\项目1\xhs-agent\scripts\selftest_topic_agent.py", line 125, in _generate
+    raise item
+app.agent.errors.AgentRetryableError: 模拟 429 持续失败（可重试耗尽）
+During task with name 'generate_topics' and id '43f1448c-b03e-e4e2-61c4-268085c80e51'
+2026-10-17 09:39:18,496 [INFO] langgraph.pregel._retry: Retrying task generate_topics after 1.30 seconds (attempt 2) after AgentRetryableError 模拟 429 持续失败（可重试耗尽）
+Traceback (most recent call last):
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\项目1\xhs-agent\backend\app\agent\topics\graph.py", line 282, in generate_topics_node
+    result = invoke_json(model, messages, want_json=True)
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 293, in invoke_json
+    raise classify_exception(exc) from exc
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 278, in invoke_json
+    response = model.invoke(conversation)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 488, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1684, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 2022, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "D:\项目1\xhs-agent\scripts\selftest_topic_agent.py", line 125, in _generate
+    raise item
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\项目1\xhs-agent\backend\app\agent\topics\graph.py", line 282, in generate_topics_node
+    result = invoke_json(model, messages, want_json=True)
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 293, in invoke_json
+    raise classify_exception(exc) from exc
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 278, in invoke_json
+    response = model.invoke(conversation)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 488, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1684, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 2022, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "D:\项目1\xhs-agent\scripts\selftest_topic_agent.py", line 125, in _generate
+    raise item
+app.agent.errors.AgentRetryableError: 模拟 429 持续失败（可重试耗尽）
+During task with name 'generate_topics' and id '43f1448c-b03e-e4e2-61c4-268085c80e51'
+During task with name 'generate_topics' and id '43f1448c-b03e-e4e2-61c4-268085c80e51'
+2026-10-17 09:39:18,506 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=topic_generation thread=8c7c5f11-b26c-4929-b377-0cf0aa1ad99e）：模拟 429 持续失败（可重试耗尽）
+2026-10-17 09:39:18,512 [WARNING] xhs-agent.topics.service: 热点 81c07db0-b055-4f6a-b7a8-b21e731313ad 生成异常：模拟 429 持续失败（可重试耗尽）
+2026-10-17 09:39:18,513 [INFO] xhs-agent.topics.service: 选题生成完成：请求 2，成功 1，失败 1，跳过 0，落库 1
+==============================================================================
+第 10 步 · 选题 Agent 离线自检（不联网、不需要 API Key）
+==============================================================================
+[PASS] 图含 load_context / generate_topics / validate_dedupe / persist 四个节点
+[PASS] validate_dedupe 存在「回退重生成」条件边
+[PASS] validate_dedupe 存在去 persist / give_up 的条件边
+[PASS] persist 连接 END
+[PASS] 合格响应：单热点落库 3 条（status=success）
+[PASS] topics 实际写入 3 行
+[PASS] 落库 status=draft
+[PASS] tags 已剥除误带的 # 且顺序保留
+[PASS] content_outline 正确
+[PASS] target_keywords 正确
+[PASS] source_hotspot_ids=[该热点 id]
+[PASS] source_trace 含 source/title/url/mobile_url/hot_date/hot_score/rank_position
+[PASS] score == 模型 confidence
+[PASS] difficulty 与 heat_score（来自热点）正确
+[PASS] meta 含 prompt_version / json_parse_attempts / confidence
+[PASS] llm_model 已写入
+[PASS] agent_runs 状态 success
+[PASS] agent_runs.outputs 已回填业务计数与 topic_ids
+[PASS] agent_runs token 已回填（11/22/33）
+[PASS] agent_runs.json_parse_attempts == 1
+[PASS] agent_runs.llm_raw 已回填模型原始输出
+[PASS] llm_base_url 记录且 llm_raw 不含 sk-
+[PASS] 脏 JSON（围栏+裸控制字符+噪声）解析并落库 1 条
+[PASS] 脏 JSON 一次命中（json_parse_attempts=1）
+[PASS] 「先噪后 valid」parse_attempts 正确记为 2
+[PASS] 首轮不合格 → 条件边回环 → 次轮合格并落库 2 条
+[PASS] 回环轮次的不合格项记入 outputs.rejected
+[PASS] 始终不合格：该热点 failed 且无半成品 topics
+[PASS] force=False 重复热点 → skipped 且未调用模型
+[PASS] 归一化重复标题被过滤（1 合格 + 1 重复跳过）
+[PASS] force=True 但标题与库内重复 → 判重后 failed、不新增
+[PASS] persona 缺失抛 404 not_found
+[PASS] 批量：一成功一失败 → 整体 partial
+[PASS] 成功热点照常落库 1 条
+[PASS] 失败热点在 agent_runs 落 failed
+[PASS] topics 无 sk- 形态密钥
+[PASS] agent_runs 无 sk- 形态密钥
+[PASS] 本步新增代码不含小红书域名 / 登录态字段
+[PASS] POST /api/v1/topics/generate 已注册
+[PASS] GET /api/v1/topics/runs 已注册（静态路径）
+[PASS] GET/PATCH /api/v1/topics/{topic_id} 已注册
+[PASS] GET /api/v1/topics 列表已注册
+
+通过 42 项，失败 0 项。
+全部 PASS ✔（离线自检，未联网、未使用真实 API Key）

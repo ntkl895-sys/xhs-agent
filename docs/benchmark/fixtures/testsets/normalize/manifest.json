@@ -1,0 +1,60 @@
+{
+  "name": "normalize",
+  "version": "1.1",
+  "generated_at": "2026-10-18T10:34:35+08:00",
+  "generator": "scripts/benchmark/build_testsets.py",
+  "answer_source": "人工设计的 12 类数值写法（108 条）+ 按「计数语义」标注 expected；expected=None 表示应为空值，不依赖 _parse_count 实现",
+  "stats": {
+    "total": 108,
+    "categories": {
+      "decimal": 9,
+      "fullwidth_comma": 9,
+      "invalid": 9,
+      "kilo": 9,
+      "letter_w": 9,
+      "mixed_text": 9,
+      "placeholder": 9,
+      "plain_int": 9,
+      "spaces": 9,
+      "thousand_sep": 9,
+      "wan": 9,
+      "yi": 9
+    },
+    "none_expected": 17,
+    "numeric_expected": 91,
+    "status": {
+      "passing": 107,
+      "known_failure": 1
+    }
+  },
+  "sha256": {
+    "cases.json": "d54ce63012d1e7a954ef2e29adcb0b8cede83d6286f4d600742906cebfeaf2f6"
+  },
+  "freeze_notice": "本测试集已冻结：评测只读不改；任何修改须升 version 并在报告中保留前后两版结果。",
+  "notes": "空对空不判命中：expected=None 且实测为 None 计「正确拒绝」，单独统计、不与数值解析正确率混算。",
+  "evolution": {
+    "history": [
+      {
+        "merged_by": "scripts/evolution/evolve_mark.py",
+        "action": "mark_xfail",
+        "merged_at": "2026-10-18T10:34:35+08:00",
+        "parent_version": "1.0",
+        "version": "1.1",
+        "case_status_changes": [
+          {
+            "id": "norm_107",
+            "from": "passing",
+            "to": "known_failure"
+          }
+        ],
+        "source_run_ids": [
+          "fixture:normalize/norm_107"
+        ],
+        "reason": "第 26 步评测集评测暴露的唯一实现错例；产品影响低（真实截图不会出现多点小数），先标红追踪，修复需单独授权",
+        "cases_before": 108,
+        "cases_after": 108,
+        "backup_dir": "D:\\项目1\\evolution\\backups\\normalize\\v1.0-20261018-103435-426727-pre-xfail"
+      }
+    ]
+  }
+}

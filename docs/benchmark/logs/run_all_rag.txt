@@ -1,0 +1,9 @@
+==================================================================
+  度量专项 · RAG 检索合成集（临时库 + pgvector）
+==================================================================
+[夹具] 已落盘：docs\benchmark\fixtures\rag_fixture.json（12 片段 / 12 查询，一一对应）
+[就绪] {"provider": "local", "model": "BAAI/bge-large-zh-v1.5", "dim": 1024, "db_dim": 1024, "dim_consistent": true, "device": "cpu", "batch_size": 16, "top_k": 5, "local_deps_installed": false, "openai_model": "", "has_api_key": false, "cache_size": 0}
+[机制] 接线自检：12 条入库 / 索引重建 OK / 锚点召回@1=1.0（构造性假向量，非检索质量）
+[真实实验] 未执行：本地 bge 依赖/模型未就绪：{"provider": "local", "reason": "本地向量化依赖未安装（langchain-huggingface / sentence-transformers）", "hint": "本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。"}（安装后重跑本脚本即产出全部质量指标）
+------------------------------------------------------------------
+结果：docs\benchmark\results\rag.json

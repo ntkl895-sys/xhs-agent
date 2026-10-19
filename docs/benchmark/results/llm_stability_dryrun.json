@@ -1,0 +1,78 @@
+{
+  "suite": "llm_stability(dry-run)",
+  "generated_at": "2026-10-17T09:09:46+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "mode": "dry-run",
+    "graphs": [
+      "topics",
+      "content",
+      "content_variants",
+      "metric_vision",
+      "diagnosis",
+      "weekly",
+      "insights"
+    ],
+    "rounds": 5,
+    "requests_planned": 35
+  },
+  "notes": [
+    "dry-run：仅验证夹具准备/清理与闸门逻辑；未调用任何模型（零请求零 token）。",
+    "真实运行：去掉 --dry-run（就绪 + 交互确认 / --yes）。"
+  ],
+  "detail": {
+    "graphs": {
+      "topics": {
+        "dry_run": true,
+        "fixtures_ok": true
+      },
+      "content": {
+        "dry_run": true,
+        "fixtures_ok": true
+      },
+      "content_variants": {
+        "dry_run": true,
+        "fixtures_ok": true
+      },
+      "metric_vision": {
+        "dry_run": true,
+        "fixtures_ok": true
+      },
+      "diagnosis": {
+        "dry_run": true,
+        "fixtures_ok": true
+      },
+      "weekly": {
+        "dry_run": true,
+        "fixtures_ok": true
+      },
+      "insights": {
+        "dry_run": true,
+        "fixtures_ok": true
+      }
+    },
+    "cleanup": {
+      "deleted": {
+        "threads": 0,
+        "runs": 0,
+        "knowledge_snippets": 0
+      },
+      "residue": {
+        "accounts": 0,
+        "personas": 0,
+        "topics": 0,
+        "notes": 0,
+        "hotspots": 0
+      },
+      "residue_clean": true
+    },
+    "mode": "dry-run"
+  },
+  "metrics": []
+}

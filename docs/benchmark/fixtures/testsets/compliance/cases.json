@@ -1,0 +1,898 @@
+[
+  {
+    "id": "cmp_001",
+    "group": "pos_basic",
+    "text": "宝宝脸上的斑坚持调理了两个月，终于祛斑成功，太开心了！",
+    "expect_hit": true,
+    "note": "期望命中：祛斑"
+  },
+  {
+    "id": "cmp_002",
+    "group": "pos_basic",
+    "text": "这款面霜主打抗老，居然还宣称能丰胸，纯属夸大其词。",
+    "expect_hit": true,
+    "note": "期望命中：丰胸"
+  },
+  {
+    "id": "cmp_003",
+    "group": "pos_basic",
+    "text": "医生说先调整作息，再评估是否需要降血压的药物。",
+    "expect_hit": true,
+    "note": "期望命中：降血压"
+  },
+  {
+    "id": "cmp_004",
+    "group": "pos_basic",
+    "text": "坚持打卡三个月，居然真的治愈了我的熬夜拖延症。",
+    "expect_hit": true,
+    "note": "期望命中：治愈"
+  },
+  {
+    "id": "cmp_005",
+    "group": "pos_basic",
+    "text": "评论区扣1进群，今天下午统一发资料。",
+    "expect_hit": true,
+    "note": "期望命中：扣1进群"
+  },
+  {
+    "id": "cmp_006",
+    "group": "pos_basic",
+    "text": "想学穿搭的姐妹加微信交流，记得备注来意。",
+    "expect_hit": true,
+    "note": "期望命中：加微信"
+  },
+  {
+    "id": "cmp_007",
+    "group": "pos_basic",
+    "text": "全网最低价不敢说，但我们做到了同款里最省心。",
+    "expect_hit": true,
+    "note": "期望命中：全网最低"
+  },
+  {
+    "id": "cmp_008",
+    "group": "pos_basic",
+    "text": "这款产品拿过行业第一的口碑，复购率一直很高。",
+    "expect_hit": true,
+    "note": "期望命中：行业第一"
+  },
+  {
+    "id": "cmp_009",
+    "group": "pos_basic",
+    "text": "老粉都知道，这是本店唯一的常驻款。",
+    "expect_hit": true,
+    "note": "期望命中：唯一"
+  },
+  {
+    "id": "cmp_010",
+    "group": "pos_basic",
+    "text": "号称稳赚不赔的项目，往往风险最大，先学会辨别。",
+    "expect_hit": true,
+    "note": "期望命中：稳赚不赔"
+  },
+  {
+    "id": "cmp_011",
+    "group": "pos_basic",
+    "text": "月入十万的标题党太多了，真实收入我从不隐瞒。",
+    "expect_hit": true,
+    "note": "期望命中：月入十万"
+  },
+  {
+    "id": "cmp_012",
+    "group": "pos_basic",
+    "text": "专家推荐可以参考，但要看清推荐背后的动机。",
+    "expect_hit": true,
+    "note": "期望命中：专家推荐"
+  },
+  {
+    "id": "cmp_013",
+    "group": "pos_basic",
+    "text": "开业那天请了师傅来开光，图个吉利。",
+    "expect_hit": true,
+    "note": "期望命中：开光"
+  },
+  {
+    "id": "cmp_014",
+    "group": "pos_basic",
+    "text": "账号被限流了，平台提示的原因是站外链接导流。",
+    "expect_hit": true,
+    "note": "期望命中：站外链接"
+  },
+  {
+    "id": "cmp_015",
+    "group": "pos_basic",
+    "text": "刷单兼职群千万别进，十个里有九个是骗局。",
+    "expect_hit": true,
+    "note": "期望命中：刷单"
+  },
+  {
+    "id": "cmp_016",
+    "group": "pos_basic",
+    "text": "据说这串手链能转运，我是不信的。",
+    "expect_hit": true,
+    "note": "期望命中：转运"
+  },
+  {
+    "id": "cmp_017",
+    "group": "pos_basic",
+    "text": "这个『秘方』号称能药到病除，看到请顺手举报。",
+    "expect_hit": true,
+    "note": "期望命中：药到病除"
+  },
+  {
+    "id": "cmp_018",
+    "group": "pos_basic",
+    "text": "这类课程号称 7 天让你日入过万，多半是割韭菜。",
+    "expect_hit": true,
+    "note": "期望命中：日入过万"
+  },
+  {
+    "id": "cmp_019",
+    "group": "pos_basic",
+    "text": "这款茶饮宣称能降血糖，已经被监管部门点名。",
+    "expect_hit": true,
+    "note": "期望命中：降血糖"
+  },
+  {
+    "id": "cmp_020",
+    "group": "pos_basic",
+    "text": "权威认证的牌子不是想印就能印的。",
+    "expect_hit": true,
+    "note": "期望命中：权威认证"
+  },
+  {
+    "id": "cmp_021",
+    "group": "pos_separated",
+    "text": "想了解详情的宝子加-微-信，备注来意。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：加微信"
+  },
+  {
+    "id": "cmp_022",
+    "group": "pos_separated",
+    "text": "加 微 信 领取资料包，限今天。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：加微信"
+  },
+  {
+    "id": "cmp_023",
+    "group": "pos_separated",
+    "text": "全网·最·低的活动价，错过等一年。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：全网最低"
+  },
+  {
+    "id": "cmp_024",
+    "group": "pos_separated",
+    "text": "主打一个·最·强·防护，户外党狂喜。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：最强"
+  },
+  {
+    "id": "cmp_025",
+    "group": "pos_separated",
+    "text": "宝子们记得扣 1 进群，马上发模板。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：扣1进群"
+  },
+  {
+    "id": "cmp_026",
+    "group": "pos_separated",
+    "text": "全-网-最-低 的价格，仅限首单。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：全网最低"
+  },
+  {
+    "id": "cmp_027",
+    "group": "pos_separated",
+    "text": "加　微　信 同号，欢迎咨询。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：加微信"
+  },
+  {
+    "id": "cmp_028",
+    "group": "pos_separated",
+    "text": "行业·第·一 的测评数据，仅供参考。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：行业第一"
+  },
+  {
+    "id": "cmp_029",
+    "group": "pos_separated",
+    "text": "这个价格只能说不亏，稳-赚不敢当。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：稳赚"
+  },
+  {
+    "id": "cmp_030",
+    "group": "pos_separated",
+    "text": "日入·过万 的副业帖子，我举报了好几篇。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：日入过万"
+  },
+  {
+    "id": "cmp_031",
+    "group": "pos_separated",
+    "text": "私-聊-发-你 详细的对比表格。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：私聊发你"
+  },
+  {
+    "id": "cmp_032",
+    "group": "pos_separated",
+    "text": "扫码·进群 领取新课表。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：扫码进群"
+  },
+  {
+    "id": "cmp_033",
+    "group": "pos_separated",
+    "text": "唯一·不变的是变化本身。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：唯一"
+  },
+  {
+    "id": "cmp_034",
+    "group": "pos_separated",
+    "text": "权威·认证 四个字不能随便写。",
+    "expect_hit": true,
+    "note": "期望命中（分隔符/空格归一化）：权威认证"
+  },
+  {
+    "id": "cmp_035",
+    "group": "pos_case",
+    "text": "需要资料的朋友加VX，秒回。",
+    "expect_hit": true,
+    "note": "写法变体：加vx"
+  },
+  {
+    "id": "cmp_036",
+    "group": "pos_case",
+    "text": "VX号放在主页简介里了。",
+    "expect_hit": true,
+    "note": "写法变体：vx号"
+  },
+  {
+    "id": "cmp_037",
+    "group": "pos_case",
+    "text": "加Wx 备注从主页来的。",
+    "expect_hit": true,
+    "note": "写法变体：加wx 系词表外写法（w/v 书写差异）"
+  },
+  {
+    "id": "cmp_038",
+    "group": "pos_case",
+    "text": "VX 号也可以搜到我们。",
+    "expect_hit": true,
+    "note": "写法变体：vx号（空格隔开）"
+  },
+  {
+    "id": "cmp_039",
+    "group": "pos_case",
+    "text": "直接加威信聊吧，方便发文件。（谐音）",
+    "expect_hit": true,
+    "note": "写法变体：威信=微信谐音"
+  },
+  {
+    "id": "cmp_040",
+    "group": "pos_case",
+    "text": "全网Zui低？不存在的。（拼音谐音）",
+    "expect_hit": true,
+    "note": "写法变体：zui 拼音谐音"
+  },
+  {
+    "id": "cmp_041",
+    "group": "pos_case",
+    "text": "WEI XIN 同号，欢迎咨询。（拼音）",
+    "expect_hit": true,
+    "note": "写法变体：weixin 拼音"
+  },
+  {
+    "id": "cmp_042",
+    "group": "pos_case",
+    "text": "加V❤️ 详聊。（emoji 插入）",
+    "expect_hit": true,
+    "note": "写法变体：带 emoji 的写法"
+  },
+  {
+    "id": "cmp_043",
+    "group": "pos_case",
+    "text": "kuai 加 vx 拿模板！",
+    "expect_hit": true,
+    "note": "写法变体：加 vx（空格+小写）"
+  },
+  {
+    "id": "cmp_044",
+    "group": "pos_case",
+    "text": "微信号：beibeistore01",
+    "expect_hit": true,
+    "note": "写法变体：微信号"
+  },
+  {
+    "id": "cmp_045",
+    "group": "pos_variant",
+    "text": "全网蕞低价，蕞蕞划算。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：蕞=最 谐音"
+  },
+  {
+    "id": "cmp_046",
+    "group": "pos_variant",
+    "text": "稳撰不赔的理财课，看到请绕道。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：撰=赚 谐音"
+  },
+  {
+    "id": "cmp_047",
+    "group": "pos_variant",
+    "text": "直接加威信拿清单。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：信=信 谐音（威信）"
+  },
+  {
+    "id": "cmp_048",
+    "group": "pos_variant",
+    "text": "加薇信拉你进群。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：薇=微 谐音"
+  },
+  {
+    "id": "cmp_049",
+    "group": "pos_variant",
+    "text": "月入十萬？醒醒吧。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：繁体萬"
+  },
+  {
+    "id": "cmp_050",
+    "group": "pos_variant",
+    "text": "日入过萬的课程截图，多半是假的。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：繁体萬"
+  },
+  {
+    "id": "cmp_051",
+    "group": "pos_variant",
+    "text": "包治百疾的广告又出现了。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：疾=病 近似"
+  },
+  {
+    "id": "cmp_052",
+    "group": "pos_variant",
+    "text": "号称100％有效的喷剂。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：全角百分号"
+  },
+  {
+    "id": "cmp_053",
+    "group": "pos_variant",
+    "text": "蕞强防护，蕞长续航。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：蕞=最 谐音"
+  },
+  {
+    "id": "cmp_054",
+    "group": "pos_variant",
+    "text": "最顶级配置，价格还很克制。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：词表词「顶级」正常出现"
+  },
+  {
+    "id": "cmp_055",
+    "group": "pos_variant",
+    "text": "独家·首发，早鸟价仅三天。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：「独家」+分隔符"
+  },
+  {
+    "id": "cmp_056",
+    "group": "pos_variant",
+    "text": "转·运手串限时上架。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：「转运」+分隔符"
+  },
+  {
+    "id": "cmp_057",
+    "group": "pos_variant",
+    "text": "高回报？稳赚！看到这两种说法请警惕。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：含两个词表词"
+  },
+  {
+    "id": "cmp_058",
+    "group": "pos_variant",
+    "text": "转！运！搭子来组队。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：「转运」+分隔符"
+  },
+  {
+    "id": "cmp_059",
+    "group": "pos_variant",
+    "text": "一夜暴付的帖子，别信。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：付=富 谐音"
+  },
+  {
+    "id": "cmp_060",
+    "group": "pos_variant",
+    "text": "躺賺课程又换马甲了。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：繁体賺"
+  },
+  {
+    "id": "cmp_061",
+    "group": "pos_variant",
+    "text": "零風险理财，谨慎看待。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：繁体風"
+  },
+  {
+    "id": "cmp_062",
+    "group": "pos_variant",
+    "text": "绝无仅有·的版本，只印刷了一批。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：「绝无仅有」+分隔符"
+  },
+  {
+    "id": "cmp_063",
+    "group": "pos_variant",
+    "text": "改·运 小妙招合集。",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：「改运」+分隔符"
+  },
+  {
+    "id": "cmp_064",
+    "group": "pos_variant",
+    "text": "招💰财摆件真有用吗？",
+    "expect_hit": true,
+    "note": "谐音/词表外近似（如实测出是否命中）：emoji 插入"
+  },
+  {
+    "id": "cmp_065",
+    "group": "neg_clean",
+    "text": "今天的晚霞特别好看，随手拍了几张。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_066",
+    "group": "neg_clean",
+    "text": "分享一个提高效率的小方法：先做最重要的三件事。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_067",
+    "group": "neg_clean",
+    "text": "周末去公园跑了五公里，配速比上周快了一点。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_068",
+    "group": "neg_clean",
+    "text": "新买的绿植放在窗边，每天晒太阳。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_069",
+    "group": "neg_clean",
+    "text": "晚上读完了这本书的第三章，收获很多。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_070",
+    "group": "neg_clean",
+    "text": "中午做了一份番茄鸡蛋面，简单又好吃。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_071",
+    "group": "neg_clean",
+    "text": "最近在学做手冲咖啡，水温控制是关键。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_072",
+    "group": "neg_clean",
+    "text": "把书桌重新整理了一遍，舒服多了。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_073",
+    "group": "neg_clean",
+    "text": "给大家推荐一条安静的散步路线。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_074",
+    "group": "neg_clean",
+    "text": "第一次尝试用相机拍月亮，效果还不错。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_075",
+    "group": "neg_clean",
+    "text": "今天把衣柜里的衣服按季节分好了。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_076",
+    "group": "neg_clean",
+    "text": "学会了几个新的拉伸动作，肩膀舒服多了。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_077",
+    "group": "neg_clean",
+    "text": "小猫今天学会了用猫抓板。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_078",
+    "group": "neg_clean",
+    "text": "阳台的薄荷长得很好，剪了几枝泡水。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_079",
+    "group": "neg_clean",
+    "text": "尝试早睡一周，白天精神好了不少。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_080",
+    "group": "neg_clean",
+    "text": "把旧照片整理成了电子相册。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_081",
+    "group": "neg_clean",
+    "text": "今天的便当配色很满意，拍了张照。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_082",
+    "group": "neg_clean",
+    "text": "下载了一个记账应用，坚持了十天。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_083",
+    "group": "neg_clean",
+    "text": "给家里的椅子换了个新的坐垫。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_084",
+    "group": "neg_clean",
+    "text": "傍晚骑车沿河走了一圈，风很舒服。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_085",
+    "group": "neg_clean",
+    "text": "学着剪了个短视频，节奏还在摸索。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_086",
+    "group": "neg_clean",
+    "text": "周末烤了戚风蛋糕，第一次就很成功。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_087",
+    "group": "neg_clean",
+    "text": "把常用的公式做成了小卡片贴在墙上。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_088",
+    "group": "neg_clean",
+    "text": "换了新的键盘，打字手感不错。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_089",
+    "group": "neg_clean",
+    "text": "阳台的多肉换了盆，希望长得更好。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_090",
+    "group": "neg_clean",
+    "text": "今天尝试了新的通勤路线，少花了十分钟。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_091",
+    "group": "neg_clean",
+    "text": "图书馆借了三本书，都是讲沟通的。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_092",
+    "group": "neg_clean",
+    "text": "拍了一段延时摄影，云动得很有意思。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_093",
+    "group": "neg_clean",
+    "text": "把冰箱清理了一遍，扔掉不少过期食品。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_094",
+    "group": "neg_clean",
+    "text": "学了两句简单的法语问候语。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_095",
+    "group": "neg_clean",
+    "text": "今晚的月亮又圆又亮，适合散步。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_096",
+    "group": "neg_clean",
+    "text": "给笔电换了个新壁纸，心情都好了。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_097",
+    "group": "neg_clean",
+    "text": "试着用表格管理每周的待办事项。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_098",
+    "group": "neg_clean",
+    "text": "整理了一份常去的咖啡馆清单。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_099",
+    "group": "neg_clean",
+    "text": "练习了十分钟冥想，确实更放松。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_100",
+    "group": "neg_clean",
+    "text": "把去年旅行的手账翻出来看了看。",
+    "expect_hit": false,
+    "note": "明显干净文案"
+  },
+  {
+    "id": "cmp_101",
+    "group": "neg_bait_literal",
+    "text": "暴雨过后，市政部门开始根治城区内涝问题。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：根治（治水语境）"
+  },
+  {
+    "id": "cmp_102",
+    "group": "neg_bait_literal",
+    "text": "这次期末，我们小组排名第一，全组都很开心。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：排名第一（成绩语境）"
+  },
+  {
+    "id": "cmp_103",
+    "group": "neg_bait_literal",
+    "text": "小区门口的快递转运中心今天开始运营。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：转运（物流语境）"
+  },
+  {
+    "id": "cmp_104",
+    "group": "neg_bait_literal",
+    "text": "报名参加微积分竞赛的同学请举手。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：加微（数学语境）"
+  },
+  {
+    "id": "cmp_105",
+    "group": "neg_bait_literal",
+    "text": "报名表在群文件里，参加微课的同学看第三条。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：加微（课程语境）"
+  },
+  {
+    "id": "cmp_106",
+    "group": "neg_bait_literal",
+    "text": "公司决定修改运营节奏，先做小范围试点。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：改运（运营语境）"
+  },
+  {
+    "id": "cmp_107",
+    "group": "neg_bait_literal",
+    "text": "修改运费模板的操作路径截图如下。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：改运（运费语境）"
+  },
+  {
+    "id": "cmp_108",
+    "group": "neg_bait_literal",
+    "text": "种子在春雨里萌生发芽。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：生发（植物语境）"
+  },
+  {
+    "id": "cmp_109",
+    "group": "neg_bait_literal",
+    "text": "确保本次出行的安全是首要任务。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：保本（确保本次）"
+  },
+  {
+    "id": "cmp_110",
+    "group": "neg_bait_literal",
+    "text": "我们唯一要做的就是耐心等待花开花落。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：唯一（语义无害）"
+  },
+  {
+    "id": "cmp_111",
+    "group": "neg_bait_literal",
+    "text": "历史展览上看到了那幅唯一的真迹。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：唯一（语义无害）"
+  },
+  {
+    "id": "cmp_112",
+    "group": "neg_bait_literal",
+    "text": "这是一条通往山顶的独家小路。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：独家（路径语境）"
+  },
+  {
+    "id": "cmp_113",
+    "group": "neg_bait_literal",
+    "text": "这是全市唯一一家盲人按摩公益店。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：唯一（公益语境）"
+  },
+  {
+    "id": "cmp_114",
+    "group": "neg_bait_literal",
+    "text": "网上流传的「招财猫」摆件其实只是普通陶瓷。",
+    "expect_hit": false,
+    "note": "易误伤（字面含词表词）：招财（话题讨论语境）"
+  },
+  {
+    "id": "cmp_115",
+    "group": "neg_bait_sensitive",
+    "text": "最近天气转凉，注意添衣。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_116",
+    "group": "neg_bait_sensitive",
+    "text": "第一次做戚风蛋糕就成功了。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_117",
+    "group": "neg_bait_sensitive",
+    "text": "绝对不踩雷的咖啡店清单。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_118",
+    "group": "neg_bait_sensitive",
+    "text": "这家面馆的味道最地道。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_119",
+    "group": "neg_bait_sensitive",
+    "text": "最后的那个方案我觉得更稳妥。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_120",
+    "group": "neg_bait_sensitive",
+    "text": "最好看的秋景就在这条路上。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_121",
+    "group": "neg_bait_sensitive",
+    "text": "记得做好备份，以防万一。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_122",
+    "group": "neg_bait_sensitive",
+    "text": "这个小工具的易用性一流。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_123",
+    "group": "neg_bait_sensitive",
+    "text": "全家人一起动手包饺子，其乐融融。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_124",
+    "group": "neg_bait_sensitive",
+    "text": "第一步先热身，避免拉伤。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_125",
+    "group": "neg_bait_sensitive",
+    "text": "首屈一指的手艺？别夸了，熟能生巧而已。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_126",
+    "group": "neg_bait_sensitive",
+    "text": "这家店的招牌菜堪称一绝。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_127",
+    "group": "neg_bait_sensitive",
+    "text": "品质绝对过硬，用了三年没坏。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  },
+  {
+    "id": "cmp_128",
+    "group": "neg_bait_sensitive",
+    "text": "全网都在夸的收纳方法，我也试了。",
+    "expect_hit": false,
+    "note": "含敏感字眼但不在词表：期望不误伤"
+  }
+]

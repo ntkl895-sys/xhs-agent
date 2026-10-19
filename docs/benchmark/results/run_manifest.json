@@ -1,0 +1,72 @@
+{
+  "suite": "run_all_offline",
+  "started_at": "2026-10-17T09:16:02+08:00",
+  "finished_at": "2026-10-17T09:32:31+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "steps": {
+    "regression_scale": {
+      "rc": 1,
+      "log": "docs/benchmark/logs/run_all_scale.txt"
+    },
+    "reliability": {
+      "rc": 1,
+      "log": "docs/benchmark/logs/run_all_reliability.txt"
+    },
+    "rag": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_rag.txt"
+    },
+    "services": {
+      "started_by_us": true,
+      "steps": {
+        "start_rc": 0,
+        "healthcheck_green": true,
+        "latency_rc": 0,
+        "smoke_rc": 0,
+        "stop_rc": 0
+      },
+      "already_running": false,
+      "ports_freed": true
+    },
+    "testset:json_robustness": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_testset_json.txt"
+    },
+    "testset:compliance": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_testset_compliance.txt"
+    },
+    "testset:normalize": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_testset_normalize.txt"
+    },
+    "testset:rag_golden": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_testset_rag.txt"
+    },
+    "report": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_report.txt"
+    }
+  },
+  "rcs": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "failed_steps": [
+    "regression_scale",
+    "reliability"
+  ]
+}

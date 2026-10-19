@@ -1,0 +1,480 @@
+{
+  "suite": "rag_retrieval",
+  "generated_at": "2026-10-17T12:04:50+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "bge_ready": true,
+    "outcomes": [],
+    "na_reason": null
+  },
+  "notes": [
+    "本实验为合成夹具：仅验证检索管线正确性，不代表真实语料检索质量。",
+    "依赖未安装/模型不可加载时质量指标一律 N/A（绝不用假向量替代）。",
+    "临时库已删除并全局兜底复查（xhs_bench% 残留=0）。"
+  ],
+  "detail": {
+    "readiness": {
+      "provider": "local",
+      "model": "D:/models/bge-large-zh-v1.5",
+      "dim": 1024,
+      "db_dim": 1024,
+      "dim_consistent": true,
+      "device": "cpu",
+      "batch_size": 16,
+      "top_k": 5,
+      "local_deps_installed": true,
+      "openai_model": "",
+      "has_api_key": false,
+      "cache_size": 0
+    },
+    "blocker": null,
+    "mechanic": {
+      "mode": "fake",
+      "temp_db": "xhs_bench_rag_20261017120426_25664",
+      "insert_ms": 97.7,
+      "snippets_inserted": 12,
+      "vector_dim": 1024,
+      "index_def_found": true,
+      "index_build_ms": 6.6,
+      "rankings_top5": [
+        [
+          "94b195a4-a558-48c9-a21e-c30f82264c63",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "032ef08e-82bc-4124-8938-3c211604e78f",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "94828d56-15c0-4773-b2b2-0f24d44f2a28",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29",
+          "b9d9ef18-55b4-4025-a6c7-60cf60b7c43c"
+        ],
+        [
+          "be6dc940-4540-47dc-905d-df1815755a29",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "b9d9ef18-55b4-4025-a6c7-60cf60b7c43c"
+        ],
+        [
+          "9d7d820f-5d7e-44e2-bef6-7f6047025a11",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "be6dc940-4540-47dc-905d-df1815755a29",
+          "b9d9ef18-55b4-4025-a6c7-60cf60b7c43c"
+        ],
+        [
+          "6b9d59e3-7a52-4291-a2ce-2273c999b58a",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "b9d9ef18-55b4-4025-a6c7-60cf60b7c43c",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "a62a5b3f-f550-47c0-9860-a730818c5749",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "b15a4c28-6303-4455-8026-4131fc1aa040",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29"
+        ],
+        [
+          "d0a01757-bde1-4d8e-8516-6420352eaedd",
+          "e8a0a6c8-e999-4a76-a017-ae38e7a4070f",
+          "c26da7fa-1f77-4ca9-9b5d-ce279a49849f",
+          "be6dc940-4540-47dc-905d-df1815755a29",
+          "b9d9ef18-55b4-4025-a6c7-60cf60b7c43c"
+        ]
+      ],
+      "latency_end_to_end_ms": [],
+      "latency_vector_only_ms": [],
+      "recall_at": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "mrr": 1.0,
+      "n_queries": 12
+    },
+    "real": {
+      "mode": "bge",
+      "temp_db": "xhs_bench_rag_20261017120432_25664",
+      "insert_ms": 12706.3,
+      "snippets_inserted": 12,
+      "vector_dim": 1024,
+      "index_def_found": true,
+      "index_build_ms": 6.5,
+      "rankings_top5": [
+        [
+          "34abefc0-8523-4e6e-9039-97129d89b950",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7"
+        ],
+        [
+          "f5712891-13ef-423f-990b-09330c060275",
+          "e1095c05-06de-44cf-9725-b870248d1aa9",
+          "01b7ff27-898f-47b5-b409-7b734fc9f98c",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7"
+        ],
+        [
+          "ee08e6e5-1148-491b-855e-09a2751afb39",
+          "19c78a4e-e8c2-4d14-a21b-a017261a0023",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7",
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7"
+        ],
+        [
+          "32f674e7-098a-494b-abef-1d3dc5c49d94",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "34abefc0-8523-4e6e-9039-97129d89b950"
+        ],
+        [
+          "01b7ff27-898f-47b5-b409-7b734fc9f98c",
+          "e1095c05-06de-44cf-9725-b870248d1aa9",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7"
+        ],
+        [
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "7ffccd20-7b29-4b10-a495-44fe6c94cd9f",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "32f674e7-098a-494b-abef-1d3dc5c49d94"
+        ],
+        [
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "34abefc0-8523-4e6e-9039-97129d89b950",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7"
+        ],
+        [
+          "e1095c05-06de-44cf-9725-b870248d1aa9",
+          "01b7ff27-898f-47b5-b409-7b734fc9f98c",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "f5712891-13ef-423f-990b-09330c060275",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7"
+        ],
+        [
+          "7ffccd20-7b29-4b10-a495-44fe6c94cd9f",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "19c78a4e-e8c2-4d14-a21b-a017261a0023",
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8"
+        ],
+        [
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a",
+          "34abefc0-8523-4e6e-9039-97129d89b950",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7",
+          "32f674e7-098a-494b-abef-1d3dc5c49d94"
+        ],
+        [
+          "19c78a4e-e8c2-4d14-a21b-a017261a0023",
+          "7ffccd20-7b29-4b10-a495-44fe6c94cd9f",
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8",
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7"
+        ],
+        [
+          "6347c725-c16b-4787-9aba-aedb0a3bb7b7",
+          "506952ed-8be3-4b37-994f-90c76cdd4ab8",
+          "e2486009-76ec-49c5-b22b-f22a092f3ad7",
+          "32f674e7-098a-494b-abef-1d3dc5c49d94",
+          "4042a63f-4f2f-4d8f-8761-dc172bf9828a"
+        ]
+      ],
+      "latency_end_to_end_ms": [
+        10.36,
+        6.61,
+        6.67,
+        6.09,
+        6.58,
+        6.01,
+        6.55,
+        6.19,
+        5.99,
+        6.58,
+        6.43,
+        6.04,
+        6.1,
+        6.01,
+        7.37,
+        4.97,
+        4.62,
+        5.18,
+        6.3,
+        5.56,
+        4.47,
+        5.17,
+        4.47,
+        4.55
+      ],
+      "latency_vector_only_ms": [
+        6.52,
+        8.06,
+        8.71,
+        6.56,
+        6.92,
+        5.95,
+        6.18,
+        6.34,
+        6.6,
+        6.4,
+        6.17,
+        5.74,
+        7.19,
+        6.36,
+        5.98,
+        4.96,
+        4.74,
+        5.0,
+        5.15,
+        5.1,
+        5.4,
+        5.13,
+        4.99,
+        5.1
+      ],
+      "recall_at": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "mrr": 1.0,
+      "n_queries": 12
+    }
+  },
+  "metrics": [
+    {
+      "name": "rag.fixture.snippets_total",
+      "value": 12,
+      "unit": "条",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "内置合成夹具（docs/benchmark/fixtures/rag_fixture.json）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:24+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "合成夹具、仅验证检索正确性；不代表真实语料质量"
+    },
+    {
+      "name": "rag.fixture.queries_total",
+      "value": 12,
+      "unit": "条",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "同上（查询与片段一一对应，答案唯一）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:24+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "合成夹具、仅验证检索正确性"
+    },
+    {
+      "name": "rag.pgvector.extversion",
+      "value": "n/a",
+      "unit": "版本号",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "docker compose exec psql：SELECT extversion FROM pg_extension（只读）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:25+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "向量扩展可用性事实；与检索质量指标相互独立"
+    },
+    {
+      "name": "rag.mechanics.self_check_ok",
+      "value": 1,
+      "unit": "布尔(1=是)",
+      "n": 1,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py --mechanics：构造性锚点向量（非 bge，非检索质量）验证 建库→迁移→入库→索引重建→检索排序→召回统计 的机制接线",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:32+08:00",
+      "log_path": "docs/benchmark/logs/rag_mechanics.log",
+      "confidence": "high",
+      "note": "构造性假向量以验证机制接线；**不构成任何检索质量结论**"
+    },
+    {
+      "name": "rag.vector_dim_measured",
+      "value": 1024,
+      "unit": "维",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "实测 bge 输出维度；合成夹具"
+    },
+    {
+      "name": "rag.recall_at_1",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "合成夹具、仅验证检索正确性（12 查询一一对应）"
+    },
+    {
+      "name": "rag.recall_at_3",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "同上"
+    },
+    {
+      "name": "rag.recall_at_5",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "同上"
+    },
+    {
+      "name": "rag.mrr",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "同上"
+    },
+    {
+      "name": "rag.index_build_ms",
+      "value": 6.5,
+      "unit": "毫秒",
+      "n": 12,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "HNSW 索引在 12 行上的重建耗时（小样本）"
+    },
+    {
+      "name": "rag.query_latency_end_to_end_p50_ms",
+      "value": 6.04,
+      "unit": "毫秒",
+      "n": 24,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延（端到端；查询编码走进程内缓存，第 2 轮为缓存命中）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "rag.query_latency_end_to_end_p95_ms",
+      "value": 7.37,
+      "unit": "毫秒",
+      "n": 24,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延（端到端；查询编码走进程内缓存，第 2 轮为缓存命中）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "rag.query_latency_vector_only_p50_ms",
+      "value": 5.98,
+      "unit": "毫秒",
+      "n": 24,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延（仅 pgvector 检索，预计算向量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "rag.query_latency_vector_only_p95_ms",
+      "value": 8.06,
+      "unit": "毫秒",
+      "n": 24,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_rag_retrieval.py：临时库（alembic 迁移）上以本地 bge 向量化 12 条合成知识片段，经 crud.search_snippets（pgvector 余弦 top-k，HNSW）计算 Recall@k / MRR 与查询时延（仅 pgvector 检索，预计算向量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:04:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,3149 @@
+{
+  "suite": "llm_stability",
+  "generated_at": "2026-10-17T13:01:12+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）",
+    "llm_model": "deepseek-flash",
+    "llm_base_url": "https://api.deepseek.com",
+    "llm_temperature": "factory 默认 0.2（结构化抽取建议低温度）",
+    "run_finished_at": "2026-10-17T13:01:12+08:00"
+  },
+  "summary": {
+    "mode": "real",
+    "graphs": [
+      "topics",
+      "content",
+      "content_variants",
+      "metric_vision",
+      "diagnosis",
+      "weekly",
+      "insights"
+    ],
+    "rounds": 5,
+    "llm_model": "deepseek-flash",
+    "llm_base_url": "https://api.deepseek.com",
+    "llm_temperature": "factory 默认 0.2（结构化抽取建议低温度）",
+    "run_finished_at": "2026-10-17T13:01:12+08:00",
+    "raw_runs_total": 35,
+    "raw_missing": 5,
+    "raw_sample_n": 30,
+    "raw_direct_parse_rate": 1.0,
+    "contract_pass_rate": 1.0
+  },
+  "notes": [
+    "n=5 小样本抽样；结论只能写「抽样中」口径，禁止外推为总体稳定性 / 准确率。",
+    "first_try_rate 是 attempts 口径（模型调用轮次），不等于 raw 直解率；raw_direct_parse_rate 由 llm_raw 离线复算单列。",
+    "raw_missing 单列：raw 类指标的分母 = 可得样本数（总调用 - 缺失），并在指标 note 中同时给出总调用数与缺失数，不静默缩小分母。",
+    "contract_pass_rate = 原始 JSON 按各图自身 Pydantic 契约 / normalize_* 校验；与 success_rate 是否等价见 detail.raw_analysis.contract_equals_success。",
+    "token 三列来自 agent_runs（harness 记录），未内置价格。",
+    "夹具与审计按 account_id 关联清理（先子后父）+ 前缀兜底；结果文件先落盘再清理，清理异常记 detail.cleanup.cleanup_error。",
+    "「标准答案」= 客观契约（合法 JSON + 字段 schema + 约束），非主观好坏。"
+  ],
+  "detail": {
+    "graphs": {
+      "topics": {
+        "rounds": [
+          {
+            "graph": "topics",
+            "ok": true,
+            "error": null,
+            "wall_ms": 22694.4,
+            "new_runs": [
+              "ad570bdb-4518-47a3-9b2b-fd2363b21276"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 585,
+              "completion": 651,
+              "total": 1236
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "ad570bdb-4518-47a3-9b2b-fd2363b21276",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "topics",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2791.9,
+            "new_runs": [
+              "60631d0f-8cd0-4185-8ed0-2153b1a4ff1b"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 585,
+              "completion": 362,
+              "total": 947
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "60631d0f-8cd0-4185-8ed0-2153b1a4ff1b",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "topics",
+            "ok": true,
+            "error": null,
+            "wall_ms": 3623.5,
+            "new_runs": [
+              "519ce518-082d-4e30-b7d6-6ec1691d7800"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 585,
+              "completion": 506,
+              "total": 1091
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "519ce518-082d-4e30-b7d6-6ec1691d7800",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "topics",
+            "ok": true,
+            "error": null,
+            "wall_ms": 3827.2,
+            "new_runs": [
+              "70e6baea-375f-42be-8a20-62fe0aa0d692"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 585,
+              "completion": 564,
+              "total": 1149
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "70e6baea-375f-42be-8a20-62fe0aa0d692",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "topics",
+            "ok": true,
+            "error": null,
+            "wall_ms": 3513.2,
+            "new_runs": [
+              "d9db1121-38d7-4c22-9f0b-f4fff3381eef"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 585,
+              "completion": 443,
+              "total": 1028
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "d9db1121-38d7-4c22-9f0b-f4fff3381eef",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 2791.9,
+            "p50": 3623.5,
+            "p95": 22694.4,
+            "max": 22694.4,
+            "mean": 7290.04
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 947,
+            "p50": 1091,
+            "p95": 1236,
+            "max": 1236,
+            "mean": 1090.2
+          },
+          "tokens_grand_total": 5451,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 0,
+            "raw_sample_n": 5,
+            "raw_direct_parse": 5,
+            "raw_direct_parse_rate": 1.0,
+            "raw_parsed": 5,
+            "raw_parsed_rate": 1.0,
+            "contract_pass": 5,
+            "contract_pass_rate": 1.0,
+            "source_distribution": {
+              "原文": 5
+            }
+          }
+        }
+      },
+      "content": {
+        "rounds": [
+          {
+            "graph": "content",
+            "ok": true,
+            "error": null,
+            "wall_ms": 6740.7,
+            "new_runs": [
+              "fad5d982-6f09-44b3-a8a6-e64e94fff7d7"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 502,
+              "completion": 1025,
+              "total": 1527
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success"
+            },
+            "raw_runs": [
+              {
+                "run_id": "fad5d982-6f09-44b3-a8a6-e64e94fff7d7",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content",
+            "ok": true,
+            "error": null,
+            "wall_ms": 3085.6,
+            "new_runs": [
+              "65722803-e4f0-4279-8c71-f06125e4014b"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 502,
+              "completion": 303,
+              "total": 805
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success"
+            },
+            "raw_runs": [
+              {
+                "run_id": "65722803-e4f0-4279-8c71-f06125e4014b",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2842.0,
+            "new_runs": [
+              "31fbf711-f26a-4053-a474-cf9c47c4ae3e"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 502,
+              "completion": 293,
+              "total": 795
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success"
+            },
+            "raw_runs": [
+              {
+                "run_id": "31fbf711-f26a-4053-a474-cf9c47c4ae3e",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content",
+            "ok": true,
+            "error": null,
+            "wall_ms": 3458.4,
+            "new_runs": [
+              "8a5ced0a-8cfd-4649-8b16-02faa15d8698"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 502,
+              "completion": 377,
+              "total": 879
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success"
+            },
+            "raw_runs": [
+              {
+                "run_id": "8a5ced0a-8cfd-4649-8b16-02faa15d8698",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2983.4,
+            "new_runs": [
+              "929133fd-98d5-4765-a270-76a302a66047"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 502,
+              "completion": 324,
+              "total": 826
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success"
+            },
+            "raw_runs": [
+              {
+                "run_id": "929133fd-98d5-4765-a270-76a302a66047",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 2842.0,
+            "p50": 3085.6,
+            "p95": 6740.7,
+            "max": 6740.7,
+            "mean": 3822.02
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 795,
+            "p50": 826,
+            "p95": 1527,
+            "max": 1527,
+            "mean": 966.4
+          },
+          "tokens_grand_total": 4832,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 0,
+            "raw_sample_n": 5,
+            "raw_direct_parse": 5,
+            "raw_direct_parse_rate": 1.0,
+            "raw_parsed": 5,
+            "raw_parsed_rate": 1.0,
+            "contract_pass": 5,
+            "contract_pass_rate": 1.0,
+            "source_distribution": {
+              "原文": 5
+            }
+          }
+        }
+      },
+      "content_variants": {
+        "rounds": [
+          {
+            "graph": "content_variants",
+            "ok": true,
+            "error": null,
+            "wall_ms": 10062.0,
+            "new_runs": [
+              "b9ffe005-6a46-4bd4-ba85-7c61ec3333ff"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 684,
+              "completion": 1605,
+              "total": 2289
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 3
+            },
+            "raw_runs": [
+              {
+                "run_id": "b9ffe005-6a46-4bd4-ba85-7c61ec3333ff",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content_variants",
+            "ok": true,
+            "error": null,
+            "wall_ms": 8865.0,
+            "new_runs": [
+              "69e7372d-481b-4e86-9d82-e8b22b1c04bd"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "partial"
+            ],
+            "tokens": {
+              "prompt": 684,
+              "completion": 1265,
+              "total": 1949
+            },
+            "first_try": false,
+            "zero_call": false,
+            "meta": {
+              "status": "partial",
+              "persisted": 2
+            },
+            "raw_runs": [
+              {
+                "run_id": "69e7372d-481b-4e86-9d82-e8b22b1c04bd",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content_variants",
+            "ok": true,
+            "error": null,
+            "wall_ms": 6808.6,
+            "new_runs": [
+              "386dcbb0-099e-4e4a-a0d8-c2a2ea31b675"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 684,
+              "completion": 945,
+              "total": 1629
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 3
+            },
+            "raw_runs": [
+              {
+                "run_id": "386dcbb0-099e-4e4a-a0d8-c2a2ea31b675",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content_variants",
+            "ok": true,
+            "error": null,
+            "wall_ms": 9592.7,
+            "new_runs": [
+              "5d2bf38f-e447-44f9-be5a-f121df609095"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 684,
+              "completion": 1520,
+              "total": 2204
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 3
+            },
+            "raw_runs": [
+              {
+                "run_id": "5d2bf38f-e447-44f9-be5a-f121df609095",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "content_variants",
+            "ok": true,
+            "error": null,
+            "wall_ms": 7446.2,
+            "new_runs": [
+              "74c42ca6-c65b-4a2c-afe4-2f6d496def2f"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 684,
+              "completion": 958,
+              "total": 1642
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "persisted": 3
+            },
+            "raw_runs": [
+              {
+                "run_id": "74c42ca6-c65b-4a2c-afe4-2f6d496def2f",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 0.8,
+          "success_rate": 0.8,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 6808.6,
+            "p50": 8865.0,
+            "p95": 10062.0,
+            "max": 10062.0,
+            "mean": 8554.9
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 1629,
+            "p50": 1949,
+            "p95": 2289,
+            "max": 2289,
+            "mean": 1942.6
+          },
+          "tokens_grand_total": 9713,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 0,
+            "raw_sample_n": 5,
+            "raw_direct_parse": 5,
+            "raw_direct_parse_rate": 1.0,
+            "raw_parsed": 5,
+            "raw_parsed_rate": 1.0,
+            "contract_pass": 5,
+            "contract_pass_rate": 1.0,
+            "source_distribution": {
+              "原文": 5
+            }
+          }
+        }
+      },
+      "metric_vision": {
+        "rounds": [
+          {
+            "graph": "metric_vision",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2529.9,
+            "new_runs": [
+              "1fdf2d04-0568-4e2b-b313-fa99e5c58f94"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1952,
+              "completion": 331,
+              "total": 2283
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "1fdf2d04-0568-4e2b-b313-fa99e5c58f94",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "metric_vision",
+            "ok": true,
+            "error": null,
+            "wall_ms": 1996.1,
+            "new_runs": [
+              "6913927e-06b2-42be-98fd-cc9f1a84652a"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1952,
+              "completion": 280,
+              "total": 2232
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "6913927e-06b2-42be-98fd-cc9f1a84652a",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "metric_vision",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2299.6,
+            "new_runs": [
+              "cd34d887-976d-4eb8-94a7-a67931bc751b"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1952,
+              "completion": 336,
+              "total": 2288
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "cd34d887-976d-4eb8-94a7-a67931bc751b",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "metric_vision",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2550.2,
+            "new_runs": [
+              "6a2cd186-789b-4d5f-b9db-37c07bebdc04"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1952,
+              "completion": 343,
+              "total": 2295
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "6a2cd186-789b-4d5f-b9db-37c07bebdc04",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "metric_vision",
+            "ok": true,
+            "error": null,
+            "wall_ms": 2392.3,
+            "new_runs": [
+              "16f59d1c-9412-46b1-b69f-9a3cda919bb2"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1952,
+              "completion": 318,
+              "total": 2270
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "16f59d1c-9412-46b1-b69f-9a3cda919bb2",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 1996.1,
+            "p50": 2392.3,
+            "p95": 2550.2,
+            "max": 2550.2,
+            "mean": 2353.62
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 2232,
+            "p50": 2283,
+            "p95": 2295,
+            "max": 2295,
+            "mean": 2273.6
+          },
+          "tokens_grand_total": 11368,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 0,
+            "raw_sample_n": 5,
+            "raw_direct_parse": 5,
+            "raw_direct_parse_rate": 1.0,
+            "raw_parsed": 5,
+            "raw_parsed_rate": 1.0,
+            "contract_pass": 5,
+            "contract_pass_rate": 1.0,
+            "source_distribution": {
+              "原文": 5
+            }
+          }
+        }
+      },
+      "diagnosis": {
+        "rounds": [
+          {
+            "graph": "diagnosis",
+            "ok": true,
+            "error": null,
+            "wall_ms": 22240.7,
+            "new_runs": [
+              "2cac19eb-abdc-4ff0-b141-ba3be5e0cf5b"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1201,
+              "completion": 4128,
+              "total": 5329
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "score": 74.0
+            },
+            "raw_runs": [
+              {
+                "run_id": "2cac19eb-abdc-4ff0-b141-ba3be5e0cf5b",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "diagnosis",
+            "ok": true,
+            "error": null,
+            "wall_ms": 8409.0,
+            "new_runs": [
+              "fefe1346-5a36-4d92-a805-d5a8c9564162"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1201,
+              "completion": 1263,
+              "total": 2464
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "score": 78.0
+            },
+            "raw_runs": [
+              {
+                "run_id": "fefe1346-5a36-4d92-a805-d5a8c9564162",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "diagnosis",
+            "ok": true,
+            "error": null,
+            "wall_ms": 20364.4,
+            "new_runs": [
+              "4361108f-bbb6-4deb-9891-522c4cb5666c"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1201,
+              "completion": 3676,
+              "total": 4877
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "score": 76.0
+            },
+            "raw_runs": [
+              {
+                "run_id": "4361108f-bbb6-4deb-9891-522c4cb5666c",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "diagnosis",
+            "ok": true,
+            "error": null,
+            "wall_ms": 17951.9,
+            "new_runs": [
+              "33afdbde-8da6-4ac7-a2ca-bac78b4139a6"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1201,
+              "completion": 3047,
+              "total": 4248
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "score": 66.0
+            },
+            "raw_runs": [
+              {
+                "run_id": "33afdbde-8da6-4ac7-a2ca-bac78b4139a6",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "diagnosis",
+            "ok": true,
+            "error": null,
+            "wall_ms": 22113.4,
+            "new_runs": [
+              "dd2b087d-73c6-404a-8cde-8a9112ac5107"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 1201,
+              "completion": 4140,
+              "total": 5341
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "score": 78.5
+            },
+            "raw_runs": [
+              {
+                "run_id": "dd2b087d-73c6-404a-8cde-8a9112ac5107",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 8409.0,
+            "p50": 20364.4,
+            "p95": 22240.7,
+            "max": 22240.7,
+            "mean": 18215.88
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 2464,
+            "p50": 4877,
+            "p95": 5341,
+            "max": 5341,
+            "mean": 4451.8
+          },
+          "tokens_grand_total": 22259,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 0,
+            "raw_sample_n": 5,
+            "raw_direct_parse": 5,
+            "raw_direct_parse_rate": 1.0,
+            "raw_parsed": 5,
+            "raw_parsed_rate": 1.0,
+            "contract_pass": 5,
+            "contract_pass_rate": 1.0,
+            "source_distribution": {
+              "原文": 5
+            }
+          }
+        }
+      },
+      "weekly": {
+        "rounds": [
+          {
+            "graph": "weekly",
+            "ok": true,
+            "error": null,
+            "wall_ms": 16183.3,
+            "new_runs": [
+              "3d0d4f35-9ffb-4ed6-9d34-5444007b7e4f"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 2255,
+              "completion": 3558,
+              "total": 5813
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "3d0d4f35-9ffb-4ed6-9d34-5444007b7e4f",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "weekly",
+            "ok": true,
+            "error": null,
+            "wall_ms": 29409.1,
+            "new_runs": [
+              "c897147f-cc69-41c2-9a69-1e8c332f9893"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 2255,
+              "completion": 7035,
+              "total": 9290
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "c897147f-cc69-41c2-9a69-1e8c332f9893",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "weekly",
+            "ok": true,
+            "error": null,
+            "wall_ms": 15641.1,
+            "new_runs": [
+              "ae215c66-7b40-4aa7-b986-1f72df4be4ef"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 2255,
+              "completion": 3380,
+              "total": 5635
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "ae215c66-7b40-4aa7-b986-1f72df4be4ef",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "weekly",
+            "ok": true,
+            "error": null,
+            "wall_ms": 16075.6,
+            "new_runs": [
+              "05d7f705-0573-406f-99a9-abfd7ce6602b"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 2255,
+              "completion": 3358,
+              "total": 5613
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "05d7f705-0573-406f-99a9-abfd7ce6602b",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          },
+          {
+            "graph": "weekly",
+            "ok": true,
+            "error": null,
+            "wall_ms": 14891.7,
+            "new_runs": [
+              "5aac2df0-1bd2-4835-be80-717c8a0d46d2"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              1
+            ],
+            "statuses": [
+              "success"
+            ],
+            "tokens": {
+              "prompt": 2255,
+              "completion": 3442,
+              "total": 5697
+            },
+            "first_try": true,
+            "zero_call": false,
+            "meta": {
+              "status": "success",
+              "parse_attempts": 1
+            },
+            "raw_runs": [
+              {
+                "run_id": "5aac2df0-1bd2-4835-be80-717c8a0d46d2",
+                "raw_missing": false,
+                "source": "原文",
+                "parsed": true,
+                "contract_ok": true,
+                "contract_errors": []
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 14891.7,
+            "p50": 16075.6,
+            "p95": 29409.1,
+            "max": 29409.1,
+            "mean": 18440.16
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 5613,
+            "p50": 5697,
+            "p95": 9290,
+            "max": 9290,
+            "mean": 6409.6
+          },
+          "tokens_grand_total": 32048,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 0,
+            "raw_sample_n": 5,
+            "raw_direct_parse": 5,
+            "raw_direct_parse_rate": 1.0,
+            "raw_parsed": 5,
+            "raw_parsed_rate": 1.0,
+            "contract_pass": 5,
+            "contract_pass_rate": 1.0,
+            "source_distribution": {
+              "原文": 5
+            }
+          }
+        }
+      },
+      "insights": {
+        "rounds": [
+          {
+            "graph": "insights",
+            "ok": true,
+            "error": null,
+            "wall_ms": 61.3,
+            "new_runs": [
+              "9480be07-15de-4897-a870-32d8f0b5bf3e"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              0
+            ],
+            "statuses": [
+              "partial"
+            ],
+            "tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            },
+            "first_try": false,
+            "zero_call": false,
+            "meta": {
+              "status": "partial",
+              "insufficient_sample": true,
+              "parse_attempts": 0
+            },
+            "raw_runs": [
+              {
+                "run_id": "9480be07-15de-4897-a870-32d8f0b5bf3e",
+                "raw_missing": true,
+                "source": null,
+                "parsed": false,
+                "contract_ok": null,
+                "contract_errors": [
+                  "缺少 llm_raw（未落库）"
+                ]
+              }
+            ]
+          },
+          {
+            "graph": "insights",
+            "ok": true,
+            "error": null,
+            "wall_ms": 52.4,
+            "new_runs": [
+              "4cb40cc5-6ab7-439a-8c55-5aee49921fe8"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              0
+            ],
+            "statuses": [
+              "partial"
+            ],
+            "tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            },
+            "first_try": false,
+            "zero_call": false,
+            "meta": {
+              "status": "partial",
+              "insufficient_sample": true,
+              "parse_attempts": 0
+            },
+            "raw_runs": [
+              {
+                "run_id": "4cb40cc5-6ab7-439a-8c55-5aee49921fe8",
+                "raw_missing": true,
+                "source": null,
+                "parsed": false,
+                "contract_ok": null,
+                "contract_errors": [
+                  "缺少 llm_raw（未落库）"
+                ]
+              }
+            ]
+          },
+          {
+            "graph": "insights",
+            "ok": true,
+            "error": null,
+            "wall_ms": 52.7,
+            "new_runs": [
+              "c5d26f5c-535e-44df-bd9a-ea5b48a205df"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              0
+            ],
+            "statuses": [
+              "partial"
+            ],
+            "tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            },
+            "first_try": false,
+            "zero_call": false,
+            "meta": {
+              "status": "partial",
+              "insufficient_sample": true,
+              "parse_attempts": 0
+            },
+            "raw_runs": [
+              {
+                "run_id": "c5d26f5c-535e-44df-bd9a-ea5b48a205df",
+                "raw_missing": true,
+                "source": null,
+                "parsed": false,
+                "contract_ok": null,
+                "contract_errors": [
+                  "缺少 llm_raw（未落库）"
+                ]
+              }
+            ]
+          },
+          {
+            "graph": "insights",
+            "ok": true,
+            "error": null,
+            "wall_ms": 50.3,
+            "new_runs": [
+              "9333dd06-c502-4084-b2f2-06b2e2372b8c"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              0
+            ],
+            "statuses": [
+              "partial"
+            ],
+            "tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            },
+            "first_try": false,
+            "zero_call": false,
+            "meta": {
+              "status": "partial",
+              "insufficient_sample": true,
+              "parse_attempts": 0
+            },
+            "raw_runs": [
+              {
+                "run_id": "9333dd06-c502-4084-b2f2-06b2e2372b8c",
+                "raw_missing": true,
+                "source": null,
+                "parsed": false,
+                "contract_ok": null,
+                "contract_errors": [
+                  "缺少 llm_raw（未落库）"
+                ]
+              }
+            ]
+          },
+          {
+            "graph": "insights",
+            "ok": true,
+            "error": null,
+            "wall_ms": 51.4,
+            "new_runs": [
+              "38e145b2-fda1-4669-afad-b252e35979ad"
+            ],
+            "run_count": 1,
+            "parse_attempts": [
+              0
+            ],
+            "statuses": [
+              "partial"
+            ],
+            "tokens": {
+              "prompt": 0,
+              "completion": 0,
+              "total": 0
+            },
+            "first_try": false,
+            "zero_call": false,
+            "meta": {
+              "status": "partial",
+              "insufficient_sample": true,
+              "parse_attempts": 0
+            },
+            "raw_runs": [
+              {
+                "run_id": "38e145b2-fda1-4669-afad-b252e35979ad",
+                "raw_missing": true,
+                "source": null,
+                "parsed": false,
+                "contract_ok": null,
+                "contract_errors": [
+                  "缺少 llm_raw（未落库）"
+                ]
+              }
+            ]
+          }
+        ],
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 0.0,
+          "success_rate": 0.0,
+          "repair_needed_rounds": 0,
+          "failed_after_repair_rate": null,
+          "latency_ms": {
+            "n": 5,
+            "min": 50.3,
+            "p50": 52.4,
+            "p95": 61.3,
+            "max": 61.3,
+            "mean": 53.62
+          },
+          "tokens_per_round": {
+            "n": 5,
+            "min": 0,
+            "p50": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0.0
+          },
+          "tokens_grand_total": 0,
+          "zero_call_rounds": 0,
+          "error_rounds": 0,
+          "raw": {
+            "raw_runs_total": 5,
+            "raw_missing": 5,
+            "raw_sample_n": 0,
+            "raw_direct_parse": 0,
+            "raw_direct_parse_rate": null,
+            "raw_parsed": 0,
+            "raw_parsed_rate": null,
+            "contract_pass": 0,
+            "contract_pass_rate": null,
+            "source_distribution": {
+              "（缺失）": 5
+            }
+          }
+        }
+      }
+    },
+    "cleanup": {
+      "deleted": {
+        "threads": 35,
+        "runs": 35,
+        "diagnostics": 5,
+        "note_metrics": 2,
+        "notes": 20,
+        "topics": 15,
+        "personas": 1,
+        "hotspots": 1,
+        "accounts": 1,
+        "prefix_sweep": {
+          "notes": 0,
+          "note_metrics": 0,
+          "diagnostics": 0,
+          "topics": 0,
+          "hotspots": 0
+        },
+        "knowledge_snippets": 0
+      },
+      "pre_counts": {
+        "notes": 20,
+        "topics": 15,
+        "personas": 1,
+        "note_metrics": 2,
+        "diagnostics": 5
+      },
+      "residue": {
+        "accounts": 0,
+        "personas": 0,
+        "topics": 0,
+        "notes": 0,
+        "hotspots": 0
+      },
+      "residue_by_account": {
+        "notes": 0,
+        "topics": 0,
+        "personas": 0,
+        "note_metrics": 0,
+        "diagnostics": 0
+      },
+      "residue_clean": true
+    },
+    "mode": "real",
+    "raw_analysis": {
+      "raw_runs_total": 35,
+      "raw_missing": 5,
+      "raw_sample_n": 30,
+      "raw_direct_parse": 30,
+      "raw_direct_parse_rate": 1.0,
+      "raw_parsed": 30,
+      "raw_parsed_rate": 1.0,
+      "contract_pass": 30,
+      "contract_pass_rate": 1.0,
+      "source_distribution": {
+        "原文": 30,
+        "（缺失）": 5
+      },
+      "contract_equals_success": false
+    }
+  },
+  "metrics": [
+    {
+      "name": "llm_stability.topics.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.topics.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.topics.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.topics.latency_p50_ms",
+      "value": 3623.5,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.topics.latency_p95_ms",
+      "value": 22694.4,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.topics.tokens_p50",
+      "value": 1091,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.topics.tokens_p95",
+      "value": 1236,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.topics.tokens_grand_total",
+      "value": 5451,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.topics.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:00+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.topics.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.topics.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.topics.raw_missing",
+      "value": 0,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.topics.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 5（总调用 5，缺失 0）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.topics.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.content.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.content.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.content.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.content.latency_p50_ms",
+      "value": 3085.6,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:01+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.content.latency_p95_ms",
+      "value": 6740.7,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.content.tokens_p50",
+      "value": 826,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.content.tokens_p95",
+      "value": 1527,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.content.tokens_grand_total",
+      "value": 4832,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.content.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.content.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.content.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.content.raw_missing",
+      "value": 0,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.content.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:02+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 5（总调用 5，缺失 0）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.content.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.content_variants.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.content_variants.first_try_rate",
+      "value": 0.8,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.content_variants.success_rate",
+      "value": 0.8,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.content_variants.latency_p50_ms",
+      "value": 8865.0,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.content_variants.latency_p95_ms",
+      "value": 10062.0,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.content_variants.tokens_p50",
+      "value": 1949,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.content_variants.tokens_p95",
+      "value": 2289,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.content_variants.tokens_grand_total",
+      "value": 9713,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:03+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.content_variants.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.content_variants.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.content_variants.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.content_variants.raw_missing",
+      "value": 0,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.content_variants.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 5（总调用 5，缺失 0）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.content_variants.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.metric_vision.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.metric_vision.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:04+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.metric_vision.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.metric_vision.latency_p50_ms",
+      "value": 2392.3,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.metric_vision.latency_p95_ms",
+      "value": 2550.2,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.metric_vision.tokens_p50",
+      "value": 2283,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.metric_vision.tokens_p95",
+      "value": 2295,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.metric_vision.tokens_grand_total",
+      "value": 11368,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.metric_vision.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.metric_vision.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.metric_vision.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:05+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.metric_vision.raw_missing",
+      "value": 0,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.metric_vision.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 5（总调用 5，缺失 0）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.metric_vision.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.diagnosis.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.diagnosis.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.diagnosis.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.diagnosis.latency_p50_ms",
+      "value": 20364.4,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.diagnosis.latency_p95_ms",
+      "value": 22240.7,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.diagnosis.tokens_p50",
+      "value": 4877,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:06+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.diagnosis.tokens_p95",
+      "value": 5341,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.diagnosis.tokens_grand_total",
+      "value": 22259,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.diagnosis.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.diagnosis.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.diagnosis.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.diagnosis.raw_missing",
+      "value": 0,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.diagnosis.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 5（总调用 5，缺失 0）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.diagnosis.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.weekly.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:07+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.weekly.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.weekly.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.weekly.latency_p50_ms",
+      "value": 16075.6,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.weekly.latency_p95_ms",
+      "value": 29409.1,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.weekly.tokens_p50",
+      "value": 5697,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.weekly.tokens_p95",
+      "value": 9290,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.weekly.tokens_grand_total",
+      "value": 32048,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.weekly.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.weekly.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:08+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.weekly.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.weekly.raw_missing",
+      "value": 0,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.weekly.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 5（总调用 5，缺失 0）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.weekly.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.insights.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.insights.first_try_rate",
+      "value": 0.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "n=5 抽样（5 轮中 5 轮有真实调用），不得外推"
+    },
+    {
+      "name": "llm_stability.insights.success_rate",
+      "value": 0.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.insights.latency_p50_ms",
+      "value": 52.4,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:09+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟（含网络）；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.insights.latency_p95_ms",
+      "value": 61.3,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank；n=5 级小样本"
+    },
+    {
+      "name": "llm_stability.insights.tokens_p50",
+      "value": 0,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "含 prompt+completion"
+    },
+    {
+      "name": "llm_stability.insights.tokens_p95",
+      "value": 0,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": null
+    },
+    {
+      "name": "llm_stability.insights.tokens_grand_total",
+      "value": 0,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次运行该图合计消耗"
+    },
+    {
+      "name": "llm_stability.insights.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "发生了解析重问（parse_attempts>1）的轮次数"
+    },
+    {
+      "name": "llm_stability.insights.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母=发生解析重问的轮次数；无重问时 N/A（不虚报 0）"
+    },
+    {
+      "name": "llm_stability.insights.raw_runs_total",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用的 run 数（raw 复算的总分母）"
+    },
+    {
+      "name": "llm_stability.insights.raw_missing",
+      "value": 5,
+      "unit": "run",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不静默缩小分母）"
+    },
+    {
+      "name": "llm_stability.insights.raw_direct_parse_rate",
+      "value": null,
+      "unit": "比率",
+      "n": 0,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:10+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 0（总调用 5，缺失 5）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.insights.contract_pass_rate",
+      "value": null,
+      "unit": "比率",
+      "n": 0,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约（复用各图自己的 Pydantic 契约 / normalize_* 纯函数，不另写一套规则）"
+    },
+    {
+      "name": "llm_stability.total.rounds_with_calls",
+      "value": 35,
+      "unit": "轮",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "全部图合计的有真实调用轮次（样本量）"
+    },
+    {
+      "name": "llm_stability.total.first_try_rate",
+      "value": 0.8286,
+      "unit": "比率",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "全部轮次中「一次解析且契约通过」占比（n=全体抽样轮次）"
+    },
+    {
+      "name": "llm_stability.total.success_rate",
+      "value": 0.8286,
+      "unit": "比率",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "最终契约通过率（含重问修复后成功）"
+    },
+    {
+      "name": "llm_stability.total.failed_after_repair_rate",
+      "value": null,
+      "unit": "比率",
+      "n": null,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=全部发生解析重问的轮次；无重问时 N/A"
+    },
+    {
+      "name": "llm_stability.total.latency_p50_ms",
+      "value": 3827.2,
+      "unit": "毫秒",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "墙钟含网络；n 级小样本"
+    },
+    {
+      "name": "llm_stability.total.latency_p95_ms",
+      "value": 22694.4,
+      "unit": "毫秒",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "nearest-rank"
+    },
+    {
+      "name": "llm_stability.total.tokens_grand_total",
+      "value": 85671,
+      "unit": "token",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "本次运行全部图的 token 合计（按量记录，无价格表）"
+    },
+    {
+      "name": "llm_stability.total.raw_runs_total",
+      "value": 35,
+      "unit": "run",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "全部图有真实调用的 run 数"
+    },
+    {
+      "name": "llm_stability.total.raw_missing",
+      "value": 5,
+      "unit": "run",
+      "n": 35,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:12+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实调用但 llm_raw 未落库的 run 数（单列，不缩减分母）"
+    },
+    {
+      "name": "llm_stability.total.raw_direct_parse_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 30,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:12+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "分母=可得 raw 样本 30（总调用 35，缺失 5）；原文=json.loads 直接成功（内嵌控制字符修复仍计原文）"
+    },
+    {
+      "name": "llm_stability.total.contract_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 30,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py：固定夹具 × n=5 轮真实调用，逐轮从 agent_runs 读取 json_parse_attempts / token，墙钟计时；跨图合计",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:01:12+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "schema 字段级契约通过率；本样本下 success_rate=0.8286，两者不等价"
+    }
+  ]
+}

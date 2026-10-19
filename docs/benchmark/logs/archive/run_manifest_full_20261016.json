@@ -1,0 +1,34 @@
+{
+  "suite": "run_all_offline",
+  "started_at": "2026-10-16T18:28:04+08:00",
+  "finished_at": "2026-10-16T18:29:10+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "steps": {
+    "services": {
+      "started_by_us": true,
+      "steps": {
+        "start_rc": 0,
+        "healthcheck_green": true,
+        "latency_rc": 0,
+        "smoke_rc": 0,
+        "stop_rc": 0
+      },
+      "already_running": false,
+      "ports_freed": true
+    },
+    "report": {
+      "rc": 0,
+      "log": "docs/benchmark/logs/run_all_report.txt"
+    }
+  },
+  "rcs": [
+    0
+  ],
+  "failed_steps": []
+}

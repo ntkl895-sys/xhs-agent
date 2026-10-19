@@ -1,0 +1,142 @@
+{
+  "suite": "regression_smoke",
+  "generated_at": "2026-10-17T09:31:49+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "scripts": 2,
+    "ok": 2,
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0,
+    "check_sites_static": 78
+  },
+  "notes": [
+    "用例数为运行时真实执行数（通过+失败+跳过）；静态检查点为源码调用点计数（口径不同）。",
+    "跳过项为条件性跳过（详见各脚本日志），不代表失败；全部为 0 失败时 pass_rate=1.0。"
+  ],
+  "detail": [
+    {
+      "script": "smoke_crud_api.py",
+      "path": "scripts\\smoke_crud_api.py",
+      "exit_code": 0,
+      "duration_s": 2.2,
+      "check_sites_static": 38,
+      "log_path": "docs\\benchmark\\logs\\reg_smoke_crud_api.txt",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "status": "ok"
+    },
+    {
+      "script": "smoke_hotspot.py",
+      "path": "scripts\\smoke_hotspot.py",
+      "exit_code": 0,
+      "duration_s": 10.52,
+      "check_sites_static": 40,
+      "log_path": "docs\\benchmark\\logs\\reg_smoke_hotspot.txt",
+      "passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "status": "ok"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "regression_smoke.scripts_total",
+      "value": 2,
+      "unit": "个",
+      "n": 2,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_regression_scale.py 逐个实跑脚本（本机串行、清空代理环境）并解析汇总行「通过 X 项，失败 Y 项」",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "regression_smoke.cases_passed_total",
+      "value": 75,
+      "unit": "项",
+      "n": 2,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_regression_scale.py 逐个实跑脚本（本机串行、清空代理环境）并解析汇总行「通过 X 项，失败 Y 项」",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "regression_smoke.cases_failed_total",
+      "value": 0,
+      "unit": "项",
+      "n": 2,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_regression_scale.py 逐个实跑脚本（本机串行、清空代理环境）并解析汇总行「通过 X 项，失败 Y 项」",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "regression_smoke.check_sites_static_total",
+      "value": 78,
+      "unit": "处",
+      "n": 2,
+      "category": "offline_objective",
+      "method": "源码 ``c.check(`` 调用点正则计数（循环体计 1 处，结构参考口径）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "regression_smoke.pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 2,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_regression_scale.py 逐个实跑脚本（本机串行、清空代理环境）并解析汇总行「通过 X 项，失败 Y 项」",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "分母 = 通过 + 失败（不含条件性跳过）"
+    },
+    {
+      "name": "regression_smoke.smoke_crud_api.py.cases",
+      "value": 37,
+      "unit": "项",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_regression_scale.py 逐个实跑脚本（本机串行、清空代理环境）并解析汇总行「通过 X 项，失败 Y 项」",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:49+08:00",
+      "log_path": "docs\\benchmark\\logs\\reg_smoke_crud_api.txt",
+      "confidence": "high",
+      "note": "通过 37 / 失败 0 / 跳过 0；退出码 0；墙钟 2.2s"
+    },
+    {
+      "name": "regression_smoke.smoke_hotspot.py.cases",
+      "value": 38,
+      "unit": "项",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_regression_scale.py 逐个实跑脚本（本机串行、清空代理环境）并解析汇总行「通过 X 项，失败 Y 项」",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:31:49+08:00",
+      "log_path": "docs\\benchmark\\logs\\reg_smoke_hotspot.txt",
+      "confidence": "high",
+      "note": "通过 38 / 失败 0 / 跳过 0；退出码 0；墙钟 10.52s"
+    }
+  ]
+}

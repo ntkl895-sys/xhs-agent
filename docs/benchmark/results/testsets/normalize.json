@@ -1,0 +1,1422 @@
+{
+  "suite": "testset_normalize",
+  "generated_at": "2026-10-18T10:34:46+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "n": 108,
+    "numeric_n": 91,
+    "none_n": 17,
+    "overall_accuracy": 0.9907,
+    "numeric_accuracy": 1.0,
+    "rejection_accuracy": 0.9412
+  },
+  "notes": [
+    "口径：确定性函数 _parse_count（截图转录值→整数）；expected 由人工按计数语义标注。",
+    "空对空不判命中：expected=None 且实测 None 计「正确拒绝」，与数值正确率分开统计。",
+    "错例（wrong_parse / wrong_accept / error）全部留档，未做任何剔除；未调参、未改实现。"
+  ],
+  "detail": {
+    "fixture": "fixtures/testsets/normalize/cases.json",
+    "fixture_version": "1.1",
+    "categories": {
+      "decimal": {
+        "n": 9,
+        "correct": 9
+      },
+      "fullwidth_comma": {
+        "n": 9,
+        "correct": 9
+      },
+      "invalid": {
+        "n": 9,
+        "correct": 8
+      },
+      "kilo": {
+        "n": 9,
+        "correct": 9
+      },
+      "letter_w": {
+        "n": 9,
+        "correct": 9
+      },
+      "mixed_text": {
+        "n": 9,
+        "correct": 9
+      },
+      "placeholder": {
+        "n": 9,
+        "correct": 9
+      },
+      "plain_int": {
+        "n": 9,
+        "correct": 9
+      },
+      "spaces": {
+        "n": 9,
+        "correct": 9
+      },
+      "thousand_sep": {
+        "n": 9,
+        "correct": 9
+      },
+      "wan": {
+        "n": 9,
+        "correct": 9
+      },
+      "yi": {
+        "n": 9,
+        "correct": 9
+      }
+    },
+    "mismatch_total": 1,
+    "mismatches": [
+      {
+        "id": "norm_107",
+        "category": "invalid",
+        "raw": "1.2.3",
+        "expected": null,
+        "note": "非法数（多点）：应为 None",
+        "actual": 1,
+        "outcome": "wrong_accept",
+        "correct": false
+      }
+    ],
+    "records": [
+      {
+        "id": "norm_001",
+        "category": "plain_int",
+        "raw": "0",
+        "expected": 0,
+        "note": "纯数字：原样解析",
+        "actual": 0,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_002",
+        "category": "plain_int",
+        "raw": "7",
+        "expected": 7,
+        "note": "纯数字：原样解析",
+        "actual": 7,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_003",
+        "category": "plain_int",
+        "raw": "123",
+        "expected": 123,
+        "note": "纯数字：原样解析",
+        "actual": 123,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_004",
+        "category": "plain_int",
+        "raw": "4567",
+        "expected": 4567,
+        "note": "纯数字：原样解析",
+        "actual": 4567,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_005",
+        "category": "plain_int",
+        "raw": "95272",
+        "expected": 95272,
+        "note": "纯数字：原样解析",
+        "actual": 95272,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_006",
+        "category": "plain_int",
+        "raw": "1000000",
+        "expected": 1000000,
+        "note": "纯数字：原样解析",
+        "actual": 1000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_007",
+        "category": "plain_int",
+        "raw": "42",
+        "expected": 42,
+        "note": "纯数字：原样解析",
+        "actual": 42,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_008",
+        "category": "plain_int",
+        "raw": "8888",
+        "expected": 8888,
+        "note": "纯数字：原样解析",
+        "actual": 8888,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_009",
+        "category": "plain_int",
+        "raw": "2026",
+        "expected": 2026,
+        "note": "纯数字：原样解析",
+        "actual": 2026,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_010",
+        "category": "thousand_sep",
+        "raw": "1,234",
+        "expected": 1234,
+        "note": "半角千分位：去逗号",
+        "actual": 1234,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_011",
+        "category": "thousand_sep",
+        "raw": "12,345",
+        "expected": 12345,
+        "note": "半角千分位：去逗号",
+        "actual": 12345,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_012",
+        "category": "thousand_sep",
+        "raw": "1,234,567",
+        "expected": 1234567,
+        "note": "半角千分位：去逗号",
+        "actual": 1234567,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_013",
+        "category": "thousand_sep",
+        "raw": "9,999",
+        "expected": 9999,
+        "note": "半角千分位：去逗号",
+        "actual": 9999,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_014",
+        "category": "thousand_sep",
+        "raw": "100,000",
+        "expected": 100000,
+        "note": "半角千分位：去逗号",
+        "actual": 100000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_015",
+        "category": "thousand_sep",
+        "raw": "23,456",
+        "expected": 23456,
+        "note": "半角千分位：去逗号",
+        "actual": 23456,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_016",
+        "category": "thousand_sep",
+        "raw": "7,007",
+        "expected": 7007,
+        "note": "半角千分位：去逗号",
+        "actual": 7007,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_017",
+        "category": "thousand_sep",
+        "raw": "500,000",
+        "expected": 500000,
+        "note": "半角千分位：去逗号",
+        "actual": 500000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_018",
+        "category": "thousand_sep",
+        "raw": "3,141",
+        "expected": 3141,
+        "note": "半角千分位：去逗号",
+        "actual": 3141,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_019",
+        "category": "fullwidth_comma",
+        "raw": "1，234",
+        "expected": 1234,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 1234,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_020",
+        "category": "fullwidth_comma",
+        "raw": "12，345",
+        "expected": 12345,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 12345,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_021",
+        "category": "fullwidth_comma",
+        "raw": "9，999",
+        "expected": 9999,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 9999,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_022",
+        "category": "fullwidth_comma",
+        "raw": "100，000",
+        "expected": 100000,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 100000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_023",
+        "category": "fullwidth_comma",
+        "raw": "5，678",
+        "expected": 5678,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 5678,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_024",
+        "category": "fullwidth_comma",
+        "raw": "88，888",
+        "expected": 88888,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 88888,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_025",
+        "category": "fullwidth_comma",
+        "raw": "1，000，000",
+        "expected": 1000000,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 1000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_026",
+        "category": "fullwidth_comma",
+        "raw": "66，666",
+        "expected": 66666,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 66666,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_027",
+        "category": "fullwidth_comma",
+        "raw": "3，000",
+        "expected": 3000,
+        "note": "中文逗号千分位：去逗号",
+        "actual": 3000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_028",
+        "category": "wan",
+        "raw": "1.2万",
+        "expected": 12000,
+        "note": "单位「万」：×10000",
+        "actual": 12000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_029",
+        "category": "wan",
+        "raw": "3万",
+        "expected": 30000,
+        "note": "单位「万」：×10000",
+        "actual": 30000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_030",
+        "category": "wan",
+        "raw": "10.5万",
+        "expected": 105000,
+        "note": "单位「万」：×10000",
+        "actual": 105000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_031",
+        "category": "wan",
+        "raw": "0.5万",
+        "expected": 5000,
+        "note": "单位「万」：×10000",
+        "actual": 5000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_032",
+        "category": "wan",
+        "raw": "12.34万",
+        "expected": 123400,
+        "note": "单位「万」：×10000",
+        "actual": 123400,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_033",
+        "category": "wan",
+        "raw": "99万",
+        "expected": 990000,
+        "note": "单位「万」：×10000",
+        "actual": 990000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_034",
+        "category": "wan",
+        "raw": "1万",
+        "expected": 10000,
+        "note": "单位「万」：×10000",
+        "actual": 10000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_035",
+        "category": "wan",
+        "raw": "2.5万",
+        "expected": 25000,
+        "note": "单位「万」：×10000",
+        "actual": 25000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_036",
+        "category": "wan",
+        "raw": "100万",
+        "expected": 1000000,
+        "note": "单位「万」：×10000",
+        "actual": 1000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_037",
+        "category": "yi",
+        "raw": "1.2亿",
+        "expected": 120000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 120000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_038",
+        "category": "yi",
+        "raw": "2亿",
+        "expected": 200000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 200000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_039",
+        "category": "yi",
+        "raw": "0.8亿",
+        "expected": 80000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 80000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_040",
+        "category": "yi",
+        "raw": "10亿",
+        "expected": 1000000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 1000000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_041",
+        "category": "yi",
+        "raw": "1亿",
+        "expected": 100000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 100000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_042",
+        "category": "yi",
+        "raw": "3.5亿",
+        "expected": 350000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 350000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_043",
+        "category": "yi",
+        "raw": "0.05亿",
+        "expected": 5000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 5000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_044",
+        "category": "yi",
+        "raw": "12亿",
+        "expected": 1200000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 1200000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_045",
+        "category": "yi",
+        "raw": "1.08亿",
+        "expected": 108000000,
+        "note": "单位「亿」：×100000000",
+        "actual": 108000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_046",
+        "category": "letter_w",
+        "raw": "1.5w",
+        "expected": 15000,
+        "note": "单位「w/W」：×10000",
+        "actual": 15000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_047",
+        "category": "letter_w",
+        "raw": "2w",
+        "expected": 20000,
+        "note": "单位「w/W」：×10000",
+        "actual": 20000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_048",
+        "category": "letter_w",
+        "raw": "3.2W",
+        "expected": 32000,
+        "note": "单位「w/W」：×10000",
+        "actual": 32000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_049",
+        "category": "letter_w",
+        "raw": "0.8w",
+        "expected": 8000,
+        "note": "单位「w/W」：×10000",
+        "actual": 8000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_050",
+        "category": "letter_w",
+        "raw": "12w",
+        "expected": 120000,
+        "note": "单位「w/W」：×10000",
+        "actual": 120000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_051",
+        "category": "letter_w",
+        "raw": "1.2W",
+        "expected": 12000,
+        "note": "单位「w/W」：×10000",
+        "actual": 12000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_052",
+        "category": "letter_w",
+        "raw": "100w",
+        "expected": 1000000,
+        "note": "单位「w/W」：×10000",
+        "actual": 1000000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_053",
+        "category": "letter_w",
+        "raw": "0.5W",
+        "expected": 5000,
+        "note": "单位「w/W」：×10000",
+        "actual": 5000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_054",
+        "category": "letter_w",
+        "raw": "5.5w",
+        "expected": 55000,
+        "note": "单位「w/W」：×10000",
+        "actual": 55000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_055",
+        "category": "kilo",
+        "raw": "3.4千",
+        "expected": 3400,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 3400,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_056",
+        "category": "kilo",
+        "raw": "5k",
+        "expected": 5000,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 5000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_057",
+        "category": "kilo",
+        "raw": "1.5K",
+        "expected": 1500,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 1500,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_058",
+        "category": "kilo",
+        "raw": "0.6千",
+        "expected": 600,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 600,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_059",
+        "category": "kilo",
+        "raw": "12k",
+        "expected": 12000,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 12000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_060",
+        "category": "kilo",
+        "raw": "8.8K",
+        "expected": 8800,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 8800,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_061",
+        "category": "kilo",
+        "raw": "2千",
+        "expected": 2000,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 2000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_062",
+        "category": "kilo",
+        "raw": "20k",
+        "expected": 20000,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 20000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_063",
+        "category": "kilo",
+        "raw": "0.25千",
+        "expected": 250,
+        "note": "单位「千/k/K」：×1000",
+        "actual": 250,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_064",
+        "category": "spaces",
+        "raw": "1 234",
+        "expected": 1234,
+        "note": "半角空格千分位",
+        "actual": 1234,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_065",
+        "category": "spaces",
+        "raw": "12 345",
+        "expected": 12345,
+        "note": "半角空格千分位",
+        "actual": 12345,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_066",
+        "category": "spaces",
+        "raw": " 5678 ",
+        "expected": 5678,
+        "note": "首尾空格",
+        "actual": 5678,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_067",
+        "category": "spaces",
+        "raw": "1 234",
+        "expected": 1234,
+        "note": "不换行空格（NBSP）",
+        "actual": 1234,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_068",
+        "category": "spaces",
+        "raw": " 99 ",
+        "expected": 99,
+        "note": "首尾空格",
+        "actual": 99,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_069",
+        "category": "spaces",
+        "raw": "7 007",
+        "expected": 7007,
+        "note": "半角空格千分位",
+        "actual": 7007,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_070",
+        "category": "spaces",
+        "raw": "1 2 3",
+        "expected": 123,
+        "note": "数字间多处空格（全去）",
+        "actual": 123,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_071",
+        "category": "spaces",
+        "raw": "500 000",
+        "expected": 500000,
+        "note": "半角空格千分位",
+        "actual": 500000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_072",
+        "category": "spaces",
+        "raw": "  42  ",
+        "expected": 42,
+        "note": "首尾多空格",
+        "actual": 42,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_073",
+        "category": "decimal",
+        "raw": "123.4",
+        "expected": 123,
+        "note": "小数：四舍五入到整数",
+        "actual": 123,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_074",
+        "category": "decimal",
+        "raw": "99.9",
+        "expected": 100,
+        "note": "小数：四舍五入到整数",
+        "actual": 100,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_075",
+        "category": "decimal",
+        "raw": "12.6",
+        "expected": 13,
+        "note": "小数：四舍五入到整数",
+        "actual": 13,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_076",
+        "category": "decimal",
+        "raw": "7.2",
+        "expected": 7,
+        "note": "小数：四舍五入到整数",
+        "actual": 7,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_077",
+        "category": "decimal",
+        "raw": "345.8",
+        "expected": 346,
+        "note": "小数：四舍五入到整数",
+        "actual": 346,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_078",
+        "category": "decimal",
+        "raw": "1000.1",
+        "expected": 1000,
+        "note": "小数：四舍五入到整数",
+        "actual": 1000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_079",
+        "category": "decimal",
+        "raw": "66.66",
+        "expected": 67,
+        "note": "小数：四舍五入到整数",
+        "actual": 67,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_080",
+        "category": "decimal",
+        "raw": "0.4",
+        "expected": 0,
+        "note": "小数：四舍五入到整数",
+        "actual": 0,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_081",
+        "category": "decimal",
+        "raw": "250.7",
+        "expected": 251,
+        "note": "小数：四舍五入到整数",
+        "actual": 251,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_082",
+        "category": "mixed_text",
+        "raw": "点赞 1234",
+        "expected": 1234,
+        "note": "前缀文字",
+        "actual": 1234,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_083",
+        "category": "mixed_text",
+        "raw": "曝光量：8567",
+        "expected": 8567,
+        "note": "中文冒号",
+        "actual": 8567,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_084",
+        "category": "mixed_text",
+        "raw": "共 234 条评论",
+        "expected": 234,
+        "note": "句中数字",
+        "actual": 234,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_085",
+        "category": "mixed_text",
+        "raw": "收藏 12,345",
+        "expected": 12345,
+        "note": "文本+千分位",
+        "actual": 12345,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_086",
+        "category": "mixed_text",
+        "raw": "新增粉丝 806",
+        "expected": 806,
+        "note": "前缀文字",
+        "actual": 806,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_087",
+        "category": "mixed_text",
+        "raw": "分享数 56",
+        "expected": 56,
+        "note": "前缀文字",
+        "actual": 56,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_088",
+        "category": "mixed_text",
+        "raw": "阅读约 1.2万",
+        "expected": 12000,
+        "note": "文本+单位",
+        "actual": 12000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_089",
+        "category": "mixed_text",
+        "raw": "总曝光 12.8万",
+        "expected": 128000,
+        "note": "文本+单位",
+        "actual": 128000,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_090",
+        "category": "mixed_text",
+        "raw": "评论 187 条",
+        "expected": 187,
+        "note": "句中数字",
+        "actual": 187,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_091",
+        "category": "placeholder",
+        "raw": "-",
+        "expected": null,
+        "note": "短横线占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_092",
+        "category": "placeholder",
+        "raw": "--",
+        "expected": null,
+        "note": "双短横线占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_093",
+        "category": "placeholder",
+        "raw": "—",
+        "expected": null,
+        "note": "em 长横占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_094",
+        "category": "placeholder",
+        "raw": "暂无",
+        "expected": null,
+        "note": "中文占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_095",
+        "category": "placeholder",
+        "raw": "?",
+        "expected": null,
+        "note": "问号占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_096",
+        "category": "placeholder",
+        "raw": "？",
+        "expected": null,
+        "note": "全角问号占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_097",
+        "category": "placeholder",
+        "raw": "无",
+        "expected": null,
+        "note": "中文「无」：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_098",
+        "category": "placeholder",
+        "raw": "N/A",
+        "expected": null,
+        "note": "n/a 占位：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_099",
+        "category": "placeholder",
+        "raw": "",
+        "expected": null,
+        "note": "空串：应为空值（None）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_100",
+        "category": "invalid",
+        "raw": "abc",
+        "expected": null,
+        "note": "非数字串：应为 None",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_101",
+        "category": "invalid",
+        "raw": "hello world",
+        "expected": null,
+        "note": "英文串：应为 None",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_102",
+        "category": "invalid",
+        "raw": "待定",
+        "expected": null,
+        "note": "中文非数字词：应为 None",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_103",
+        "category": "invalid",
+        "raw": "-5",
+        "expected": null,
+        "note": "负数（半角减号）：计数语义下应为 None",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_104",
+        "category": "invalid",
+        "raw": "－5",
+        "expected": null,
+        "note": "负数（全角减号）：语义同上（如实测出实现行为）",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_105",
+        "category": "invalid",
+        "raw": "85%",
+        "expected": null,
+        "note": "百分比：计数语义下应为 None",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      },
+      {
+        "id": "norm_106",
+        "category": "invalid",
+        "raw": "１２３",
+        "expected": 123,
+        "note": "全角数字：期望等价 123（如实测出实现行为）",
+        "actual": 123,
+        "outcome": "correct_parse",
+        "correct": true
+      },
+      {
+        "id": "norm_107",
+        "category": "invalid",
+        "raw": "1.2.3",
+        "expected": null,
+        "note": "非法数（多点）：应为 None",
+        "actual": 1,
+        "outcome": "wrong_accept",
+        "correct": false
+      },
+      {
+        "id": "norm_108",
+        "category": "invalid",
+        "raw": "   ",
+        "expected": null,
+        "note": "纯空白串：应为 None",
+        "actual": null,
+        "outcome": "correct_reject",
+        "correct": true
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "name": "testset_normalize.cases_total",
+      "value": 108,
+      "unit": "条",
+      "n": 108,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "数值样本 91（expected 非 None）+ None 样本 17"
+    },
+    {
+      "name": "testset_normalize.overall_accuracy",
+      "value": 0.9907,
+      "unit": "比率",
+      "n": 108,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "（数值正确 + 正确拒绝）/ 总数"
+    },
+    {
+      "name": "testset_normalize.numeric_accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 91,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "数值样本：解析值与 expected 完全一致的比例"
+    },
+    {
+      "name": "testset_normalize.rejection_accuracy",
+      "value": 0.9412,
+      "unit": "比率",
+      "n": 17,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "None 样本：正确返回空值的比例（空对空不判命中，单独统计）"
+    },
+    {
+      "name": "testset_normalize.wrong_parse_total",
+      "value": 0,
+      "unit": "条",
+      "n": 108,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "数值解析错误（结果与 expected 不一致）"
+    },
+    {
+      "name": "testset_normalize.wrong_accept_total",
+      "value": 1,
+      "unit": "条",
+      "n": 108,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "应为空值却返回了数值"
+    },
+    {
+      "name": "testset_normalize.error_total",
+      "value": 0,
+      "unit": "条",
+      "n": 108,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:44+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "预期外异常（如有——属真实缺陷线索，明细见 detail.mismatches）"
+    },
+    {
+      "name": "testset_normalize.category.decimal.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.fullwidth_comma.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.invalid.accuracy",
+      "value": 0.8889,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.kilo.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.letter_w.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.mixed_text.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.placeholder.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.plain_int.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.spaces.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:45+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.thousand_sep.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:46+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.wan.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:46+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_normalize.category.yi.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 9,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_normalize.py：读冻结夹具（sha256 校验），逐条调真实 _parse_count（截图转录值→整数，确定性；零 LLM）；expected 由人工按「计数语义」标注（不依赖实现）；类别=offline_objective",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T10:34:46+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    }
+  ]
+}

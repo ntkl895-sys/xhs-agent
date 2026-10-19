@@ -1,0 +1,101 @@
+{
+  "expected_db": "xhs_bench_rel_20261017094514_19148",
+  "scenarios": {
+    "partial": {
+      "status": "partial",
+      "totals": {
+        "sources": 4,
+        "fetched": 5,
+        "new": 5,
+        "updated": 0,
+        "failed": 2,
+        "blocked": 0
+      },
+      "per_source": [
+        {
+          "source": "zhihu",
+          "source_name": "知乎",
+          "status": "success",
+          "fetched": 3,
+          "new": 3,
+          "updated": 0,
+          "failed": 0,
+          "blocked": 0,
+          "error": null
+        },
+        {
+          "source": "douyin",
+          "source_name": "抖音",
+          "status": "failed",
+          "fetched": 0,
+          "new": 0,
+          "updated": 0,
+          "failed": 1,
+          "blocked": 0,
+          "error": "HotspotRetryableError: 上游返回 HTTP 500"
+        },
+        {
+          "source": "bilibili",
+          "source_name": "B站",
+          "status": "failed",
+          "fetched": 0,
+          "new": 0,
+          "updated": 0,
+          "failed": 1,
+          "blocked": 0,
+          "error": "HotspotClientError: 上游返回 HTTP 404（该源可能不存在或已下线）"
+        },
+        {
+          "source": "toutiao",
+          "source_name": "今日头条",
+          "status": "success",
+          "fetched": 2,
+          "new": 2,
+          "updated": 0,
+          "failed": 0,
+          "blocked": 0,
+          "error": null
+        }
+      ],
+      "rows_before": 0,
+      "rows_after": 5,
+      "hits": {
+        "zhihu": 1,
+        "douyin": 3,
+        "bilibili": 1,
+        "toutiao": 1
+      },
+      "elapsed_ms": 3142.3
+    },
+    "all_fail": {
+      "status": "failed",
+      "totals": {
+        "sources": 2,
+        "fetched": 0,
+        "new": 0,
+        "updated": 0,
+        "failed": 2,
+        "blocked": 0
+      },
+      "rows_before": 5,
+      "rows_after": 5,
+      "hits": {
+        "zhihu": 3,
+        "douyin": 3
+      }
+    },
+    "lock": {
+      "second_call": "FetchInProgress",
+      "third_call_is_none": true,
+      "first_status": "success",
+      "first_error": null,
+      "mock_requests_total": 4,
+      "sources": 4
+    }
+  },
+  "run_statuses": [
+    "failed",
+    "partial",
+    "success"
+  ]
+}

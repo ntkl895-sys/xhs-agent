@@ -1,0 +1,15 @@
+==================================================================
+  测试集评测 A · JSON 兜底解析器鲁棒性（零 token）
+==================================================================
+[夹具] json_robustness v1.0，200 条（sha256 校验通过）
+------------------------------------------------------------------
+整体准确率：135/200 = 0.675
+direct 一次成功率：25/25 = 1.0
+repaired 救回率：59/109 = 0.5413
+failed 正确拒绝率：51/66 = 0.7727
+错例构成：未救回 32 条 ｜ 降级提取 18 条 ｜ 内容不符 0 条 ｜ 过度解析 15 条 ｜ 预期外异常 0 条
+矩阵（期望行 × 实际列）：
+  direct    direct=25  repaired=0  failed=0  error=0
+  repaired  direct=0  repaired=77  failed=32  error=0
+  failed    direct=0  repaired=15  failed=51  error=0
+结果：docs\benchmark\results\testsets\json_robustness.json

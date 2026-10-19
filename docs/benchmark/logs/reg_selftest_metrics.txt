@@ -1,0 +1,201 @@
+2026-10-17 09:35:03,155 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:35:03,278 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 201 Created"
+2026-10-17 09:35:03,295 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 201 Created"
+2026-10-17 09:35:03,310 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 201 Created"
+2026-10-17 09:35:03,327 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 201 Created"
+2026-10-17 09:35:03,333 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,336 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,339 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,342 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,345 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,348 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,355 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 404 Not Found"
+2026-10-17 09:35:03,365 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 409 Conflict"
+2026-10-17 09:35:03,375 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/metrics?note_id=a76e3c55-bee2-4379-9331-ea52fd2b2a97 "HTTP/1.1 200 OK"
+2026-10-17 09:35:03,379 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/metrics "HTTP/1.1 400 Bad Request"
+2026-10-17 09:35:03,386 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/metrics?note_id=e247ccb0-9f02-4149-9b12-3a96f702d53d "HTTP/1.1 404 Not Found"
+2026-10-17 09:35:03,457 [INFO] xhs-agent.metrics.service: 截图识别完成：run=83b8c8cf-4653-48c8-bffe-4df07696a91a note=a76e3c55-bee2-4379-9331-ea52fd2b2a97 识别=6 缺失=0 不确定=0 parse_attempts=1
+2026-10-17 09:35:03,458 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:03,513 [INFO] xhs-agent.metrics.service: 截图识别完成：run=ece29683-555b-4179-a484-9dd521e17bd6 note=a76e3c55-bee2-4379-9331-ea52fd2b2a97 识别=3 缺失=3 不确定=1 parse_attempts=1
+2026-10-17 09:35:03,515 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:03,537 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,562 [INFO] xhs-agent.metrics.service: 截图识别完成：run=190b509a-f102-408f-abce-90642c715b71 note=a76e3c55-bee2-4379-9331-ea52fd2b2a97 识别=6 缺失=0 不确定=0 parse_attempts=2
+2026-10-17 09:35:03,563 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:03,609 [INFO] xhs-agent.metrics.service: 截图识别完成：run=4c737e86-a90c-47c2-911b-f1f378ab4c64 note=None 识别=6 缺失=0 不确定=0 parse_attempts=1
+2026-10-17 09:35:03,610 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:03,637 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,638 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,639 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,640 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,641 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,642 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:35:03,664 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=8b3db31d-d41e-4da5-b39b-26d492811fdb）：识别失败：连续 3 轮输出均无法解析为合法 JSON。请重试、更换更清晰的截图，或检查所配视觉模型是否稳定支持 JSON 输出。
+2026-10-17 09:35:03,670 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 400 Bad Request"
+2026-10-17 09:35:03,716 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=6d5da877-07ef-4b89-b76f-28b5b099c16e）：当前模型不支持图片输入（vision）。请在 DeepSeek 控制台的模型列表换用支持图片输入的模型，并填入 backend/.env 的 LLM_VISION_MODEL（留空则回退 LLM_MODEL）。
+2026-10-17 09:35:03,721 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 400 Bad Request"
+2026-10-17 09:35:03,736 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 400 Bad Request"
+2026-10-17 09:35:03,769 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=6e21b1a4-5100-4eb1-89b0-f1e6d95718a3）：笔记不存在：7aff98fb-ad5e-4ca0-a937-6315465d2440
+2026-10-17 09:35:03,775 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 404 Not Found"
+2026-10-17 09:35:03,800 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=ec653cb2-4239-4f40-b66b-477f3ec39b41）：不支持的图片类型「text/plain」，仅允许：image/jpeg、image/png、image/webp
+2026-10-17 09:35:03,805 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,830 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=6ada5ce8-0f38-4399-80f8-39fbd16b0e38）：文件内容不是有效图片（文件头校验失败，可能是改名的非图片文件或已损坏）。请重新导出 jpg / png / webp 截图后重试。
+2026-10-17 09:35:03,836 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,863 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=f7453570-cf3f-41c8-a15d-7290c0cb2fd7）：上传文件为空，请重新选择截图
+2026-10-17 09:35:03,868 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,905 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=metric_recognize thread=3f96b4ee-c9bb-4fc3-b10e-22a9aaf4f234）：图片超过大小上限 4.0 MB（当前 4.00 MB）。请压缩 / 裁剪截图后重试（上限可用 METRIC_MAX_IMAGE_BYTES 调整）。
+2026-10-17 09:35:03,913 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,916 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:35:03,966 [INFO] xhs-agent.metrics.service: 截图识别完成：run=007e8b2c-1fcf-47c4-a773-962679596426 note=a76e3c55-bee2-4379-9331-ea52fd2b2a97 识别=6 缺失=0 不确定=0 parse_attempts=1
+2026-10-17 09:35:03,968 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:04,018 [INFO] xhs-agent.metrics.service: 截图识别完成：run=9824de3f-0c67-45a9-9640-af4d39a9abd4 note=a76e3c55-bee2-4379-9331-ea52fd2b2a97 识别=6 缺失=0 不确定=0 parse_attempts=1
+2026-10-17 09:35:04,020 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:04,036 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 201 Created"
+2026-10-17 09:35:04,050 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/metrics?note_id=a76e3c55-bee2-4379-9331-ea52fd2b2a97 "HTTP/1.1 200 OK"
+2026-10-17 09:35:04,100 [INFO] xhs-agent.metrics.service: 截图识别完成：run=45cd1276-c93b-4f5c-9047-fd61be069f11 note=a76e3c55-bee2-4379-9331-ea52fd2b2a97 识别=6 缺失=0 不确定=0 parse_attempts=1
+2026-10-17 09:35:04,102 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics/recognize "HTTP/1.1 200 OK"
+2026-10-17 09:35:04,115 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/metrics "HTTP/1.1 201 Created"
+==============================================================================
+第 15 步 · 数据回填（截图识别 + 手工录入）离线自检（不联网、不需要 API Key）
+==============================================================================
+[PASS] build_metric_graph 返回已编译的 LangGraph 图
+[PASS] 图含 load_image / transcribe / normalize_validate / give_up 四节点
+[PASS] load_image → transcribe 为直连边
+[PASS] transcribe 存在「JSON 失败回炉」条件边（有限回路的载体）
+[PASS] transcribe 存在去 normalize / give_up 的条件边
+[PASS] normalize / give_up 均连接 END
+[PASS] 回路有界（上限来自 AGENT_JSON_MAX_ATTEMPTS）
+[PASS] 别名对齐 + 万/k/亿/千分位换算逐字段正确
+[PASS] 占位符（--）计入 missing
+[PASS] 六字段之外的键记入 evidence.ignored_fields 并忽略
+[PASS] raw 与 value 冲突时以 raw 换算为准
+[PASS] 冲突字段计入 uncertain
+[PASS] 负数 value 按无效处理（不臆造）
+[PASS] 含 % 的文本按无效处理（六指标均为计数）
+[PASS] 手工录入 POST /metrics 返回 201
+[PASS] 六指标 + 来源 + 笔记 id 逐列落库一致
+[PASS] 默认 screenshot_path 为 null（不落盘）
+[PASS] 响应不含 llm_raw / 截图路径
+[PASS] 六指标全空也可落库（可空非负整数）
+[PASS] 全空六指标落库为 NULL；data_source 默认 manual
+[PASS] captured_at 无时区也接受（按 UTC+8 解释）
+[PASS] 无时区输入落库为 02:00Z（即本地 10:00 +08:00）
+[PASS] 多余字段不报错（extra=ignore）
+[PASS] 客户端伪传 screenshot_path 被忽略（落库仍为 null）
+[PASS] 缺 note_id → 422
+[PASS] 缺 captured_at → 422
+[PASS] views 负数 → 422
+[PASS] views 非数字 → 422
+[PASS] views 非整数 → 422
+[PASS] note_id 非法 UUID → 422
+[PASS] 不存在的笔记 → 404
+[PASS] 同笔记同采集时刻 → 409（uq_metric_snapshot）
+[PASS] 409 提示指向 captured_at
+[PASS] GET /metrics?note_id= 返回 200
+[PASS] 时间线条目数 = 已落库快照数（4 条）
+[PASS] 时间线按 captured_at 倒序
+[PASS] 时间线条目含 id / note_id / data_source
+[PASS] GET /metrics 缺 note_id → 400
+[PASS] GET /metrics 笔记不存在 → 404
+[PASS] 识别成功返回 200
+[PASS] 六指标候选逐字段正确（raw 文本经本地换算）
+[PASS] missing / uncertain 均为空
+[PASS] parse_attempts = 1（一次命中）
+[PASS] data_source 恒为 screenshot
+[PASS] note_id / note_title 回显（人工核对用）
+[PASS] 假模型恰调用 1 次（一次命中）
+[PASS] 识别**不写库**：note_metrics 行数不变（人工核对是硬规则）
+[PASS] 响应不含 base64 / data URL / llm_raw
+[PASS] 响应不含绝对路径 / 文件 URI
+[PASS] 提示词含六字段名与「取不到留 null」约束
+[PASS] agent_runs：run_type=metric_recognize、status=success
+[PASS] outputs 回填识别摘要（metrics.views=12000）
+[PASS] run 的 note_id 已回填（harness 不转发，service 补齐）
+[PASS] llm_raw 已入库且不含密钥前缀 / base64
+[PASS] json_parse_attempts = 1
+[PASS] 含额外字段的识别仍成功
+[PASS] raw/value 冲突取 raw 换算；中文别名正确对齐
+[PASS] metrics 恰含六字段（impressions / clicks / ctr 已忽略）
+[PASS] 额外字段不作为指标字段返回
+[PASS] missing_fields = 值为空的字段（本地重新计算）
+[PASS] uncertain_fields：raw/value 冲突字段（值为空的不计）
+[PASS] evidence.ignored_fields 登记被忽略字段
+[PASS] warnings 提示已忽略非同口径字段
+[PASS] 首次坏 JSON 经纠正重问后成功
+[PASS] parse_attempts = 2（纠正后命中）
+[PASS] 不带 note_id 也能识别（纯候选）
+[PASS] note_id / note_title 为 null
+[PASS] JSON 连续失败重试超限 → 400
+[PASS] 错误消息为友好中文指引
+[PASS] 响应不含原始堆栈
+[PASS] 模型调用次数 = 图回炉 3 轮 × 单轮 3 次 = 9
+[PASS] 失败运行落 agent_runs=status:failed
+[PASS] error_message 为可读摘要且无密钥前缀
+[PASS] 模型不支持图片 → 400（换支持视觉的模型可解）
+[PASS] 消息包含「不支持」与操作指引
+[PASS] details 附带视觉文档地址（LLM_VISION_MODEL 配置指引）
+[PASS] 不支持图片不进入回炉（首轮即分流 give_up）
+[PASS] 不支持图片的运行同样落 failed（审计不丢）
+[PASS] 视觉未配置（AGENT_LLM_ENABLED=false）→ 400
+[PASS] 未配置错误信息指向开关 / key（可操作指引）
+[PASS] 未配置时**不创建** agent_runs（零请求）
+[PASS] 识别时 note_id 不存在 → 404
+[PASS] 404 消息为友好中文
+[PASS] 声明类型不在白名单 → 422
+[PASS] 文件头魔数与声明类型不符 → 422（改名的非图片文件）
+[PASS] 错误消息指出文件头校验失败
+[PASS] 空文件 → 422
+[PASS] 超过大小上限 → 422
+[PASS] 错误消息指出大小上限与调整方式
+[PASS] 缺 file 字段 → 422（请求校验）
+[PASS] 本机 SAVE_SCREENSHOT 默认 false
+[PASS] 默认关闭时「请求保存」也不落盘（screenshot_file=null）
+[PASS] SCREENSHOT_DIR 无新文件（差集为空）
+[PASS] 默认关闭时 evidence 不含 screenshot_file
+[PASS] 开启后识别仍 200
+[PASS] 返回的截图文件名是纯文件名（不含目录）
+[PASS] 截图确实写入 SCREENSHOT_DIR
+[PASS] evidence.screenshot_file 与返回值一致（落库提取通道）
+[PASS] 带 evidence 的快照落库 201
+[PASS] screenshot_path 经 evidence 受控写入（文件名一致）
+[PASS] 时间线回读 screenshot_path（仅文件名）
+[PASS] 开启配置但用户未确认时仍不落盘（两把闸门都开才写）
+[PASS] 非法文件名（路径注入）被拒绝，screenshot_path 保持 null
+[PASS] /api/v1/metrics 恰为 GET + POST
+[PASS] /api/v1/metrics/recognize 恰为 POST（multipart）
+[PASS] metrics 路由中不存在 PUT / DELETE / PATCH（本步不提供）
+[PASS] MetricSnapshotCreate **不含** screenshot_path（客户端不可传入）
+[PASS] MetricSnapshotCreate 属性恰为约定字段
+[PASS] MetricRecognizeResult 无 llm_raw / 密钥 / 路径字段
+[PASS] MetricSnapshotOut 不含 llm_raw
+[PASS] main.py 路由注册数 ≥ 8 且 metrics_router 在册（不回退）
+[PASS] 全局 lifespan 仍唯一（第 15 步未新增）
+[PASS] migrations/versions 仍恰 2 支迁移（本步零迁移）
+[PASS] 迁移文件名仍为 0001 / 0002（未新增）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] app/agent/metrics/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/metrics/contracts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/metrics/state.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/metrics/prompts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/metrics/graph.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/metrics/service.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/schemas/metric.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/crud/metric.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/api/routes/metrics.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/llm/factory.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/llm/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/models/enums.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/main.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/core/config.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] frontend/src/app/metrics/page.tsx 不含违禁字样
+[PASS] frontend/src/app/api/v1/metrics/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/metrics/recognize/route.ts 不含违禁字样
+[PASS] frontend/src/lib/api-client.ts 不含违禁字样
+[PASS] frontend/src/lib/api-server.ts 不含违禁字样
+[PASS] frontend/src/lib/types.ts 不含违禁字样
+[PASS] frontend/src/components/site-header.tsx 不含违禁字样
+[PASS] frontend/src/app/notes/page.tsx 不含违禁字样
+[PASS] 测试数据物理清理并双口径复查残留为 0
+
+通过 139 项，失败 0 项。
+全部 PASS ✔（第 15 步数据回填自检，依赖本地 docker PostgreSQL）

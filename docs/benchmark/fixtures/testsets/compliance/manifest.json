@@ -1,0 +1,26 @@
+{
+  "name": "compliance",
+  "version": "1.0",
+  "generated_at": "2026-10-17T08:57:55+08:00",
+  "generator": "scripts/benchmark/build_testsets.py",
+  "answer_source": "人工撰写 128 条文本（正例 64 含自然语境/分隔符/大小写/谐音变体；负例 64 含明显干净与易误伤语境）；expect_hit 由人工按语义标注，不复制扫描器词表",
+  "stats": {
+    "total": 128,
+    "positives": 64,
+    "negatives": 64,
+    "groups": {
+      "pos_basic": 20,
+      "pos_separated": 14,
+      "pos_case": 10,
+      "pos_variant": 20,
+      "neg_clean": 36,
+      "neg_bait_literal": 14,
+      "neg_bait_sensitive": 14
+    }
+  },
+  "sha256": {
+    "cases.json": "5c841885c8d1dcc3c3678959a979ea4673d7d3fcd0fe86c703a99574b2d6fa8c"
+  },
+  "freeze_notice": "本测试集已冻结：评测只读不改；任何修改须升 version 并在报告中保留前后两版结果。",
+  "notes": "评测口径 = 内置保守词表（73 词）扫描器（scan_note，确定性、离线）；知识库扩展词表为运行态数据，不纳入本冻结集评测。"
+}

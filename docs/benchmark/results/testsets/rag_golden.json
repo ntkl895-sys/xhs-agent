@@ -1,0 +1,1293 @@
+{
+  "suite": "testset_rag_golden",
+  "generated_at": "2026-10-17T12:15:13+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "n_corpus": 30,
+    "n_queries": 40,
+    "bge_ready": true,
+    "recall_at_1": 0.8625,
+    "recall_at_3": 0.975,
+    "recall_at_5": 0.9875,
+    "mrr": 0.9875
+  },
+  "notes": [
+    "口径：合成语料（30 条人工撰写）上的检索质量；不代表真实语料；未就绪时如实 N/A。",
+    "Recall@k = 平均 |期望片段∩top-k| / |期望片段|；MRR 取首个命中排名倒数。",
+    "临时库用毕即删；逐查询 top-5 明细在 detail.golden.per_query（含未命中清单）。"
+  ],
+  "detail": {
+    "fixture": "fixtures/testsets/rag_golden/",
+    "fixture_version": "1.0",
+    "na_reason": null,
+    "readiness": {
+      "provider": "local",
+      "model": "D:/models/bge-large-zh-v1.5",
+      "dim": 1024,
+      "db_dim": 1024,
+      "dim_consistent": true,
+      "device": "cpu",
+      "batch_size": 16,
+      "top_k": 5,
+      "local_deps_installed": true,
+      "openai_model": "",
+      "has_api_key": false,
+      "cache_size": 0
+    },
+    "blocker": null,
+    "golden": {
+      "temp_db": "xhs_bench_ragtestset_20261017121449_11548",
+      "insert_ms": 14499.2,
+      "snippets_inserted": 30,
+      "vector_dim": 1024,
+      "index_def_found": true,
+      "index_build_ms": 5.9,
+      "latency_e2e_ms": [
+        86.69,
+        88.04,
+        86.59,
+        86.89,
+        88.24,
+        94.52,
+        93.77,
+        83.85,
+        87.06,
+        88.38,
+        86.56,
+        91.4,
+        89.69,
+        88.85,
+        89.26,
+        87.45,
+        88.67,
+        84.22,
+        93.38,
+        112.91,
+        99.64,
+        91.03,
+        94.29,
+        98.33,
+        93.73,
+        98.49,
+        90.31,
+        94.07,
+        86.39,
+        89.6,
+        93.62,
+        91.24,
+        90.12,
+        84.12,
+        88.17,
+        91.97,
+        92.24,
+        86.26,
+        87.69,
+        90.16,
+        6.12,
+        5.55,
+        5.81,
+        6.57,
+        5.55,
+        6.04,
+        6.79,
+        5.99,
+        6.3,
+        6.12,
+        6.03,
+        6.77,
+        6.48,
+        5.65,
+        5.73,
+        4.7,
+        4.78,
+        4.58,
+        4.63,
+        4.85,
+        5.18,
+        5.06,
+        5.33,
+        4.93,
+        4.84,
+        4.74,
+        4.68,
+        4.81,
+        4.75,
+        4.9,
+        5.88,
+        4.85,
+        4.55,
+        4.69,
+        5.07,
+        5.17,
+        4.89,
+        4.51,
+        4.58,
+        4.55
+      ],
+      "latency_vector_ms": [
+        5.91,
+        6.3,
+        8.26,
+        5.99,
+        5.84,
+        5.98,
+        5.53,
+        6.15,
+        5.65,
+        5.79,
+        5.55,
+        6.8,
+        8.03,
+        5.72,
+        5.58,
+        6.44,
+        6.35,
+        5.96,
+        6.87,
+        6.29,
+        6.56,
+        6.5,
+        6.66,
+        6.45,
+        6.86,
+        6.56,
+        6.47,
+        6.45,
+        6.26,
+        6.59,
+        6.65,
+        6.37,
+        5.72,
+        6.33,
+        6.63,
+        6.32,
+        6.67,
+        6.01,
+        7.11,
+        6.33,
+        6.97,
+        6.06,
+        6.44,
+        5.91,
+        5.75,
+        5.76,
+        6.29,
+        6.22,
+        6.43,
+        6.24,
+        6.47,
+        6.33,
+        6.07,
+        6.32,
+        6.32,
+        4.43,
+        4.8,
+        5.05,
+        4.86,
+        5.25,
+        4.75,
+        5.34,
+        6.02,
+        4.88,
+        4.44,
+        4.76,
+        4.66,
+        4.92,
+        5.2,
+        5.53,
+        4.96,
+        4.86,
+        4.59,
+        4.48,
+        5.59,
+        4.49,
+        4.67,
+        4.8,
+        4.8,
+        4.92
+      ],
+      "rankings_top5": [
+        [
+          "kb_01",
+          "kb_04",
+          "kb_02",
+          "kb_03",
+          "kb_05"
+        ],
+        [
+          "kb_02",
+          "kb_03",
+          "kb_01",
+          "kb_04",
+          "kb_17"
+        ],
+        [
+          "kb_03",
+          "kb_05",
+          "kb_04",
+          "kb_06",
+          "kb_28"
+        ],
+        [
+          "kb_04",
+          "kb_17",
+          "kb_01",
+          "kb_16",
+          "kb_14"
+        ],
+        [
+          "kb_05",
+          "kb_03",
+          "kb_06",
+          "kb_29",
+          "kb_02"
+        ],
+        [
+          "kb_06",
+          "kb_18",
+          "kb_29",
+          "kb_05",
+          "kb_03"
+        ],
+        [
+          "kb_07",
+          "kb_08",
+          "kb_11",
+          "kb_19",
+          "kb_20"
+        ],
+        [
+          "kb_08",
+          "kb_07",
+          "kb_11",
+          "kb_19",
+          "kb_10"
+        ],
+        [
+          "kb_09",
+          "kb_10",
+          "kb_11",
+          "kb_12",
+          "kb_13"
+        ],
+        [
+          "kb_10",
+          "kb_09",
+          "kb_13",
+          "kb_11",
+          "kb_12"
+        ],
+        [
+          "kb_11",
+          "kb_14",
+          "kb_13",
+          "kb_03",
+          "kb_10"
+        ],
+        [
+          "kb_12",
+          "kb_13",
+          "kb_11",
+          "kb_09",
+          "kb_03"
+        ],
+        [
+          "kb_13",
+          "kb_11",
+          "kb_14",
+          "kb_10",
+          "kb_03"
+        ],
+        [
+          "kb_14",
+          "kb_03",
+          "kb_16",
+          "kb_13",
+          "kb_11"
+        ],
+        [
+          "kb_15",
+          "kb_04",
+          "kb_03",
+          "kb_17",
+          "kb_02"
+        ],
+        [
+          "kb_16",
+          "kb_04",
+          "kb_18",
+          "kb_03",
+          "kb_15"
+        ],
+        [
+          "kb_17",
+          "kb_04",
+          "kb_23",
+          "kb_25",
+          "kb_18"
+        ],
+        [
+          "kb_18",
+          "kb_06",
+          "kb_16",
+          "kb_05",
+          "kb_14"
+        ],
+        [
+          "kb_19",
+          "kb_20",
+          "kb_08",
+          "kb_24",
+          "kb_07"
+        ],
+        [
+          "kb_20",
+          "kb_19",
+          "kb_08",
+          "kb_24",
+          "kb_22"
+        ],
+        [
+          "kb_21",
+          "kb_22",
+          "kb_06",
+          "kb_23",
+          "kb_20"
+        ],
+        [
+          "kb_22",
+          "kb_21",
+          "kb_20",
+          "kb_23",
+          "kb_24"
+        ],
+        [
+          "kb_23",
+          "kb_30",
+          "kb_17",
+          "kb_22",
+          "kb_29"
+        ],
+        [
+          "kb_24",
+          "kb_29",
+          "kb_30",
+          "kb_02",
+          "kb_04"
+        ],
+        [
+          "kb_25",
+          "kb_17",
+          "kb_04",
+          "kb_14",
+          "kb_16"
+        ],
+        [
+          "kb_26",
+          "kb_25",
+          "kb_14",
+          "kb_11",
+          "kb_13"
+        ],
+        [
+          "kb_27",
+          "kb_28",
+          "kb_29",
+          "kb_04",
+          "kb_14"
+        ],
+        [
+          "kb_28",
+          "kb_03",
+          "kb_27",
+          "kb_25",
+          "kb_05"
+        ],
+        [
+          "kb_29",
+          "kb_30",
+          "kb_04",
+          "kb_03",
+          "kb_02"
+        ],
+        [
+          "kb_30",
+          "kb_29",
+          "kb_24",
+          "kb_28",
+          "kb_02"
+        ],
+        [
+          "kb_08",
+          "kb_07",
+          "kb_11",
+          "kb_13",
+          "kb_10"
+        ],
+        [
+          "kb_05",
+          "kb_03",
+          "kb_02",
+          "kb_06",
+          "kb_15"
+        ],
+        [
+          "kb_14",
+          "kb_04",
+          "kb_13",
+          "kb_18",
+          "kb_11"
+        ],
+        [
+          "kb_19",
+          "kb_20",
+          "kb_08",
+          "kb_24",
+          "kb_22"
+        ],
+        [
+          "kb_21",
+          "kb_22",
+          "kb_06",
+          "kb_30",
+          "kb_18"
+        ],
+        [
+          "kb_04",
+          "kb_02",
+          "kb_17",
+          "kb_16",
+          "kb_01"
+        ],
+        [
+          "kb_28",
+          "kb_05",
+          "kb_03",
+          "kb_29",
+          "kb_30"
+        ],
+        [
+          "kb_25",
+          "kb_26",
+          "kb_16",
+          "kb_04",
+          "kb_14"
+        ],
+        [
+          "kb_16",
+          "kb_15",
+          "kb_03",
+          "kb_04",
+          "kb_14"
+        ],
+        [
+          "kb_09",
+          "kb_12",
+          "kb_11",
+          "kb_14",
+          "kb_10"
+        ]
+      ],
+      "recall_at": {
+        "1": 0.8625,
+        "3": 0.975,
+        "5": 0.9875
+      },
+      "mrr": 0.9875,
+      "all_hit_rate_at_5": 0.975,
+      "per_query": [
+        {
+          "id": "ragq_01",
+          "query": "标题写多少字合适？",
+          "expected_ids": [
+            "kb_01"
+          ],
+          "top5": [
+            "kb_01",
+            "kb_04",
+            "kb_02",
+            "kb_03",
+            "kb_05"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_02",
+          "query": "封面放几个字比较好？",
+          "expected_ids": [
+            "kb_02"
+          ],
+          "top5": [
+            "kb_02",
+            "kb_03",
+            "kb_01",
+            "kb_04",
+            "kb_17"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_03",
+          "query": "什么时候发笔记流量好？",
+          "expected_ids": [
+            "kb_03"
+          ],
+          "top5": [
+            "kb_03",
+            "kb_05",
+            "kb_04",
+            "kb_06",
+            "kb_28"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_04",
+          "query": "一篇笔记配多少个标签？",
+          "expected_ids": [
+            "kb_04"
+          ],
+          "top5": [
+            "kb_04",
+            "kb_17",
+            "kb_01",
+            "kb_16",
+            "kb_14"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_05",
+          "query": "发布后多久要盯评论区？",
+          "expected_ids": [
+            "kb_05"
+          ],
+          "top5": [
+            "kb_05",
+            "kb_03",
+            "kb_06",
+            "kb_29",
+            "kb_02"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_06",
+          "query": "怎么看数据找出问题在哪层？",
+          "expected_ids": [
+            "kb_06"
+          ],
+          "top5": [
+            "kb_06",
+            "kb_18",
+            "kb_29",
+            "kb_05",
+            "kb_03"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_07",
+          "query": "睡前喝咖啡会影响睡眠吗？",
+          "expected_ids": [
+            "kb_07"
+          ],
+          "top5": [
+            "kb_07",
+            "kb_08",
+            "kb_11",
+            "kb_19",
+            "kb_20"
+          ],
+          "note": "hard：干扰项 kb_08（咖啡因与运动）"
+        },
+        {
+          "id": "ragq_08",
+          "query": "运动前喝咖啡有用吗？",
+          "expected_ids": [
+            "kb_08"
+          ],
+          "top5": [
+            "kb_08",
+            "kb_07",
+            "kb_11",
+            "kb_19",
+            "kb_10"
+          ],
+          "note": "hard：干扰项 kb_07（咖啡因与睡眠）"
+        },
+        {
+          "id": "ragq_09",
+          "query": "久坐肩颈怎么放松？",
+          "expected_ids": [
+            "kb_09"
+          ],
+          "top5": [
+            "kb_09",
+            "kb_10",
+            "kb_11",
+            "kb_12",
+            "kb_13"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_10",
+          "query": "冥想从几分钟开始？",
+          "expected_ids": [
+            "kb_10"
+          ],
+          "top5": [
+            "kb_10",
+            "kb_09",
+            "kb_13",
+            "kb_11",
+            "kb_12"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_11",
+          "query": "怎么把作息逐渐调早？",
+          "expected_ids": [
+            "kb_11"
+          ],
+          "top5": [
+            "kb_11",
+            "kb_14",
+            "kb_13",
+            "kb_03",
+            "kb_10"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_12",
+          "query": "看屏幕久了眼睛怎么休息？",
+          "expected_ids": [
+            "kb_12"
+          ],
+          "top5": [
+            "kb_12",
+            "kb_13",
+            "kb_11",
+            "kb_09",
+            "kb_03"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_13",
+          "query": "番茄钟是多长时间一轮？",
+          "expected_ids": [
+            "kb_13"
+          ],
+          "top5": [
+            "kb_13",
+            "kb_11",
+            "kb_14",
+            "kb_10",
+            "kb_03"
+          ],
+          "note": "hard：干扰项 kb_14（同为效率方法）"
+        },
+        {
+          "id": "ragq_14",
+          "query": "每天待办列多少件合适？",
+          "expected_ids": [
+            "kb_14"
+          ],
+          "top5": [
+            "kb_14",
+            "kb_03",
+            "kb_16",
+            "kb_13",
+            "kb_11"
+          ],
+          "note": "hard：干扰项 kb_13（同为效率方法）"
+        },
+        {
+          "id": "ragq_15",
+          "query": "写工作邮件怎么组织结构？",
+          "expected_ids": [
+            "kb_15"
+          ],
+          "top5": [
+            "kb_15",
+            "kb_04",
+            "kb_03",
+            "kb_17",
+            "kb_02"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_16",
+          "query": "会议纪要要记什么内容？",
+          "expected_ids": [
+            "kb_16"
+          ],
+          "top5": [
+            "kb_16",
+            "kb_04",
+            "kb_18",
+            "kb_03",
+            "kb_15"
+          ],
+          "note": "hard：干扰项 kb_17（同为记录方法）"
+        },
+        {
+          "id": "ragq_17",
+          "query": "康奈尔笔记怎么分区？",
+          "expected_ids": [
+            "kb_17"
+          ],
+          "top5": [
+            "kb_17",
+            "kb_04",
+            "kb_23",
+            "kb_25",
+            "kb_18"
+          ],
+          "note": "hard：干扰项 kb_16（同为记录方法）"
+        },
+        {
+          "id": "ragq_18",
+          "query": "复盘要问哪几个问题？",
+          "expected_ids": [
+            "kb_18"
+          ],
+          "top5": [
+            "kb_18",
+            "kb_06",
+            "kb_16",
+            "kb_05",
+            "kb_14"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_19",
+          "query": "手冲咖啡水温多少合适？",
+          "expected_ids": [
+            "kb_19"
+          ],
+          "top5": [
+            "kb_19",
+            "kb_20",
+            "kb_08",
+            "kb_24",
+            "kb_07"
+          ],
+          "note": "hard：干扰项 kb_20（手冲参数）"
+        },
+        {
+          "id": "ragq_20",
+          "query": "手冲咖啡磨多粗？",
+          "expected_ids": [
+            "kb_20"
+          ],
+          "top5": [
+            "kb_20",
+            "kb_19",
+            "kb_08",
+            "kb_24",
+            "kb_22"
+          ],
+          "note": "hard：干扰项 kb_19（手冲参数）"
+        },
+        {
+          "id": "ragq_21",
+          "query": "戚风蛋糕为什么会塌陷？",
+          "expected_ids": [
+            "kb_21"
+          ],
+          "top5": [
+            "kb_21",
+            "kb_22",
+            "kb_06",
+            "kb_23",
+            "kb_20"
+          ],
+          "note": "hard：干扰项 kb_22（戚风流程）"
+        },
+        {
+          "id": "ragq_22",
+          "query": "戚风蛋糕怎么完整脱模？",
+          "expected_ids": [
+            "kb_22"
+          ],
+          "top5": [
+            "kb_22",
+            "kb_21",
+            "kb_20",
+            "kb_23",
+            "kb_24"
+          ],
+          "note": "hard：干扰项 kb_21（戚风流程）"
+        },
+        {
+          "id": "ragq_23",
+          "query": "冰箱东西怎么分区放？",
+          "expected_ids": [
+            "kb_23"
+          ],
+          "top5": [
+            "kb_23",
+            "kb_30",
+            "kb_17",
+            "kb_22",
+            "kb_29"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_24",
+          "query": "衣服洗标上的符号怎么看？",
+          "expected_ids": [
+            "kb_24"
+          ],
+          "top5": [
+            "kb_24",
+            "kb_29",
+            "kb_30",
+            "kb_02",
+            "kb_04"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_25",
+          "query": "记账怎么开始做分类？",
+          "expected_ids": [
+            "kb_25"
+          ],
+          "top5": [
+            "kb_25",
+            "kb_17",
+            "kb_04",
+            "kb_14",
+            "kb_16"
+          ],
+          "note": "hard：干扰项 kb_26（记账预算）"
+        },
+        {
+          "id": "ragq_26",
+          "query": "每月收入按什么比例分配？",
+          "expected_ids": [
+            "kb_26"
+          ],
+          "top5": [
+            "kb_26",
+            "kb_25",
+            "kb_14",
+            "kb_11",
+            "kb_13"
+          ],
+          "note": "hard：干扰项 kb_25（记账预算）"
+        },
+        {
+          "id": "ragq_27",
+          "query": "密码太多记不住怎么办？",
+          "expected_ids": [
+            "kb_27"
+          ],
+          "top5": [
+            "kb_27",
+            "kb_28",
+            "kb_29",
+            "kb_04",
+            "kb_14"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_28",
+          "query": "账号怎么设置更安全？",
+          "expected_ids": [
+            "kb_28"
+          ],
+          "top5": [
+            "kb_28",
+            "kb_03",
+            "kb_27",
+            "kb_25",
+            "kb_05"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_29",
+          "query": "网购怎么避免买贵？",
+          "expected_ids": [
+            "kb_29"
+          ],
+          "top5": [
+            "kb_29",
+            "kb_30",
+            "kb_04",
+            "kb_03",
+            "kb_02"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_30",
+          "query": "收贵重快递要注意什么？",
+          "expected_ids": [
+            "kb_30"
+          ],
+          "top5": [
+            "kb_30",
+            "kb_29",
+            "kb_24",
+            "kb_28",
+            "kb_02"
+          ],
+          "note": "direct"
+        },
+        {
+          "id": "ragq_31",
+          "query": "咖啡因对睡眠和运动分别有什么说法？",
+          "expected_ids": [
+            "kb_07",
+            "kb_08"
+          ],
+          "top5": [
+            "kb_08",
+            "kb_07",
+            "kb_11",
+            "kb_13",
+            "kb_10"
+          ],
+          "note": "multi：跨两条近邻片段"
+        },
+        {
+          "id": "ragq_32",
+          "query": "内容发布前中后分别要做什么？",
+          "expected_ids": [
+            "kb_03",
+            "kb_05"
+          ],
+          "top5": [
+            "kb_05",
+            "kb_03",
+            "kb_02",
+            "kb_06",
+            "kb_15"
+          ],
+          "note": "multi：发布时段 + 评论运营"
+        },
+        {
+          "id": "ragq_33",
+          "query": "专注方法和任务清单怎么配合使用？",
+          "expected_ids": [
+            "kb_13",
+            "kb_14"
+          ],
+          "top5": [
+            "kb_14",
+            "kb_04",
+            "kb_13",
+            "kb_18",
+            "kb_11"
+          ],
+          "note": "multi：效率方法组合"
+        },
+        {
+          "id": "ragq_34",
+          "query": "手冲咖啡从水温到研磨怎么调？",
+          "expected_ids": [
+            "kb_19",
+            "kb_20"
+          ],
+          "top5": [
+            "kb_19",
+            "kb_20",
+            "kb_08",
+            "kb_24",
+            "kb_22"
+          ],
+          "note": "multi：手冲参数组合"
+        },
+        {
+          "id": "ragq_35",
+          "query": "烘焙翻车的排查思路？",
+          "expected_ids": [
+            "kb_21",
+            "kb_22"
+          ],
+          "top5": [
+            "kb_21",
+            "kb_22",
+            "kb_06",
+            "kb_30",
+            "kb_18"
+          ],
+          "note": "multi：戚风问题组合"
+        },
+        {
+          "id": "ragq_36",
+          "query": "做笔记的标题和封面有什么要点？",
+          "expected_ids": [
+            "kb_01",
+            "kb_02"
+          ],
+          "top5": [
+            "kb_04",
+            "kb_02",
+            "kb_17",
+            "kb_16",
+            "kb_01"
+          ],
+          "note": "multi：内容运营组合"
+        },
+        {
+          "id": "ragq_37",
+          "query": "账号安全最该先做哪两件事？",
+          "expected_ids": [
+            "kb_27",
+            "kb_28"
+          ],
+          "top5": [
+            "kb_28",
+            "kb_05",
+            "kb_03",
+            "kb_29",
+            "kb_30"
+          ],
+          "note": "multi：安全组合"
+        },
+        {
+          "id": "ragq_38",
+          "query": "记账和预算怎么配套？",
+          "expected_ids": [
+            "kb_25",
+            "kb_26"
+          ],
+          "top5": [
+            "kb_25",
+            "kb_26",
+            "kb_16",
+            "kb_04",
+            "kb_14"
+          ],
+          "note": "multi：理财组合"
+        },
+        {
+          "id": "ragq_39",
+          "query": "写邮件和写纪要的要点？",
+          "expected_ids": [
+            "kb_15",
+            "kb_16"
+          ],
+          "top5": [
+            "kb_16",
+            "kb_15",
+            "kb_03",
+            "kb_04",
+            "kb_14"
+          ],
+          "note": "multi：书面沟通组合"
+        },
+        {
+          "id": "ragq_40",
+          "query": "护眼和肩颈的日常小习惯？",
+          "expected_ids": [
+            "kb_09",
+            "kb_12"
+          ],
+          "top5": [
+            "kb_09",
+            "kb_12",
+            "kb_11",
+            "kb_14",
+            "kb_10"
+          ],
+          "note": "multi：健康习惯组合"
+        }
+      ]
+    },
+    "cleanup": {
+      "temp_db_leftover": false,
+      "residue_scan": []
+    }
+  },
+  "metrics": [
+    {
+      "name": "testset_rag.corpus_total",
+      "value": 30,
+      "unit": "条",
+      "n": 30,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:14:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "人工撰写、全 synthetic；含主题相近但答案不同的近邻对（hard negatives）"
+    },
+    {
+      "name": "testset_rag.queries_total",
+      "value": 40,
+      "unit": "条",
+      "n": 40,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:14:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "每条人工标注期望命中片段 id（1-3 个）"
+    },
+    {
+      "name": "testset_rag.vector_dim",
+      "value": 1024,
+      "unit": "维",
+      "n": 1,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "实测向量维度（bge 本地）"
+    },
+    {
+      "name": "testset_rag.index_build_ms",
+      "value": 5.9,
+      "unit": "毫秒",
+      "n": 1,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "HNSW 余弦索引在 30 行上的重建耗时（小样本）"
+    },
+    {
+      "name": "testset_rag.recall_at_1",
+      "value": 0.8625,
+      "unit": "比率",
+      "n": 40,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "Recall@1 = 平均 |期望∩top1|/|期望|（n=查询数）"
+    },
+    {
+      "name": "testset_rag.recall_at_3",
+      "value": 0.975,
+      "unit": "比率",
+      "n": 40,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "Recall@3（同上，k=3）"
+    },
+    {
+      "name": "testset_rag.recall_at_5",
+      "value": 0.9875,
+      "unit": "比率",
+      "n": 40,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "Recall@5（同上，k=5）"
+    },
+    {
+      "name": "testset_rag.mrr",
+      "value": 0.9875,
+      "unit": "比率",
+      "n": 40,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "MRR = 平均 1/首个命中排名（未命中记 0）"
+    },
+    {
+      "name": "testset_rag.all_hit_rate_at_5",
+      "value": 0.975,
+      "unit": "比率",
+      "n": 40,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "top-5 包含全部期望片段的查询占比"
+    },
+    {
+      "name": "testset_rag.query_latency_e2e_p50_ms",
+      "value": 6.79,
+      "unit": "毫秒",
+      "n": 80,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "端到端单查询 P50（含查询编码；n=80 次）"
+    },
+    {
+      "name": "testset_rag.query_latency_e2e_p95_ms",
+      "value": 94.52,
+      "unit": "毫秒",
+      "n": 80,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:11+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "端到端单查询 P95（nearest-rank）"
+    },
+    {
+      "name": "testset_rag.query_latency_vector_p50_ms",
+      "value": 6.01,
+      "unit": "毫秒",
+      "n": 80,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:12+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "纯向量检索 P50（不含编码；n=80 次）"
+    },
+    {
+      "name": "testset_rag.query_latency_vector_p95_ms",
+      "value": 6.87,
+      "unit": "毫秒",
+      "n": 80,
+      "category": "synthetic_fixture",
+      "method": "scripts/benchmark/bench_testset_rag_golden.py：冻结黄金集（30 片段 / 40 查询，人工标注期望命中）＋临时库（alembic 迁移）；本地 bge 向量化（1024 维）+ pgvector HNSW 余弦 top-5；类别=synthetic_fixture（合成语料，仅代表该语料上的检索质量）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:15:12+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "纯向量检索 P95（nearest-rank）"
+    }
+  ]
+}

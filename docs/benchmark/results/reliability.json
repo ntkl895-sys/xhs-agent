@@ -1,0 +1,457 @@
+{
+  "suite": "reliability",
+  "generated_at": "2026-10-17T09:45:31+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）",
+    "mock": "本机回环 HTTP（127.0.0.1 随机端口）"
+  },
+  "summary": {
+    "checks_passed": 33,
+    "checks_failed": 0,
+    "failures": []
+  },
+  "notes": [
+    "404/5xx 为程序注入到本机 mock 上游，用于验证客户端重试语义；非真实上游故障。",
+    "退避时长受本机调度影响（毫秒级抖动），三次样本逐次留档。",
+    "临时库已删除并全局兜底复查（xhs_bench% 残留=0）。"
+  ],
+  "detail": {
+    "hotspot_404": {
+      "attempts": [
+        1,
+        1,
+        1
+      ],
+      "elapsed_ms": [
+        2.9,
+        2.1,
+        1.8
+      ],
+      "error_types": [
+        "HotspotClientError",
+        "HotspotClientError",
+        "HotspotClientError"
+      ],
+      "ua_sample": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    },
+    "hotspot_5xx": {
+      "attempts": [
+        3,
+        3,
+        3
+      ],
+      "elapsed_ms": [
+        3026.1,
+        3006.4,
+        3006.8
+      ],
+      "error_types": [
+        "HotspotRetryableError",
+        "HotspotRetryableError",
+        "HotspotRetryableError"
+      ],
+      "ua_sample": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    },
+    "search_404": {
+      "attempts": [
+        1,
+        1,
+        1
+      ],
+      "elapsed_ms": [
+        2.4,
+        1.8,
+        1.7
+      ],
+      "error_types": [
+        "SearchUpstreamError",
+        "SearchUpstreamError",
+        "SearchUpstreamError"
+      ],
+      "ua_sample": "xhs-agent/0.1.0 (keyword-search-radar; local-only)"
+    },
+    "search_5xx": {
+      "attempts": [
+        3,
+        3,
+        3
+      ],
+      "elapsed_ms": [
+        3021.7,
+        3007.0,
+        3009.8
+      ],
+      "error_types": [
+        "SearchUpstreamError",
+        "SearchUpstreamError",
+        "SearchUpstreamError"
+      ],
+      "ua_sample": "xhs-agent/0.1.0 (keyword-search-radar; local-only)"
+    },
+    "mock_scope_note": "mock 上游为本机回环 HTTP 注入（404/500 为程序构造，非真实上游故障）；请求计数取自 mock 服务端记录",
+    "db_down": {
+      "port": 61183,
+      "db_url": "postgresql+psycopg://postgres:postgres@127.0.0.1:59999/xhs_agent",
+      "log_path": "docs\\benchmark\\logs\\reliability_db_down_backend.log",
+      "boot_ok": true,
+      "boot_status": 200,
+      "boot_s": 18.39,
+      "ready_statuses": [
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503
+      ],
+      "ready_elapsed_ms": [
+        3023.3,
+        3007.5,
+        3015.0,
+        3016.5,
+        3016.5,
+        3018.7,
+        3026.8,
+        3031.7,
+        3012.0,
+        3037.9
+      ],
+      "ready_checks_sample": {
+        "database": false,
+        "pgvector": false,
+        "redis": true
+      },
+      "port_freed": true
+    },
+    "child": {
+      "temp_db": "xhs_bench_rel_20261017094514_19148",
+      "steps": {
+        "create_db_rc": 0,
+        "alembic_rc": 0,
+        "child_rc": 0,
+        "drop_db_ok": true,
+        "exists_after_drop": false,
+        "leftover_dbs": []
+      },
+      "child": {
+        "expected_db": "xhs_bench_rel_20261017094514_19148",
+        "scenarios": {
+          "partial": {
+            "status": "partial",
+            "totals": {
+              "sources": 4,
+              "fetched": 5,
+              "new": 5,
+              "updated": 0,
+              "failed": 2,
+              "blocked": 0
+            },
+            "per_source": [
+              {
+                "source": "zhihu",
+                "source_name": "知乎",
+                "status": "success",
+                "fetched": 3,
+                "new": 3,
+                "updated": 0,
+                "failed": 0,
+                "blocked": 0,
+                "error": null
+              },
+              {
+                "source": "douyin",
+                "source_name": "抖音",
+                "status": "failed",
+                "fetched": 0,
+                "new": 0,
+                "updated": 0,
+                "failed": 1,
+                "blocked": 0,
+                "error": "HotspotRetryableError: 上游返回 HTTP 500"
+              },
+              {
+                "source": "bilibili",
+                "source_name": "B站",
+                "status": "failed",
+                "fetched": 0,
+                "new": 0,
+                "updated": 0,
+                "failed": 1,
+                "blocked": 0,
+                "error": "HotspotClientError: 上游返回 HTTP 404（该源可能不存在或已下线）"
+              },
+              {
+                "source": "toutiao",
+                "source_name": "今日头条",
+                "status": "success",
+                "fetched": 2,
+                "new": 2,
+                "updated": 0,
+                "failed": 0,
+                "blocked": 0,
+                "error": null
+              }
+            ],
+            "rows_before": 0,
+            "rows_after": 5,
+            "hits": {
+              "zhihu": 1,
+              "douyin": 3,
+              "bilibili": 1,
+              "toutiao": 1
+            },
+            "elapsed_ms": 3142.3
+          },
+          "all_fail": {
+            "status": "failed",
+            "totals": {
+              "sources": 2,
+              "fetched": 0,
+              "new": 0,
+              "updated": 0,
+              "failed": 2,
+              "blocked": 0
+            },
+            "rows_before": 5,
+            "rows_after": 5,
+            "hits": {
+              "zhihu": 3,
+              "douyin": 3
+            }
+          },
+          "lock": {
+            "second_call": "FetchInProgress",
+            "third_call_is_none": true,
+            "first_status": "success",
+            "first_error": null,
+            "mock_requests_total": 4,
+            "sources": 4
+          }
+        },
+        "run_statuses": [
+          "failed",
+          "partial",
+          "success"
+        ]
+      }
+    }
+  },
+  "metrics": [
+    {
+      "name": "reliability.health_ready_db_down.status_code",
+      "value": 503,
+      "unit": "HTTP 状态码",
+      "n": 10,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：以 DATABASE_URL=死端口启动真实 uvicorn 子进程后，对 /health/ready 发 10 次请求",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": "docs/benchmark/logs/reliability_db_down_backend.log",
+      "confidence": "high",
+      "note": "响应体 checks.database=false、checks.pgvector=false；redis 仍为真实实例"
+    },
+    {
+      "name": "reliability.health_ready_db_down.latency_p50_ms",
+      "value": 3016.5,
+      "unit": "毫秒",
+      "n": 10,
+      "category": "offline_objective",
+      "method": "同上；nearest-rank 百分位",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": "docs/benchmark/logs/reliability_db_down_backend.log",
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.health_ready_db_down.latency_p95_ms",
+      "value": 3037.9,
+      "unit": "毫秒",
+      "n": 10,
+      "category": "offline_objective",
+      "method": "同上；nearest-rank 百分位",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": "docs/benchmark/logs/reliability_db_down_backend.log",
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.db_down_boot_ok",
+      "value": 1,
+      "unit": "布尔(1=是)",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "同上；观察 uvicorn 子进程是否仍能提供 /health",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "已验证「初始化失败不阻断启动」的设计在 DB 不可达时成立"
+    },
+    {
+      "name": "reliability.hotspot.404_attempts_per_call",
+      "value": "1,1,1",
+      "unit": "次请求（逐次）",
+      "n": 3,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：本机回环 mock 上游（127.0.0.1 随机端口）注入故障，统计 mock 实际接收的请求次数与墙钟耗时",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.hotspot.5xx_attempts_per_call",
+      "value": "3,3,3",
+      "unit": "次请求（逐次）",
+      "n": 3,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：本机回环 mock 上游（127.0.0.1 随机端口）注入故障，统计 mock 实际接收的请求次数与墙钟耗时",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "max_attempts=3 ⇒ 最多 3 次尝试（含首次；重试 2 次），退避 1s+2s"
+    },
+    {
+      "name": "reliability.hotspot.5xx_backoff_total_p50_ms",
+      "value": 3006.8,
+      "unit": "毫秒",
+      "n": 3,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：本机回环 mock 上游（127.0.0.1 随机端口）注入故障，统计 mock 实际接收的请求次数与墙钟耗时",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:30+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "含 mock 即时应答开销；退避为主（≈3000ms）"
+    },
+    {
+      "name": "reliability.search.404_attempts_per_call",
+      "value": "1,1,1",
+      "unit": "次请求（逐次）",
+      "n": 3,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：本机回环 mock 上游（127.0.0.1 随机端口）注入故障，统计 mock 实际接收的请求次数与墙钟耗时",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.search.5xx_attempts_per_call",
+      "value": "3,3,3",
+      "unit": "次请求（逐次）",
+      "n": 3,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：本机回环 mock 上游（127.0.0.1 随机端口）注入故障，统计 mock 实际接收的请求次数与墙钟耗时",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.search.5xx_backoff_total_p50_ms",
+      "value": 3009.8,
+      "unit": "毫秒",
+      "n": 3,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py：本机回环 mock 上游（127.0.0.1 随机端口）注入故障，统计 mock 实际接收的请求次数与墙钟耗时",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.hotspot.partial_status",
+      "value": "partial",
+      "unit": "状态",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py 子进程：临时库（alembic 迁移）+ mock DailyHotApi，真实调用 collect_and_store 全链路（落库 + 审计）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "2 坏源（1×500、1×404）+ 2 好源"
+    },
+    {
+      "name": "reliability.hotspot.partial_new_rows",
+      "value": 5,
+      "unit": "条",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py 子进程：临时库（alembic 迁移）+ mock DailyHotApi，真实调用 collect_and_store 全链路（落库 + 审计）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.hotspot.partial_failed_sources",
+      "value": 2,
+      "unit": "个",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py 子进程：临时库（alembic 迁移）+ mock DailyHotApi，真实调用 collect_and_store 全链路（落库 + 审计）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.hotspot.all_fail_status",
+      "value": "failed",
+      "unit": "状态",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py 子进程：临时库（alembic 迁移）+ mock DailyHotApi，真实调用 collect_and_store 全链路（落库 + 审计）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "reliability.hotspot.all_fail_new_rows",
+      "value": 0,
+      "unit": "条",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py 子进程：临时库（alembic 迁移）+ mock DailyHotApi，真实调用 collect_and_store 全链路（落库 + 审计）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "全失败零落库（无脏数据）"
+    },
+    {
+      "name": "reliability.hotspot.lock_second_call",
+      "value": "FetchInProgress",
+      "unit": "异常类名",
+      "n": 1,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_reliability.py 子进程：临时库（alembic 迁移）+ mock DailyHotApi，真实调用 collect_and_store 全链路（落库 + 审计）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T09:45:31+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "进行中再次手动触发被拒；定时触发安静跳过；mock 请求数=源数（无重复采集）"
+    }
+  ]
+}

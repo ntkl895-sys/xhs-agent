@@ -1,0 +1,83 @@
+源 'xhs' 属于合规禁用范围，已忽略（不发起任何请求）
+源 'xiaohongshu' 属于合规禁用范围，已忽略（不发起任何请求）
+==============================================================
+ 第 9 步 · 热搜服务化离线自检（离线，MockTransport + 本地库）
+==============================================================
+
+--- 1. 配置合规 ---
+[PASS] 启用源不含小红书（合规）
+[PASS] 小红书禁用清单非空
+[PASS] resolve 会过滤小红书并去重保序
+[PASS] ensure_source_allowed('xhs') 抛异常
+[PASS] 关键 HOTSPOT_* 配置就位
+
+--- 2. 客户端重试语义（MockTransport，离线） ---
+[PASS] 4xx(404) 立即失败且不重试
+[PASS] 5xx 重试到 max_attempts=3
+[PASS] 429 重试后成功（第二次即返回）
+[PASS] 网络传输异常可重试
+[PASS] 默认不带 cache 参数；force_refresh 才带 cache=false
+
+--- 3. 归一化 ---
+[PASS] 无 title 脏数据被跳过
+[PASS] rank_position 按归一化顺序重编号
+[PASS] 热度 '1.2万' 解析为 12000
+[PASS] 非数值热度（热）解析为 None
+[PASS] raw_extra 默认仅最小集（id/mobileUrl/timestamp）
+[PASS] KEEP_EXTRA_FIELDS=true 时回填 cover/summary/author
+[PASS] bool 不被当作热度 1
+[PASS] 热度 '3.5亿' 解析正确
+
+--- 4. content_hash 稳定性 ---
+[PASS] 相同 (源,id,日期) 哈希稳定
+[PASS] 不同日期哈希不同
+[PASS] sha256 十六进制长度 64
+[PASS] 缺 id 时以标题兜底（不同标题不塌缩）
+
+--- 5. 幂等落库 + 端到端（MockTransport + 真实本地库） ---
+[PASS] 第一轮：状态 success 且新增 = 条目数
+[PASS] 第一轮：fetched 计数正确
+[PASS] 第二轮：new=0 / updated=N（幂等 upsert）
+[PASS] 落库条数 = 条目数
+[PASS] 同一天多次采集无重复 content_hash
+[PASS] 新行 status=待落库的 new
+[PASS] source / hot_date 关联正确（今天）
+[PASS] agent_runs 写入 2 条 hotspot_fetch
+[PASS] agent_runs 状态 success
+[PASS] 热搜审计的 llm_model 留空（不接 LLM）
+[PASS] 热搜审计 token 三列保持 NULL
+[PASS] agent_runs.outputs 含 per_source 统计
+
+--- 6. 调度器配置 ---
+[PASS] 启用状态下调度器可启动
+[PASS] 已注册 interval 作业
+[PASS] interval 分钟数 = 配置值
+[PASS] coalesce=True
+[PASS] max_instances=1
+[PASS] 启动即采集作业与配置一致
+[PASS] 开关关闭时不注册调度器
+[PASS] 关闭后无调度器实例
+
+--- 7. 路由注册 ---
+[PASS] 已注册 GET /api/v1/hotspots
+[PASS] 已注册 GET /api/v1/hotspots/sources
+[PASS] 已注册 POST /api/v1/hotspots/refresh
+[PASS] 已注册 GET /api/v1/hotspots/runs
+[PASS] 健康端点未被改动（仍 2 个）
+
+--- 8. 合规扫描（源码级） ---
+[PASS] 源码不含「小红书域名」
+[PASS] 源码不含「Cookie 请求头/参数」
+[PASS] 源码不含「小红书签名头 x-s/x-t」
+[PASS] 启用源再次确认不含小红书
+
+--- 清理与残留复查 ---
+[INFO] 已删除 3 条 [SELFTEST] hotspots
+[INFO] 已删除 2 条自检 agent_runs
+[PASS] 无 [SELFTEST] hotspots 残留
+[PASS] 无自检 agent_runs 残留
+[PASS] 采集锁已释放
+[INFO] public 业务表数量（含框架排除前）：10
+
+通过 54 项，失败 0 项。
+全部 PASS ✔（离线自检，未请求任何公网 / DailyHotApi）

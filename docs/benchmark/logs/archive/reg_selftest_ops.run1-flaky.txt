@@ -1,0 +1,159 @@
+==============================================================
+ 第 20 步 · 健壮性与本地体验 离线自检（selftest_ops）
+ 临时目录：C:\Users\35307\AppData\Local\Temp\xhs_ops_selftest_v6aqt7s0
+==============================================================
+
+---- 组 1：静态检查 ----
+[PASS] ops 脚本存在：ops-common.ps1
+[PASS] ops 脚本存在：start.ps1
+[PASS] ops 脚本存在：stop.ps1
+[PASS] ops 脚本存在：status.ps1
+[PASS] ops 脚本存在：backup.ps1
+[PASS] ops 脚本存在：restore.ps1
+[PASS] ops 脚本存在：install-autostart.ps1
+[PASS] ops 脚本存在：uninstall-autostart.ps1
+[PASS] ops 脚本存在：install-backup-task.ps1
+[PASS] ops 脚本存在：uninstall-backup-task.ps1
+[PASS] 双击入口存在：start.bat
+[PASS] 双击入口存在：stop.bat
+[PASS] start.bat 为纯 ASCII（双击不乱码）
+[PASS] stop.bat 为纯 ASCII（双击不乱码）
+[PASS] 12 个 .ps1 全部可被解析（零语法错误）
+[PASS] ops-common.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] start.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] stop.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] status.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] backup.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] restore.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] install-autostart.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] uninstall-autostart.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] install-backup-task.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] uninstall-backup-task.ps1 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] start.bat 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] stop.bat 合规扫描（无真实密钥串 / 卷删除 / 外部托管软件 / 平台域名 / .env 回显）
+[PASS] 共享库函数齐全
+[PASS] 共享库常量完整（任务文件夹名）
+[PASS] start.ps1 关键开关齐全
+[PASS] start.ps1 含 -Watch 停止标记联动
+
+---- 组 2：环境自检零副作用（伪根目录） ----
+[PASS] 伪根目录（no-env）→ 退出码 2
+[PASS] 伪根目录（no-env）→ 明确指引（含「env.example」）
+[PASS] 伪根目录（no-env）→ 零副作用（目录无变化）
+[PASS] 伪根目录（no-venv）→ 退出码 2
+[PASS] 伪根目录（no-venv）→ 明确指引（含「虚拟环境」）
+[PASS] 伪根目录（no-venv）→ 零副作用（目录无变化）
+[PASS] 伪根目录（no-node_modules）→ 退出码 2
+[PASS] 伪根目录（no-node_modules）→ 明确指引（含「npm install」）
+[PASS] 伪根目录（no-node_modules）→ 零副作用（目录无变化）
+[PASS] 非工程目录 → 退出码 1 且提示「不像项目根」
+
+---- 组 3：函数级受控分支 ----
+[PASS] 构建判定：缺 .next → 需要构建
+[PASS] 构建判定：产物最新 → 跳过构建
+[PASS] 构建判定：源码更新 → 需要构建
+[PASS] HTTP 探活不可达 → 优雅返回 False（不抛异常）
+[PASS] HTTP 探活超时受控（≤20 秒内返回）
+
+---- 组 4：启停往返（-Dev） ----
+[PASS] 前置：端口 8000/3000 空闲
+[PASS] start（-Dev，含 dailyhot 正常路径）退出码 0
+[PASS] 健康检查全绿
+[PASS] dailyhot 正常路径：healthy
+[PASS] start 输出无绝对路径
+[PASS] start 输出无密钥前缀
+[PASS] 运行状态文件已写入（PID/端口/日志）
+[PASS] 状态文件内路径为项目相对路径
+[PASS] 端口 8000/3000 监听中
+[PASS] 后端日志已落盘（非空）
+[PASS] 前端日志已落盘（非空）
+[PASS] status.ps1 正常输出运行态
+[PASS] status 输出无绝对路径
+[PASS] status 输出无密钥前缀
+[PASS] 重复 start 退出码 0
+[PASS] 重复 start 幂等（检测到已在运行）
+[PASS] -SkipDailyhot 容错分支：仅 WARNING 不阻断
+[PASS] 重复 start 未重复拉起（PID 不变）
+[PASS] stop 退出码 0
+[PASS] 停止后端口释放（8000 / 3000）
+[PASS] 端口复核：确认空闲
+[PASS] PID / 状态文件已清理
+
+---- 组 5：备份 → 恢复往返 ----
+[PASS] 真实备份成功（pg_dump -Fc）
+[PASS] 备份完整性校验（pg_restore -l 条目数）
+[PASS] 输出声明：.env 不纳入备份
+[PASS] 备份文件已落盘（非空）
+[PASS] 备份历史已记录
+[PASS] 保留策略：按最近 N 份清理旧备份（保留 2 / 清理 1）
+[PASS] 清理清单已打印
+[PASS] 恢复（默认 → 临时验证库）成功
+[PASS] 恢复往返证据：9 张关键表行数与源库一致
+[PASS] 恢复结构校验（表数量 / 扩展）
+[PASS] 验证库真实存在（主库未被改动）
+[PASS] 验证库已删除（自检收尾）
+[PASS] -DropVerifyDb：恢复 + 校验 + 删除一条龙
+[PASS] 恢复负例：备份文件不存在 → 退出码 2
+
+---- 组 6：计划任务注册 / 卸载往返 ----
+[PASS] 自启任务注册成功
+[PASS] 注册输出无绝对路径 / 密钥
+[PASS] 注册后回读可查（Get-ScheduledTask）
+[PASS] 登录延迟触发器生效（PT45S）
+[PASS] 任务状态 Ready
+[PASS] 自启任务卸载成功
+[PASS] 卸载后回读查无（自启）
+[PASS] 定时备份任务注册成功
+[PASS] 备份任务回读可查
+[PASS] 备份任务时间参数校验（负例：25:99 拒绝）
+[PASS] 备份任务卸载成功
+[PASS] 全部卸载后无 xhs-agent 任务残留（回读）
+[PASS] 任务文件夹已清理（无残留）
+
+---- 组 7：-Watch 常驻与崩溃自愈 ----
+[FAIL] 常驻模式（-Watch）启动：健康检查全绿
+
+---- 组 8：收口修复验证 ----
+[PASS] 封面候选创建（前置）
+[PASS] covers 组合 PATCH：字段 + 互斥选中 单次请求全部生效
+[PASS] DB 复核：恰一个选中且为 B（字段与选中同事务落库）
+[PASS] covers 组合 PATCH：字段 + 取消选中同样生效
+[PASS] 知识块创建（前置，假 embedder）
+[PASS] knowledge 组合 PATCH：status + title 单次请求全部生效
+[PASS] knowledge 组合 PATCH：status + content（重向量化成功）全部生效
+[PASS] 重向量化成功：embedding 已写入
+[PASS] 重向量化失败降级：正文与 status 仍同事务保存 + warnings（不丢正文）
+[PASS] 重向量化失败：embedding 已置空
+[PASS] 白名单负断言：apply_admin_update 的 values 中 status 被拒绝（状态仅能经显式参数修改）
+[PASS] 热点显式传入去重（保序：A,B；重复不重复处理）
+[PASS] 去重后 missing 为空
+[PASS] 重复的缺失 id 只记一次（missing 去重）
+
+---- 组 9：零迁移断言 ----
+[PASS] migrations/versions 恰 2 支（实际 2）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] public 恰 11 张（10 业务 + alembic_version，实际 11）
+[PASS] 业务表恰为 10 张且名单一致
+[PASS] langgraph 框架表 4 张（实际 4）
+
+---- 组 10：收尾清理与残留复查 ----
+[PASS] 测试数据双口径清理后残留为 0
+[PASS] 无 xhs_restore_verify 残留库
+[PASS] 无计划任务残留（收尾）
+[PASS] 收尾：端口 8000/3000 空闲
+[PASS] 收尾：无停止标记 / 监控状态残留
+
+==============================================================
+ 通过 120 项，失败 1 项，跳过 0 项。
+  [FAIL] 常驻模式（-Watch）启动：健康检查全绿
+ 存在失败项 —— 请逐项排查。
+==============================================================
+2026-10-16 14:07:15,148 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 200 OK"
+2026-10-16 14:07:15,169 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/covers "HTTP/1.1 200 OK"
+2026-10-16 14:07:15,188 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/ef35ac93-eb86-494d-8999-85476cbaad6b "HTTP/1.1 200 OK"
+2026-10-16 14:07:15,207 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/covers/ef35ac93-eb86-494d-8999-85476cbaad6b "HTTP/1.1 200 OK"
+2026-10-16 14:07:15,269 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/knowledge/manual "HTTP/1.1 201 Created"
+2026-10-16 14:07:15,284 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/6c405c12-be27-4cd0-bd80-35327abbb628 "HTTP/1.1 200 OK"
+2026-10-16 14:07:15,299 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/6c405c12-be27-4cd0-bd80-35327abbb628 "HTTP/1.1 200 OK"
+2026-10-16 14:07:15,730 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/knowledge/6c405c12-be27-4cd0-bd80-35327abbb628 "HTTP/1.1 200 OK"

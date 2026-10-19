@@ -1,0 +1,45 @@
+=== 前置清理（[SMOKE] 历史残留）===
+已清理 personas=0 accounts=0
+[PASS] 连通性探测 /health 可达
+[PASS] POST /accounts 新建返回 201
+[PASS] 新建账号默认 status=active
+[PASS] 新建账号 xhs_red_id 正确回显
+[PASS] 重复 xhs_red_id 返回 409
+[PASS] 409 响应体 code=conflict
+[PASS] GET /accounts/{id} 详情正确
+[PASS] PATCH /accounts/{id} 部分更新生效
+[PASS] 列表响应结构为 {items,total,page,page_size}
+[PASS] q 模糊过滤能命中新建账号
+[PASS] 分页参数生效（page_size=1）
+[PASS] GET 不存在的账号返回 404 not_found
+[PASS] PATCH 不存在的账号返回 404
+[PASS] 空 name 返回 422 validation 且 details 为字段级列表
+[PASS] 超长 name 返回 422
+[PASS] PATCH 非法 status 返回 422
+[PASS] POST /personas 新建返回 201
+[PASS] content_pillars 自动 strip + 去重
+[PASS] taboo 自动 strip + 去重
+[PASS] PersonaOut.account_name 由 LEFT JOIN 返回
+[PASS] 同账号第二条默认人设创建成功
+[PASS] 同账号范围内默认人设唯一（旧默认被取消）
+[PASS] 公共人设（account_id=null）创建成功且 account_name 为 null
+[PASS] 归属账号不存在返回 400 bad_request
+[PASS] account_id=public 只看公共人设库
+[PASS] account_id=<uuid> 只返回该账号的人设（2 条）
+[PASS] GET 不存在的人设返回 404
+[PASS] PATCH /personas/{id} 更新生效
+[PASS] content_pillars 超 10 项返回 422
+[PASS] PATCH status=archived 归档账号
+[PASS] 归档后默认列表（status=active）不可见
+[PASS] status=archived 可查到已归档账号
+[PASS] 归档账号不级联改动人设（人设仍在、仍为 active）
+[PASS] 人设归档成功
+[PASS] 人设恢复成功
+[PASS] 账号恢复成功
+
+=== 收尾清理（物理删除 [SMOKE] 数据）===
+已清理 personas=3 accounts=1
+[PASS] 库内 [SMOKE] 残留为 0
+
+通过 37 项，失败 0 项。
+全部 PASS ✔（在线冒烟，数据已清理）

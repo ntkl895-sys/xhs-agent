@@ -1,0 +1,136 @@
+2026-10-17 09:33:54,397 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:33:54,560 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:54,578 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,612 [INFO] xhs-agent.content.service: 创作完成：topic=343296f3-4ff8-4be7-bec4-23d109b42955 note=4a0fa697-43e7-4323-9d18-ff0f1604d076 status=success compliance=passed 命中=0
+2026-10-17 09:33:54,663 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:54,670 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,698 [INFO] xhs-agent.content.service: 创作完成：topic=55a30948-4a0f-40f0-9fe2-22e701f50828 note=be0815c4-adb8-4789-a55a-b963f3015906 status=success compliance=passed 命中=0
+2026-10-17 09:33:54,756 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:54,763 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,791 [INFO] xhs-agent.content.service: 创作完成：topic=3faffca3-d34f-435e-a934-df6430b0fded note=4e868652-fb32-4b85-9999-921344bf1189 status=success compliance=warning 命中=3
+2026-10-17 09:33:54,827 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:54,835 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,844 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,871 [INFO] xhs-agent.content.service: 创作完成：topic=aed40c35-d0f2-4c17-bfad-1452f1f052ac note=e5df2769-84c2-4d93-964f-9ca6b25a254c status=success compliance=passed 命中=0
+2026-10-17 09:33:54,903 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:54,909 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,915 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,922 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:54,956 [INFO] xhs-agent.content.service: 创作完成：topic=0b140f12-8499-4bc6-ae80-7bd943713325 note=59fd2ef6-3a51-4139-ae52-91eb91c67657 status=partial compliance=passed 命中=0
+2026-10-17 09:33:54,998 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:55,009 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:55,017 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:55,025 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:55,053 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=content_creation thread=df97216c-5991-4a96-b7e8-9c7a5544180e）：重试 3 轮后仍无可用草稿（标题为空），放弃
+2026-10-17 09:33:55,058 [INFO] xhs-agent.content.service: 创作失败（不可重试）：topic=375937c2-1c83-4103-9bb5-1b97a340905a 重试 3 轮后仍无可用草稿（标题为空），放弃
+2026-10-17 09:33:55,106 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:55,115 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:55,142 [INFO] xhs-agent.content.service: 创作完成：topic=11c6c8a6-7d25-4c3f-87b0-dfeb738fecb3 note=619e837f-f3b2-4c90-a53c-530ac104b2dd status=success compliance=passed 命中=0
+2026-10-17 09:33:55,175 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:33:55,177 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:33:55,182 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:33:55,206 [INFO] xhs-agent.content.service: 创作完成：topic=a0fe384e-b365-42b5-8df6-133425f5904c note=5e3e4fb3-deea-4ed0-914b-d392bf789ece status=success compliance=passed 命中=0
+==============================================================================
+第 12 步 · 创作 Agent 离线自检（不联网、不需要 API Key）
+==============================================================================
+[PASS] 五个节点名与任务书一致
+[PASS] build_content_graph 返回已编译的 LangGraph 图
+[PASS] 图含 load_context / generate_content / validate_compliance / persist / give_up
+[PASS] load_context → generate_content → validate_compliance 为直连边
+[PASS] validate_compliance 存在「回炉重生成」条件边（有限回路的载体）
+[PASS] validate_compliance 存在去 persist / give_up 的条件边
+[PASS] persist / give_up 均连接 END
+[PASS] 回路有界（上限来自 AGENT_JSON_MAX_ATTEMPTS）
+[PASS] 合格响应：status=success 且拿到 note_id
+[PASS] 无字段硬伤 → 一轮生成即落库（模型只调 1 次）
+[PASS] notes 实际写入 1 行
+[PASS] title 写入对应列
+[PASS] body 写入对应列（与模型产出一致）
+[PASS] tags 写入对应列：剥除误带的 # 且顺序保留
+[PASS] 无命中 → content_check.status=passed 且 hits 为空
+[PASS] content_check 记录 checked_fields 与 checked_at
+[PASS] compliance_status=passed
+[PASS] status 恒为 draft（即使 passed 也不自动 ready）
+[PASS] version=1
+[PASS] publish_url / xhs_note_id / published_at 全部留空（不自动发布）
+[PASS] llm_meta 含 prompt_version / json_parse_attempts=1 / model
+[PASS] account_id / persona_id / topic_id 三外键均按上下文回填
+[PASS] persist 同一事务把选题 approved→writing
+[PASS] agent_runs.run_type=content_creation
+[PASS] agent_runs.status=success
+[PASS] agent_runs.outputs 已回填业务明细（note_id / generated / 合规 / 命中数 / 标签数 / 标题）
+[PASS] agent_runs token 已回填（13/47/60）
+[PASS] agent_runs.json_parse_attempts == 1
+[PASS] agent_runs.llm_raw 已回填模型原始输出且不含密钥
+[PASS] agent_runs.note_id / topic_id 已关联
+[PASS] agent_runs.trigger=manual
+[PASS] list_recent_runs 仅返回 content_creation 且最新一条为本次运行
+[PASS] topic.account_id 为空时按 persona.account_id 回填归属账号
+[PASS] 选题不存在 → 404 not_found
+[PASS] 非 approved 选题 → 400 bad_request
+[PASS] 选题未关联人设 → 400 bad_request
+[PASS] 三类前置校验失败时模型调用均为 0 次（不发任何请求）
+[PASS] 前置校验失败时不写 agent_runs（不产生空审计行）
+[PASS] AGENT_LLM_ENABLED=false 时工厂抛 AgentConfigError（不发起任何请求）
+[PASS] 自检结束后 LLM 开关已还原（不污染后续步骤）
+[PASS] notes 路由把 AgentConfigError 映射为 400 bad_request
+[PASS] 命中风险词仍正常落库（不阻断、不改写），compliance_status=warning
+[PASS] 命中风险词**不**单独强制回炉（模型仍只调 1 次）
+[PASS] 命中项 = 标题「国家级」/ 正文「包治百病」/ 标签「加微信」（跨字段各计一次）
+[PASS] compliance_status 与 content_check.status 同步为 warning
+[PASS] 每条命中都带分类（category 均来自内置分类表）
+[PASS] 每条命中都带片段 snippet
+[PASS] 正文 / 标题**未被静默改写**（原样落库）
+[PASS] 命中风险词的草稿仍以 draft 保存（不丢弃）
+[PASS] scan_text 命中且短词被长词覆盖剪枝（不再重复计数「稳赚」）
+[PASS] 无命中返回空表
+[PASS] 去掉标点后仍能命中「符号隔开规避」写法（加-微-信 → 加微信）
+[PASS] scan_note 支持标签字段扫描（field=tags）
+[PASS] compliance_of：0 命中=passed / ≥1 命中=warning（无 blocked 状态）
+[PASS] 词表概况：7 个分类均有词，total 与实际条数一致
+[PASS] 首轮字段不合格 → 条件边回炉 → 次轮合格并落库（模型调 2 次）
+[PASS] 回炉时 feedback 确实注入提示词（含字段问题与标签数量提示）
+[PASS] 回路有界：模型恰被调用 3 次后停止回炉
+[PASS] 重试耗尽但有可用正文 → 降级落库，service 记 partial
+[PASS] 降级落库确有 notes 行（正文按原样保存，草稿保留待人工修订）
+[PASS] 降级运行在 agent_runs 补记 partial
+[PASS] agent_runs.outputs.degraded=True
+[PASS] 重试耗尽且无可用正文 → give_up，service 返回 failed 汇总
+[PASS] give_up 前恰回炉 3 轮（无限循环已被杜绝）
+[PASS] give_up 不留任何 notes 半成品
+[PASS] give_up 后选题仍为 approved（未被改成 writing）
+[PASS] give_up 的运行在 agent_runs 记 failed
+[PASS] 脏 JSON（代码围栏 + 裸控制字符 + 前后噪声）解析并落库
+[PASS] 脏 JSON 一次命中（json_parse_attempts=1）
+[PASS] JSON 容错在节点内完成，未触发图回路
+[PASS] 「先噪后 valid」parse_attempts 正确记为 2（notes.llm_meta 与 agent_runs 同步）
+[PASS] 写入中途数据库失败会抛出（外键冲突）
+[PASS] 失败回滚后**无 notes 半成品**
+[PASS] 失败回滚后选题状态不变（未被改成 writing）
+[PASS] 非 approved 选题被同事务入口拒绝（ValueError）
+[PASS] 被拒后不产生 notes 行
+[PASS] POST /api/v1/notes/generate 已注册（无 PATCH/PUT/DELETE）
+[PASS] GET /api/v1/notes/runs 静态路径已注册
+[PASS] GET /api/v1/notes 列表已注册
+[PASS] GET+PATCH /api/v1/notes/{note_id} 已注册（第 14 步起 PATCH 为创作台正式接口；无 PUT/DELETE）
+[PASS] 全 OpenAPI 组件中**没有任何**响应模型暴露 llm_raw
+[PASS] 三个响应模型均无 llm_raw 字段
+[PASS] NoteOut 序列化结果不含 llm_raw
+[PASS] NoteOut.llm_meta 只输出白名单键
+[PASS] sanitize_llm_meta 会剔除白名单外的键（含疑似密钥）
+[PASS] NoteRunOut 序列化结果不含 llm_raw
+[PASS] notes 恰注册 4 条路径（第 14 步起允许 PATCH；无 PUT / DELETE）
+[PASS] notes 无 sk- 形态密钥
+[PASS] agent_runs 无 sk- 形态密钥
+[PASS] 本步新增代码不含小红书域名 / 登录态字段
+[PASS] main.py 注册含既有六只路由（总数 ≥ 6）
+[PASS] main.py 未新增第二个 lifespan
+[PASS] 风险词表只内置在代码里（.env.example 不含任何风险词）
+[PASS] public schema 仍为 10 张业务表（本步未新增表、未把词表落库）
+[PASS] 本步未新增迁移文件（versions 恰 2 支：0001 / 0002）
+[PASS] alembic current 仍为 0002 (head)
+[PASS] alembic check 零漂移（模型与迁移一致）
+[PASS] 测试数据已物理清理，复查残留为 0
+
+通过 98 项，失败 0 项。
+全部 PASS ✔（离线自检，未联网、未使用真实 API Key）

@@ -1,0 +1,21 @@
+{
+  "name": "topic_tool",
+  "version": "1.0.0",
+  "frozen_at": "2026-10-17T05:27:26+00:00",
+  "stats": {
+    "scenarios": 12,
+    "no_tool_scenarios": 3,
+    "multi_tool_scenarios": 4,
+    "expected_tool_counts": {
+      "search_hotspots": 4,
+      "search_knowledge": 5,
+      "list_topics": 3,
+      "get_persona": 2
+    }
+  },
+  "answer_source": "人工标注（按场景要求设计 expected_tools，独立于被测实现）",
+  "freeze_notice": "已冻结：评测只读不改；修改须 --force 并升 version，报告中保留前后两版。",
+  "sha256": {
+    "scenarios.json": "8005be1ea0b6d8902ee3129dd71d8f819804243d603139f4af28dec9da121e25"
+  }
+}

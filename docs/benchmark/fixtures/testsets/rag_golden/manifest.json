@@ -1,0 +1,20 @@
+{
+  "name": "rag_golden",
+  "version": "1.0",
+  "generated_at": "2026-10-17T08:57:55+08:00",
+  "generator": "scripts/benchmark/build_testsets.py",
+  "answer_source": "人工撰写 30 条知识片段（全 synthetic）+ 人工标注 40 条查询的期望命中片段；片段含「主题相近但答案不同」近邻对（睡眠/运动、水温/研磨、塌陷/脱模 等）",
+  "stats": {
+    "corpus_total": 30,
+    "queries_total": 40,
+    "multi_expected_queries": 10,
+    "hard_negative_queries": 12,
+    "corpus_source": "synthetic（真实语料待用户提供后可升版本扩充）"
+  },
+  "sha256": {
+    "corpus.json": "6c163c38de808b520fddcd00e55ed07e79556afbf2997f497e1d83165b345c91",
+    "queries.json": "3813afde117cc617dcd916d2f98b485c77468d685773d5400811f0761799323a"
+  },
+  "freeze_notice": "本测试集已冻结：评测只读不改；任何修改须升 version 并在报告中保留前后两版结果。",
+  "notes": "评测需本地 bge 依赖（langchain-huggingface / sentence-transformers）与模型缓存；未就绪时按红线全项 N/A，禁止用假向量出率。"
+}

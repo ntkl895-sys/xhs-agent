@@ -1,0 +1,100 @@
+# ============================================================================
+# xhs-agent · 本地基础设施编排（PostgreSQL + pgvector / Redis / DailyHotApi）
+#
+# 采用 Compose v2 语法，不写已废弃的顶层 version 字段。
+#
+#   启动：docker compose up -d
+#   状态：docker compose ps       （db / redis / dailyhot 应显示 healthy）
+#   日志：docker compose logs -f db
+#   停止：docker compose down     （加 -v 会连同数据卷一起删除，慎用）
+#   校验：docker compose config   （语法自检，不启动容器）
+#
+# 服务依赖顺序（后端启动前提）：
+#   ① db（PostgreSQL+pgvector）→ ② redis → ③ dailyhot（热搜采集上游，第 9 步新增）
+#   三者相互独立、无 depends_on；后端对 dailyhot **容错**：
+#   即使 dailyhot 未起，服务照常启动，仅 /api/v1/hotspots/refresh 采集失败。
+#
+# ⚠️ 前后端【不】放进本文件：开发态前端/后端在宿主机热更新运行，
+#    容器化留到第 21 步（Dockerfile / CI / 生产部署）。
+#
+# ⚠️ 端口一律只绑定 127.0.0.1（本机回环），不暴露到局域网。
+# ============================================================================
+
+services:
+  # --------------------------------------------------------------------------
+  # PostgreSQL 16 + pgvector 扩展
+  # 镜像自带 pgvector，配合 docker/postgres/init 在首启时创建 vector 扩展。
+  # --------------------------------------------------------------------------
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: xhs-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-xhs_agent}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # 用 pg_isready 探活；用户名/库名与上面的初始化参数保持一致
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-xhs_agent}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # --------------------------------------------------------------------------
+  # Redis 7（此前各步均为「已启动、未写入」；第 9 步的定时采集改用进程内
+  # APScheduler + threading.Lock，**单机单进程无需 Redis 锁**，故仍保持空载）。
+  # 保留它是为后续可能需要跨进程缓存 / 限流的步骤预留（第 9 步未使用）。
+  # --------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: xhs-redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # --------------------------------------------------------------------------
+  # DailyHotApi（第 9 步）：公开热榜聚合服务，热搜采集链路的**上游**。
+  #   - 无状态：不挂卷，使用镜像自带的**内存缓存**（默认约 60 分钟）；
+  #   - 只绑本机回环 127.0.0.1:6688，不暴露到局域网；
+  #   - 只提供公开榜单；小红书（xhs）源在本项目中被后端硬性禁用。
+  #
+  # healthcheck：镜像（Node 应用）**必然自带 node**，故用 node 一行探针访问
+  #   http://127.0.0.1:6688/ ——比 wget/curl 更可靠（镜像内不一定有它们）。
+  #   ⚠️ 本机未安装 Docker，该 healthcheck **未实机验证**，详见 README。
+  # --------------------------------------------------------------------------
+  dailyhot:
+    image: imssyy/dailyhot-api:latest
+    container_name: xhs-dailyhot
+    ports:
+      - "127.0.0.1:6688:6688"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://127.0.0.1:6688/',r=>process.exit(r.statusCode<400?0:1)).on('error',()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    name: xhs-agent-pgdata
+  redis-data:
+    name: xhs-agent-redis-data

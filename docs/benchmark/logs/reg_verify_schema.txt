@@ -1,0 +1,17 @@
+[PASS] 恰好 10 张业务表且表名齐全
+[PASS] 框架检查点表未落在 public（已被排除在业务表断言之外）
+[INFO] 框架托管表 4 张，位于 schema=['langgraph']
+[PASS] 外键及其 ON DELETE 策略全部正确（14 条）
+[PASS] 唯一约束齐全（3 条）
+[PASS] 索引齐全（18 个）
+[PASS] DESC 排序索引定义正确
+[PASS] HNSW(vector_cosine_ops) 索引存在
+[PASS] knowledge_snippets.embedding 类型为 vector(1024)
+[PASS] pgvector 扩展已启用
+[PASS] 向量检索返回 3 条
+[PASS] 余弦距离排序正确（最近=同向 e0，最远=正交 e1）
+[PASS] 距离单调递增
+[PASS] 向量测试数据已回滚，无残留
+
+通过 13 项，失败 0 项。
+全部 PASS ✔

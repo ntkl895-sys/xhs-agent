@@ -1,0 +1,335 @@
+{
+  "purpose": "查询与期望命中片段（人工标注；含主题相近但答案不同的 hard negatives）",
+  "entries": [
+    {
+      "id": "ragq_01",
+      "query": "标题写多少字合适？",
+      "expected_ids": [
+        "kb_01"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_02",
+      "query": "封面放几个字比较好？",
+      "expected_ids": [
+        "kb_02"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_03",
+      "query": "什么时候发笔记流量好？",
+      "expected_ids": [
+        "kb_03"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_04",
+      "query": "一篇笔记配多少个标签？",
+      "expected_ids": [
+        "kb_04"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_05",
+      "query": "发布后多久要盯评论区？",
+      "expected_ids": [
+        "kb_05"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_06",
+      "query": "怎么看数据找出问题在哪层？",
+      "expected_ids": [
+        "kb_06"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_07",
+      "query": "睡前喝咖啡会影响睡眠吗？",
+      "expected_ids": [
+        "kb_07"
+      ],
+      "note": "hard：干扰项 kb_08（咖啡因与运动）"
+    },
+    {
+      "id": "ragq_08",
+      "query": "运动前喝咖啡有用吗？",
+      "expected_ids": [
+        "kb_08"
+      ],
+      "note": "hard：干扰项 kb_07（咖啡因与睡眠）"
+    },
+    {
+      "id": "ragq_09",
+      "query": "久坐肩颈怎么放松？",
+      "expected_ids": [
+        "kb_09"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_10",
+      "query": "冥想从几分钟开始？",
+      "expected_ids": [
+        "kb_10"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_11",
+      "query": "怎么把作息逐渐调早？",
+      "expected_ids": [
+        "kb_11"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_12",
+      "query": "看屏幕久了眼睛怎么休息？",
+      "expected_ids": [
+        "kb_12"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_13",
+      "query": "番茄钟是多长时间一轮？",
+      "expected_ids": [
+        "kb_13"
+      ],
+      "note": "hard：干扰项 kb_14（同为效率方法）"
+    },
+    {
+      "id": "ragq_14",
+      "query": "每天待办列多少件合适？",
+      "expected_ids": [
+        "kb_14"
+      ],
+      "note": "hard：干扰项 kb_13（同为效率方法）"
+    },
+    {
+      "id": "ragq_15",
+      "query": "写工作邮件怎么组织结构？",
+      "expected_ids": [
+        "kb_15"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_16",
+      "query": "会议纪要要记什么内容？",
+      "expected_ids": [
+        "kb_16"
+      ],
+      "note": "hard：干扰项 kb_17（同为记录方法）"
+    },
+    {
+      "id": "ragq_17",
+      "query": "康奈尔笔记怎么分区？",
+      "expected_ids": [
+        "kb_17"
+      ],
+      "note": "hard：干扰项 kb_16（同为记录方法）"
+    },
+    {
+      "id": "ragq_18",
+      "query": "复盘要问哪几个问题？",
+      "expected_ids": [
+        "kb_18"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_19",
+      "query": "手冲咖啡水温多少合适？",
+      "expected_ids": [
+        "kb_19"
+      ],
+      "note": "hard：干扰项 kb_20（手冲参数）"
+    },
+    {
+      "id": "ragq_20",
+      "query": "手冲咖啡磨多粗？",
+      "expected_ids": [
+        "kb_20"
+      ],
+      "note": "hard：干扰项 kb_19（手冲参数）"
+    },
+    {
+      "id": "ragq_21",
+      "query": "戚风蛋糕为什么会塌陷？",
+      "expected_ids": [
+        "kb_21"
+      ],
+      "note": "hard：干扰项 kb_22（戚风流程）"
+    },
+    {
+      "id": "ragq_22",
+      "query": "戚风蛋糕怎么完整脱模？",
+      "expected_ids": [
+        "kb_22"
+      ],
+      "note": "hard：干扰项 kb_21（戚风流程）"
+    },
+    {
+      "id": "ragq_23",
+      "query": "冰箱东西怎么分区放？",
+      "expected_ids": [
+        "kb_23"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_24",
+      "query": "衣服洗标上的符号怎么看？",
+      "expected_ids": [
+        "kb_24"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_25",
+      "query": "记账怎么开始做分类？",
+      "expected_ids": [
+        "kb_25"
+      ],
+      "note": "hard：干扰项 kb_26（记账预算）"
+    },
+    {
+      "id": "ragq_26",
+      "query": "每月收入按什么比例分配？",
+      "expected_ids": [
+        "kb_26"
+      ],
+      "note": "hard：干扰项 kb_25（记账预算）"
+    },
+    {
+      "id": "ragq_27",
+      "query": "密码太多记不住怎么办？",
+      "expected_ids": [
+        "kb_27"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_28",
+      "query": "账号怎么设置更安全？",
+      "expected_ids": [
+        "kb_28"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_29",
+      "query": "网购怎么避免买贵？",
+      "expected_ids": [
+        "kb_29"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_30",
+      "query": "收贵重快递要注意什么？",
+      "expected_ids": [
+        "kb_30"
+      ],
+      "note": "direct"
+    },
+    {
+      "id": "ragq_31",
+      "query": "咖啡因对睡眠和运动分别有什么说法？",
+      "expected_ids": [
+        "kb_07",
+        "kb_08"
+      ],
+      "note": "multi：跨两条近邻片段"
+    },
+    {
+      "id": "ragq_32",
+      "query": "内容发布前中后分别要做什么？",
+      "expected_ids": [
+        "kb_03",
+        "kb_05"
+      ],
+      "note": "multi：发布时段 + 评论运营"
+    },
+    {
+      "id": "ragq_33",
+      "query": "专注方法和任务清单怎么配合使用？",
+      "expected_ids": [
+        "kb_13",
+        "kb_14"
+      ],
+      "note": "multi：效率方法组合"
+    },
+    {
+      "id": "ragq_34",
+      "query": "手冲咖啡从水温到研磨怎么调？",
+      "expected_ids": [
+        "kb_19",
+        "kb_20"
+      ],
+      "note": "multi：手冲参数组合"
+    },
+    {
+      "id": "ragq_35",
+      "query": "烘焙翻车的排查思路？",
+      "expected_ids": [
+        "kb_21",
+        "kb_22"
+      ],
+      "note": "multi：戚风问题组合"
+    },
+    {
+      "id": "ragq_36",
+      "query": "做笔记的标题和封面有什么要点？",
+      "expected_ids": [
+        "kb_01",
+        "kb_02"
+      ],
+      "note": "multi：内容运营组合"
+    },
+    {
+      "id": "ragq_37",
+      "query": "账号安全最该先做哪两件事？",
+      "expected_ids": [
+        "kb_27",
+        "kb_28"
+      ],
+      "note": "multi：安全组合"
+    },
+    {
+      "id": "ragq_38",
+      "query": "记账和预算怎么配套？",
+      "expected_ids": [
+        "kb_25",
+        "kb_26"
+      ],
+      "note": "multi：理财组合"
+    },
+    {
+      "id": "ragq_39",
+      "query": "写邮件和写纪要的要点？",
+      "expected_ids": [
+        "kb_15",
+        "kb_16"
+      ],
+      "note": "multi：书面沟通组合"
+    },
+    {
+      "id": "ragq_40",
+      "query": "护眼和肩颈的日常小习惯？",
+      "expected_ids": [
+        "kb_09",
+        "kb_12"
+      ],
+      "note": "multi：健康习惯组合"
+    }
+  ]
+}

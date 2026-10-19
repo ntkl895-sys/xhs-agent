@@ -1,0 +1,5442 @@
+{
+  "suite": "testset_json_robustness",
+  "generated_at": "2026-10-18T09:27:35+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "n": 200,
+    "correct": 135,
+    "overall_accuracy": 0.675,
+    "direct_first_pass_rate": 1.0,
+    "repaired_rescue_rate": 0.5413,
+    "failed_rejection_rate": 0.7727
+  },
+  "notes": [
+    "口径：解析器离线鲁棒性（确定性管道、零 LLM 调用）；不得写成「模型稳定性」。",
+    "离群值/错例全部保留在 detail.mismatches，供人工核对；未做任何剔除。",
+    "label 由人工设计规则标注（见夹具 manifest.answer_source），不依赖被测实现。",
+    "错例四分类：未救回（能力边界）/ 降级提取（返回内嵌子结构）/ 内容不符 / 过度解析；后两类与「顶层损坏时的片段提取行为」相关，详情逐条可审计。"
+  ],
+  "detail": {
+    "fixture": "fixtures/testsets/json_robustness/cases.json",
+    "fixture_version": "1.0",
+    "matrix": {
+      "direct": {
+        "direct": 25,
+        "repaired": 0,
+        "failed": 0,
+        "error": 0
+      },
+      "repaired": {
+        "direct": 0,
+        "repaired": 77,
+        "failed": 32,
+        "error": 0
+      },
+      "failed": {
+        "direct": 0,
+        "repaired": 15,
+        "failed": 51,
+        "error": 0
+      }
+    },
+    "buckets": {
+      "bracket": {
+        "n": 25,
+        "correct": 14
+      },
+      "broken": {
+        "n": 25,
+        "correct": 25
+      },
+      "ctrl": {
+        "n": 25,
+        "correct": 25
+      },
+      "fence": {
+        "n": 25,
+        "correct": 25
+      },
+      "quotes": {
+        "n": 25,
+        "correct": 0
+      },
+      "trailing": {
+        "n": 25,
+        "correct": 0
+      },
+      "truncated": {
+        "n": 25,
+        "correct": 21
+      },
+      "valid": {
+        "n": 25,
+        "correct": 25
+      }
+    },
+    "mismatch_total": 65,
+    "mismatches": [
+      {
+        "id": "json_086",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          "选题A",
+          "选题B",
+          "选题C"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_087",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "source": "manual",
+          "retry": 2
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_088",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "start": "2026-10-01",
+          "end": "2026-10-07"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_090",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "views": 12800,
+          "likes": 326,
+          "collects": 145
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_092",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "tags": [
+            "干货",
+            "教程"
+          ],
+          "cover": false
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_093",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"plan\" [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          "周一发干货",
+          "周三发育儿",
+          "周五发vlog"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_095",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"feedback\" {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "stars": 4,
+          "comment": "整体不错，标题可以更聚焦。"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_096",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"counters\" {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "likes": "1,234",
+          "shares": "56"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_097",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          "打蛋",
+          "热锅",
+          "翻炒"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_099",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "q": "标题怎么起"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_100",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {},
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_101",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"],}",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "repaired",
+        "payload": [
+          "毛衣",
+          "通勤"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_102",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true,}",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_103",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\",}",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "repaired",
+        "payload": {
+          "tone": "轻松",
+          "length": 420
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_104",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}],}",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "name": "拿铁",
+          "price": 28
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_105",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12,}",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_106",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35,}",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_107",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"],}",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "repaired",
+        "payload": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_108",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280},}",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "name": "小北",
+          "vip": false,
+          "points": 1280
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_109",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\",}",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_110",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\",}",
+        "expected": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_111",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\",}",
+        "expected": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "actual": "repaired",
+        "payload": [
+          "选题A",
+          "选题B",
+          "选题C"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_112",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true,}",
+        "expected": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "actual": "repaired",
+        "payload": {
+          "source": "manual",
+          "retry": 2
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_113",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7,}",
+        "expected": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "actual": "repaired",
+        "payload": {
+          "start": "2026-10-01",
+          "end": "2026-10-07"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_114",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3,}",
+        "expected": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_115",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145},}",
+        "expected": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "views": 12800,
+          "likes": 326,
+          "collects": 145
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_116",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46,}",
+        "expected": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_117",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false},}",
+        "expected": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "tags": [
+            "干货",
+            "教程"
+          ],
+          "cover": false
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_118",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41,}",
+        "expected": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "actual": "repaired",
+        "payload": [
+          "周一发干货",
+          "周三发育儿",
+          "周五发vlog"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_119",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250,}",
+        "expected": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_120",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"},}",
+        "expected": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "stars": 4,
+          "comment": "整体不错，标题可以更聚焦。"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_121",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\",}",
+        "expected": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "actual": "repaired",
+        "payload": {
+          "likes": "1,234",
+          "shares": "56"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_122",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3,}",
+        "expected": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "actual": "repaired",
+        "payload": [
+          "打蛋",
+          "热锅",
+          "翻炒"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_123",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\",}",
+        "expected": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_124",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87,}",
+        "expected": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "actual": "repaired",
+        "payload": {
+          "q": "标题怎么起"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_125",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true,}",
+        "expected": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "actual": "repaired",
+        "payload": {},
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_129",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "name": "拿铁",
+          "price": 28
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_132",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_149",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "q": "标题怎么起"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_150",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"empty_list\": [], \"empty_obj\"",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_151",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'title': '秋日通勤穿搭', 'tags': ['毛衣', '通勤']}",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_152",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“note_id”: “ab12-cd34”, “score”: 4.5, “ready”: true}",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_153",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'analysis': {'tone': '轻松', 'length': 420}, 'status': 'done'}",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_154",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“items”: [{“name”: “拿铁”, “price”: 28}, {“name”: “美式”, “price”: 22}]}",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_155",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'title': '周末露营清单', 'body': '帐篷、防潮垫、头灯都要带齐。', 'count': 12}",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_156",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“reply”: “收到，稍后回复你。”, “latency_ms”: 35}",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_157",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'levels': [1, 2, 3, 4, 5], 'labels': ['草稿', '待审', '已发布']}",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "repaired",
+        "payload": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_158",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“user”: {“name”: “小北”, “vip”: false, “points”: 1280}}",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_159",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'summary': '三个要点：标题要具体；正文分段；标签别堆砌。'}",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_160",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“text”: “今天也要加油呀”, “emoji”: “😀”}",
+        "expected": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_161",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'candidates': ['选题A', '选题B', '选题C'], 'picked': '选题B'}",
+        "expected": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_162",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“meta”: {“source”: “manual”, “retry”: 2}, “ok”: true}",
+        "expected": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_163",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'range': {'start': '2026-10-01', 'end': '2026-10-07'}, 'days': 7}",
+        "expected": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_164",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“message”: “已生成 3 个版本，请查收。”, “variant_count”: 3}",
+        "expected": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_165",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'kpis': {'views': 12800, 'likes': 326, 'collects': 145}}",
+        "expected": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_166",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“draft”: “第一段：开场白。第二段：核心观点。”, “words”: 46}",
+        "expected": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_167",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'options': {'tags': ['干货', '教程'], 'cover': false}}",
+        "expected": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_168",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“plan”: [“周一发干货”, “周三发育儿”, “周五发vlog”], “week”: 41}",
+        "expected": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_169",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'code': 'A1', 'detail': '库存充足', 'quantity': 250}",
+        "expected": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_170",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“feedback”: {“stars”: 4, “comment”: “整体不错，标题可以更聚焦。”}}",
+        "expected": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_171",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'counters': {'likes': '1,234', 'shares': '56'}, 'note': '字符串计数'}",
+        "expected": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_172",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“title”: “三分钟快手早餐”, “steps”: [“打蛋”, “热锅”, “翻炒”], “minutes”: 3}",
+        "expected": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_173",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'env': 'staging', 'debug': false, 'version': '1.2.0'}",
+        "expected": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_174",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“pair”: [{“q”: “标题怎么起”}, {“a”: “给具体数字”}], “score”: 0.87}",
+        "expected": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_175",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'empty_list': [], 'empty_obj': {}, 'flag': true}",
+        "expected": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "actual": "repaired",
+        "payload": {},
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      }
+    ],
+    "records": [
+      {
+        "id": "json_001",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"]}",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "direct",
+        "payload": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_002",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true}",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "direct",
+        "payload": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_003",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\"}",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "direct",
+        "payload": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_004",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}]}",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "direct",
+        "payload": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_005",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12}",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "direct",
+        "payload": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_006",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35}",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "direct",
+        "payload": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_007",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"]}",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "direct",
+        "payload": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_008",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280}}",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "direct",
+        "payload": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_009",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\"}",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "direct",
+        "payload": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_010",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\"}",
+        "expected": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "actual": "direct",
+        "payload": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_011",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"}",
+        "expected": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "actual": "direct",
+        "payload": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_012",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true}",
+        "expected": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "actual": "direct",
+        "payload": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_013",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7}",
+        "expected": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "actual": "direct",
+        "payload": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_014",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3}",
+        "expected": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "actual": "direct",
+        "payload": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_015",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}}",
+        "expected": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "actual": "direct",
+        "payload": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_016",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46}",
+        "expected": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "actual": "direct",
+        "payload": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_017",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}}",
+        "expected": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "actual": "direct",
+        "payload": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_018",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}",
+        "expected": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "actual": "direct",
+        "payload": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_019",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250}",
+        "expected": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "actual": "direct",
+        "payload": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_020",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}",
+        "expected": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "actual": "direct",
+        "payload": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_021",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}",
+        "expected": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "actual": "direct",
+        "payload": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_022",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}",
+        "expected": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "actual": "direct",
+        "payload": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_023",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\"}",
+        "expected": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "actual": "direct",
+        "payload": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_024",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}",
+        "expected": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "actual": "direct",
+        "payload": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_025",
+        "bucket": "valid",
+        "label": "direct",
+        "note": "合法 JSON：应一次解析成功",
+        "raw": "{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}",
+        "expected": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "actual": "direct",
+        "payload": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_026",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"]}\n```",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_027",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true}\n```",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "repaired",
+        "payload": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_028",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\"}\n```\n以上内容仅供参考。",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "repaired",
+        "payload": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_029",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}]}\n```",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_030",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12}\n```",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_031",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35}\n```\n以上内容仅供参考。",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "repaired",
+        "payload": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_032",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"]}\n```",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_033",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280}}\n```",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_034",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\"}\n```\n以上内容仅供参考。",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "repaired",
+        "payload": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_035",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\"}\n```",
+        "expected": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "actual": "repaired",
+        "payload": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_036",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"}\n```",
+        "expected": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "actual": "repaired",
+        "payload": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_037",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true}\n```\n以上内容仅供参考。",
+        "expected": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "actual": "repaired",
+        "payload": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_038",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7}\n```",
+        "expected": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "actual": "repaired",
+        "payload": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_039",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3}\n```",
+        "expected": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "actual": "repaired",
+        "payload": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_040",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}}\n```\n以上内容仅供参考。",
+        "expected": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_041",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46}\n```",
+        "expected": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "actual": "repaired",
+        "payload": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_042",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}}\n```",
+        "expected": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_043",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}\n```\n以上内容仅供参考。",
+        "expected": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "actual": "repaired",
+        "payload": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_044",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250}\n```",
+        "expected": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "actual": "repaired",
+        "payload": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_045",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}\n```",
+        "expected": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_046",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}\n```\n以上内容仅供参考。",
+        "expected": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "actual": "repaired",
+        "payload": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_047",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}\n```",
+        "expected": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_048",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（无语言标记）：去围栏后应成功",
+        "raw": "```\n{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\"}\n```",
+        "expected": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "actual": "repaired",
+        "payload": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_049",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功",
+        "raw": "以下是解析结果：\n```json\n{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}\n```\n以上内容仅供参考。",
+        "expected": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "actual": "repaired",
+        "payload": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_050",
+        "bucket": "fence",
+        "label": "repaired",
+        "note": "代码围栏（json 标记）：去围栏后应成功",
+        "raw": "```json\n{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}\n```",
+        "expected": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "actual": "repaired",
+        "payload": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_051",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"秋日穿搭指南\", \"body\": \"秋日穿搭指南的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 6}",
+        "expected": {
+          "title": "秋日穿搭指南",
+          "body": "秋日穿搭指南的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 6
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "秋日穿搭指南",
+          "body": "秋日穿搭指南的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 6
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_052",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"露营装备清单\", \"body\": \"露营装备清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 7}",
+        "expected": {
+          "title": "露营装备清单",
+          "body": "露营装备清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 7
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "露营装备清单",
+          "body": "露营装备清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 7
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_053",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"快手早餐合集\", \"body\": \"快手早餐合集的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 8}",
+        "expected": {
+          "title": "快手早餐合集",
+          "body": "快手早餐合集的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 8
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "快手早餐合集",
+          "body": "快手早餐合集的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 8
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_054",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"通勤包内好物\", \"body\": \"通勤包内好物的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 9}",
+        "expected": {
+          "title": "通勤包内好物",
+          "body": "通勤包内好物的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 9
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "通勤包内好物",
+          "body": "通勤包内好物的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 9
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_055",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"平价护肤心得\", \"body\": \"平价护肤心得的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 10}",
+        "expected": {
+          "title": "平价护肤心得",
+          "body": "平价护肤心得的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 10
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "平价护肤心得",
+          "body": "平价护肤心得的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 10
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_056",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"租房改造记录\", \"body\": \"租房改造记录的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 11}",
+        "expected": {
+          "title": "租房改造记录",
+          "body": "租房改造记录的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 11
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "租房改造记录",
+          "body": "租房改造记录的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 11
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_057",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"周末城市漫步\", \"body\": \"周末城市漫步的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 12}",
+        "expected": {
+          "title": "周末城市漫步",
+          "body": "周末城市漫步的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 12
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "周末城市漫步",
+          "body": "周末城市漫步的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 12
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_058",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"读书笔记分享\", \"body\": \"读书笔记分享的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 13}",
+        "expected": {
+          "title": "读书笔记分享",
+          "body": "读书笔记分享的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 13
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "读书笔记分享",
+          "body": "读书笔记分享的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 13
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_059",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"健身入门计划\", \"body\": \"健身入门计划的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 14}",
+        "expected": {
+          "title": "健身入门计划",
+          "body": "健身入门计划的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 14
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "健身入门计划",
+          "body": "健身入门计划的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 14
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_060",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"七天作息调整\", \"body\": \"七天作息调整的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 15}",
+        "expected": {
+          "title": "七天作息调整",
+          "body": "七天作息调整的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 15
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "七天作息调整",
+          "body": "七天作息调整的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 15
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_061",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"阳台种菜日记\", \"body\": \"阳台种菜日记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 16}",
+        "expected": {
+          "title": "阳台种菜日记",
+          "body": "阳台种菜日记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 16
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "阳台种菜日记",
+          "body": "阳台种菜日记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 16
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_062",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"咖啡冲煮笔记\", \"body\": \"咖啡冲煮笔记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 17}",
+        "expected": {
+          "title": "咖啡冲煮笔记",
+          "body": "咖啡冲煮笔记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 17
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "咖啡冲煮笔记",
+          "body": "咖啡冲煮笔记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 17
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_063",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"桌面收纳方案\", \"body\": \"桌面收纳方案的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 18}",
+        "expected": {
+          "title": "桌面收纳方案",
+          "body": "桌面收纳方案的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 18
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "桌面收纳方案",
+          "body": "桌面收纳方案的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 18
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_064",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"旅行打包技巧\", \"body\": \"旅行打包技巧的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 19}",
+        "expected": {
+          "title": "旅行打包技巧",
+          "body": "旅行打包技巧的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 19
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "旅行打包技巧",
+          "body": "旅行打包技巧的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 19
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_065",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"护眼习惯清单\", \"body\": \"护眼习惯清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 20}",
+        "expected": {
+          "title": "护眼习惯清单",
+          "body": "护眼习惯清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 20
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "护眼习惯清单",
+          "body": "护眼习惯清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 20
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_066",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"早起流程拆解\", \"body\": \"早起流程拆解的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 21}",
+        "expected": {
+          "title": "早起流程拆解",
+          "body": "早起流程拆解的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 21
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "早起流程拆解",
+          "body": "早起流程拆解的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 21
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_067",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"英语听力训练\", \"body\": \"英语听力训练的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 22}",
+        "expected": {
+          "title": "英语听力训练",
+          "body": "英语听力训练的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 22
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "英语听力训练",
+          "body": "英语听力训练的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 22
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_068",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"手机摄影构图\", \"body\": \"手机摄影构图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 23}",
+        "expected": {
+          "title": "手机摄影构图",
+          "body": "手机摄影构图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 23
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "手机摄影构图",
+          "body": "手机摄影构图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 23
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_069",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"情绪管理练习\", \"body\": \"情绪管理练习的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 24}",
+        "expected": {
+          "title": "情绪管理练习",
+          "body": "情绪管理练习的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 24
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "情绪管理练习",
+          "body": "情绪管理练习的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 24
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_070",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"周末做饭菜单\", \"body\": \"周末做饭菜单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 25}",
+        "expected": {
+          "title": "周末做饭菜单",
+          "body": "周末做饭菜单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 25
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "周末做饭菜单",
+          "body": "周末做饭菜单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 25
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_071",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"记账习惯养成\", \"body\": \"记账习惯养成的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 26}",
+        "expected": {
+          "title": "记账习惯养成",
+          "body": "记账习惯养成的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 26
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "记账习惯养成",
+          "body": "记账习惯养成的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 26
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_072",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"衣物护理要点\", \"body\": \"衣物护理要点的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 27}",
+        "expected": {
+          "title": "衣物护理要点",
+          "body": "衣物护理要点的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 27
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "衣物护理要点",
+          "body": "衣物护理要点的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 27
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_073",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"通勤路线优化\", \"body\": \"通勤路线优化的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 28}",
+        "expected": {
+          "title": "通勤路线优化",
+          "body": "通勤路线优化的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 28
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "通勤路线优化",
+          "body": "通勤路线优化的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 28
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_074",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"小众书店地图\", \"body\": \"小众书店地图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 29}",
+        "expected": {
+          "title": "小众书店地图",
+          "body": "小众书店地图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 29
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "小众书店地图",
+          "body": "小众书店地图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 29
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_075",
+        "bucket": "ctrl",
+        "label": "repaired",
+        "note": "字符串内含裸换行（非法控制字符）：应修复后成功",
+        "raw": "{\"title\": \"夜间护肤步骤\", \"body\": \"夜间护肤步骤的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 30}",
+        "expected": {
+          "title": "夜间护肤步骤",
+          "body": "夜间护肤步骤的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 30
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "夜间护肤步骤",
+          "body": "夜间护肤步骤的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+          "count": 30
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_076",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"]}}",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_077",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true}}",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "repaired",
+        "payload": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_078",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\"}}",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "repaired",
+        "payload": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_079",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}]}}",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_080",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12}}",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "repaired",
+        "payload": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_081",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35}}",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "repaired",
+        "payload": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_082",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"]}}",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_083",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280}}}",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_084",
+        "bucket": "bracket",
+        "label": "repaired",
+        "note": "尾部多余括号：应兜底救回首个完整片段",
+        "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\"}}",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "repaired",
+        "payload": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "attempts": 1,
+        "correct": true,
+        "verdict": "成功且内容一致"
+      },
+      {
+        "id": "json_085",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\"",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_086",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          "选题A",
+          "选题B",
+          "选题C"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_087",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "source": "manual",
+          "retry": 2
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_088",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "start": "2026-10-01",
+          "end": "2026-10-07"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_089",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_090",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "views": 12800,
+          "likes": 326,
+          "collects": 145
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_091",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_092",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "缺闭合括号：不可靠修复，应正确拒绝",
+        "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "tags": [
+            "干货",
+            "教程"
+          ],
+          "cover": false
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_093",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"plan\" [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          "周一发干货",
+          "周三发育儿",
+          "周五发vlog"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_094",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"code\" \"A1\", \"detail\": \"库存充足\", \"quantity\": 250}",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_095",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"feedback\" {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "stars": 4,
+          "comment": "整体不错，标题可以更聚焦。"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_096",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "冒号缺失（结构错位）：应正确拒绝",
+        "raw": "{\"counters\" {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "likes": "1,234",
+          "shares": "56"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_097",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          "打蛋",
+          "热锅",
+          "翻炒"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_098",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\"}",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_099",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "q": "标题怎么起"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_100",
+        "bucket": "bracket",
+        "label": "failed",
+        "note": "开括号错位（非 JSON 定界符）：应正确拒绝",
+        "raw": "(\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {},
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_101",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"],}",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "repaired",
+        "payload": [
+          "毛衣",
+          "通勤"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_102",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true,}",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_103",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\",}",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "repaired",
+        "payload": {
+          "tone": "轻松",
+          "length": 420
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_104",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}],}",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "repaired",
+        "payload": {
+          "name": "拿铁",
+          "price": 28
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_105",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12,}",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_106",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35,}",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_107",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"],}",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "repaired",
+        "payload": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_108",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280},}",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "name": "小北",
+          "vip": false,
+          "points": 1280
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_109",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\",}",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_110",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\",}",
+        "expected": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_111",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\",}",
+        "expected": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "actual": "repaired",
+        "payload": [
+          "选题A",
+          "选题B",
+          "选题C"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_112",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true,}",
+        "expected": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "actual": "repaired",
+        "payload": {
+          "source": "manual",
+          "retry": 2
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_113",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7,}",
+        "expected": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "actual": "repaired",
+        "payload": {
+          "start": "2026-10-01",
+          "end": "2026-10-07"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_114",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3,}",
+        "expected": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_115",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145},}",
+        "expected": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "views": 12800,
+          "likes": 326,
+          "collects": 145
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_116",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46,}",
+        "expected": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_117",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false},}",
+        "expected": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "tags": [
+            "干货",
+            "教程"
+          ],
+          "cover": false
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_118",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41,}",
+        "expected": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "actual": "repaired",
+        "payload": [
+          "周一发干货",
+          "周三发育儿",
+          "周五发vlog"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_119",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250,}",
+        "expected": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_120",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"},}",
+        "expected": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "actual": "repaired",
+        "payload": {
+          "stars": 4,
+          "comment": "整体不错，标题可以更聚焦。"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_121",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\",}",
+        "expected": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "actual": "repaired",
+        "payload": {
+          "likes": "1,234",
+          "shares": "56"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_122",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3,}",
+        "expected": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "actual": "repaired",
+        "payload": [
+          "打蛋",
+          "热锅",
+          "翻炒"
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_123",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\",}",
+        "expected": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_124",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87,}",
+        "expected": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "actual": "repaired",
+        "payload": {
+          "q": "标题怎么起"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_125",
+        "bucket": "trailing",
+        "label": "repaired",
+        "note": "尾随逗号：语义安全，期望兜底救回",
+        "raw": "{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true,}",
+        "expected": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "actual": "repaired",
+        "payload": {},
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_126",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"title\": \"秋日通勤穿搭\", \"tags",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_127",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"note_id\": \"ab12-cd34\", \"score\"",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_128",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\":",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_129",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "name": "拿铁",
+          "price": 28
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_130",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_131",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"reply\": \"收到，稍后回复你。\", \"",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_132",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_133",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"user\": {\"name\": \"小北\", \"vip\": fa",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_134",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"summary\": \"三个要点：标题要具",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_135",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"text\": \"今天也要加油呀\", ",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_136",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_137",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"meta\": {\"source\": \"manual\", \"re",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_138",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\":",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_139",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"message\": \"已生成 3 个版本，请查收。\", ",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_140",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"kpis\": {\"views\": 12800, \"likes\": ",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_141",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"draft\": \"第一段：开场白。第二段：核心观",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_142",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"options\": {\"tags\": [\"干货\", \"教程",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_143",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_144",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"code\": \"A1\", \"detail\": \"库存充足",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_145",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"feedback\": {\"stars\": 4, \"commen",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_146",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\"",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_147",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_148",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"env\": \"staging\", \"debug\": false",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_149",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具",
+        "expected": null,
+        "actual": "repaired",
+        "payload": {
+          "q": "标题怎么起"
+        },
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_150",
+        "bucket": "truncated",
+        "label": "failed",
+        "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝",
+        "raw": "{\"empty_list\": [], \"empty_obj\"",
+        "expected": null,
+        "actual": "repaired",
+        "payload": [],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "过度解析（应拒绝却成功，返回首段可解析片段）"
+      },
+      {
+        "id": "json_151",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'title': '秋日通勤穿搭', 'tags': ['毛衣', '通勤']}",
+        "expected": {
+          "title": "秋日通勤穿搭",
+          "tags": [
+            "毛衣",
+            "通勤"
+          ]
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_152",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“note_id”: “ab12-cd34”, “score”: 4.5, “ready”: true}",
+        "expected": {
+          "note_id": "ab12-cd34",
+          "score": 4.5,
+          "ready": true
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_153",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'analysis': {'tone': '轻松', 'length': 420}, 'status': 'done'}",
+        "expected": {
+          "analysis": {
+            "tone": "轻松",
+            "length": 420
+          },
+          "status": "done"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_154",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“items”: [{“name”: “拿铁”, “price”: 28}, {“name”: “美式”, “price”: 22}]}",
+        "expected": {
+          "items": [
+            {
+              "name": "拿铁",
+              "price": 28
+            },
+            {
+              "name": "美式",
+              "price": 22
+            }
+          ]
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_155",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'title': '周末露营清单', 'body': '帐篷、防潮垫、头灯都要带齐。', 'count': 12}",
+        "expected": {
+          "title": "周末露营清单",
+          "body": "帐篷、防潮垫、头灯都要带齐。",
+          "count": 12
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_156",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“reply”: “收到，稍后回复你。”, “latency_ms”: 35}",
+        "expected": {
+          "reply": "收到，稍后回复你。",
+          "latency_ms": 35
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_157",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'levels': [1, 2, 3, 4, 5], 'labels': ['草稿', '待审', '已发布']}",
+        "expected": {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "labels": [
+            "草稿",
+            "待审",
+            "已发布"
+          ]
+        },
+        "actual": "repaired",
+        "payload": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_158",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“user”: {“name”: “小北”, “vip”: false, “points”: 1280}}",
+        "expected": {
+          "user": {
+            "name": "小北",
+            "vip": false,
+            "points": 1280
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_159",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'summary': '三个要点：标题要具体；正文分段；标签别堆砌。'}",
+        "expected": {
+          "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_160",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“text”: “今天也要加油呀”, “emoji”: “😀”}",
+        "expected": {
+          "text": "今天也要加油呀",
+          "emoji": "😀"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_161",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'candidates': ['选题A', '选题B', '选题C'], 'picked': '选题B'}",
+        "expected": {
+          "candidates": [
+            "选题A",
+            "选题B",
+            "选题C"
+          ],
+          "picked": "选题B"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_162",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“meta”: {“source”: “manual”, “retry”: 2}, “ok”: true}",
+        "expected": {
+          "meta": {
+            "source": "manual",
+            "retry": 2
+          },
+          "ok": true
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_163",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'range': {'start': '2026-10-01', 'end': '2026-10-07'}, 'days': 7}",
+        "expected": {
+          "range": {
+            "start": "2026-10-01",
+            "end": "2026-10-07"
+          },
+          "days": 7
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_164",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“message”: “已生成 3 个版本，请查收。”, “variant_count”: 3}",
+        "expected": {
+          "message": "已生成 3 个版本，请查收。",
+          "variant_count": 3
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_165",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'kpis': {'views': 12800, 'likes': 326, 'collects': 145}}",
+        "expected": {
+          "kpis": {
+            "views": 12800,
+            "likes": 326,
+            "collects": 145
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_166",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“draft”: “第一段：开场白。第二段：核心观点。”, “words”: 46}",
+        "expected": {
+          "draft": "第一段：开场白。第二段：核心观点。",
+          "words": 46
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_167",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'options': {'tags': ['干货', '教程'], 'cover': false}}",
+        "expected": {
+          "options": {
+            "tags": [
+              "干货",
+              "教程"
+            ],
+            "cover": false
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_168",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“plan”: [“周一发干货”, “周三发育儿”, “周五发vlog”], “week”: 41}",
+        "expected": {
+          "plan": [
+            "周一发干货",
+            "周三发育儿",
+            "周五发vlog"
+          ],
+          "week": 41
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_169",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'code': 'A1', 'detail': '库存充足', 'quantity': 250}",
+        "expected": {
+          "code": "A1",
+          "detail": "库存充足",
+          "quantity": 250
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_170",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“feedback”: {“stars”: 4, “comment”: “整体不错，标题可以更聚焦。”}}",
+        "expected": {
+          "feedback": {
+            "stars": 4,
+            "comment": "整体不错，标题可以更聚焦。"
+          }
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_171",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'counters': {'likes': '1,234', 'shares': '56'}, 'note': '字符串计数'}",
+        "expected": {
+          "counters": {
+            "likes": "1,234",
+            "shares": "56"
+          },
+          "note": "字符串计数"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_172",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“title”: “三分钟快手早餐”, “steps”: [“打蛋”, “热锅”, “翻炒”], “minutes”: 3}",
+        "expected": {
+          "title": "三分钟快手早餐",
+          "steps": [
+            "打蛋",
+            "热锅",
+            "翻炒"
+          ],
+          "minutes": 3
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_173",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'env': 'staging', 'debug': false, 'version': '1.2.0'}",
+        "expected": {
+          "env": "staging",
+          "debug": false,
+          "version": "1.2.0"
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_174",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "中文引号 JSON：期望兜底救回",
+        "raw": "{“pair”: [{“q”: “标题怎么起”}, {“a”: “给具体数字”}], “score”: 0.87}",
+        "expected": {
+          "pair": [
+            {
+              "q": "标题怎么起"
+            },
+            {
+              "a": "给具体数字"
+            }
+          ],
+          "score": 0.87
+        },
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": false,
+        "verdict": "未救回（期望成功但解析失败）"
+      },
+      {
+        "id": "json_175",
+        "bucket": "quotes",
+        "label": "repaired",
+        "note": "单引号 JSON：期望兜底救回",
+        "raw": "{'empty_list': [], 'empty_obj': {}, 'flag': true}",
+        "expected": {
+          "empty_list": [],
+          "empty_obj": {},
+          "flag": true
+        },
+        "actual": "repaired",
+        "payload": {},
+        "attempts": 1,
+        "correct": false,
+        "verdict": "降级提取（返回内嵌子结构，顶层结构未恢复）"
+      },
+      {
+        "id": "json_176",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "今天天气不错，适合出门走走。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_177",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "抱歉，我无法完成这个请求。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_178",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "第一步：打开应用；第二步：填写资料。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_179",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "这是一段普通的中文说明文字。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_180",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "结论：整体效果不错，建议继续保持。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_181",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "目前没有更多信息可以补充。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_182",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "请稍后重试，或联系人工客服。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_183",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "推荐指数：五颗星。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_184",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "本段文字里没有任何结构化数据。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_185",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "明日计划：早起、运动、阅读。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_186",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "后台正在处理中，请耐心等待。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_187",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "说明文档已在附件中给出。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_188",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "以上内容仅供参考，不构成建议。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_189",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "待办：买牛奶、取快递、还书。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_190",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "系统提示：网络连接不稳定。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_191",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "示例：把商品放进购物车即可。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_192",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "更新完成，共调整了三处。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_193",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "祝你今天有个好心情。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_194",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "请注意查收最新的版本说明。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_195",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "这段描述没有包含任何花括号或方括号。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_196",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "未完待续……",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_197",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "正在生成中，请不要关闭页面。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_198",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "记得把重要文件备份到本地。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_199",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "今天想聊聊时间管理这件小事。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      },
+      {
+        "id": "json_200",
+        "bucket": "broken",
+        "label": "failed",
+        "note": "无任何可提取的 JSON 结构：应正确拒绝",
+        "raw": "感谢阅读，下次再见。",
+        "expected": null,
+        "actual": "failed",
+        "payload": null,
+        "error": "连续 1 次输出均无法解析为 JSON（上限 1）",
+        "correct": true,
+        "verdict": "正确拒绝"
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "name": "testset_json.cases_total",
+      "value": 200,
+      "unit": "条",
+      "n": 200,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "8 类 × 25（valid/fence/ctrl/bracket/trailing/truncated/quotes/broken）"
+    },
+    {
+      "name": "testset_json.overall_accuracy",
+      "value": 0.675,
+      "unit": "比率",
+      "n": 200,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "正确 = label 符合 且（成功时）内容与期望字段一致；逐样本明细见 detail.records"
+    },
+    {
+      "name": "testset_json.direct_first_pass_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "label=direct（合法 JSON）被一次解析且内容一致的比例"
+    },
+    {
+      "name": "testset_json.repaired_rescue_rate",
+      "value": 0.5413,
+      "unit": "比率",
+      "n": 109,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "label=repaired（需兜底）被救回且内容一致的比例（该救回的救回率）"
+    },
+    {
+      "name": "testset_json.failed_rejection_rate",
+      "value": 0.7727,
+      "unit": "比率",
+      "n": 66,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "label=failed 被正确拒绝（不硬解析）的比例"
+    },
+    {
+      "name": "testset_json.content_mismatch_total",
+      "value": 0,
+      "unit": "条",
+      "n": 200,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "解析成功但结果与期望字段不一致（非子结构；逐条见 detail.mismatches）"
+    },
+    {
+      "name": "testset_json.shape_degraded_total",
+      "value": 18,
+      "unit": "条",
+      "n": 200,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:34+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "「降级提取」：顶层结构未恢复，返回内嵌子结构（silent shape 降级）——观察到的解析器行为特征（parsing 属 harness 基座、本任务不改代码，如实记录）"
+    },
+    {
+      "name": "testset_json.over_parsed_total",
+      "value": 15,
+      "unit": "条",
+      "n": 200,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本应拒绝却成功解析（返回文本中存在的首段可解析片段）的样本数"
+    },
+    {
+      "name": "testset_json.not_rescued_total",
+      "value": 32,
+      "unit": "条",
+      "n": 200,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "期望兜底救回但解析失败的样本数（尾随逗号 / 引号变体为当前能力边界）"
+    },
+    {
+      "name": "testset_json.bucket.bracket.accuracy",
+      "value": 0.56,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.broken.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.ctrl.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.fence.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.quotes.accuracy",
+      "value": 0.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.trailing.accuracy",
+      "value": 0.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.truncated.accuracy",
+      "value": 0.84,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "testset_json.bucket.valid.accuracy",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 25,
+      "category": "offline_objective",
+      "method": "scripts/benchmark/bench_testset_json_robustness.py：读冻结夹具（sha256 校验），逐样本经真实 invoke_json 管道（FakeListChatModel 单条响应、max_attempts=1，零真实请求）；actual 分类：json.loads(原文) 成功=direct、其余成功=repaired、AgentJSONError=failed；类别=offline_objective（确定性算法）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-18T09:27:35+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    }
+  ]
+}

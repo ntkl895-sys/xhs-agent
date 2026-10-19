@@ -1,0 +1,2337 @@
+[
+  {
+    "id": "json_001",
+    "bucket": "valid",
+    "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"]}",
+    "label": "direct",
+    "expected": {
+      "title": "秋日通勤穿搭",
+      "tags": [
+        "毛衣",
+        "通勤"
+      ]
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_002",
+    "bucket": "valid",
+    "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true}",
+    "label": "direct",
+    "expected": {
+      "note_id": "ab12-cd34",
+      "score": 4.5,
+      "ready": true
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_003",
+    "bucket": "valid",
+    "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\"}",
+    "label": "direct",
+    "expected": {
+      "analysis": {
+        "tone": "轻松",
+        "length": 420
+      },
+      "status": "done"
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_004",
+    "bucket": "valid",
+    "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}]}",
+    "label": "direct",
+    "expected": {
+      "items": [
+        {
+          "name": "拿铁",
+          "price": 28
+        },
+        {
+          "name": "美式",
+          "price": 22
+        }
+      ]
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_005",
+    "bucket": "valid",
+    "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12}",
+    "label": "direct",
+    "expected": {
+      "title": "周末露营清单",
+      "body": "帐篷、防潮垫、头灯都要带齐。",
+      "count": 12
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_006",
+    "bucket": "valid",
+    "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35}",
+    "label": "direct",
+    "expected": {
+      "reply": "收到，稍后回复你。",
+      "latency_ms": 35
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_007",
+    "bucket": "valid",
+    "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"]}",
+    "label": "direct",
+    "expected": {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "labels": [
+        "草稿",
+        "待审",
+        "已发布"
+      ]
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_008",
+    "bucket": "valid",
+    "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280}}",
+    "label": "direct",
+    "expected": {
+      "user": {
+        "name": "小北",
+        "vip": false,
+        "points": 1280
+      }
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_009",
+    "bucket": "valid",
+    "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\"}",
+    "label": "direct",
+    "expected": {
+      "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_010",
+    "bucket": "valid",
+    "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\"}",
+    "label": "direct",
+    "expected": {
+      "text": "今天也要加油呀",
+      "emoji": "😀"
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_011",
+    "bucket": "valid",
+    "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"}",
+    "label": "direct",
+    "expected": {
+      "candidates": [
+        "选题A",
+        "选题B",
+        "选题C"
+      ],
+      "picked": "选题B"
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_012",
+    "bucket": "valid",
+    "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true}",
+    "label": "direct",
+    "expected": {
+      "meta": {
+        "source": "manual",
+        "retry": 2
+      },
+      "ok": true
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_013",
+    "bucket": "valid",
+    "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7}",
+    "label": "direct",
+    "expected": {
+      "range": {
+        "start": "2026-10-01",
+        "end": "2026-10-07"
+      },
+      "days": 7
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_014",
+    "bucket": "valid",
+    "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3}",
+    "label": "direct",
+    "expected": {
+      "message": "已生成 3 个版本，请查收。",
+      "variant_count": 3
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_015",
+    "bucket": "valid",
+    "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}}",
+    "label": "direct",
+    "expected": {
+      "kpis": {
+        "views": 12800,
+        "likes": 326,
+        "collects": 145
+      }
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_016",
+    "bucket": "valid",
+    "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46}",
+    "label": "direct",
+    "expected": {
+      "draft": "第一段：开场白。第二段：核心观点。",
+      "words": 46
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_017",
+    "bucket": "valid",
+    "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}}",
+    "label": "direct",
+    "expected": {
+      "options": {
+        "tags": [
+          "干货",
+          "教程"
+        ],
+        "cover": false
+      }
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_018",
+    "bucket": "valid",
+    "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}",
+    "label": "direct",
+    "expected": {
+      "plan": [
+        "周一发干货",
+        "周三发育儿",
+        "周五发vlog"
+      ],
+      "week": 41
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_019",
+    "bucket": "valid",
+    "raw": "{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250}",
+    "label": "direct",
+    "expected": {
+      "code": "A1",
+      "detail": "库存充足",
+      "quantity": 250
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_020",
+    "bucket": "valid",
+    "raw": "{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}",
+    "label": "direct",
+    "expected": {
+      "feedback": {
+        "stars": 4,
+        "comment": "整体不错，标题可以更聚焦。"
+      }
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_021",
+    "bucket": "valid",
+    "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}",
+    "label": "direct",
+    "expected": {
+      "counters": {
+        "likes": "1,234",
+        "shares": "56"
+      },
+      "note": "字符串计数"
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_022",
+    "bucket": "valid",
+    "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}",
+    "label": "direct",
+    "expected": {
+      "title": "三分钟快手早餐",
+      "steps": [
+        "打蛋",
+        "热锅",
+        "翻炒"
+      ],
+      "minutes": 3
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_023",
+    "bucket": "valid",
+    "raw": "{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\"}",
+    "label": "direct",
+    "expected": {
+      "env": "staging",
+      "debug": false,
+      "version": "1.2.0"
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_024",
+    "bucket": "valid",
+    "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}",
+    "label": "direct",
+    "expected": {
+      "pair": [
+        {
+          "q": "标题怎么起"
+        },
+        {
+          "a": "给具体数字"
+        }
+      ],
+      "score": 0.87
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_025",
+    "bucket": "valid",
+    "raw": "{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}",
+    "label": "direct",
+    "expected": {
+      "empty_list": [],
+      "empty_obj": {},
+      "flag": true
+    },
+    "note": "合法 JSON：应一次解析成功"
+  },
+  {
+    "id": "json_026",
+    "bucket": "fence",
+    "raw": "```json\n{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"]}\n```",
+    "label": "repaired",
+    "expected": {
+      "title": "秋日通勤穿搭",
+      "tags": [
+        "毛衣",
+        "通勤"
+      ]
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_027",
+    "bucket": "fence",
+    "raw": "```\n{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true}\n```",
+    "label": "repaired",
+    "expected": {
+      "note_id": "ab12-cd34",
+      "score": 4.5,
+      "ready": true
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_028",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\"}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "analysis": {
+        "tone": "轻松",
+        "length": 420
+      },
+      "status": "done"
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_029",
+    "bucket": "fence",
+    "raw": "```json\n{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}]}\n```",
+    "label": "repaired",
+    "expected": {
+      "items": [
+        {
+          "name": "拿铁",
+          "price": 28
+        },
+        {
+          "name": "美式",
+          "price": 22
+        }
+      ]
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_030",
+    "bucket": "fence",
+    "raw": "```\n{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12}\n```",
+    "label": "repaired",
+    "expected": {
+      "title": "周末露营清单",
+      "body": "帐篷、防潮垫、头灯都要带齐。",
+      "count": 12
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_031",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "reply": "收到，稍后回复你。",
+      "latency_ms": 35
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_032",
+    "bucket": "fence",
+    "raw": "```json\n{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"]}\n```",
+    "label": "repaired",
+    "expected": {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "labels": [
+        "草稿",
+        "待审",
+        "已发布"
+      ]
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_033",
+    "bucket": "fence",
+    "raw": "```\n{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280}}\n```",
+    "label": "repaired",
+    "expected": {
+      "user": {
+        "name": "小北",
+        "vip": false,
+        "points": 1280
+      }
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_034",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\"}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_035",
+    "bucket": "fence",
+    "raw": "```json\n{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\"}\n```",
+    "label": "repaired",
+    "expected": {
+      "text": "今天也要加油呀",
+      "emoji": "😀"
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_036",
+    "bucket": "fence",
+    "raw": "```\n{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"}\n```",
+    "label": "repaired",
+    "expected": {
+      "candidates": [
+        "选题A",
+        "选题B",
+        "选题C"
+      ],
+      "picked": "选题B"
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_037",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "meta": {
+        "source": "manual",
+        "retry": 2
+      },
+      "ok": true
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_038",
+    "bucket": "fence",
+    "raw": "```json\n{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7}\n```",
+    "label": "repaired",
+    "expected": {
+      "range": {
+        "start": "2026-10-01",
+        "end": "2026-10-07"
+      },
+      "days": 7
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_039",
+    "bucket": "fence",
+    "raw": "```\n{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3}\n```",
+    "label": "repaired",
+    "expected": {
+      "message": "已生成 3 个版本，请查收。",
+      "variant_count": 3
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_040",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "kpis": {
+        "views": 12800,
+        "likes": 326,
+        "collects": 145
+      }
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_041",
+    "bucket": "fence",
+    "raw": "```json\n{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46}\n```",
+    "label": "repaired",
+    "expected": {
+      "draft": "第一段：开场白。第二段：核心观点。",
+      "words": 46
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_042",
+    "bucket": "fence",
+    "raw": "```\n{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}}\n```",
+    "label": "repaired",
+    "expected": {
+      "options": {
+        "tags": [
+          "干货",
+          "教程"
+        ],
+        "cover": false
+      }
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_043",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "plan": [
+        "周一发干货",
+        "周三发育儿",
+        "周五发vlog"
+      ],
+      "week": 41
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_044",
+    "bucket": "fence",
+    "raw": "```json\n{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250}\n```",
+    "label": "repaired",
+    "expected": {
+      "code": "A1",
+      "detail": "库存充足",
+      "quantity": 250
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_045",
+    "bucket": "fence",
+    "raw": "```\n{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}\n```",
+    "label": "repaired",
+    "expected": {
+      "feedback": {
+        "stars": 4,
+        "comment": "整体不错，标题可以更聚焦。"
+      }
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_046",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "counters": {
+        "likes": "1,234",
+        "shares": "56"
+      },
+      "note": "字符串计数"
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_047",
+    "bucket": "fence",
+    "raw": "```json\n{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}\n```",
+    "label": "repaired",
+    "expected": {
+      "title": "三分钟快手早餐",
+      "steps": [
+        "打蛋",
+        "热锅",
+        "翻炒"
+      ],
+      "minutes": 3
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_048",
+    "bucket": "fence",
+    "raw": "```\n{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\"}\n```",
+    "label": "repaired",
+    "expected": {
+      "env": "staging",
+      "debug": false,
+      "version": "1.2.0"
+    },
+    "note": "代码围栏（无语言标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_049",
+    "bucket": "fence",
+    "raw": "以下是解析结果：\n```json\n{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}\n```\n以上内容仅供参考。",
+    "label": "repaired",
+    "expected": {
+      "pair": [
+        {
+          "q": "标题怎么起"
+        },
+        {
+          "a": "给具体数字"
+        }
+      ],
+      "score": 0.87
+    },
+    "note": "围栏 + 前后说明文字：兜底（平衡扫描）后应成功"
+  },
+  {
+    "id": "json_050",
+    "bucket": "fence",
+    "raw": "```json\n{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}\n```",
+    "label": "repaired",
+    "expected": {
+      "empty_list": [],
+      "empty_obj": {},
+      "flag": true
+    },
+    "note": "代码围栏（json 标记）：去围栏后应成功"
+  },
+  {
+    "id": "json_051",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"秋日穿搭指南\", \"body\": \"秋日穿搭指南的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 6}",
+    "label": "repaired",
+    "expected": {
+      "title": "秋日穿搭指南",
+      "body": "秋日穿搭指南的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 6
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_052",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"露营装备清单\", \"body\": \"露营装备清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 7}",
+    "label": "repaired",
+    "expected": {
+      "title": "露营装备清单",
+      "body": "露营装备清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 7
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_053",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"快手早餐合集\", \"body\": \"快手早餐合集的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 8}",
+    "label": "repaired",
+    "expected": {
+      "title": "快手早餐合集",
+      "body": "快手早餐合集的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 8
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_054",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"通勤包内好物\", \"body\": \"通勤包内好物的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 9}",
+    "label": "repaired",
+    "expected": {
+      "title": "通勤包内好物",
+      "body": "通勤包内好物的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 9
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_055",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"平价护肤心得\", \"body\": \"平价护肤心得的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 10}",
+    "label": "repaired",
+    "expected": {
+      "title": "平价护肤心得",
+      "body": "平价护肤心得的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 10
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_056",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"租房改造记录\", \"body\": \"租房改造记录的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 11}",
+    "label": "repaired",
+    "expected": {
+      "title": "租房改造记录",
+      "body": "租房改造记录的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 11
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_057",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"周末城市漫步\", \"body\": \"周末城市漫步的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 12}",
+    "label": "repaired",
+    "expected": {
+      "title": "周末城市漫步",
+      "body": "周末城市漫步的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 12
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_058",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"读书笔记分享\", \"body\": \"读书笔记分享的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 13}",
+    "label": "repaired",
+    "expected": {
+      "title": "读书笔记分享",
+      "body": "读书笔记分享的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 13
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_059",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"健身入门计划\", \"body\": \"健身入门计划的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 14}",
+    "label": "repaired",
+    "expected": {
+      "title": "健身入门计划",
+      "body": "健身入门计划的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 14
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_060",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"七天作息调整\", \"body\": \"七天作息调整的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 15}",
+    "label": "repaired",
+    "expected": {
+      "title": "七天作息调整",
+      "body": "七天作息调整的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 15
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_061",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"阳台种菜日记\", \"body\": \"阳台种菜日记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 16}",
+    "label": "repaired",
+    "expected": {
+      "title": "阳台种菜日记",
+      "body": "阳台种菜日记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 16
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_062",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"咖啡冲煮笔记\", \"body\": \"咖啡冲煮笔记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 17}",
+    "label": "repaired",
+    "expected": {
+      "title": "咖啡冲煮笔记",
+      "body": "咖啡冲煮笔记的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 17
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_063",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"桌面收纳方案\", \"body\": \"桌面收纳方案的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 18}",
+    "label": "repaired",
+    "expected": {
+      "title": "桌面收纳方案",
+      "body": "桌面收纳方案的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 18
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_064",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"旅行打包技巧\", \"body\": \"旅行打包技巧的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 19}",
+    "label": "repaired",
+    "expected": {
+      "title": "旅行打包技巧",
+      "body": "旅行打包技巧的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 19
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_065",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"护眼习惯清单\", \"body\": \"护眼习惯清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 20}",
+    "label": "repaired",
+    "expected": {
+      "title": "护眼习惯清单",
+      "body": "护眼习惯清单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 20
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_066",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"早起流程拆解\", \"body\": \"早起流程拆解的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 21}",
+    "label": "repaired",
+    "expected": {
+      "title": "早起流程拆解",
+      "body": "早起流程拆解的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 21
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_067",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"英语听力训练\", \"body\": \"英语听力训练的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 22}",
+    "label": "repaired",
+    "expected": {
+      "title": "英语听力训练",
+      "body": "英语听力训练的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 22
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_068",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"手机摄影构图\", \"body\": \"手机摄影构图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 23}",
+    "label": "repaired",
+    "expected": {
+      "title": "手机摄影构图",
+      "body": "手机摄影构图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 23
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_069",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"情绪管理练习\", \"body\": \"情绪管理练习的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 24}",
+    "label": "repaired",
+    "expected": {
+      "title": "情绪管理练习",
+      "body": "情绪管理练习的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 24
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_070",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"周末做饭菜单\", \"body\": \"周末做饭菜单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 25}",
+    "label": "repaired",
+    "expected": {
+      "title": "周末做饭菜单",
+      "body": "周末做饭菜单的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 25
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_071",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"记账习惯养成\", \"body\": \"记账习惯养成的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 26}",
+    "label": "repaired",
+    "expected": {
+      "title": "记账习惯养成",
+      "body": "记账习惯养成的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 26
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_072",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"衣物护理要点\", \"body\": \"衣物护理要点的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 27}",
+    "label": "repaired",
+    "expected": {
+      "title": "衣物护理要点",
+      "body": "衣物护理要点的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 27
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_073",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"通勤路线优化\", \"body\": \"通勤路线优化的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 28}",
+    "label": "repaired",
+    "expected": {
+      "title": "通勤路线优化",
+      "body": "通勤路线优化的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 28
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_074",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"小众书店地图\", \"body\": \"小众书店地图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 29}",
+    "label": "repaired",
+    "expected": {
+      "title": "小众书店地图",
+      "body": "小众书店地图的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 29
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_075",
+    "bucket": "ctrl",
+    "raw": "{\"title\": \"夜间护肤步骤\", \"body\": \"夜间护肤步骤的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。\", \"count\": 30}",
+    "label": "repaired",
+    "expected": {
+      "title": "夜间护肤步骤",
+      "body": "夜间护肤步骤的第一行要点。\n第二行：展开说明。\n第三行：收尾提醒。",
+      "count": 30
+    },
+    "note": "字符串内含裸换行（非法控制字符）：应修复后成功"
+  },
+  {
+    "id": "json_076",
+    "bucket": "bracket",
+    "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"]}}",
+    "label": "repaired",
+    "expected": {
+      "title": "秋日通勤穿搭",
+      "tags": [
+        "毛衣",
+        "通勤"
+      ]
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_077",
+    "bucket": "bracket",
+    "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true}}",
+    "label": "repaired",
+    "expected": {
+      "note_id": "ab12-cd34",
+      "score": 4.5,
+      "ready": true
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_078",
+    "bucket": "bracket",
+    "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\"}}",
+    "label": "repaired",
+    "expected": {
+      "analysis": {
+        "tone": "轻松",
+        "length": 420
+      },
+      "status": "done"
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_079",
+    "bucket": "bracket",
+    "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}]}}",
+    "label": "repaired",
+    "expected": {
+      "items": [
+        {
+          "name": "拿铁",
+          "price": 28
+        },
+        {
+          "name": "美式",
+          "price": 22
+        }
+      ]
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_080",
+    "bucket": "bracket",
+    "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12}}",
+    "label": "repaired",
+    "expected": {
+      "title": "周末露营清单",
+      "body": "帐篷、防潮垫、头灯都要带齐。",
+      "count": 12
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_081",
+    "bucket": "bracket",
+    "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35}}",
+    "label": "repaired",
+    "expected": {
+      "reply": "收到，稍后回复你。",
+      "latency_ms": 35
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_082",
+    "bucket": "bracket",
+    "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"]}}",
+    "label": "repaired",
+    "expected": {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "labels": [
+        "草稿",
+        "待审",
+        "已发布"
+      ]
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_083",
+    "bucket": "bracket",
+    "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280}}}",
+    "label": "repaired",
+    "expected": {
+      "user": {
+        "name": "小北",
+        "vip": false,
+        "points": 1280
+      }
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_084",
+    "bucket": "bracket",
+    "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\"}}",
+    "label": "repaired",
+    "expected": {
+      "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+    },
+    "note": "尾部多余括号：应兜底救回首个完整片段"
+  },
+  {
+    "id": "json_085",
+    "bucket": "bracket",
+    "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\"",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_086",
+    "bucket": "bracket",
+    "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\"",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_087",
+    "bucket": "bracket",
+    "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_088",
+    "bucket": "bracket",
+    "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_089",
+    "bucket": "bracket",
+    "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_090",
+    "bucket": "bracket",
+    "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145}",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_091",
+    "bucket": "bracket",
+    "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_092",
+    "bucket": "bracket",
+    "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false}",
+    "label": "failed",
+    "expected": null,
+    "note": "缺闭合括号：不可靠修复，应正确拒绝"
+  },
+  {
+    "id": "json_093",
+    "bucket": "bracket",
+    "raw": "{\"plan\" [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41}",
+    "label": "failed",
+    "expected": null,
+    "note": "冒号缺失（结构错位）：应正确拒绝"
+  },
+  {
+    "id": "json_094",
+    "bucket": "bracket",
+    "raw": "{\"code\" \"A1\", \"detail\": \"库存充足\", \"quantity\": 250}",
+    "label": "failed",
+    "expected": null,
+    "note": "冒号缺失（结构错位）：应正确拒绝"
+  },
+  {
+    "id": "json_095",
+    "bucket": "bracket",
+    "raw": "{\"feedback\" {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"}}",
+    "label": "failed",
+    "expected": null,
+    "note": "冒号缺失（结构错位）：应正确拒绝"
+  },
+  {
+    "id": "json_096",
+    "bucket": "bracket",
+    "raw": "{\"counters\" {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\"}",
+    "label": "failed",
+    "expected": null,
+    "note": "冒号缺失（结构错位）：应正确拒绝"
+  },
+  {
+    "id": "json_097",
+    "bucket": "bracket",
+    "raw": "(\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3}",
+    "label": "failed",
+    "expected": null,
+    "note": "开括号错位（非 JSON 定界符）：应正确拒绝"
+  },
+  {
+    "id": "json_098",
+    "bucket": "bracket",
+    "raw": "(\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\"}",
+    "label": "failed",
+    "expected": null,
+    "note": "开括号错位（非 JSON 定界符）：应正确拒绝"
+  },
+  {
+    "id": "json_099",
+    "bucket": "bracket",
+    "raw": "(\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87}",
+    "label": "failed",
+    "expected": null,
+    "note": "开括号错位（非 JSON 定界符）：应正确拒绝"
+  },
+  {
+    "id": "json_100",
+    "bucket": "bracket",
+    "raw": "(\"empty_list\": [], \"empty_obj\": {}, \"flag\": true}",
+    "label": "failed",
+    "expected": null,
+    "note": "开括号错位（非 JSON 定界符）：应正确拒绝"
+  },
+  {
+    "id": "json_101",
+    "bucket": "trailing",
+    "raw": "{\"title\": \"秋日通勤穿搭\", \"tags\": [\"毛衣\", \"通勤\"],}",
+    "label": "repaired",
+    "expected": {
+      "title": "秋日通勤穿搭",
+      "tags": [
+        "毛衣",
+        "通勤"
+      ]
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_102",
+    "bucket": "trailing",
+    "raw": "{\"note_id\": \"ab12-cd34\", \"score\": 4.5, \"ready\": true,}",
+    "label": "repaired",
+    "expected": {
+      "note_id": "ab12-cd34",
+      "score": 4.5,
+      "ready": true
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_103",
+    "bucket": "trailing",
+    "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\": 420}, \"status\": \"done\",}",
+    "label": "repaired",
+    "expected": {
+      "analysis": {
+        "tone": "轻松",
+        "length": 420
+      },
+      "status": "done"
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_104",
+    "bucket": "trailing",
+    "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"name\": \"美式\", \"price\": 22}],}",
+    "label": "repaired",
+    "expected": {
+      "items": [
+        {
+          "name": "拿铁",
+          "price": 28
+        },
+        {
+          "name": "美式",
+          "price": 22
+        }
+      ]
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_105",
+    "bucket": "trailing",
+    "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫、头灯都要带齐。\", \"count\": 12,}",
+    "label": "repaired",
+    "expected": {
+      "title": "周末露营清单",
+      "body": "帐篷、防潮垫、头灯都要带齐。",
+      "count": 12
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_106",
+    "bucket": "trailing",
+    "raw": "{\"reply\": \"收到，稍后回复你。\", \"latency_ms\": 35,}",
+    "label": "repaired",
+    "expected": {
+      "reply": "收到，稍后回复你。",
+      "latency_ms": 35
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_107",
+    "bucket": "trailing",
+    "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels\": [\"草稿\", \"待审\", \"已发布\"],}",
+    "label": "repaired",
+    "expected": {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "labels": [
+        "草稿",
+        "待审",
+        "已发布"
+      ]
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_108",
+    "bucket": "trailing",
+    "raw": "{\"user\": {\"name\": \"小北\", \"vip\": false, \"points\": 1280},}",
+    "label": "repaired",
+    "expected": {
+      "user": {
+        "name": "小北",
+        "vip": false,
+        "points": 1280
+      }
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_109",
+    "bucket": "trailing",
+    "raw": "{\"summary\": \"三个要点：标题要具体；正文分段；标签别堆砌。\",}",
+    "label": "repaired",
+    "expected": {
+      "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_110",
+    "bucket": "trailing",
+    "raw": "{\"text\": \"今天也要加油呀\", \"emoji\": \"😀\",}",
+    "label": "repaired",
+    "expected": {
+      "text": "今天也要加油呀",
+      "emoji": "😀"
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_111",
+    "bucket": "trailing",
+    "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题C\"], \"picked\": \"选题B\",}",
+    "label": "repaired",
+    "expected": {
+      "candidates": [
+        "选题A",
+        "选题B",
+        "选题C"
+      ],
+      "picked": "选题B"
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_112",
+    "bucket": "trailing",
+    "raw": "{\"meta\": {\"source\": \"manual\", \"retry\": 2}, \"ok\": true,}",
+    "label": "repaired",
+    "expected": {
+      "meta": {
+        "source": "manual",
+        "retry": 2
+      },
+      "ok": true
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_113",
+    "bucket": "trailing",
+    "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\": \"2026-10-07\"}, \"days\": 7,}",
+    "label": "repaired",
+    "expected": {
+      "range": {
+        "start": "2026-10-01",
+        "end": "2026-10-07"
+      },
+      "days": 7
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_114",
+    "bucket": "trailing",
+    "raw": "{\"message\": \"已生成 3 个版本，请查收。\", \"variant_count\": 3,}",
+    "label": "repaired",
+    "expected": {
+      "message": "已生成 3 个版本，请查收。",
+      "variant_count": 3
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_115",
+    "bucket": "trailing",
+    "raw": "{\"kpis\": {\"views\": 12800, \"likes\": 326, \"collects\": 145},}",
+    "label": "repaired",
+    "expected": {
+      "kpis": {
+        "views": 12800,
+        "likes": 326,
+        "collects": 145
+      }
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_116",
+    "bucket": "trailing",
+    "raw": "{\"draft\": \"第一段：开场白。第二段：核心观点。\", \"words\": 46,}",
+    "label": "repaired",
+    "expected": {
+      "draft": "第一段：开场白。第二段：核心观点。",
+      "words": 46
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_117",
+    "bucket": "trailing",
+    "raw": "{\"options\": {\"tags\": [\"干货\", \"教程\"], \"cover\": false},}",
+    "label": "repaired",
+    "expected": {
+      "options": {
+        "tags": [
+          "干货",
+          "教程"
+        ],
+        "cover": false
+      }
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_118",
+    "bucket": "trailing",
+    "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五发vlog\"], \"week\": 41,}",
+    "label": "repaired",
+    "expected": {
+      "plan": [
+        "周一发干货",
+        "周三发育儿",
+        "周五发vlog"
+      ],
+      "week": 41
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_119",
+    "bucket": "trailing",
+    "raw": "{\"code\": \"A1\", \"detail\": \"库存充足\", \"quantity\": 250,}",
+    "label": "repaired",
+    "expected": {
+      "code": "A1",
+      "detail": "库存充足",
+      "quantity": 250
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_120",
+    "bucket": "trailing",
+    "raw": "{\"feedback\": {\"stars\": 4, \"comment\": \"整体不错，标题可以更聚焦。\"},}",
+    "label": "repaired",
+    "expected": {
+      "feedback": {
+        "stars": 4,
+        "comment": "整体不错，标题可以更聚焦。"
+      }
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_121",
+    "bucket": "trailing",
+    "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\": \"56\"}, \"note\": \"字符串计数\",}",
+    "label": "repaired",
+    "expected": {
+      "counters": {
+        "likes": "1,234",
+        "shares": "56"
+      },
+      "note": "字符串计数"
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_122",
+    "bucket": "trailing",
+    "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热锅\", \"翻炒\"], \"minutes\": 3,}",
+    "label": "repaired",
+    "expected": {
+      "title": "三分钟快手早餐",
+      "steps": [
+        "打蛋",
+        "热锅",
+        "翻炒"
+      ],
+      "minutes": 3
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_123",
+    "bucket": "trailing",
+    "raw": "{\"env\": \"staging\", \"debug\": false, \"version\": \"1.2.0\",}",
+    "label": "repaired",
+    "expected": {
+      "env": "staging",
+      "debug": false,
+      "version": "1.2.0"
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_124",
+    "bucket": "trailing",
+    "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具体数字\"}], \"score\": 0.87,}",
+    "label": "repaired",
+    "expected": {
+      "pair": [
+        {
+          "q": "标题怎么起"
+        },
+        {
+          "a": "给具体数字"
+        }
+      ],
+      "score": 0.87
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_125",
+    "bucket": "trailing",
+    "raw": "{\"empty_list\": [], \"empty_obj\": {}, \"flag\": true,}",
+    "label": "repaired",
+    "expected": {
+      "empty_list": [],
+      "empty_obj": {},
+      "flag": true
+    },
+    "note": "尾随逗号：语义安全，期望兜底救回"
+  },
+  {
+    "id": "json_126",
+    "bucket": "truncated",
+    "raw": "{\"title\": \"秋日通勤穿搭\", \"tags",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_127",
+    "bucket": "truncated",
+    "raw": "{\"note_id\": \"ab12-cd34\", \"score\"",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_128",
+    "bucket": "truncated",
+    "raw": "{\"analysis\": {\"tone\": \"轻松\", \"length\":",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_129",
+    "bucket": "truncated",
+    "raw": "{\"items\": [{\"name\": \"拿铁\", \"price\": 28}, {\"",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_130",
+    "bucket": "truncated",
+    "raw": "{\"title\": \"周末露营清单\", \"body\": \"帐篷、防潮垫",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_131",
+    "bucket": "truncated",
+    "raw": "{\"reply\": \"收到，稍后回复你。\", \"",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_132",
+    "bucket": "truncated",
+    "raw": "{\"levels\": [1, 2, 3, 4, 5], \"labels",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_133",
+    "bucket": "truncated",
+    "raw": "{\"user\": {\"name\": \"小北\", \"vip\": fa",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_134",
+    "bucket": "truncated",
+    "raw": "{\"summary\": \"三个要点：标题要具",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_135",
+    "bucket": "truncated",
+    "raw": "{\"text\": \"今天也要加油呀\", ",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_136",
+    "bucket": "truncated",
+    "raw": "{\"candidates\": [\"选题A\", \"选题B\", \"选题",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_137",
+    "bucket": "truncated",
+    "raw": "{\"meta\": {\"source\": \"manual\", \"re",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_138",
+    "bucket": "truncated",
+    "raw": "{\"range\": {\"start\": \"2026-10-01\", \"end\":",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_139",
+    "bucket": "truncated",
+    "raw": "{\"message\": \"已生成 3 个版本，请查收。\", ",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_140",
+    "bucket": "truncated",
+    "raw": "{\"kpis\": {\"views\": 12800, \"likes\": ",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_141",
+    "bucket": "truncated",
+    "raw": "{\"draft\": \"第一段：开场白。第二段：核心观",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_142",
+    "bucket": "truncated",
+    "raw": "{\"options\": {\"tags\": [\"干货\", \"教程",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_143",
+    "bucket": "truncated",
+    "raw": "{\"plan\": [\"周一发干货\", \"周三发育儿\", \"周五",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_144",
+    "bucket": "truncated",
+    "raw": "{\"code\": \"A1\", \"detail\": \"库存充足",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_145",
+    "bucket": "truncated",
+    "raw": "{\"feedback\": {\"stars\": 4, \"commen",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_146",
+    "bucket": "truncated",
+    "raw": "{\"counters\": {\"likes\": \"1,234\", \"shares\"",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_147",
+    "bucket": "truncated",
+    "raw": "{\"title\": \"三分钟快手早餐\", \"steps\": [\"打蛋\", \"热",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_148",
+    "bucket": "truncated",
+    "raw": "{\"env\": \"staging\", \"debug\": false",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_149",
+    "bucket": "truncated",
+    "raw": "{\"pair\": [{\"q\": \"标题怎么起\"}, {\"a\": \"给具",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_150",
+    "bucket": "truncated",
+    "raw": "{\"empty_list\": [], \"empty_obj\"",
+    "label": "failed",
+    "expected": null,
+    "note": "JSON 被截断（内容不完整）：不得硬解析，应正确拒绝"
+  },
+  {
+    "id": "json_151",
+    "bucket": "quotes",
+    "raw": "{'title': '秋日通勤穿搭', 'tags': ['毛衣', '通勤']}",
+    "label": "repaired",
+    "expected": {
+      "title": "秋日通勤穿搭",
+      "tags": [
+        "毛衣",
+        "通勤"
+      ]
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_152",
+    "bucket": "quotes",
+    "raw": "{“note_id”: “ab12-cd34”, “score”: 4.5, “ready”: true}",
+    "label": "repaired",
+    "expected": {
+      "note_id": "ab12-cd34",
+      "score": 4.5,
+      "ready": true
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_153",
+    "bucket": "quotes",
+    "raw": "{'analysis': {'tone': '轻松', 'length': 420}, 'status': 'done'}",
+    "label": "repaired",
+    "expected": {
+      "analysis": {
+        "tone": "轻松",
+        "length": 420
+      },
+      "status": "done"
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_154",
+    "bucket": "quotes",
+    "raw": "{“items”: [{“name”: “拿铁”, “price”: 28}, {“name”: “美式”, “price”: 22}]}",
+    "label": "repaired",
+    "expected": {
+      "items": [
+        {
+          "name": "拿铁",
+          "price": 28
+        },
+        {
+          "name": "美式",
+          "price": 22
+        }
+      ]
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_155",
+    "bucket": "quotes",
+    "raw": "{'title': '周末露营清单', 'body': '帐篷、防潮垫、头灯都要带齐。', 'count': 12}",
+    "label": "repaired",
+    "expected": {
+      "title": "周末露营清单",
+      "body": "帐篷、防潮垫、头灯都要带齐。",
+      "count": 12
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_156",
+    "bucket": "quotes",
+    "raw": "{“reply”: “收到，稍后回复你。”, “latency_ms”: 35}",
+    "label": "repaired",
+    "expected": {
+      "reply": "收到，稍后回复你。",
+      "latency_ms": 35
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_157",
+    "bucket": "quotes",
+    "raw": "{'levels': [1, 2, 3, 4, 5], 'labels': ['草稿', '待审', '已发布']}",
+    "label": "repaired",
+    "expected": {
+      "levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "labels": [
+        "草稿",
+        "待审",
+        "已发布"
+      ]
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_158",
+    "bucket": "quotes",
+    "raw": "{“user”: {“name”: “小北”, “vip”: false, “points”: 1280}}",
+    "label": "repaired",
+    "expected": {
+      "user": {
+        "name": "小北",
+        "vip": false,
+        "points": 1280
+      }
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_159",
+    "bucket": "quotes",
+    "raw": "{'summary': '三个要点：标题要具体；正文分段；标签别堆砌。'}",
+    "label": "repaired",
+    "expected": {
+      "summary": "三个要点：标题要具体；正文分段；标签别堆砌。"
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_160",
+    "bucket": "quotes",
+    "raw": "{“text”: “今天也要加油呀”, “emoji”: “😀”}",
+    "label": "repaired",
+    "expected": {
+      "text": "今天也要加油呀",
+      "emoji": "😀"
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_161",
+    "bucket": "quotes",
+    "raw": "{'candidates': ['选题A', '选题B', '选题C'], 'picked': '选题B'}",
+    "label": "repaired",
+    "expected": {
+      "candidates": [
+        "选题A",
+        "选题B",
+        "选题C"
+      ],
+      "picked": "选题B"
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_162",
+    "bucket": "quotes",
+    "raw": "{“meta”: {“source”: “manual”, “retry”: 2}, “ok”: true}",
+    "label": "repaired",
+    "expected": {
+      "meta": {
+        "source": "manual",
+        "retry": 2
+      },
+      "ok": true
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_163",
+    "bucket": "quotes",
+    "raw": "{'range': {'start': '2026-10-01', 'end': '2026-10-07'}, 'days': 7}",
+    "label": "repaired",
+    "expected": {
+      "range": {
+        "start": "2026-10-01",
+        "end": "2026-10-07"
+      },
+      "days": 7
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_164",
+    "bucket": "quotes",
+    "raw": "{“message”: “已生成 3 个版本，请查收。”, “variant_count”: 3}",
+    "label": "repaired",
+    "expected": {
+      "message": "已生成 3 个版本，请查收。",
+      "variant_count": 3
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_165",
+    "bucket": "quotes",
+    "raw": "{'kpis': {'views': 12800, 'likes': 326, 'collects': 145}}",
+    "label": "repaired",
+    "expected": {
+      "kpis": {
+        "views": 12800,
+        "likes": 326,
+        "collects": 145
+      }
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_166",
+    "bucket": "quotes",
+    "raw": "{“draft”: “第一段：开场白。第二段：核心观点。”, “words”: 46}",
+    "label": "repaired",
+    "expected": {
+      "draft": "第一段：开场白。第二段：核心观点。",
+      "words": 46
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_167",
+    "bucket": "quotes",
+    "raw": "{'options': {'tags': ['干货', '教程'], 'cover': false}}",
+    "label": "repaired",
+    "expected": {
+      "options": {
+        "tags": [
+          "干货",
+          "教程"
+        ],
+        "cover": false
+      }
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_168",
+    "bucket": "quotes",
+    "raw": "{“plan”: [“周一发干货”, “周三发育儿”, “周五发vlog”], “week”: 41}",
+    "label": "repaired",
+    "expected": {
+      "plan": [
+        "周一发干货",
+        "周三发育儿",
+        "周五发vlog"
+      ],
+      "week": 41
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_169",
+    "bucket": "quotes",
+    "raw": "{'code': 'A1', 'detail': '库存充足', 'quantity': 250}",
+    "label": "repaired",
+    "expected": {
+      "code": "A1",
+      "detail": "库存充足",
+      "quantity": 250
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_170",
+    "bucket": "quotes",
+    "raw": "{“feedback”: {“stars”: 4, “comment”: “整体不错，标题可以更聚焦。”}}",
+    "label": "repaired",
+    "expected": {
+      "feedback": {
+        "stars": 4,
+        "comment": "整体不错，标题可以更聚焦。"
+      }
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_171",
+    "bucket": "quotes",
+    "raw": "{'counters': {'likes': '1,234', 'shares': '56'}, 'note': '字符串计数'}",
+    "label": "repaired",
+    "expected": {
+      "counters": {
+        "likes": "1,234",
+        "shares": "56"
+      },
+      "note": "字符串计数"
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_172",
+    "bucket": "quotes",
+    "raw": "{“title”: “三分钟快手早餐”, “steps”: [“打蛋”, “热锅”, “翻炒”], “minutes”: 3}",
+    "label": "repaired",
+    "expected": {
+      "title": "三分钟快手早餐",
+      "steps": [
+        "打蛋",
+        "热锅",
+        "翻炒"
+      ],
+      "minutes": 3
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_173",
+    "bucket": "quotes",
+    "raw": "{'env': 'staging', 'debug': false, 'version': '1.2.0'}",
+    "label": "repaired",
+    "expected": {
+      "env": "staging",
+      "debug": false,
+      "version": "1.2.0"
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_174",
+    "bucket": "quotes",
+    "raw": "{“pair”: [{“q”: “标题怎么起”}, {“a”: “给具体数字”}], “score”: 0.87}",
+    "label": "repaired",
+    "expected": {
+      "pair": [
+        {
+          "q": "标题怎么起"
+        },
+        {
+          "a": "给具体数字"
+        }
+      ],
+      "score": 0.87
+    },
+    "note": "中文引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_175",
+    "bucket": "quotes",
+    "raw": "{'empty_list': [], 'empty_obj': {}, 'flag': true}",
+    "label": "repaired",
+    "expected": {
+      "empty_list": [],
+      "empty_obj": {},
+      "flag": true
+    },
+    "note": "单引号 JSON：期望兜底救回"
+  },
+  {
+    "id": "json_176",
+    "bucket": "broken",
+    "raw": "今天天气不错，适合出门走走。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_177",
+    "bucket": "broken",
+    "raw": "抱歉，我无法完成这个请求。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_178",
+    "bucket": "broken",
+    "raw": "第一步：打开应用；第二步：填写资料。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_179",
+    "bucket": "broken",
+    "raw": "这是一段普通的中文说明文字。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_180",
+    "bucket": "broken",
+    "raw": "结论：整体效果不错，建议继续保持。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_181",
+    "bucket": "broken",
+    "raw": "目前没有更多信息可以补充。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_182",
+    "bucket": "broken",
+    "raw": "请稍后重试，或联系人工客服。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_183",
+    "bucket": "broken",
+    "raw": "推荐指数：五颗星。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_184",
+    "bucket": "broken",
+    "raw": "本段文字里没有任何结构化数据。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_185",
+    "bucket": "broken",
+    "raw": "明日计划：早起、运动、阅读。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_186",
+    "bucket": "broken",
+    "raw": "后台正在处理中，请耐心等待。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_187",
+    "bucket": "broken",
+    "raw": "说明文档已在附件中给出。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_188",
+    "bucket": "broken",
+    "raw": "以上内容仅供参考，不构成建议。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_189",
+    "bucket": "broken",
+    "raw": "待办：买牛奶、取快递、还书。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_190",
+    "bucket": "broken",
+    "raw": "系统提示：网络连接不稳定。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_191",
+    "bucket": "broken",
+    "raw": "示例：把商品放进购物车即可。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_192",
+    "bucket": "broken",
+    "raw": "更新完成，共调整了三处。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_193",
+    "bucket": "broken",
+    "raw": "祝你今天有个好心情。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_194",
+    "bucket": "broken",
+    "raw": "请注意查收最新的版本说明。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_195",
+    "bucket": "broken",
+    "raw": "这段描述没有包含任何花括号或方括号。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_196",
+    "bucket": "broken",
+    "raw": "未完待续……",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_197",
+    "bucket": "broken",
+    "raw": "正在生成中，请不要关闭页面。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_198",
+    "bucket": "broken",
+    "raw": "记得把重要文件备份到本地。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_199",
+    "bucket": "broken",
+    "raw": "今天想聊聊时间管理这件小事。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  },
+  {
+    "id": "json_200",
+    "bucket": "broken",
+    "raw": "感谢阅读，下次再见。",
+    "label": "failed",
+    "expected": null,
+    "note": "无任何可提取的 JSON 结构：应正确拒绝"
+  }
+]

@@ -1,0 +1,17 @@
+==================================================================
+  测试集评测 B · 违禁词/合规扫描（零 token）
+==================================================================
+[夹具] compliance v1.0，128 条（sha256 校验通过）；内置词表 73 词
+------------------------------------------------------------------
+混淆矩阵：TP=46  FP=14  FN=18  TN=50（n=128）
+Accuracy=0.75  Precision=0.7667  Recall=0.7188  F1=0.742
+误报率（FP/负例）=0.2188  漏报率（FN/正例）=0.2812
+分组命中率：
+  neg_bait_literal     14/14（期望命中=False）
+  neg_bait_sensitive   0/14（期望命中=False）
+  neg_clean            0/36（期望命中=False）
+  pos_basic            20/20（期望命中=True）
+  pos_case             5/10（期望命中=True）
+  pos_separated        14/14（期望命中=True）
+  pos_variant          7/20（期望命中=True）
+结果：docs\benchmark\results\testsets\compliance.json

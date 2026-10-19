@@ -1,0 +1,773 @@
+[
+  {
+    "id": "norm_001",
+    "category": "plain_int",
+    "raw": "0",
+    "expected": 0,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_002",
+    "category": "plain_int",
+    "raw": "7",
+    "expected": 7,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_003",
+    "category": "plain_int",
+    "raw": "123",
+    "expected": 123,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_004",
+    "category": "plain_int",
+    "raw": "4567",
+    "expected": 4567,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_005",
+    "category": "plain_int",
+    "raw": "95272",
+    "expected": 95272,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_006",
+    "category": "plain_int",
+    "raw": "1000000",
+    "expected": 1000000,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_007",
+    "category": "plain_int",
+    "raw": "42",
+    "expected": 42,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_008",
+    "category": "plain_int",
+    "raw": "8888",
+    "expected": 8888,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_009",
+    "category": "plain_int",
+    "raw": "2026",
+    "expected": 2026,
+    "note": "纯数字：原样解析"
+  },
+  {
+    "id": "norm_010",
+    "category": "thousand_sep",
+    "raw": "1,234",
+    "expected": 1234,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_011",
+    "category": "thousand_sep",
+    "raw": "12,345",
+    "expected": 12345,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_012",
+    "category": "thousand_sep",
+    "raw": "1,234,567",
+    "expected": 1234567,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_013",
+    "category": "thousand_sep",
+    "raw": "9,999",
+    "expected": 9999,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_014",
+    "category": "thousand_sep",
+    "raw": "100,000",
+    "expected": 100000,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_015",
+    "category": "thousand_sep",
+    "raw": "23,456",
+    "expected": 23456,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_016",
+    "category": "thousand_sep",
+    "raw": "7,007",
+    "expected": 7007,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_017",
+    "category": "thousand_sep",
+    "raw": "500,000",
+    "expected": 500000,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_018",
+    "category": "thousand_sep",
+    "raw": "3,141",
+    "expected": 3141,
+    "note": "半角千分位：去逗号"
+  },
+  {
+    "id": "norm_019",
+    "category": "fullwidth_comma",
+    "raw": "1，234",
+    "expected": 1234,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_020",
+    "category": "fullwidth_comma",
+    "raw": "12，345",
+    "expected": 12345,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_021",
+    "category": "fullwidth_comma",
+    "raw": "9，999",
+    "expected": 9999,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_022",
+    "category": "fullwidth_comma",
+    "raw": "100，000",
+    "expected": 100000,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_023",
+    "category": "fullwidth_comma",
+    "raw": "5，678",
+    "expected": 5678,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_024",
+    "category": "fullwidth_comma",
+    "raw": "88，888",
+    "expected": 88888,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_025",
+    "category": "fullwidth_comma",
+    "raw": "1，000，000",
+    "expected": 1000000,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_026",
+    "category": "fullwidth_comma",
+    "raw": "66，666",
+    "expected": 66666,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_027",
+    "category": "fullwidth_comma",
+    "raw": "3，000",
+    "expected": 3000,
+    "note": "中文逗号千分位：去逗号"
+  },
+  {
+    "id": "norm_028",
+    "category": "wan",
+    "raw": "1.2万",
+    "expected": 12000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_029",
+    "category": "wan",
+    "raw": "3万",
+    "expected": 30000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_030",
+    "category": "wan",
+    "raw": "10.5万",
+    "expected": 105000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_031",
+    "category": "wan",
+    "raw": "0.5万",
+    "expected": 5000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_032",
+    "category": "wan",
+    "raw": "12.34万",
+    "expected": 123400,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_033",
+    "category": "wan",
+    "raw": "99万",
+    "expected": 990000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_034",
+    "category": "wan",
+    "raw": "1万",
+    "expected": 10000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_035",
+    "category": "wan",
+    "raw": "2.5万",
+    "expected": 25000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_036",
+    "category": "wan",
+    "raw": "100万",
+    "expected": 1000000,
+    "note": "单位「万」：×10000"
+  },
+  {
+    "id": "norm_037",
+    "category": "yi",
+    "raw": "1.2亿",
+    "expected": 120000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_038",
+    "category": "yi",
+    "raw": "2亿",
+    "expected": 200000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_039",
+    "category": "yi",
+    "raw": "0.8亿",
+    "expected": 80000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_040",
+    "category": "yi",
+    "raw": "10亿",
+    "expected": 1000000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_041",
+    "category": "yi",
+    "raw": "1亿",
+    "expected": 100000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_042",
+    "category": "yi",
+    "raw": "3.5亿",
+    "expected": 350000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_043",
+    "category": "yi",
+    "raw": "0.05亿",
+    "expected": 5000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_044",
+    "category": "yi",
+    "raw": "12亿",
+    "expected": 1200000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_045",
+    "category": "yi",
+    "raw": "1.08亿",
+    "expected": 108000000,
+    "note": "单位「亿」：×100000000"
+  },
+  {
+    "id": "norm_046",
+    "category": "letter_w",
+    "raw": "1.5w",
+    "expected": 15000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_047",
+    "category": "letter_w",
+    "raw": "2w",
+    "expected": 20000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_048",
+    "category": "letter_w",
+    "raw": "3.2W",
+    "expected": 32000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_049",
+    "category": "letter_w",
+    "raw": "0.8w",
+    "expected": 8000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_050",
+    "category": "letter_w",
+    "raw": "12w",
+    "expected": 120000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_051",
+    "category": "letter_w",
+    "raw": "1.2W",
+    "expected": 12000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_052",
+    "category": "letter_w",
+    "raw": "100w",
+    "expected": 1000000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_053",
+    "category": "letter_w",
+    "raw": "0.5W",
+    "expected": 5000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_054",
+    "category": "letter_w",
+    "raw": "5.5w",
+    "expected": 55000,
+    "note": "单位「w/W」：×10000"
+  },
+  {
+    "id": "norm_055",
+    "category": "kilo",
+    "raw": "3.4千",
+    "expected": 3400,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_056",
+    "category": "kilo",
+    "raw": "5k",
+    "expected": 5000,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_057",
+    "category": "kilo",
+    "raw": "1.5K",
+    "expected": 1500,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_058",
+    "category": "kilo",
+    "raw": "0.6千",
+    "expected": 600,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_059",
+    "category": "kilo",
+    "raw": "12k",
+    "expected": 12000,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_060",
+    "category": "kilo",
+    "raw": "8.8K",
+    "expected": 8800,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_061",
+    "category": "kilo",
+    "raw": "2千",
+    "expected": 2000,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_062",
+    "category": "kilo",
+    "raw": "20k",
+    "expected": 20000,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_063",
+    "category": "kilo",
+    "raw": "0.25千",
+    "expected": 250,
+    "note": "单位「千/k/K」：×1000"
+  },
+  {
+    "id": "norm_064",
+    "category": "spaces",
+    "raw": "1 234",
+    "expected": 1234,
+    "note": "半角空格千分位"
+  },
+  {
+    "id": "norm_065",
+    "category": "spaces",
+    "raw": "12 345",
+    "expected": 12345,
+    "note": "半角空格千分位"
+  },
+  {
+    "id": "norm_066",
+    "category": "spaces",
+    "raw": " 5678 ",
+    "expected": 5678,
+    "note": "首尾空格"
+  },
+  {
+    "id": "norm_067",
+    "category": "spaces",
+    "raw": "1 234",
+    "expected": 1234,
+    "note": "不换行空格（NBSP）"
+  },
+  {
+    "id": "norm_068",
+    "category": "spaces",
+    "raw": " 99 ",
+    "expected": 99,
+    "note": "首尾空格"
+  },
+  {
+    "id": "norm_069",
+    "category": "spaces",
+    "raw": "7 007",
+    "expected": 7007,
+    "note": "半角空格千分位"
+  },
+  {
+    "id": "norm_070",
+    "category": "spaces",
+    "raw": "1 2 3",
+    "expected": 123,
+    "note": "数字间多处空格（全去）"
+  },
+  {
+    "id": "norm_071",
+    "category": "spaces",
+    "raw": "500 000",
+    "expected": 500000,
+    "note": "半角空格千分位"
+  },
+  {
+    "id": "norm_072",
+    "category": "spaces",
+    "raw": "  42  ",
+    "expected": 42,
+    "note": "首尾多空格"
+  },
+  {
+    "id": "norm_073",
+    "category": "decimal",
+    "raw": "123.4",
+    "expected": 123,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_074",
+    "category": "decimal",
+    "raw": "99.9",
+    "expected": 100,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_075",
+    "category": "decimal",
+    "raw": "12.6",
+    "expected": 13,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_076",
+    "category": "decimal",
+    "raw": "7.2",
+    "expected": 7,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_077",
+    "category": "decimal",
+    "raw": "345.8",
+    "expected": 346,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_078",
+    "category": "decimal",
+    "raw": "1000.1",
+    "expected": 1000,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_079",
+    "category": "decimal",
+    "raw": "66.66",
+    "expected": 67,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_080",
+    "category": "decimal",
+    "raw": "0.4",
+    "expected": 0,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_081",
+    "category": "decimal",
+    "raw": "250.7",
+    "expected": 251,
+    "note": "小数：四舍五入到整数"
+  },
+  {
+    "id": "norm_082",
+    "category": "mixed_text",
+    "raw": "点赞 1234",
+    "expected": 1234,
+    "note": "前缀文字"
+  },
+  {
+    "id": "norm_083",
+    "category": "mixed_text",
+    "raw": "曝光量：8567",
+    "expected": 8567,
+    "note": "中文冒号"
+  },
+  {
+    "id": "norm_084",
+    "category": "mixed_text",
+    "raw": "共 234 条评论",
+    "expected": 234,
+    "note": "句中数字"
+  },
+  {
+    "id": "norm_085",
+    "category": "mixed_text",
+    "raw": "收藏 12,345",
+    "expected": 12345,
+    "note": "文本+千分位"
+  },
+  {
+    "id": "norm_086",
+    "category": "mixed_text",
+    "raw": "新增粉丝 806",
+    "expected": 806,
+    "note": "前缀文字"
+  },
+  {
+    "id": "norm_087",
+    "category": "mixed_text",
+    "raw": "分享数 56",
+    "expected": 56,
+    "note": "前缀文字"
+  },
+  {
+    "id": "norm_088",
+    "category": "mixed_text",
+    "raw": "阅读约 1.2万",
+    "expected": 12000,
+    "note": "文本+单位"
+  },
+  {
+    "id": "norm_089",
+    "category": "mixed_text",
+    "raw": "总曝光 12.8万",
+    "expected": 128000,
+    "note": "文本+单位"
+  },
+  {
+    "id": "norm_090",
+    "category": "mixed_text",
+    "raw": "评论 187 条",
+    "expected": 187,
+    "note": "句中数字"
+  },
+  {
+    "id": "norm_091",
+    "category": "placeholder",
+    "raw": "-",
+    "expected": null,
+    "note": "短横线占位：应为空值（None）"
+  },
+  {
+    "id": "norm_092",
+    "category": "placeholder",
+    "raw": "--",
+    "expected": null,
+    "note": "双短横线占位：应为空值（None）"
+  },
+  {
+    "id": "norm_093",
+    "category": "placeholder",
+    "raw": "—",
+    "expected": null,
+    "note": "em 长横占位：应为空值（None）"
+  },
+  {
+    "id": "norm_094",
+    "category": "placeholder",
+    "raw": "暂无",
+    "expected": null,
+    "note": "中文占位：应为空值（None）"
+  },
+  {
+    "id": "norm_095",
+    "category": "placeholder",
+    "raw": "?",
+    "expected": null,
+    "note": "问号占位：应为空值（None）"
+  },
+  {
+    "id": "norm_096",
+    "category": "placeholder",
+    "raw": "？",
+    "expected": null,
+    "note": "全角问号占位：应为空值（None）"
+  },
+  {
+    "id": "norm_097",
+    "category": "placeholder",
+    "raw": "无",
+    "expected": null,
+    "note": "中文「无」：应为空值（None）"
+  },
+  {
+    "id": "norm_098",
+    "category": "placeholder",
+    "raw": "N/A",
+    "expected": null,
+    "note": "n/a 占位：应为空值（None）"
+  },
+  {
+    "id": "norm_099",
+    "category": "placeholder",
+    "raw": "",
+    "expected": null,
+    "note": "空串：应为空值（None）"
+  },
+  {
+    "id": "norm_100",
+    "category": "invalid",
+    "raw": "abc",
+    "expected": null,
+    "note": "非数字串：应为 None"
+  },
+  {
+    "id": "norm_101",
+    "category": "invalid",
+    "raw": "hello world",
+    "expected": null,
+    "note": "英文串：应为 None"
+  },
+  {
+    "id": "norm_102",
+    "category": "invalid",
+    "raw": "待定",
+    "expected": null,
+    "note": "中文非数字词：应为 None"
+  },
+  {
+    "id": "norm_103",
+    "category": "invalid",
+    "raw": "-5",
+    "expected": null,
+    "note": "负数（半角减号）：计数语义下应为 None"
+  },
+  {
+    "id": "norm_104",
+    "category": "invalid",
+    "raw": "－5",
+    "expected": null,
+    "note": "负数（全角减号）：语义同上（如实测出实现行为）"
+  },
+  {
+    "id": "norm_105",
+    "category": "invalid",
+    "raw": "85%",
+    "expected": null,
+    "note": "百分比：计数语义下应为 None"
+  },
+  {
+    "id": "norm_106",
+    "category": "invalid",
+    "raw": "１２３",
+    "expected": 123,
+    "note": "全角数字：期望等价 123（如实测出实现行为）"
+  },
+  {
+    "id": "norm_107",
+    "category": "invalid",
+    "raw": "1.2.3",
+    "expected": null,
+    "note": "非法数（多点）：应为 None",
+    "status": "known_failure",
+    "xfail": {
+      "expected": null,
+      "actual": 1,
+      "root_cause": "_COUNT_PATTERN 用 re.search 做前缀匹配：'1.2.3' 命中 '1.2' 后直接取整为 1，未校验后续字符",
+      "source_run_id": "fixture:normalize/norm_107",
+      "opened_at": "2026-10-18T10:34:35+08:00",
+      "evidence": {
+        "testset": "normalize",
+        "case_id": "norm_107",
+        "outcome": "wrong_accept",
+        "bench_rc": 0,
+        "note": "第 26 步评测集评测暴露的唯一实现错例；产品影响低（真实截图不会出现多点小数），先标红追踪，修复需单独授权"
+      }
+    }
+  },
+  {
+    "id": "norm_108",
+    "category": "invalid",
+    "raw": "   ",
+    "expected": null,
+    "note": "纯空白串：应为 None"
+  }
+]

@@ -1,0 +1,85 @@
+第 1 次输出不是合法 JSON，追加纠正提示后重试
+第 1 次输出不是合法 JSON，追加纠正提示后重试
+第 2 次输出不是合法 JSON，追加纠正提示后重试
+图运行失败（kind=harness_smoke thread=6f6946da-0787-4997-8e04-4df0fcd2123c）：401 unauthorized key=sk-FAKE0123456789abcdefghij
+Agent Harness 离线自检（不联网、不需要真实 key）
+检查点后端：postgres | recursion_limit=40 | node_max_retries=2 | json_max_attempts=3
+
+=== 1) 配置闸门：关闭时绝不发起真实调用 ===
+[PASS] 就绪状态快照含就绪判定字段
+[PASS] 就绪状态快照不含密钥明文
+[PASS] 本机已配置真实 key，跳过「关闭时拒绝」断言（改用就绪断言）
+[PASS] is_llm_configured() 报告已就绪
+[PASS] want_vision=True 已接通视觉：已配置时返回多模态模型实例（第 15 步）
+[PASS] 视觉模型名优先取 LLM_VISION_MODEL、为空回退 LLM_MODEL
+[PASS] 就绪快照含视觉三键（vision_model / vision_model_is_placeholder / vision_ready）
+[PASS] LangSmith 默认未启用（不上报任何数据）
+
+=== 2) 冒烟图与脏 JSON 修复 ===
+[PASS] 冒烟图产出结构化对象 SmokeDraft
+[PASS] 节点轨迹按 draft→review→finalize 顺序记录
+[PASS] 脏 JSON（围栏/裸控制字符/噪声）被成功解析
+[PASS] 脏 JSON 首次即命中，parse_attempts == 1
+[PASS] 先坏后好时 parse_attempts == 2（计数如实）
+[PASS] 始终不可解析时抛 AgentJSONError
+[PASS] 模型被调用 AGENT_JSON_MAX_ATTEMPTS=3 次
+[PASS] AgentJSONError 归类为可重试（供节点 RetryPolicy 再兜一层）
+
+=== 3) Postgres 检查点：幂等 / 读写回 / interrupt-resume ===
+[PASS] 检查点后端为 postgres（离线自测亦用本地库）
+[PASS] PostgresSaver 初始化成功
+[PASS] checkpointer.setup() 幂等（连续两次调用不报错）
+[PASS] 同一 thread_id 的状态可写回并通过 get_state 读回
+[PASS] review 节点 interrupt() 暂停并抛出待确认载荷
+[PASS] 暂停后 get_state().next 指向 review（等待人工）
+[PASS] Command(resume=...) 恢复后跑完，人工决策生效
+[PASS] 恢复后图已结束（next 为空）
+
+=== 4) 框架检查点表隔离与业务表回归 ===
+[PASS] 框架检查点表全部落在独立 schema
+[PASS] public schema 内没有任何框架检查点表
+[PASS] 框架托管表清单齐全（4 张）
+[PASS] public schema 仍恰好 10 张业务表
+[PASS] SQLAlchemy metadata 仍恰好 10 张表（框架表未混入）
+[PASS] 第 7 步 selftest_db.py 仍全绿
+[PASS] 第 7 步 verify_schema.py 仍全绿
+
+=== 5) 重试语义：可重试 vs 不可重试 ===
+[PASS] 可重试错误共尝试 3 次（1 次原始 + 2 次重试 = AGENT_NODE_MAX_RETRIES+1）
+[PASS] 可重试错误耗尽后如实抛出
+[PASS] 不可重试错误只尝试 1 次（立即失败）
+[PASS] 不可重试错误如实抛出
+[PASS] 异常分类正确：429 -> 可重试
+[PASS] 异常分类正确：500 -> 可重试
+[PASS] 异常分类正确：401 -> 不可重试
+[PASS] 异常分类正确：400 -> 不可重试
+[PASS] 一次瞬时失败后重试即成功
+[PASS] 重试语义换算自洽（max_attempts = 1 + 重试次数；最坏调用数 = JSON 层 × 节点层）
+
+=== 6) 运行审计（agent_runs）与密钥脱敏 ===
+[PASS] run_agent 返回 success
+[PASS] run_agent 透传结构化产出
+[PASS] agent_runs 已写入审计行
+[PASS] 审计行内不含注入的 sk- 密钥
+[PASS] 审计行内不存在任何 sk- 形态字符串
+[PASS] 被脱敏处显示 [REDACTED]
+[PASS] run_type 落 other（冒烟运行）
+[PASS] status 落 success
+[PASS] token 三字段回填正确
+[PASS] json_parse_attempts 回填为 1
+[PASS] latency_ms 已记录
+[PASS] llm_base_url 如实记录（不含 key）
+[PASS] outputs.node_trace 记录三个节点
+[PASS] 运行失败时异常继续向上抛（不吞异常）
+[PASS] 失败运行落 failed
+[PASS] 失败行的 error_message 已脱敏
+
+=== 收尾：清理本次产生的测试数据 ===
+[PASS] 检查点线程已清理（4/4）
+       已删除 agent_runs 冒烟行：2
+[PASS] agent_runs 冒烟残留为 0
+[PASS] 检查点冒烟残留为 0
+       [INFO] 框架检查点表现有总行数（仅信息）：{'checkpoints': 30, 'checkpoint_blobs': 85, 'checkpoint_writes': 181}
+
+通过 60 项，失败 0 项。
+全部 PASS ✔

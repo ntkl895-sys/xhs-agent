@@ -1,0 +1,120 @@
+2026-10-17 09:39:05,581 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,597 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,604 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:39:05,608 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:39:05,611 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:39:05,614 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:39:05,621 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:39:05,628 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,636 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,646 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,654 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,661 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,674 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,691 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,704 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,723 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,739 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,746 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,764 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,788 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,807 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,824 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,834 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,852 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,862 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,869 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,876 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 400 Bad Request"
+2026-10-17 09:39:05,891 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/dc6dcee9-1f8a-4436-8e5e-7bfdea3e75ac "HTTP/1.1 200 OK"
+2026-10-17 09:39:05,904 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/cedc7528-f933-4288-afea-715ceb3ee13f "HTTP/1.1 404 Not Found"
+2026-10-17 09:39:05,911 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/notes/cedc7528-f933-4288-afea-715ceb3ee13f "HTTP/1.1 404 Not Found"
+2026-10-17 09:39:05,918 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/notes/cedc7528-f933-4288-afea-715ceb3ee13f "HTTP/1.1 404 Not Found"
+[PASS] PATCH 编辑 title/body/tags 返回 200
+[PASS] 响应 title 与请求一致
+[PASS] 响应 body 与请求一致（含换行）
+[PASS] 响应 tags 与请求一致
+[PASS] 编辑**不**改状态（仍 draft）
+[PASS] 落库 title 逐字一致
+[PASS] 落库 body 逐字一致
+[PASS] 落库 tags 逐项一致
+[PASS] 落库 status 仍 draft（编辑不触碰状态机）
+[PASS] 编辑后三个发布字段仍为空
+[PASS] 编辑**不**联动选题（恒 writing）
+[PASS] GET 详情可回读到编辑后的标题（前端保存后回读路径）
+[PASS] title 显式 null → 422（非空列）
+[PASS] title 超 100 字 → 422
+[PASS] tags 非数组 → 422
+[PASS] xhs_note_id 超 64 字 → 422
+[PASS] status 显式 null → 422（不流转禁携带）
+[PASS] 空 payload → 400（没有可更新的字段）
+[PASS] 编辑请求携带发布字段 → 400（仅标记发布时可回填）
+[PASS] 全部 422/400 请求后数据未被改动
+[PASS] draft→published 跳级 → 400
+[PASS] ↳ 错误码为 bad_request（draft→published）
+[PASS] draft→archived → 400（本步不处理归档）
+[PASS] ↳ 错误码为 bad_request（draft→archived）
+[PASS] draft→draft 无效流转 → 400
+[PASS] ↳ 错误码为 bad_request（draft→draft）
+[PASS] 非法流转后 note 仍 draft（无副作用）
+[PASS] 非法流转后发布字段未被写入
+[PASS] 非法流转后选题仍 writing
+[PASS] 非法流转错误体含 allowed 允许清单（前端可提示）
+[PASS] draft→ready 返回 200 且状态为 ready
+[PASS] 落库 status = ready
+[PASS] draft→ready 不联动选题（恒 writing）
+[PASS] ready→ready 重复流转 → 400
+[PASS] ready→published 返回 200 且状态为 published
+[PASS] 响应 published_at 已被服务端补齐
+[PASS] 响应回填 publish_url
+[PASS] 响应回填 xhs_note_id
+[PASS] 落库 status = published
+[PASS] 落库 published_at 非空（服务端当前时间）
+[PASS] 落库回填字段逐字一致
+[PASS] 标记发布联动选题 writing→published（单事务）
+[PASS] published→published 重复流转 → 400
+[PASS] published→draft 跳级 → 400（必须经 ready）
+[PASS] published→ready 撤销发布返回 200
+[PASS] 撤销后三个发布字段全部清空
+[PASS] 撤销发布联动选题 published→writing
+[PASS] ready→draft 退回修改返回 200
+[PASS] 退回修改不联动选题（恒 writing）
+[PASS] （第 2 轮）draft→ready 返回 200
+[PASS] （第 2 轮）published 且不回填链接返回 200
+[PASS] 留空时两字段为 null（允许）
+[PASS] 留空发布仍补 published_at
+[PASS] 第 2 轮发布同样联动选题
+[PASS] 撤销发布时携带发布字段 → 400（ready 流转禁带）
+[PASS] （第 2 轮）撤销发布返回 200
+[PASS] 第 2 轮撤销选题回 writing
+[PASS] 状态流转 + 编辑字段混合 → 400
+[PASS] 状态流转 + title 混合 → 400
+[PASS] ready→archived → 400（归档留后续步骤）
+[PASS] 收尾 ready→draft 返回 200
+[PASS] 收尾后 note = draft
+[PASS] 全程 draft/ready 阶段选题恒为 writing
+[PASS] PATCH 编辑不存在的 note → 404
+[PASS] 404 错误码 = not_found
+[PASS] PATCH 流转不存在的 note → 404（先于状态机判断）
+[PASS] GET 不存在的 note → 404
+[PASS] 统一错误体结构 {status, code, message, details}
+[PASS] /api/v1/notes/{note_id} 恰为 GET + PATCH
+[PASS] /api/v1/notes 集合仍仅 GET（无 POST，生成走 /generate）
+[PASS] 静态段 /generate、/runs 仍在册（注册顺序未破坏）
+[PASS] notes 路由中不存在 PUT / DELETE（本步不提供）
+[PASS] NoteUpdateRequest 已生成 OpenAPI 组件
+[PASS] NoteUpdateRequest 属性恰为 6 个约定字段
+[PASS] NoteOut 仍不含 llm_raw（接口不回传）
+[PASS] NoteOut 不含 token / cookie / secret / password / llm_raw 等敏感字段
+[PASS] NoteListItem 增补 publish_url（列表展示发布外链所需）且仍无 llm_raw
+[PASS] migrations/versions 仍恰 2 支迁移（本步零迁移）
+[PASS] 迁移文件名仍为 0001 / 0002（未新增）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] app\schemas\note.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] app\crud\note.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] app\api\routes\notes.py 不含小红书域名 / 登录态字段 / sk- 密钥字样
+[PASS] 发布页外链常量在**前端**恰出现 1 次且位于笔记相关文件（后端零出现）
+[PASS] 测试数据物理清理并双口径复查残留为 0
+
+通过 86 项，失败 0 项。
+全部 PASS ✔（第 14 步创作台后端自检，依赖本地 docker PostgreSQL）

@@ -1,0 +1,265 @@
+2026-10-17 09:34:04,349 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:34:04,488 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:04,500 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,504 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,508 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,543 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=ef35c753-a64e-4d09-9089-79ff51df69d7 run=ad0e2fac-fbf7-4041-a885-886200335eff status=success 请求=3 落库=3 拦截=0 不合格=0
+2026-10-17 09:34:04,650 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:04,657 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:04,664 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:04,667 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,669 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,672 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,675 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,677 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,679 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,681 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,684 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,686 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/content-variants/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:04,731 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:04,738 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,742 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,745 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,775 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=8b34eb5c-3d99-4c54-b4af-1a05084be09d run=da6833f4-0d08-4050-844b-175838f09042 status=success 请求=3 落库=3 拦截=0 不合格=0
+2026-10-17 09:34:04,810 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:04,817 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,843 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=775b9767-cd08-4f48-b7f0-abb970192e69 run=30d335e1-b03e-4bad-b602-c5a4f65a9a90 status=success 请求=1 落库=1 拦截=0 不合格=0
+2026-10-17 09:34:04,885 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:04,893 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,897 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,900 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,905 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,910 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:04,951 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=d9e9da25-f122-4a9e-9db6-7ec15e111d28 run=f89726b2-8d6b-4580-a829-b9906123ba3c status=success 请求=5 落库=5 拦截=0 不合格=0
+2026-10-17 09:34:04,994 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,003 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,009 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,017 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,022 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,028 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,070 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=b2dd45b6-daaf-4912-9d53-8f9a991134a7 run=7424f13c-cbd9-418f-91e8-26738d58fcee status=success 请求=3 落库=3 拦截=0 不合格=0
+2026-10-17 09:34:05,110 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,119 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,124 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,130 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,135 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,140 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,144 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,175 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=bfda7208-3f47-4a97-8978-44be6f9f996e run=87602704-c3bd-4a76-a3e2-346c9b69baf5 status=partial 请求=3 落库=2 拦截=0 不合格=1
+2026-10-17 09:34:05,213 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,220 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,251 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=7b0e56a2-c25e-4bf9-bf47-714cb75d03fb run=a3dc9e81-5997-4af8-895f-ec3601e44416 status=success 请求=1 落库=1 拦截=0 不合格=0
+2026-10-17 09:34:05,285 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,292 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,295 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,299 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,327 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=37ec84b0-e2d8-4e9a-accc-9712a5c5f067 run=a6106381-51f9-4daf-beb9-eae1c3e5cce3 status=partial 请求=3 落库=2 拦截=1 不合格=0
+2026-10-17 09:34:05,369 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,378 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,382 [WARNING] xhs-agent.services.forbidden_source: 知识库违禁词为空，回退内置词表（保守兜底）。如需以知识库为准，可运行 scripts/seed_forbidden_words.py 同步内置词表。
+2026-10-17 09:34:05,400 [INFO] xhs-agent.content_variants.service: 多版本生成完成：topic=49e1c11b-ffc6-4a5e-bfe5-21e8efa89a01 run=94f8c8c7-0a44-4165-be0d-9a40ff1c2e68 status=failed 请求=2 落库=0 拦截=2 不合格=0
+2026-10-17 09:34:05,441 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,492 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=content_variants thread=b745d13c-476d-4aab-a35d-182ef4c09f6e）：重试 3 轮后仍未产出任何合格版本（缺少标题），放弃
+2026-10-17 09:34:05,500 [INFO] xhs-agent.content_variants.service: 多版本生成失败（不可重试）：topic=a02cd139-9910-4fd2-9b9a-4342cb76d3d0 重试 3 轮后仍未产出任何合格版本（缺少标题），放弃
+2026-10-17 09:34:05,558 [WARNING] xhs-agent.services.rag: 创作图 load_context：知识检索失败，按「无检索块」继续（原因：EmbeddingNotAvailableError：本地向量化依赖未安装或不可用：请先安装 requirements.txt 中的 langchain-huggingface 与 sentence-transformers（pip install -r requirements.txt；首次安装体积较大，CPU 可跑）。）
+2026-10-17 09:34:05,560 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:05,561 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:06,400 [INFO] langgraph.pregel._retry: Retrying task generate_variants after 0.84 seconds (attempt 1) after AgentJSONError 连续 3 次输出均无法解析为 JSON（上限 3）
+Traceback (most recent call last):
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\项目1\xhs-agent\backend\app\agent\content_variants\graph.py", line 251, in generate_variants_node
+    result = invoke_json(model, messages, want_json=True)
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 309, in invoke_json
+    raise AgentJSONError(
+    ...<2 lines>...
+    )
+app.agent.errors.AgentJSONError: 连续 3 次输出均无法解析为 JSON（上限 3）
+During task with name 'generate_variants' and id 'f1ebabb0-e9c0-8502-1f7f-f433500498e3'
+2026-10-17 09:34:06,404 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:06,404 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:07,834 [INFO] langgraph.pregel._retry: Retrying task generate_variants after 1.43 seconds (attempt 2) after AgentJSONError 连续 3 次输出均无法解析为 JSON（上限 3）
+Traceback (most recent call last):
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\项目1\xhs-agent\backend\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\项目1\xhs-agent\backend\app\agent\content_variants\graph.py", line 251, in generate_variants_node
+    result = invoke_json(model, messages, want_json=True)
+  File "D:\项目1\xhs-agent\backend\app\agent\parsing\json_repair.py", line 309, in invoke_json
+    raise AgentJSONError(
+    ...<2 lines>...
+    )
+app.agent.errors.AgentJSONError: 连续 3 次输出均无法解析为 JSON（上限 3）
+During task with name 'generate_variants' and id 'f1ebabb0-e9c0-8502-1f7f-f433500498e3'
+2026-10-17 09:34:07,836 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:07,836 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:07,840 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=content_variants thread=7711f1a0-914f-4543-a195-a2f0acd09c5d）：连续 3 次输出均无法解析为 JSON（上限 3）
+2026-10-17 09:34:07,845 [WARNING] xhs-agent.content_variants.service: 多版本生成异常：topic=6aa48722-a4db-4321-9517-a39fd2106cec 连续 3 次输出均无法解析为 JSON（上限 3）
+2026-10-17 09:34:07,900 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/content-variants?topic_id=ef35c753-a64e-4d09-9089-79ff51df69d7 "HTTP/1.1 200 OK"
+2026-10-17 09:34:07,902 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/content-variants "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:07,905 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/content-variants?topic_id=not-a-uuid "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:07,912 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/content-variants?topic_id=bed73be6-e734-46f3-b901-bf9687cc4121 "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:07,929 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/content-variants/2f0fd626-a709-4c41-8340-dda0608f9281/adopt "HTTP/1.1 200 OK"
+2026-10-17 09:34:07,936 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/content-variants/53a3d065-8209-4969-b61f-808127e9506e/adopt "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:07,948 [INFO] httpx2: HTTP Request: PATCH http://testserver/api/v1/content-variants/bc9481b5-ee01-496e-a873-b0609c3bd158/adopt "HTTP/1.1 400 Bad Request"
+==============================================================================
+第 23 步 · V2 增强（二）· 多版本创作 Agent 离线自检（不联网、不需要 API Key）
+==============================================================================
+[PASS] 五个节点名与任务书一致
+[PASS] build_content_variants_graph 返回已编译的 LangGraph 图
+[PASS] 图含 load_context / generate_variants / review_variants / persist_variants / give_up
+[PASS] load_context → generate_variants → review_variants 为直连边
+[PASS] review_variants 存在「回炉重生成」条件边（有限回路的载体）
+[PASS] review_variants 存在去 persist / give_up 的条件边
+[PASS] persist_variants / give_up 均连接 END
+[PASS] 回路有界（上限来自 AGENT_JSON_MAX_ATTEMPTS）
+[PASS] 版本数常量 = 1~5、默认 3
+[PASS] 内置角度池恰为任务书六项
+[PASS] 提示词版本取自配置（不硬编码）
+[PASS] unwrap：顶层数组原样返回
+[PASS] unwrap：variants 包装键可解
+[PASS] unwrap：items 包装键可解
+[PASS] unwrap：只解一层（嵌套对象不解）
+[PASS] unwrap：非数组 / 对象 → None
+[PASS] normalize：仅考虑前 n 条，超出计数为 extra_ignored
+[PASS] normalize：标签剥 # （复用 ContentDraft 契约）
+[PASS] normalize：单条类型非法只记该条（不丢整批）
+[PASS] normalize：None → 空列表（由 review 判不合格）
+[PASS] 合格路径：status=success 且落库 3 条
+[PASS] 全合格 → 一轮生成即落库（模型只调 1 次）
+[PASS] 批次号 = run_id（variant_group_id）
+[PASS] auto 模式提示词含角度池与「角度不得重复」约束
+[PASS] 提示词要求 JSON 数组输出且含 angle / 换行转义约定
+[PASS] 逐版判定均为 qualified
+[PASS] 响应角度序列与模型输出一致且互不重复
+[PASS] 逐版明细的 note_id 与落库顺序一致
+[PASS] notes 实际写入 3 行（同批次）
+[PASS] 首版 title / body 逐列写入（与模型产出一致）
+[PASS] tags 写入：剥除误带的 # 且顺序保留
+[PASS] content_check.status=passed / hits 空 / checked_fields 齐全
+[PASS] compliance=passed / status=draft（不自动 ready）/ version=1
+[PASS] publish_url / xhs_note_id / published_at 全部留空（不自动发布）
+[PASS] llm_meta 含 prompt_version / json_parse_attempts=1 / model
+[PASS] llm_meta.variant：角度 / 序号 / 初始未采用（零迁移映射）
+[PASS] 同批次三条同一 group_id、index 0/1/2
+[PASS] account_id / persona_id / topic_id 三外键均按上下文回填
+[PASS] persist 同一事务把选题 approved→writing（只过渡一次）
+[PASS] agent_runs.run_type=content_variants
+[PASS] agent_runs.status=success
+[PASS] agent_runs.outputs 已回填业务明细（批次 / 计数 / note_ids / 角度）
+[PASS] agent_runs token 已回填（11/22/33）
+[PASS] agent_runs.json_parse_attempts == 1
+[PASS] agent_runs.llm_raw 已回填模型原始输出且不含密钥
+[PASS] agent_runs.note_id（首条）/ topic_id 已关联
+[PASS] agent_runs.trigger=manual
+[PASS] schema：n 默认 3、angles 缺省 None
+[PASS] schema：angles 归一（strip）且保留顺序
+[PASS] schema：angles=[] 视同留空（自动）
+[PASS] 不存在选题 → 404 not_found
+[PASS] 非 approved 选题 → 400 bad_request
+[PASS] 选题未关联人设 → 400 bad_request
+[PASS] n=0 越界 → 422
+[PASS] n=6 越界 → 422
+[PASS] n=-1 越界 → 422
+[PASS] n=99 越界 → 422
+[PASS] 缺 topic_id → 422
+[PASS] angles 数量与 n 不一致 → 422
+[PASS] angles 角度重复 → 422
+[PASS] angles 空字符串 → 422
+[PASS] angles 单条超长 → 422
+[PASS] 全部校验失败路径未产生审计行（未发起模型调用）
+[PASS] 全部校验失败路径未写入 notes
+[PASS] AGENT_LLM_ENABLED=false 时工厂抛 AgentConfigError（不发起任何请求）
+[PASS] 自检结束后 LLM 开关已还原（不污染后续步骤）
+[PASS] content_variants 路由把 AgentConfigError 映射为 400 bad_request
+[PASS] 显式角度：status=success 且落库 3 条
+[PASS] 显式角度注入提示词（严格使用 + 全部列出）
+[PASS] 显式角度逐版落库（按 index 归一后顺序一致）
+[PASS] agent_runs.outputs.angles 记录显式角度
+[PASS] n=1 边界（单版本）可用
+[PASS] n=5 边界可用（五版全部落库）
+[PASS] 5 版角度互不重复
+[PASS] n=5 批次 index 0~4 连续
+[PASS] 首轮缺标题 → 条件边回炉 → 次轮全合格并落库（模型调 2 次）
+[PASS] 回炉时 feedback 确实注入提示词（含不合格原因）
+[PASS] 落库的是次轮（合格轮）版本
+[PASS] 回路有界：模型恰被调用 3 次后停止回炉
+[PASS] 持续不合格 → 部分合格（persisted=2 / rejected=1 / partial）
+[PASS] rejected 明细带原因且无 note_id（不落库）
+[PASS] rejected 版本未写入 notes（仅 2 行）
+[PASS] 部分合格在 agent_runs 记 partial
+[PASS] agent_runs.outputs 记录 rejected 计数与明细
+[PASS] topic.account_id 为空时按 persona.account_id 回填归属账号
+[PASS] 违禁命中**不**触发回炉（模型仍只调 1 次）
+[PASS] 一版命中 → 部分合格（persisted=2 / blocked=1），不阻断其他版
+[PASS] blocked 版本带命中原因 / hits 明细且无 note_id
+[PASS] 其余版本不受影响（逐版独立判定）
+[PASS] blocked 版本未写入 notes（仅 2 行）
+[PASS] blocked 版本的标题 / 正文均未落库（不落脏数据）
+[PASS] 有 2 版合格落库 → 选题照常 approved→writing（一次过渡）
+[PASS] agent_runs.status=partial
+[PASS] agent_runs.outputs 记录 blocked 计数与命中明细
+[PASS] 全 blocked → status=failed / persisted=0 / blocked=2
+[PASS] 全 blocked 零落库
+[PASS] 零落库时选题保持 approved（不推进 writing）
+[PASS] 全 blocked 的 run 在 agent_runs 记 failed（全失败正确落库）
+[PASS] agent_runs.outputs 如实记录全 blocked 计数
+[PASS] 全 rejected：回路有界（模型恰被调用 3 次）
+[PASS] 全 rejected → give_up（失败汇总含可读原因）
+[PASS] 全 rejected 零落库（无半成品）
+[PASS] 全 rejected 时选题仍 approved
+[PASS] 该次运行在 agent_runs 记 failed
+[PASS] 持续非 JSON：分层重试恰为 9 次（JSON 层 × 节点层）
+[PASS] 持续非 JSON → failed 且 error_message 说明 JSON 问题
+[PASS] JSON 全失败零落库
+[PASS] JSON 全失败时选题仍 approved
+[PASS] JSON 全失败的 run 记 failed 且带 error_message
+[PASS] 批次列表：恰 1 个批次且 topic_id 对应
+[PASS] 批次内 3 版按 index 升序且角度正确
+[PASS] 采用前全部 adopted=False
+[PASS] 版本出参字段恰为约定集合（含 angle / 合规 / 采用态）
+[PASS] 批次列表序列化不含 llm_raw / 向量字段
+[PASS] 采用第 1 版：该版置采用、其余置未采用（单事务）
+[PASS] 切换到第 3 版：互斥翻转（可反复切换）
+[PASS] 库内复查：恰一版 adopted=True（互斥口径落库）
+[PASS] 采用不改笔记状态（仍 draft，进入创作台继续人工编辑）
+[PASS] GET /content-variants?topic_id= → 200 且批次在册
+[PASS] GET 响应体不含 llm_raw
+[PASS] GET 缺 topic_id → 422
+[PASS] GET topic_id 非法 → 422
+[PASS] GET 不存在的选题 → 404
+[PASS] PATCH 采用（HTTP）→ 200 且互斥翻转
+[PASS] 采用不存在的笔记 → 404
+[PASS] 采用「非批次」笔记 → 400（不属于多版本批次）
+[PASS] 全 OpenAPI 组件中**没有任何**响应模型暴露 llm_raw 字段
+[PASS] 新路由三端点均在 OpenAPI 路径表内
+[PASS] 新路由仅 GET / POST / PATCH（无 PUT / DELETE）
+[PASS] VariantsGenerateRequest 字段不含 llm_raw / embedding
+[PASS] VariantsGenerateResponse 字段不含 llm_raw / embedding
+[PASS] VariantsBatchesResponse 字段不含 llm_raw / embedding
+[PASS] AdoptVariantResponse 字段不含 llm_raw / embedding
+[PASS] 路由层不 import SQLAlchemy（静态断言）
+[PASS] 路由文件无 PUT / DELETE 注册
+[PASS] 静态路径 /generate 先于动态路径 /{note_id}/adopt 注册
+[PASS] main.py 注册含本步新 router（总数 ≥ 14）
+[PASS] main.py 未新增第二个 lifespan
+[PASS] notes 无 sk- 形态密钥
+[PASS] agent_runs 无 sk- 形态密钥
+[PASS] 本步新增代码不含平台域名 / 登录态字段
+[PASS] public schema 仍为 10 张业务表（本步未新增表 / 未新增列）
+[PASS] 本步未新增迁移文件（versions 恰 2 支：0001 / 0002）
+[PASS] alembic current 仍为 0002 (head)
+[PASS] alembic check 零漂移（模型与迁移一致；零迁移策略）
+[PASS] 测试数据已物理清理，复查残留为 0（双口径）
+
+通过 146 项，失败 0 项。
+全部 PASS ✔（离线自检，未联网、未使用真实 API Key）

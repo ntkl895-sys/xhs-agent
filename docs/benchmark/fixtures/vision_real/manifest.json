@@ -1,0 +1,19 @@
+{
+  "purpose": "真实截图集（用户补数）：统计视觉识别字段级准确率（n=k）",
+  "instructions": [
+    "1) 把 k 张真实「笔记数据」截图放入本目录（docs/benchmark/fixtures/vision_real/）；",
+    "2) 在下方 fixtures 数组中逐张登记：name 文件名、path 相对本目录的路径、expected 六指标标准答案（按截图上的展示形态填写，如 \"1.2万\" / \"3286\"）；",
+    "3) 六指标键固定为 views / likes / collects / comments / shares / new_followers；",
+    "4) 保存后运行：backend\\.venv\\Scripts\\python.exe scripts\\benchmark\\bench_vision_real.py；",
+    "5) 结果写入 docs/benchmark/results/vision_real.json（n=k×6 字段，如实标注，不得外推）。"
+  ],
+  "six_metrics": [
+    "views",
+    "likes",
+    "collects",
+    "comments",
+    "shares",
+    "new_followers"
+  ],
+  "fixtures": []
+}

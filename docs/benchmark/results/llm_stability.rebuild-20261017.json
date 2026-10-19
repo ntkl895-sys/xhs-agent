@@ -1,0 +1,1457 @@
+{
+  "suite": "llm_stability",
+  "generated_at": "2026-10-17T12:40:53+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "mode": "real",
+    "graphs": [
+      "topics",
+      "content",
+      "content_variants",
+      "metric_vision",
+      "diagnosis",
+      "weekly",
+      "insights"
+    ],
+    "rounds": 5,
+    "llm_model": "deepseek-flash",
+    "llm_base_url": "https://api.deepseek.com",
+    "tokens_grand_total": 94045,
+    "raw_direct_parse_rate": 0.9655,
+    "raw_sample_n": 29
+  },
+  "notes": [
+    "n=5 小样本；结论只能写「抽样中」口径，禁止外推为总体稳定性。",
+    "first_try_rate 是 attempts 口径（模型调用轮次），不等于 raw 合法率；raw 直解率由 llm_raw 离线复算单列。",
+    "insights 5 轮为零调用（published=1 < 门槛 3），未消耗 token，不计入成功率分母。",
+    "token 来自 agent_runs 记录；未内置价格。"
+  ],
+  "detail": {
+    "graphs": {
+      "topics": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 0,
+          "latency_ms": {
+            "n": 5,
+            "min": 2967.7,
+            "p50": 3585.9,
+            "p95": 17225.0,
+            "max": 17225.0,
+            "mean": 6166.76
+          },
+          "tokens_grand_total": 5350,
+          "tokens_per_round": {
+            "n": 5,
+            "min": 1027,
+            "p50": 1066,
+            "p95": 1152,
+            "max": 1152,
+            "mean": 1070.0
+          }
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1027,
+            "wall_ms": 17225.0,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1029,
+            "wall_ms": 2967.7,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1152,
+            "wall_ms": 3664.7,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1076,
+            "wall_ms": 3585.9,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1066,
+            "wall_ms": 3390.5,
+            "runs": 1
+          }
+        ]
+      },
+      "content": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 0,
+          "latency_ms": {
+            "n": 5,
+            "min": 2579.7,
+            "p50": 3188.9,
+            "p95": 3526.5,
+            "max": 3526.5,
+            "mean": 3077.02
+          },
+          "tokens_grand_total": 4270,
+          "tokens_per_round": {
+            "n": 5,
+            "min": 809,
+            "p50": 855,
+            "p95": 885,
+            "max": 885,
+            "mean": 854.0
+          }
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 809,
+            "wall_ms": 2579.7,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 870,
+            "wall_ms": 3526.5,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 851,
+            "wall_ms": 2866.3,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 885,
+            "wall_ms": 3223.7,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 855,
+            "wall_ms": 3188.9,
+            "runs": 1
+          }
+        ]
+      },
+      "content_variants": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 0,
+          "latency_ms": {
+            "n": 5,
+            "min": 5769.6,
+            "p50": 11354.6,
+            "p95": 13096.0,
+            "max": 13096.0,
+            "mean": 9985.04
+          },
+          "tokens_grand_total": 11763,
+          "tokens_per_round": {
+            "n": 5,
+            "min": 1518,
+            "p50": 2715,
+            "p95": 2897,
+            "max": 2897,
+            "mean": 2352.6
+          }
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2897,
+            "wall_ms": 13096.0,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1518,
+            "wall_ms": 5769.6,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2715,
+            "wall_ms": 11354.6,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2855,
+            "wall_ms": 11749.9,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 1778,
+            "wall_ms": 7955.1,
+            "runs": 1
+          }
+        ]
+      },
+      "metric_vision": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 0,
+          "latency_ms": {
+            "n": 5,
+            "min": 1464.0,
+            "p50": 1953.3,
+            "p95": 2202.1,
+            "max": 2202.1,
+            "mean": 1893.86
+          },
+          "tokens_grand_total": 11343,
+          "tokens_per_round": {
+            "n": 5,
+            "min": 2236,
+            "p50": 2264,
+            "p95": 2315,
+            "max": 2315,
+            "mean": 2268.6
+          }
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2264,
+            "wall_ms": 2202.1,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2236,
+            "wall_ms": 1733.9,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2237,
+            "wall_ms": 1953.3,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2291,
+            "wall_ms": 1464.0,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2315,
+            "wall_ms": 2116.0,
+            "runs": 1
+          }
+        ]
+      },
+      "diagnosis": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 0,
+          "latency_ms": {
+            "n": 5,
+            "min": 8906.5,
+            "p50": 17519.5,
+            "p95": 25603.3,
+            "max": 25603.3,
+            "mean": 17548.3
+          },
+          "tokens_grand_total": 22663,
+          "tokens_per_round": {
+            "n": 5,
+            "min": 2640,
+            "p50": 4362,
+            "p95": 6269,
+            "max": 6269,
+            "mean": 4532.6
+          }
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 6269,
+            "wall_ms": 25603.3,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 2640,
+            "wall_ms": 8906.5,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 3509,
+            "wall_ms": 12646.4,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 5883,
+            "wall_ms": 23065.8,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 4362,
+            "wall_ms": 17519.5,
+            "runs": 1
+          }
+        ]
+      },
+      "weekly": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 5,
+          "first_try_rate": 1.0,
+          "success_rate": 1.0,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 0,
+          "latency_ms": {
+            "n": 5,
+            "min": 15673.6,
+            "p50": 23948.0,
+            "p95": 30793.4,
+            "max": 30793.4,
+            "mean": 23640.06
+          },
+          "tokens_grand_total": 38656,
+          "tokens_per_round": {
+            "n": 5,
+            "min": 5926,
+            "p50": 7677,
+            "p95": 9449,
+            "max": 9449,
+            "mean": 7731.2
+          }
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 7677,
+            "wall_ms": 22344.1,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 9449,
+            "wall_ms": 30793.4,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 7993,
+            "wall_ms": 25441.2,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 5926,
+            "wall_ms": 15673.6,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              1
+            ],
+            "tokens": 7611,
+            "wall_ms": 23948.0,
+            "runs": 1
+          }
+        ]
+      },
+      "insights": {
+        "summary": {
+          "rounds": 5,
+          "rounds_with_calls": 0,
+          "first_try_rate": null,
+          "success_rate": null,
+          "repair_needed_rounds": 0,
+          "zero_call_rounds": 5,
+          "latency_ms": null,
+          "tokens_grand_total": 0,
+          "tokens_per_round": null
+        },
+        "rounds": [
+          {
+            "ok": true,
+            "parse_attempts": [
+              0
+            ],
+            "tokens": 0,
+            "wall_ms": 62.6,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              0
+            ],
+            "tokens": 0,
+            "wall_ms": 53.6,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              0
+            ],
+            "tokens": 0,
+            "wall_ms": 54.1,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              0
+            ],
+            "tokens": 0,
+            "wall_ms": 56.4,
+            "runs": 1
+          },
+          {
+            "ok": true,
+            "parse_attempts": [
+              0
+            ],
+            "tokens": 0,
+            "wall_ms": 58.3,
+            "runs": 1
+          }
+        ]
+      }
+    },
+    "raw_source_distribution": {
+      "原文": 28,
+      "平衡扫描(对象)": 1
+    },
+    "raw_samples": [
+      {
+        "run_type": "topic_generation",
+        "total_tokens": 1027,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "topic_generation",
+        "total_tokens": 1029,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "topic_generation",
+        "total_tokens": 1152,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "topic_generation",
+        "total_tokens": 1076,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "topic_generation",
+        "total_tokens": 1066,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_creation",
+        "total_tokens": 809,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_creation",
+        "total_tokens": 870,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_creation",
+        "total_tokens": 851,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_creation",
+        "total_tokens": 885,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_creation",
+        "total_tokens": 855,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_variants",
+        "total_tokens": 2897,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_variants",
+        "total_tokens": 1518,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_variants",
+        "total_tokens": 2715,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_variants",
+        "total_tokens": 2855,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "content_variants",
+        "total_tokens": 1778,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "metric_recognize",
+        "total_tokens": 2264,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "metric_recognize",
+        "total_tokens": 2236,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "metric_recognize",
+        "total_tokens": 2237,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "metric_recognize",
+        "total_tokens": 2291,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "metric_recognize",
+        "total_tokens": 2315,
+        "json_parse_attempts": 1,
+        "source": "平衡扫描(对象)",
+        "parsed": true
+      },
+      {
+        "run_type": "diagnosis",
+        "total_tokens": 6269,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "diagnosis",
+        "total_tokens": 2640,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "diagnosis",
+        "total_tokens": 3509,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "diagnosis",
+        "total_tokens": 5883,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "diagnosis",
+        "total_tokens": 4362,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "weekly_report",
+        "total_tokens": 7677,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "weekly_report",
+        "total_tokens": 9449,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "weekly_report",
+        "total_tokens": 7993,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      },
+      {
+        "run_type": "weekly_report",
+        "total_tokens": 5926,
+        "json_parse_attempts": 1,
+        "source": "原文",
+        "parsed": true
+      }
+    ],
+    "rebuild_note": "脚本在 cleanup 阶段因 notes 外键冲突中断（rc=1），结果由日志 + llm_raw 捕获重建"
+  },
+  "metrics": [
+    {
+      "name": "llm_stability.topics.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:47+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.topics.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts==1 且 success 的轮次占比（模型调用轮次口径，非 raw 合法率）"
+    },
+    {
+      "name": "llm_stability.topics.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.topics.latency_p50_ms",
+      "value": 3585.9,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "墙钟含网络；n=5 小样本，仅工程参考"
+    },
+    {
+      "name": "llm_stability.topics.latency_p95_ms",
+      "value": 17225.0,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "nearest-rank；n=5 小样本"
+    },
+    {
+      "name": "llm_stability.topics.tokens_p50",
+      "value": 1066,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.topics.tokens_grand_total",
+      "value": 5350,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "该图 5 轮合计（含 prompt+completion）"
+    },
+    {
+      "name": "llm_stability.topics.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=topics",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "parse_attempts>1 的轮次数（本次为 0）"
+    },
+    {
+      "name": "llm_stability.content.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.content.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:48+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts==1 且 success 的轮次占比（模型调用轮次口径，非 raw 合法率）"
+    },
+    {
+      "name": "llm_stability.content.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.content.latency_p50_ms",
+      "value": 3188.9,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "墙钟含网络；n=5 小样本，仅工程参考"
+    },
+    {
+      "name": "llm_stability.content.latency_p95_ms",
+      "value": 3526.5,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "nearest-rank；n=5 小样本"
+    },
+    {
+      "name": "llm_stability.content.tokens_p50",
+      "value": 855,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.content.tokens_grand_total",
+      "value": 4270,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "该图 5 轮合计（含 prompt+completion）"
+    },
+    {
+      "name": "llm_stability.content.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "parse_attempts>1 的轮次数（本次为 0）"
+    },
+    {
+      "name": "llm_stability.content_variants.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.content_variants.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts==1 且 success 的轮次占比（模型调用轮次口径，非 raw 合法率）"
+    },
+    {
+      "name": "llm_stability.content_variants.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:49+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.content_variants.latency_p50_ms",
+      "value": 11354.6,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "墙钟含网络；n=5 小样本，仅工程参考"
+    },
+    {
+      "name": "llm_stability.content_variants.latency_p95_ms",
+      "value": 13096.0,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "nearest-rank；n=5 小样本"
+    },
+    {
+      "name": "llm_stability.content_variants.tokens_p50",
+      "value": 2715,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.content_variants.tokens_grand_total",
+      "value": 11763,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "该图 5 轮合计（含 prompt+completion）"
+    },
+    {
+      "name": "llm_stability.content_variants.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=content_variants",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "parse_attempts>1 的轮次数（本次为 0）"
+    },
+    {
+      "name": "llm_stability.metric_vision.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.metric_vision.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts==1 且 success 的轮次占比（模型调用轮次口径，非 raw 合法率）"
+    },
+    {
+      "name": "llm_stability.metric_vision.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.metric_vision.latency_p50_ms",
+      "value": 1953.3,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:50+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "墙钟含网络；n=5 小样本，仅工程参考"
+    },
+    {
+      "name": "llm_stability.metric_vision.latency_p95_ms",
+      "value": 2202.1,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "nearest-rank；n=5 小样本"
+    },
+    {
+      "name": "llm_stability.metric_vision.tokens_p50",
+      "value": 2264,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.metric_vision.tokens_grand_total",
+      "value": 11343,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "该图 5 轮合计（含 prompt+completion）"
+    },
+    {
+      "name": "llm_stability.metric_vision.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=metric_vision",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "parse_attempts>1 的轮次数（本次为 0）"
+    },
+    {
+      "name": "llm_stability.diagnosis.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.diagnosis.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts==1 且 success 的轮次占比（模型调用轮次口径，非 raw 合法率）"
+    },
+    {
+      "name": "llm_stability.diagnosis.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.diagnosis.latency_p50_ms",
+      "value": 17519.5,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "墙钟含网络；n=5 小样本，仅工程参考"
+    },
+    {
+      "name": "llm_stability.diagnosis.latency_p95_ms",
+      "value": 25603.3,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:51+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "nearest-rank；n=5 小样本"
+    },
+    {
+      "name": "llm_stability.diagnosis.tokens_p50",
+      "value": 4362,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.diagnosis.tokens_grand_total",
+      "value": 22663,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "该图 5 轮合计（含 prompt+completion）"
+    },
+    {
+      "name": "llm_stability.diagnosis.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=diagnosis",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "parse_attempts>1 的轮次数（本次为 0）"
+    },
+    {
+      "name": "llm_stability.weekly.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.weekly.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts==1 且 success 的轮次占比（模型调用轮次口径，非 raw 合法率）"
+    },
+    {
+      "name": "llm_stability.weekly.success_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "以 agent_runs.status 计"
+    },
+    {
+      "name": "llm_stability.weekly.latency_p50_ms",
+      "value": 23948.0,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "墙钟含网络；n=5 小样本，仅工程参考"
+    },
+    {
+      "name": "llm_stability.weekly.latency_p95_ms",
+      "value": 30793.4,
+      "unit": "毫秒",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "nearest-rank；n=5 小样本"
+    },
+    {
+      "name": "llm_stability.weekly.tokens_p50",
+      "value": 7677,
+      "unit": "token/轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:52+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": null
+    },
+    {
+      "name": "llm_stability.weekly.tokens_grand_total",
+      "value": 38656,
+      "unit": "token",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "该图 5 轮合计（含 prompt+completion）"
+    },
+    {
+      "name": "llm_stability.weekly.repair_needed_rounds",
+      "value": 0,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=weekly",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "parse_attempts>1 的轮次数（本次为 0）"
+    },
+    {
+      "name": "llm_stability.insights.rounds_total",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "计划轮次（insights 为样本不足零调用）"
+    },
+    {
+      "name": "llm_stability.insights.zero_call_rounds",
+      "value": 5,
+      "unit": "轮",
+      "n": 5,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）；图=insights",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "published < INSIGHTS_MIN_PUBLISHED=3 → 图内零调用零落库"
+    },
+    {
+      "name": "llm_stability.total.rounds_with_calls",
+      "value": 30,
+      "unit": "轮",
+      "n": 30,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "有真实模型调用的轮次（7 图中 6 图）"
+    },
+    {
+      "name": "llm_stability.total.first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 30,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "attempts 口径；不含 insights 的 5 轮零调用"
+    },
+    {
+      "name": "llm_stability.total.tokens_grand_total",
+      "value": 94045,
+      "unit": "token",
+      "n": 30,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "本次全部真实调用合计（按量记录，无价格表）"
+    },
+    {
+      "name": "llm_stability.raw_json.direct_parse_rate",
+      "value": 0.9655,
+      "unit": "比率",
+      "n": 29,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_llm_stability.py --n 5 --yes（真实调用 DeepSeek deepseek-flash）；结果文件由日志与 llm_raw 捕获重建（脚本清理阶段外键冲突，未写出）",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T12:40:53+08:00",
+      "log_path": null,
+      "confidence": "high",
+      "note": "把本次 llm_raw 用 extract_json_with_source 离线复算：source=原文 的占比（真正的 raw 直解率）"
+    }
+  ]
+}

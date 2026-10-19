@@ -1,0 +1,25 @@
+==================================================================
+  度量专项 · 故障注入与可靠性（隔离环境实跑）
+==================================================================
+
+[2/3] 404 不重试 与 5xx 重试（mock 上游）……
+[PASS] DailyHot 客户端：404 不重试（每次恰 1 次请求 ×3）
+[PASS] DailyHot 客户端：404 抛不可重试的 HotspotClientError
+[PASS] DailyHot 客户端：请求携带浏览器 UA
+[PASS] DailyHot 客户端：5xx 按 max_attempts=3 尝试（每次 3 次请求 ×3）
+[PASS] DailyHot 客户端：5xx 退避总时长落在 2.5~8s（1s+2s 指数退避实测）
+[PASS] DailyHot 客户端：重试耗尽后抛 HotspotRetryableError
+[PASS] GitHub 搜索：404 不重试（每次恰 1 次请求 ×3）
+[PASS] GitHub 搜索：404 抛 SearchUpstreamError
+[PASS] GitHub 搜索：请求携带品牌 UA（xhs-agent/…）
+[PASS] GitHub 搜索：5xx 按 max_attempts=3 尝试（每次 3 次请求 ×3）
+[PASS] GitHub 搜索：5xx 退避总时长落在 2.5~8s
+
+[1] 数据库不可达 → /health/ready（真实 uvicorn 子进程）……
+[PASS] DB 不可达时后端进程仍可启动（lifespan 不阻断）
+[PASS] DB 不可达：/health/ready 恒返回 503（n=10）
+[PASS] 503 响应体 checks.database = false（如实反馈）
+[PASS] 子进程回收、端口已释放
+[safe-delete][SAFE_DELETE_BULK_CONFIRM_REQUIRED] {"count":50,"threshold":50,"scope":"turn","targets":["D:\\项目1\\xhs-agent\\docs\\benchmark\\logs\\reliability_child.json"],"targetCount":1}
+
+[4/5] 坏源隔离 / partial / 全部失败 / 并发锁（临时库全链路）……

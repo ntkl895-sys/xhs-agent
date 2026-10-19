@@ -1,0 +1,1460 @@
+{
+  "suite": "topic_tool_calling",
+  "generated_at": "2026-10-17T13:34:50+08:00",
+  "env": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "node": "v22.22.2",
+    "scope": "本地单机（localhost，Docker Desktop 容器化依赖）"
+  },
+  "summary": {
+    "mode": "real",
+    "n_scenarios": 12,
+    "max_rounds": 3,
+    "tool": {
+      "n": 12,
+      "precision_micro": 0.3889,
+      "recall_micro": 1.0,
+      "precision_macro": 0.5417,
+      "recall_macro": 1.0,
+      "hallucination_rate": 0.0,
+      "avg_rounds": 2.0,
+      "convergence_rate": 1.0,
+      "json_first_try_rate": 1.0,
+      "total_tokens": 68775,
+      "avg_latency_ms": 11702.1,
+      "errors": 0,
+      "cleanup_ok": true
+    },
+    "baseline": {
+      "n": 12,
+      "precision_micro": null,
+      "recall_micro": null,
+      "precision_macro": null,
+      "recall_macro": null,
+      "hallucination_rate": null,
+      "avg_rounds": null,
+      "convergence_rate": 1.0,
+      "json_first_try_rate": 1.0,
+      "total_tokens": 11935,
+      "avg_latency_ms": 3217.9,
+      "errors": 0,
+      "cleanup_ok": true
+    },
+    "run_finished_at": "2026-10-17T13:34:50+08:00"
+  },
+  "notes": [
+    "n=12 小样本、方向性结论，禁止外推为通用工具选择能力。",
+    "ground truth 为人工标注的场景应调工具集合（冻结 sha256），不是跑完抄结果。",
+    "baseline = TOPIC_TOOLCALLING_ENABLED=false，与原实现逐字节一致。",
+    "token / 延迟仅工程参考（本机 + 网络），不进简历。",
+    "工具全部只读；白名单外调用被丢弃并计数，未执行任何写操作。"
+  ],
+  "detail": {
+    "testset": {
+      "name": "topic_tool",
+      "version": "1.0.0",
+      "sha256": {
+        "scenarios.json": "8005be1ea0b6d8902ee3129dd71d8f819804243d603139f4af28dec9da121e25"
+      }
+    },
+    "tool": [
+      {
+        "id": "tt_01",
+        "mode": "tool",
+        "expected": [
+          "search_knowledge"
+        ],
+        "predicted": [
+          "search_knowledge",
+          "list_topics",
+          "get_persona",
+          "search_hotspots"
+        ],
+        "precision": 0.25,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 3,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 5947,
+        "latency_ms": 26813.2,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {
+              "query": "成分党护肤 爆款结构 选题模板 复盘",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 136.547,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 20
+            },
+            "tool": "list_topics",
+            "duration_ms": 9.15,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 5.394,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_01 成分党小鹿\", \"positioning\": \"只讲成分与实测的护肤博主，反对玄学种草\", \"target_audience\": \"25-35 岁成分党女性\", \"tone\": \"冷静、给数据\", \"content_pillars\": [\"成分科普\", \"产品实测\"], \"taboo\": [\"不碰医美项目\", \"不评价医生资质\"], \"signature_style\": \"先给结论，再给证据链\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "护肤 成分",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 9.023,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "防晒",
+              "limit": 5
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 5.318,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 9.12,
+            "result_summary": "{\"total\": 10, \"items\": [{\"title\": \"蒙古国草原火情蔓延至我边境\", \"source\": \"toutiao\", \"hot_score\": 44623948, \"hot_date\": \"2026-10-12\"}, {\"title\": \"郑钦文红袍加身举金杯旋转拍照\", \"source\": \"toutiao\", \"hot_score\": 40377417, \"hot_date\": \"2026-10-12\"}, {\"title\": \"节后错峰出游持续升温\", \"source\": \"toutiao\", \"hot_score\": 36534998, \"hot_date\":"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "敏感肌",
+              "limit": 5
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 5.542,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_02",
+        "mode": "tool",
+        "expected": [
+          "search_hotspots"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_hotspots",
+          "search_knowledge"
+        ],
+        "precision": 0.25,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 3,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 6650,
+        "latency_ms": 8979.0,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 5.531,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_02 远程办公老张\", \"positioning\": \"远程团队管理实战派\", \"target_audience\": \"中小团队负责人\", \"tone\": \"口语化、讲案例\", \"content_pillars\": [\"远程管理\", \"效率工具\"], \"taboo\": [\"不推荐具体付费课程\"], \"signature_style\": \"开头先抛一个反常识结论\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "远程办公",
+              "limit": 10
+            },
+            "tool": "list_topics",
+            "duration_ms": 8.909,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "远程办公",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.788,
+            "result_summary": "{\"total\": 1, \"items\": [{\"title\": \"[BENCH-TOOL] 远程办公效率工具讨论升温（要求：看看同类热点还有哪些角度）\", \"source\": \"zhihu\", \"hot_score\": 9600, \"hot_date\": \"2026-10-17\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 20
+            },
+            "tool": "list_topics",
+            "duration_ms": 6.338,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 5.756,
+            "result_summary": "{\"total\": 10, \"items\": [{\"title\": \"蒙古国草原火情蔓延至我边境\", \"source\": \"toutiao\", \"hot_score\": 44623948, \"hot_date\": \"2026-10-12\"}, {\"title\": \"郑钦文红袍加身举金杯旋转拍照\", \"source\": \"toutiao\", \"hot_score\": 40377417, \"hot_date\": \"2026-10-12\"}, {\"title\": \"节后错峰出游持续升温\", \"source\": \"toutiao\", \"hot_score\": 36534998, \"hot_date\":"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "远程团队管理 选题模板 爆款规律",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 122.638,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "开头先抛反常识结论 口语化讲案例 涨粉",
+              "top_k": 5,
+              "chunk_types": [
+                "hit_pattern",
+                "topic_template",
+                "review_insight",
+                "persona_knowledge"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 140.575,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "居家办公",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.177,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "AI 效率工具",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.443,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_03",
+        "mode": "tool",
+        "expected": [
+          "get_persona"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_knowledge",
+          "search_hotspots"
+        ],
+        "precision": 0.25,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 2,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 7313,
+        "latency_ms": 17394.6,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 6.493,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_03 辅食妈妈阿禾\", \"positioning\": \"循证育儿的第一胎妈妈\", \"target_audience\": \"0-2 岁宝宝家长\", \"tone\": \"温和、克制\", \"content_pillars\": [\"辅食\", \"睡眠\"], \"taboo\": [\"不提偏方\", \"不比较孩子发育\"], \"signature_style\": \"每篇结尾给一句「别焦虑」\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "辅食",
+              "limit": 15
+            },
+            "tool": "list_topics",
+            "duration_ms": 6.832,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "辅食添加时间表 选题模板 爆款规律",
+              "top_k": 3
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 137.176,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 20
+            },
+            "tool": "list_topics",
+            "duration_ms": 6.725,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "辅食",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.983,
+            "result_summary": "{\"total\": 1, \"items\": [{\"title\": \"[BENCH-TOOL] 宝宝辅食添加时间表（要求：必须结合人设禁忌与口头禅）\", \"source\": \"zhihu\", \"hot_score\": 15200, \"hot_date\": \"2026-10-17\"}]}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_04",
+        "mode": "tool",
+        "expected": [
+          "list_topics"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_hotspots",
+          "search_knowledge"
+        ],
+        "precision": 0.25,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 3,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 5836,
+        "latency_ms": 7834.7,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 10.005,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_04 收纳师小满\", \"positioning\": \"小户型收纳改造\", \"target_audience\": \"租房青年\", \"tone\": \"轻快\", \"content_pillars\": [\"收纳\", \"改造\"], \"taboo\": [\"不推荐打孔\"], \"signature_style\": \"用「三步法」组织正文\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 20
+            },
+            "tool": "list_topics",
+            "duration_ms": 13.733,
+            "result_summary": "{\"total\": 2, \"items\": [{\"title\": \"租房党衣柜收纳三步法\", \"angle\": \"历史选题（评测预置）\", \"status\": \"published\", \"generated_at\": \"2026-10-17T05:30:46.665872+00:00\"}, {\"title\": \"小户型厨房台面改造清单\", \"angle\": \"历史选题（评测预置）\", \"status\": \"draft\", \"generated_at\": \"2026-10-17T05:30:46.665932+00:00\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "收纳",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 8.536,
+            "result_summary": "{\"total\": 1, \"items\": [{\"title\": \"[BENCH-TOOL] 小户型收纳改造（要求：别和最近发过的选题撞车）\", \"source\": \"zhihu\", \"hot_score\": 7300, \"hot_date\": \"2026-10-17\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "小户型收纳改造 租房青年 爆款选题规律",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 140.435,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.803,
+            "result_summary": "{\"total\": 10, \"items\": [{\"title\": \"蒙古国草原火情蔓延至我边境\", \"source\": \"toutiao\", \"hot_score\": 44623948, \"hot_date\": \"2026-10-12\"}, {\"title\": \"郑钦文红袍加身举金杯旋转拍照\", \"source\": \"toutiao\", \"hot_score\": 40377417, \"hot_date\": \"2026-10-12\"}, {\"title\": \"节后错峰出游持续升温\", \"source\": \"toutiao\", \"hot_score\": 36534998, \"hot_date\":"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "三步法 正文结构 开场钩子 口播节奏",
+              "top_k": 5,
+              "chunk_types": [
+                "hit_pattern",
+                "topic_template",
+                "review_insight"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 132.514,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_05",
+        "mode": "tool",
+        "expected": [],
+        "predicted": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 2777,
+        "latency_ms": 5730.3,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_06",
+        "mode": "tool",
+        "expected": [
+          "search_knowledge",
+          "search_hotspots"
+        ],
+        "predicted": [
+          "get_persona",
+          "search_knowledge",
+          "list_topics",
+          "search_hotspots"
+        ],
+        "precision": 0.5,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 3,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 5964,
+        "latency_ms": 7353.4,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 11.15,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_06 周末出走派\", \"positioning\": \"48 小时微度假\", \"target_audience\": \"一线城市白领\", \"tone\": \"松弛、有画面感\", \"content_pillars\": [\"周边游\", \"住宿\"], \"taboo\": [\"不写未去过的店\"], \"signature_style\": \"标题带具体小时数\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "周末微度假目的地 选题模板 爆款规律",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 129.182,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 15
+            },
+            "tool": "list_topics",
+            "duration_ms": 6.765,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "周末 周边游",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 7.537,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "民宿 酒店",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 4.754,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "微度假 短途",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 5.599,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 7.17,
+            "result_summary": "{\"total\": 10, \"items\": [{\"title\": \"蒙古国草原火情蔓延至我边境\", \"source\": \"toutiao\", \"hot_score\": 44623948, \"hot_date\": \"2026-10-12\"}, {\"title\": \"郑钦文红袍加身举金杯旋转拍照\", \"source\": \"toutiao\", \"hot_score\": 40377417, \"hot_date\": \"2026-10-12\"}, {\"title\": \"节后错峰出游持续升温\", \"source\": \"toutiao\", \"hot_score\": 36534998, \"hot_date\":"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "露营",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 8.034,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "秋天",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 7.936,
+            "result_summary": "{\"total\": 7, \"items\": [{\"title\": \"秋天的桂花香太治愈了\", \"source\": \"douyin\", \"hot_score\": 12098887, \"hot_date\": \"2026-10-12\"}, {\"title\": \"苏州的秋天满城桂花香\", \"source\": \"douyin\", \"hot_score\": 12040477, \"hot_date\": \"2026-10-10\"}, {\"title\": \"大自然的秋天进度更新了\", \"source\": \"douyin\", \"hot_score\": 10945033, \"hot_date\": \"2026-10-"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_07",
+        "mode": "tool",
+        "expected": [
+          "get_persona",
+          "search_knowledge"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_knowledge",
+          "search_hotspots"
+        ],
+        "precision": 0.5,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 3,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 5511,
+        "latency_ms": 7910.2,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 22.087,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_07 数码阿哲\", \"positioning\": \"只讲实测的数码博主\", \"target_audience\": \"换机刚需人群\", \"tone\": \"直接、少形容词\", \"content_pillars\": [\"手机摄影\", \"配件\"], \"taboo\": [\"不接恰饭机\", \"不预测发布会\"], \"signature_style\": \"先说不推荐谁买\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 15
+            },
+            "tool": "list_topics",
+            "duration_ms": 13.057,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "数码换机实测类选题的爆款规律与开头结构",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 144.149,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "选题模板 手机摄影 配件",
+              "top_k": 5,
+              "chunk_types": [
+                "topic_template"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 123.534,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "手机",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.536,
+            "result_summary": "{\"total\": 6, \"items\": [{\"title\": \"女子在自己手机上登录前男友账号以「1314」等金额转走近二十万，法院判决全部返还，如何从法律角度解读？\", \"source\": \"zhihu\", \"hot_score\": 4960000, \"hot_date\": \"2026-10-17\"}, {\"title\": \"多个手机品牌集体宣布降价\", \"source\": \"toutiao\", \"hot_score\": 3125564, \"hot_date\": \"2026-10-16\"}, {\"title\": \"法院：手机号码使用权可作为遗产继承\", \"source\": \"qq-new"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "充电宝",
+              "limit": 5
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 7.391,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_08",
+        "mode": "tool",
+        "expected": [],
+        "predicted": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 2875,
+        "latency_ms": 5785.8,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_09",
+        "mode": "tool",
+        "expected": [
+          "list_topics",
+          "search_knowledge"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_knowledge",
+          "search_hotspots"
+        ],
+        "precision": 0.5,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 2,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 7653,
+        "latency_ms": 18655.9,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 5.958,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_09 在职考证人\", \"positioning\": \"边上班边考证的时间管理\", \"target_audience\": \"在职备考人\", \"tone\": \"务实、不鸡血\", \"content_pillars\": [\"时间管理\", \"备考方法\"], \"taboo\": [\"不卖课\"], \"signature_style\": \"用时间表截图说话\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 20
+            },
+            "tool": "list_topics",
+            "duration_ms": 7.122,
+            "result_summary": "{\"total\": 2, \"items\": [{\"title\": \"在职备考每天 2 小时时间表\", \"angle\": \"历史选题（评测预置）\", \"status\": \"published\", \"generated_at\": \"2026-10-17T05:31:21.517160+00:00\"}, {\"title\": \"通勤时间怎么用来背书\", \"angle\": \"历史选题（评测预置）\", \"status\": \"draft\", \"generated_at\": \"2026-10-17T05:31:21.517195+00:00\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "在职考证 时间管理 爆款规律 选题模板",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 150.507,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "不鸡血 务实 备考 人设 口头禅 复盘",
+              "top_k": 5,
+              "chunk_types": [
+                "hit_pattern",
+                "topic_template",
+                "review_insight",
+                "persona_knowledge"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 134.903,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "考证",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.637,
+            "result_summary": "{\"total\": 1, \"items\": [{\"title\": \"[BENCH-TOOL] 在职考证时间管理（要求：避免与已发选题重复，并参考爆款规律）\", \"source\": \"zhihu\", \"hot_score\": 6900, \"hot_date\": \"2026-10-17\"}]}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_10",
+        "mode": "tool",
+        "expected": [
+          "search_hotspots"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_hotspots",
+          "search_knowledge"
+        ],
+        "precision": 0.25,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 2,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 8298,
+        "latency_ms": 18220.4,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 16.169,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_10 猫奴实验室\", \"positioning\": \"猫咪用品实测\", \"target_audience\": \"养猫新手\", \"tone\": \"幽默\", \"content_pillars\": [\"用品测评\", \"行为解读\"], \"taboo\": [\"不推荐处方粮\"], \"signature_style\": \"用「踩坑指数」打分\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 10
+            },
+            "tool": "list_topics",
+            "duration_ms": 7.174,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "宠物智能用品",
+              "limit": 6
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 7.98,
+            "result_summary": "{\"total\": 1, \"items\": [{\"title\": \"[BENCH-TOOL] 宠物智能用品测评（要求：看看同类热点）\", \"source\": \"zhihu\", \"hot_score\": 8300, \"hot_date\": \"2026-10-17\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "宠物智能用品测评 新手 选题模板 爆款规律",
+              "top_k": 4
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 141.004,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "猫",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 12.613,
+            "result_summary": "{\"total\": 8, \"items\": [{\"title\": \"小猫踏步舞\", \"source\": \"douyin\", \"hot_score\": 7694162, \"hot_date\": \"2026-10-15\"}, {\"title\": \"原来，小猫是这样认识武警哥哥的～\", \"source\": \"bilibili\", \"hot_score\": 2443525, \"hot_date\": \"2026-10-17\"}, {\"title\": \"原来，小猫是这样认识武警哥哥的～\", \"source\": \"bilibili\", \"hot_score\": 2168478, \"hot_date\": \"2"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "智能猫砂盆",
+              "limit": 5
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 13.804,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "猫咪用品测评怎么写 结构 开头 钩子",
+              "top_k": 5,
+              "chunk_types": [
+                "hit_pattern",
+                "topic_template",
+                "review_insight"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 143.655,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          }
+        ],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_11",
+        "mode": "tool",
+        "expected": [],
+        "predicted": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 2825,
+        "latency_ms": 5491.8,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_12",
+        "mode": "tool",
+        "expected": [
+          "search_knowledge",
+          "list_topics",
+          "search_hotspots"
+        ],
+        "predicted": [
+          "get_persona",
+          "list_topics",
+          "search_knowledge",
+          "search_hotspots"
+        ],
+        "precision": 0.75,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 3,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 7126,
+        "latency_ms": 10256.5,
+        "status": "success",
+        "error": null,
+        "tool_events": [
+          {
+            "ok": true,
+            "args": {},
+            "tool": "get_persona",
+            "duration_ms": 7.507,
+            "result_summary": "{\"found\": true, \"name\": \"[BENCH-TOOL] tt_12 理财第一步\", \"positioning\": \"新手理财避坑\", \"target_audience\": \"刚工作的年轻人\", \"tone\": \"谨慎、讲风险\", \"content_pillars\": [\"记账\", \"储蓄\"], \"taboo\": [\"不荐股\", \"不承诺收益\"], \"signature_style\": \"先讲风险再讲方法\"}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "limit": 15
+            },
+            "tool": "list_topics",
+            "duration_ms": 4.237,
+            "result_summary": "{\"total\": 2, \"items\": [{\"title\": \"新手记账第一个月怎么做\", \"angle\": \"历史选题（评测预置）\", \"status\": \"published\", \"generated_at\": \"2026-10-17T05:32:04.052929+00:00\"}, {\"title\": \"工资到账先分三笔\", \"angle\": \"历史选题（评测预置）\", \"status\": \"draft\", \"generated_at\": \"2026-10-17T05:32:04.052980+00:00\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "新手理财第一步 记账 储蓄 避坑 选题模板",
+              "top_k": 5
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 135.637,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "爆款规律 复盘 开头钩子 结构",
+              "top_k": 5,
+              "chunk_types": [
+                "hit_pattern",
+                "review_insight"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 122.959,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "query": "年轻人 存钱 消费 风险 话题",
+              "top_k": 5,
+              "chunk_types": [
+                "topic_template",
+                "persona_knowledge"
+              ]
+            },
+            "tool": "search_knowledge",
+            "duration_ms": 127.899,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "理财",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.402,
+            "result_summary": "{\"total\": 2, \"items\": [{\"title\": \"“鱼腹藏金”即将寄出！新型理财骗局绕开转账、盯上实物黄金\", \"source\": \"qq-news\", \"hot_score\": 1644662, \"hot_date\": \"2026-10-16\"}, {\"title\": \"[BENCH-TOOL] 新手理财第一步（要求：参考历史模板 + 避免重复 + 看同类热点）\", \"source\": \"zhihu\", \"hot_score\": 10100, \"hot_date\": \"2026-10-17\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "存钱",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 6.2,
+            "result_summary": "{\"total\": 0, \"items\": []}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "骗局",
+              "limit": 8
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 8.609,
+            "result_summary": "{\"total\": 2, \"items\": [{\"title\": \"真相来了丨所谓“金卡社保卡”是电信诈骗 不要轻信“升级骗局”\", \"source\": \"qq-news\", \"hot_score\": 2072054, \"hot_date\": \"2026-10-12\"}, {\"title\": \"“鱼腹藏金”即将寄出！新型理财骗局绕开转账、盯上实物黄金\", \"source\": \"qq-news\", \"hot_score\": 1644662, \"hot_date\": \"2026-10-16\"}]}"
+          },
+          {
+            "ok": true,
+            "args": {
+              "q": "",
+              "limit": 10
+            },
+            "tool": "search_hotspots",
+            "duration_ms": 4.54,
+            "result_summary": "{\"total\": 10, \"items\": [{\"title\": \"蒙古国草原火情蔓延至我边境\", \"source\": \"toutiao\", \"hot_score\": 44623948, \"hot_date\": \"2026-10-12\"}, {\"title\": \"郑钦文红袍加身举金杯旋转拍照\", \"source\": \"toutiao\", \"hot_score\": 40377417, \"hot_date\": \"2026-10-12\"}, {\"title\": \"节后错峰出游持续升温\", \"source\": \"toutiao\", \"hot_score\": 36534998, \"hot_date\":"
+          }
+        ],
+        "cleanup_clean": true
+      }
+    ],
+    "baseline": [
+      {
+        "id": "tt_01",
+        "mode": "baseline",
+        "expected": [
+          "search_knowledge"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 893,
+        "latency_ms": 2401.4,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_02",
+        "mode": "baseline",
+        "expected": [
+          "search_hotspots"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 899,
+        "latency_ms": 2596.8,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_03",
+        "mode": "baseline",
+        "expected": [
+          "get_persona"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 1228,
+        "latency_ms": 4461.8,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_04",
+        "mode": "baseline",
+        "expected": [
+          "list_topics"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 841,
+        "latency_ms": 2711.2,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_05",
+        "mode": "baseline",
+        "expected": [],
+        "predicted": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 916,
+        "latency_ms": 3093.6,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_06",
+        "mode": "baseline",
+        "expected": [
+          "search_knowledge",
+          "search_hotspots"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 1248,
+        "latency_ms": 4467.1,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_07",
+        "mode": "baseline",
+        "expected": [
+          "get_persona",
+          "search_knowledge"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 1282,
+        "latency_ms": 4618.6,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_08",
+        "mode": "baseline",
+        "expected": [],
+        "predicted": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 904,
+        "latency_ms": 2960.6,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_09",
+        "mode": "baseline",
+        "expected": [
+          "list_topics",
+          "search_knowledge"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 906,
+        "latency_ms": 2800.5,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_10",
+        "mode": "baseline",
+        "expected": [
+          "search_hotspots"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 1077,
+        "latency_ms": 3562.2,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_11",
+        "mode": "baseline",
+        "expected": [],
+        "predicted": [],
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 883,
+        "latency_ms": 2476.4,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      },
+      {
+        "id": "tt_12",
+        "mode": "baseline",
+        "expected": [
+          "search_knowledge",
+          "list_topics",
+          "search_hotspots"
+        ],
+        "predicted": [],
+        "precision": 0.0,
+        "recall": 0.0,
+        "hallucinated": [],
+        "rounds": 0,
+        "converged": true,
+        "parse_attempts": 1,
+        "json_first_try": true,
+        "persisted": 1,
+        "tokens": 858,
+        "latency_ms": 2465.0,
+        "status": "success",
+        "error": null,
+        "tool_events": [],
+        "cleanup_clean": true
+      }
+    ],
+    "aggregate": {
+      "tool": {
+        "n": 12,
+        "precision_micro": 0.3889,
+        "recall_micro": 1.0,
+        "precision_macro": 0.5417,
+        "recall_macro": 1.0,
+        "hallucination_rate": 0.0,
+        "avg_rounds": 2.0,
+        "convergence_rate": 1.0,
+        "json_first_try_rate": 1.0,
+        "total_tokens": 68775,
+        "avg_latency_ms": 11702.1,
+        "errors": 0,
+        "cleanup_ok": true
+      },
+      "baseline": {
+        "n": 12,
+        "precision_micro": null,
+        "recall_micro": null,
+        "precision_macro": null,
+        "recall_macro": null,
+        "hallucination_rate": null,
+        "avg_rounds": null,
+        "convergence_rate": 1.0,
+        "json_first_try_rate": 1.0,
+        "total_tokens": 11935,
+        "avg_latency_ms": 3217.9,
+        "errors": 0,
+        "cleanup_ok": true
+      }
+    }
+  },
+  "metrics": [
+    {
+      "name": "topic_tool.precision_micro",
+      "value": 0.3889,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:49+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "工具选择：Σ命中/Σ预测"
+    },
+    {
+      "name": "topic_tool.recall_micro",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:49+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "工具选择：Σ命中/Σ标注"
+    },
+    {
+      "name": "topic_tool.precision_macro",
+      "value": 0.5417,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:49+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "按场景平均"
+    },
+    {
+      "name": "topic_tool.recall_macro",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "按场景平均"
+    },
+    {
+      "name": "topic_tool.hallucination_rate",
+      "value": 0.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "白名单外工具请求率"
+    },
+    {
+      "name": "topic_tool.avg_rounds",
+      "value": 2.0,
+      "unit": "轮",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "平均工具执行轮数"
+    },
+    {
+      "name": "topic_tool.convergence_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "max_rounds 内收敛且落库"
+    },
+    {
+      "name": "topic_tool.json_first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "最终 JSON 一次解析且落库"
+    },
+    {
+      "name": "topic_tool.baseline_json_first_try_rate",
+      "value": 1.0,
+      "unit": "比率",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "关闭开关的对照"
+    },
+    {
+      "name": "topic_tool.total_tokens_tool_mode",
+      "value": 68775,
+      "unit": "token",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "工程参考，不进简历"
+    },
+    {
+      "name": "topic_tool.total_tokens_baseline",
+      "value": 11935,
+      "unit": "token",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "工程参考，不进简历"
+    },
+    {
+      "name": "topic_tool.avg_latency_ms",
+      "value": 11702.1,
+      "unit": "毫秒",
+      "n": 12,
+      "category": "llm_small_sample",
+      "method": "scripts/benchmark/bench_topic_tool_calling.py：冻结 12 场景 × 两种模式（tool / baseline），同一人设-热点夹具，逐场景读 agent_runs 与工具事件",
+      "env": "Windows-11-10.0.26300-SP0 / AMD64 / Python 3.13.14 / Node v22.22.2 / 本地单机（localhost）",
+      "timestamp": "2026-10-17T13:34:50+08:00",
+      "log_path": null,
+      "confidence": "medium",
+      "note": "工程参考，不进简历"
+    }
+  ]
+}

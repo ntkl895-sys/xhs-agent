@@ -1,0 +1,52 @@
+# xhs-agent · 后端依赖
+# 说明：不锁死小版本；安装完成后请在 README「实际版本记录」中如实登记。
+# 第 6 步：骨架 + 健康检查。
+# 第 7 步：新增 alembic（数据库迁移）、pgvector（Vector 列与 psycopg3 集成）。
+# 第 Agent Harness 步：新增 langchain / langchain-openai / langgraph /
+#   langgraph-checkpoint-postgres（langchain-core 随依赖安装）。
+#   一律走 OpenAI 兼容（langchain_openai.ChatOpenAI），【不引入】langchain-deepseek 专用包。
+# 第 9 步：新增 httpx / tenacity / apscheduler（热搜采集 + 定时；不引入 Celery / LangChain）。
+
+fastapi
+uvicorn[standard]
+sqlalchemy>=2
+psycopg[binary]
+redis
+pydantic>=2
+pydantic-settings
+python-dotenv
+
+# --- 第 7 步新增 ---
+alembic
+pgvector
+
+# --- Agent Harness 新增（LangChain / LangGraph 基座）---
+langchain
+langchain-openai
+langgraph
+langgraph-checkpoint-postgres
+
+# --- 第 9 步新增（热搜采集 + 定时）---
+# httpx       ：同步 HTTP 客户端（访问本地 DailyHotApi）
+# tenacity    ：对 429 / 5xx / 网络异常做指数退避重试（4xx 不重试）
+# apscheduler ：单机 Windows 下的同步定时调度（**不引入 Celery**）
+# 【不新增 PyYAML】—— 配置统一走 pydantic-settings，不再搬 hotspot_spike 的 config.yaml。
+httpx
+tenacity
+apscheduler
+
+# --- 第 15 步新增（数据回填：截图上传）---
+# python-multipart：FastAPI 的 File()/Form() 解析 multipart 的**必需**依赖；
+# 【不新增 Pillow / 图像处理库】—— 图片类型只按 MIME + 文件头魔数校验，不做解码。
+python-multipart
+
+# --- 第 18 步新增（RAG：本地 bge 向量化）---
+# langchain-huggingface   ：LangChain 的 HuggingFaceEmbeddings（底层 sentence-transformers）
+# sentence-transformers   ：本地中文向量模型（默认 BAAI/bge-large-zh-v1.5，1024 维；
+#                           首次安装体积较大，会带上 transformers / torch CPU 版；
+#                           模型权重约 1.3GB，首次向量化时自动从 Hugging Face 下载，
+#                           国内可设 HF_ENDPOINT=https://hf-mirror.com 走镜像）。
+# 【不新增】faiss / chromadb 等向量库 —— 检索直接用库内 pgvector（HNSW 余弦，已在用）；
+# openai 兼容 embedding 走既有的 langchain-openai（**不新增包**）。
+langchain-huggingface
+sentence-transformers

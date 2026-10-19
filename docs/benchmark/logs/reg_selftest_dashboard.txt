@@ -1,0 +1,220 @@
+2026-10-17 09:34:26,638 [INFO] xhs-agent.agent.checkpoint: 检查点已就绪：schema=langgraph 表=checkpoint_migrations, checkpoints, checkpoint_blobs, checkpoint_writes
+2026-10-17 09:34:26,800 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/summary?range_days=7 "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,804 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/summary?range_days=0 "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:26,807 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/summary?range_days=366 "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:26,818 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/trend?metric=views&range_days=3&note_id=0c088117-6577-47d2-8d13-91a3dc4fbd8b&bucket=day "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,827 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/trend?metric=views&range_days=3&note_id=30c57431-d94f-41b6-a303-258a3dcb3db0&bucket=day "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,835 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/trend?metric=views&range_days=30&bucket=auto "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,843 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/trend?metric=views&note_id=b5b15da4-e965-4050-9c6b-ef588b86eb26 "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:26,846 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/trend?metric=views&note_id=not-a-uuid "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:26,849 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/trend?metric=bogus "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:26,858 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/ranking?metric=likes&limit=100 "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,867 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/ranking?metric=likes&limit=2 "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,877 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/ranking?metric=views "HTTP/1.1 200 OK"
+2026-10-17 09:34:26,880 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/ranking?metric=bogus "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:26,883 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/dashboard/ranking?metric=views&limit=0 "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:26,952 [INFO] xhs-agent.weekly.graph: 周报上下文就绪：周期=[2026-10-11 ~ 2026-10-17] 7 天，周期内发布=1，缺口=1
+2026-10-17 09:34:26,985 [INFO] xhs-agent.weekly.service: 周报完成：run=41d873ad-e288-48cd-9a1d-795fb5eb0ca2 周期=[2026-10-11T00:00:00+08:00 ~ 2026-10-17T09:34:26.901164+08:00] parse_attempts=1 缺口=2 建议=3
+2026-10-17 09:34:26,986 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 201 Created"
+2026-10-17 09:34:27,004 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/reports/weekly?limit=5 "HTTP/1.1 200 OK"
+2026-10-17 09:34:27,013 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/reports/weekly/41d873ad-e288-48cd-9a1d-795fb5eb0ca2 "HTTP/1.1 200 OK"
+2026-10-17 09:34:27,020 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/reports/weekly/3a2dd55f-406e-4cce-ae8a-10bcc4c9da02 "HTTP/1.1 404 Not Found"
+2026-10-17 09:34:27,023 [INFO] httpx2: HTTP Request: GET http://testserver/api/v1/reports/weekly/not-a-uuid "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:27,076 [INFO] xhs-agent.weekly.graph: 周报上下文就绪：周期=[2026-10-11 ~ 2026-10-17] 7 天，周期内发布=1，缺口=1
+2026-10-17 09:34:27,079 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:27,079 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:27,082 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:27,083 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:27,085 [WARNING] xhs-agent.agent.json: 第 1 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:27,086 [WARNING] xhs-agent.agent.json: 第 2 次输出不是合法 JSON，追加纠正提示后重试
+2026-10-17 09:34:27,120 [WARNING] xhs-agent.agent.runner: 图运行失败（kind=weekly_report thread=35057719-f834-4d37-86d7-487e39946a3f）：周报生成失败：连续 3 轮输出均不满足结构要求（模型输出无法解析为 JSON）。可稍后重试；若反复出现，请确认所配模型稳定支持 JSON 输出后重试。
+2026-10-17 09:34:27,126 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:27,140 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 400 Bad Request"
+2026-10-17 09:34:27,152 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:27,155 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:27,158 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:27,160 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 422 Unprocessable Content"
+2026-10-17 09:34:27,163 [INFO] httpx2: HTTP Request: POST http://testserver/api/v1/reports/weekly/generate "HTTP/1.1 422 Unprocessable Content"
+==============================================================================
+第 17 步 · 运营看板 + 周报 Agent 离线自检（不联网、不需要 API Key）
+==============================================================================
+[PASS] build_weekly_report_graph 返回已编译的 LangGraph 图
+[PASS] 图含 load_context / generate_report / validate_report / persist_run / give_up 五节点
+[PASS] load_context → generate_report 为直连边
+[PASS] generate_report → validate_report 为直连边
+[PASS] validate_report → generate_report 为条件边（回炉回路）
+[PASS] validate 通过 → persist_run 为条件边
+[PASS] validate 超限 → give_up 为条件边
+[PASS] persist_run / give_up → END
+[PASS] 回路上界绑定 AGENT_JSON_MAX_ATTEMPTS（有界回路，不无限重试）
+[PASS] 图用 new_state_graph 装配且状态为 WeeklyState（复用 harness 基座）
+[PASS] 周报经 app.agent.runner.run_agent 运行（第五个业务图，禁止裸 HTTP 自编排）
+[PASS] as_datetime 支持 datetime 与 ISO 字符串（原样往返）
+[PASS] as_datetime 非法输入 → None（不抛异常，调用侧可识别）
+[PASS] latest_values_per_note 取每个指标的最后一个非空值（后一条为空时向前取）
+[PASS] latest_values_per_note 全程缺失的指标恒为 None（不臆造）
+[PASS] rates_from_sums 六率按合计口径、4 位小数（engagement=(赞+藏+评+转)/浏览）
+[PASS] views 合计为 0 / 缺失 → 六率全 None（绝不臆造）
+[PASS] sum_funnel 缺失按 0 求和、metric_coverage 逐指标可识别
+[PASS] covered_notes 只统计「至少一个非空值」的笔记（nC 不计）
+[PASS] sum_funnel 的 rates 与 latest_totals 同源（合计口径自洽）
+[PASS] 区间未超上限：day 桶步长 1 天
+[PASS] 区间恰等于上限：day 桶步长 1 天（30 点）
+[PASS] 区间超上限：自动收紧为等间隔（90/30 → 3 天，模式如实回“auto”）
+[PASS] auto 桶：步长 = ceil(range/max_points)（365/30 → 13 天）
+[PASS] aggregate_trend 桶内每笔记取最新非空值再求和（200 被 260 覆盖；nB 并入 → 300）
+[PASS] 趋势桶标签为本地自然日、覆盖计数正确
+[PASS] 空桶给 None（禁止补 0 / 插值），只有今天桶有值
+[PASS] range_start_local 为「近 N 自然日（含今天）」的本地 00:00 起点
+[PASS] rank_items 降序 + 缺失排最后 + tie 按发布晚优先
+[PASS] rank_items limit 截断生效
+[PASS] resolve_period 默认周期 = 近 7 天（含今天）的本地 00:00 起
+[PASS] resolve_period 显式日期：起点整天 00:00、终点整天 23:59
+[PASS] resolve_period 五类非法输入全部抛 WeeklyContextError
+[PASS] period_delta 主口径 = 周期内末值 − 周期前末值（260-100=160）
+[PASS] period_delta 无周期前基线时退化为「周期内末 − 周期内首」（260-180=80）
+[PASS] period_delta 只有一条周期内快照且无基线 → None（不算增量）
+[PASS] normalize_report_payload 宽容解包 report 包装层、周期以程序事实为准
+[PASS] next_week_suggestions 为空 → 硬伤（触发回炉）
+[PASS] 非对象载荷 → 硬伤（触发回炉）
+[PASS] 置信度越界 → None + warning（宽容，不打回）；summary 超长截断
+[PASS] build_period_facts 四项计数 ≥ 夹具下限（周期内发布 / ready / draft / 在写选题）
+[PASS] build_period_facts 热点 / 选题计数 ≥ 夹具下限（被采用热点为当前累计 _total）
+[PASS] 周期合计复用看板口径（views ≥ 260、覆盖率可识别、六指标齐全）
+[PASS] 周期增量合计 ≥ 夹具下限（笔记A Δviews=160 至少在内）
+[PASS] new_published_notes 含夹具笔记且字段齐全（title / published_at / 最新值 / 增量）
+[PASS] diagnostics 摘要含周期内夹具诊断（类型 / 评分 / 核心建议）
+[PASS] data_gaps 为字符串列表（数据不足如实声明）
+[PASS] GET /dashboard/summary 200
+[PASS] summary.counts 恰为七键（账号 / 笔记总数 / 已发布 / 待发布 / 草稿 / 在写选题 / 周期内发布）
+[PASS] summary 计数 ≥ 夹具下限（周期内发布 / ready / draft / writing）
+[PASS] summary 回显 range_days 且带 generated_at
+[PASS] summary.funnel 六指标 + 六率 + 覆盖率键齐全
+[PASS] summary.funnel.rates 与 latest_totals 自洽重算一致（4 位小数、合计口径）
+[PASS] funnel 覆盖笔记数 ≤ 已发布总数（覆盖率可识别）
+[PASS] summary range_days 越界（0 / 366）→ 422（服务端校验）
+[PASS] GET /dashboard/trend 200
+[PASS] trend（note A / views）三点精确值 [100, 180, 260]（桶内取最新、不插值）
+[PASS] trend.coverage 如实回传步长 / 点数 / 覆盖计数
+[PASS] trend 回显 metric 与生效 bucket
+[PASS] 无快照笔记 trend：200 + 全 None（不报错、不补 0）
+[PASS] 全账号 trend 200 且覆盖计数 ≥ 夹具已发布数
+[PASS] trend 指定不存在的 note_id → 404
+[PASS] trend note_id 非法 UUID → 422
+[PASS] trend metric 非法 → 422（枚举 Literal 校验）
+[PASS] GET /dashboard/ranking 200
+[PASS] ranking 按最新非空值降序、缺失值全部排在最后
+[PASS] ranking 含夹具笔记A（likes=26）
+[PASS] ranking 不含 draft 笔记（仅 published 口径）
+[PASS] ranking limit 生效（2 条）
+[PASS] ranking 默认 limit = DASHBOARD_RANKING_TOP_N（10）
+[PASS] ranking metric / limit 非法 → 422
+[PASS] POST /reports/weekly/generate 201（同步生成）
+[PASS] 响应含 run_id
+[PASS] 成功路径假模型恰 1 次调用（首轮解析成功）
+[PASS] 响应 parse_attempts = 1（首轮即合法 JSON）
+[PASS] report 九键齐全（周期 / 概述 / 亮点 / 问题 / 依据 / 建议 / 缺口 / 置信度）
+[PASS] 报告建议非空且按序、summary 原样保留
+[PASS] 周期回显一致（顶层与 report 内相同）
+[PASS] 提示词含「周期事实」底稿与严格 JSON 输出要求
+[PASS] 提示词含夹具笔记标题（周期事实真实注入）
+[PASS] 首轮无回炉反馈块（无中生有会被抓出）
+[PASS] 提示词含「严禁外部数字」硬约束（不编造行业均值 / 爆款阈值）
+[PASS] 生成响应不含 llm_raw / 密钥字样
+[PASS] agent_runs 行 run_type=weekly_report、trigger=manual
+[PASS] run 状态 success（persist_run 节点正常完成）
+[PASS] outputs 含 report / 周期 / parse_attempts / prompt_version / persisted
+[PASS] outputs.report 为归一后完整报告（persisted=true）
+[PASS] outputs.prompt_version = 配置值（WEEKLY_PROMPT_VERSION）
+[PASS] outputs **不含** llm_raw（llm_raw 只进 agent_runs 列、接口一律不返回）
+[PASS] llm_raw 回填且经脱敏截断（非空、≤ 20000、无密钥前缀）
+[PASS] run.json_parse_attempts = 1
+[PASS] token 用量落库且自洽（prompt + completion = total > 0）
+[PASS] 成功路径恰新增 1 条 agent_runs
+[PASS] GET /reports/weekly 200
+[PASS] 周报历史列表含本次 run
+[PASS] 周报历史按 created_at 倒序
+[PASS] 列表项含截断 summary 与建议计数
+[PASS] 列表响应不含 llm_raw
+[PASS] GET /reports/weekly/{run_id} 200（详情）
+[PASS] 详情回填 report / parse_attempts / llm_model / total_tokens
+[PASS] 详情响应不含 llm_raw / Traceback
+[PASS] 不存在的 run_id → 404
+[PASS] 非法 UUID → 422
+[PASS] 看板与周报全程只读：八张业务表计数与运行前完全一致
+[PASS] 全坏 JSON：POST → 400（结构校验连续超限）
+[PASS] 模型调用次数 = 回路上界 3×（1+2）=9
+[PASS] 失败响应为统一错误体且无 Traceback
+[PASS] 失败响应无密钥字样
+[PASS] 失败路径恰新增 1 条 agent_runs（记 failed）
+[PASS] 失败 run 落库：status=failed 且 error_message 非空、无 Traceback
+[PASS] LLM 未配置：POST → 400（零请求）
+[PASS] LLM 未配置：零 agent_runs 产生（模型工厂抛 AgentConfigError，未进 run_agent）
+[PASS] 未配置错误响应无 Traceback / 密钥字样
+[PASS] 五类非法周期参数 → 全部 422（服务端校验）
+[PASS] 周期非法：零 agent_runs 产生（先校验后跑图）
+[PASS] /api/v1/dashboard/summary 恰为 GET2026-10-17 09:34:27,415 [INFO] xhs-agent.report.scheduler: 周报定时已关闭（WEEKLY_SCHEDULER_ENABLED=false），不注册作业
+
+[PASS] /api/v1/dashboard/trend 恰为 GET
+[PASS] /api/v1/dashboard/ranking 恰为 GET
+[PASS] /api/v1/reports/weekly/generate 恰为 POST（静态路径先于动态段注册）
+[PASS] /api/v1/reports/weekly 恰为 GET（历史）
+[PASS] /api/v1/reports/weekly/{run_id} 恰为 GET（详情）
+[PASS] 看板 / 周报路由不存在 PUT / PATCH / DELETE（看板只读、周报只增）
+[PASS] DashboardSummaryOut 无敏感字段（llm_raw / key / 凭据）
+[PASS] DashboardTrendOut 无敏感字段（llm_raw / key / 凭据）
+[PASS] DashboardRankingOut 无敏感字段（llm_raw / key / 凭据）
+[PASS] WeeklyReportGenerateRequest 无敏感字段（llm_raw / key / 凭据）
+[PASS] WeeklyReportSections 无敏感字段（llm_raw / key / 凭据）
+[PASS] WeeklyReportOut 无敏感字段（llm_raw / key / 凭据）
+[PASS] WeeklyReportDetailOut 无敏感字段（llm_raw / key / 凭据）
+[PASS] WeeklyReportListItem 无敏感字段（llm_raw / key / 凭据）
+[PASS] WeeklyReportListOut 无敏感字段（llm_raw / key / 凭据）
+[PASS] 九个第 17 步 schema 全部完成敏感字段扫描
+[PASS] WeeklyReportGenerateRequest 属性恰为周期三参数
+[PASS] main.py include_router ≥ 11 且 dashboard / reports 在册（第 10、11 只，不回退）
+[PASS] 全局 lifespan 仍唯一（周报定时合并进同一 lifespan，未新增）
+[PASS] 周报定时器已接入唯一 lifespan（启动 / 关闭成对）
+[PASS] WEEKLY_SCHEDULER_ENABLED 字段默认 False（周报定时默认关闭）
+[PASS] 本机配置下 start_weekly_scheduler() 返回 None 且不注册作业（零调度）
+[PASS] migrations/versions 仍恰 2 支迁移（本步零迁移）
+[PASS] 迁移文件名仍为 0001 / 0002（未新增 0003）
+[PASS] public 业务表仍恰 10 张（RunType 只加枚举成员，无 DDL）
+[PASS] alembic current = 0002 (head)
+[PASS] alembic check 零漂移（退出码 0）
+[PASS] app/agent/weekly/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/weekly/state.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/weekly/contracts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/weekly/prompts.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/weekly/graph.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/agent/weekly/service.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/services/dashboard/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/services/dashboard/aggregator.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/services/dashboard/service.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/services/report/__init__.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/services/report/scheduler.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/schemas/dashboard.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/schemas/report.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/api/routes/dashboard.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/api/routes/reports.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/models/enums.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/core/config.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] app/main.py 不含小红书域名 / 登录态凭据 / 密钥前缀
+[PASS] frontend/src/app/dashboard/page.tsx 不含违禁字样
+[PASS] frontend/src/app/api/v1/dashboard/summary/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/dashboard/trend/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/dashboard/ranking/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/reports/weekly/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/reports/weekly/generate/route.ts 不含违禁字样
+[PASS] frontend/src/app/api/v1/reports/weekly/[run_id]/route.ts 不含违禁字样
+[PASS] frontend/src/lib/charts/LineChart.tsx 不含违禁字样
+[PASS] frontend/src/lib/charts/HBars.tsx 不含违禁字样
+[PASS] frontend/src/lib/charts/FunnelBars.tsx 不含违禁字样
+[PASS] frontend/src/lib/types.ts 不含违禁字样
+[PASS] frontend/src/components/site-header.tsx 不含违禁字样
+[PASS] 全前端平台域名仍恰 1 处（第 14 步发布外链；本步未新增）
+[PASS] 前端扫描覆盖全部 ts / tsx（非抽样）
+[PASS] 测试数据物理清理并双口径复查残留为 0
+
+通过 176 项，失败 0 项。
+全部 PASS ✔（第 17 步运营看板 + 周报自检，依赖本地 docker PostgreSQL）

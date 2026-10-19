@@ -1,0 +1,30 @@
+{
+  "name": "json_robustness",
+  "version": "1.0",
+  "generated_at": "2026-10-17T08:57:43+08:00",
+  "generator": "scripts/benchmark/build_testsets.py",
+  "answer_source": "人工设计的确定性变换规则（8 类 × 25）：素材池 + 变形规则（围栏/控制字符/括号增删/尾随逗号/截断/引号替换）；label 按「语义是否可安全修复」判定，不依赖 json_repair 实现",
+  "stats": {
+    "total": 200,
+    "buckets": {
+      "valid": 25,
+      "fence": 25,
+      "ctrl": 25,
+      "bracket": 25,
+      "trailing": 25,
+      "truncated": 25,
+      "quotes": 25,
+      "broken": 25
+    },
+    "labels": {
+      "direct": 25,
+      "repaired": 109,
+      "failed": 66
+    }
+  },
+  "sha256": {
+    "cases.json": "8fb4830b2de62baf2f54c33f7164bff03c3e1a1b0f36fcfcc2974d2ce5befdf3"
+  },
+  "freeze_notice": "本测试集已冻结：评测只读不改；任何修改须升 version 并在报告中保留前后两版结果。",
+  "notes": "label 口径：direct=原始文本应一次解析成功；repaired=需兜底（去围栏/控制字符修复/平衡扫描）救回；failed=不可靠修复，应正确拒绝（不得硬解析出错误数据）。"
+}
